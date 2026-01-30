@@ -17,11 +17,17 @@ const eslintConfig = [
   {
     rules: {
       "@typescript-eslint/consistent-type-imports": "error",
+      "unicorn/prefer-module": "off",
       "unicorn/prevent-abbreviations": [
         "error",
         {
+          replacements: {
+            props: false,
+            Props: false,
+          },
           allowList: {
             props: true,
+            Props: true,
             prev: true,
             utils: true,
             searchParams: true,
