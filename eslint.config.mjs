@@ -18,6 +18,7 @@ const eslintConfig = [
     rules: {
       "@typescript-eslint/consistent-type-imports": "error",
       "unicorn/prefer-module": "off",
+      "unicorn/consistent-function-scoping": "off",
       "unicorn/prevent-abbreviations": [
         "error",
         {
