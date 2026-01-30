@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "elix-mobile",
-    "slug": "elix-mobile",
+    "name": "Elix",
+    "slug": "elix",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
