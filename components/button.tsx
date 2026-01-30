@@ -20,7 +20,7 @@ export function Button({
   return (
     <TouchableOpacity
       className={cn(
-        "flex-row items-center justify-center gap-2 rounded-full p-2.5",
+        "flex-row items-center justify-center gap-2 rounded-full px-4 py-2.5",
         {
           "bg-teal-700": variant === "primary",
           "bg-zinc-100 dark:bg-zinc-900": variant === "secondary",

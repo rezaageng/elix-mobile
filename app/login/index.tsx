@@ -3,10 +3,25 @@ import { Image } from "expo-image"
 import { Text, useColorScheme, View } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
 
+import { authClient } from "@/lib/auth-client"
 import { Button } from "@/components/button"
 
 export default function LoginScreen() {
   const colorScheme = useColorScheme()
+
+  const handleGoogleLogin = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+      callbackURL: "/",
+    })
+  }
+
+  const handleTwitterLogin = async () => {
+    await authClient.signIn.social({
+      provider: "twitter",
+      callbackURL: "/",
+    })
+  }
 
   return (
     <SafeAreaView className="relative h-full w-full justify-end bg-white dark:bg-black">
@@ -19,14 +34,21 @@ export default function LoginScreen() {
         <Text className="text-center text-4xl font-semibold dark:text-white">
           Welcome to Elix
         </Text>
-
-        <Button variant="secondary">
+        <Button variant="secondary" onPress={handleGoogleLogin}>
           <AntDesign
             name="google"
             size={20}
             color={colorScheme === "dark" ? "white" : "black"}
           />
           <Text className="dark:text-white">Login with Google</Text>
+        </Button>
+        <Button variant="secondary" onPress={handleTwitterLogin}>
+          <AntDesign
+            name="twitter"
+            size={20}
+            color={colorScheme === "dark" ? "white" : "black"}
+          />
+          <Text className="dark:text-white">Login with Twitter</Text>
         </Button>
       </View>
     </SafeAreaView>
