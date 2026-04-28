@@ -3,24 +3,26 @@ import { Image } from "expo-image"
 import { Text, View } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
 
-import { authClient } from "@/lib/auth-client"
+import { authClient, useSession } from "@/lib/auth-client"
 import { useThemeColor } from "@/lib/use-theme-color"
 import { Button } from "@/components/button"
 
 export default function LoginScreen() {
+  const { isPending } = useSession()
+
   const iconColor = useThemeColor("foreground")
 
   const handleGoogleLogin = async () => {
     await authClient.signIn.social({
       provider: "google",
-      callbackURL: "/",
+      callbackURL: "elix://",
     })
   }
 
   const handleTwitterLogin = async () => {
     await authClient.signIn.social({
       provider: "twitter",
-      callbackURL: "/",
+      callbackURL: "elix://",
     })
   }
 
@@ -35,11 +37,19 @@ export default function LoginScreen() {
         <Text className="text-center text-4xl font-semibold text-black dark:text-white">
           Welcome to Elix
         </Text>
-        <Button variant="secondary" onPress={handleGoogleLogin}>
+        <Button
+          variant="secondary"
+          onPress={handleGoogleLogin}
+          disabled={isPending}
+        >
           <AntDesign name="google" size={20} color={iconColor} />
           <Text className="text-black dark:text-white">Login with Google</Text>
         </Button>
-        <Button variant="secondary" onPress={handleTwitterLogin}>
+        <Button
+          variant="secondary"
+          onPress={handleTwitterLogin}
+          disabled={isPending}
+        >
           <AntDesign name="twitter" size={20} color={iconColor} />
           <Text className="text-black dark:text-white">Login with Twitter</Text>
         </Button>
