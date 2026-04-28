@@ -6,10 +6,11 @@ import { Button } from "@/components/button"
 
 export default function ProfileScreen() {
   return (
-    <SafeAreaView className="flex-1 items-center justify-center bg-white dark:bg-black">
+    <SafeAreaView className="flex-1 items-center justify-center gap-4 bg-white dark:bg-black">
       <Text className="text-black dark:text-white">ProfileScreen</Text>
       <Button
         title="Log Out"
+        variant="destructive"
         onPress={async () => {
           await authClient.signOut()
         }}
