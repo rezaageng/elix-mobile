@@ -35,6 +35,17 @@ const eslintConfig = [
           },
         },
       ],
+      "no-restricted-imports": [
+        "error",
+        {
+          patterns: [
+            {
+              group: ["../*", "./*"],
+              message: "Use path aliases (e.g. '@/lib/api/...') instead of relative imports",
+            },
+          ],
+        },
+      ],
     },
     ignores: ["dist/*"],
   },
