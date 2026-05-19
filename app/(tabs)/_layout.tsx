@@ -3,7 +3,7 @@ import { Icon, Label, NativeTabs } from "expo-router/unstable-native-tabs"
 export default function TabLayout() {
   return (
     <NativeTabs tintColor="#cc785c">
-      <NativeTabs.Trigger name="quest">
+      <NativeTabs.Trigger name="index">
         <Label>Quest</Label>
         <Icon sf="target" drawable="custom_quest_drawable" />
       </NativeTabs.Trigger>

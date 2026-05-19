@@ -26,7 +26,7 @@ export default function RootLayout() {
   const segments = useSegments()
   const router = useRouter()
 
-  const [fontsLoaded] = useFonts({
+  const [fontsLoaded, fontError] = useFonts({
     CrimsonPro_400Regular,
     CrimsonPro_400Regular_Italic,
     Inter_400Regular,
@@ -36,10 +36,10 @@ export default function RootLayout() {
   })
 
   useEffect(() => {
-    if (fontsLoaded) {
+    if (fontsLoaded || fontError) {
       SplashScreen.hideAsync()
     }
-  }, [fontsLoaded])
+  }, [fontsLoaded, fontError])
 
   useEffect(() => {
     if (isPending) return
@@ -49,11 +49,11 @@ export default function RootLayout() {
     if (!session && !inAuthGroup) {
       router.replace("/login")
     } else if (session && inAuthGroup) {
-      router.replace("/(tabs)/quest")
+      router.replace("/(tabs)")
     }
   }, [session, isPending, segments, router])
 
-  if (!fontsLoaded) return
+  if (!fontsLoaded && !fontError) return
 
   return (
     <QueryClientProvider client={queryClient}>
