@@ -26,7 +26,7 @@ export default function Header({ title, canGoBack = true }: HeaderProps) {
           <ArrowLeft size={20} color={iconColor} />
         </TouchableOpacity>
       )}
-      <Text className="font-display text-4xl text-black dark:text-white">
+      <Text className="font-display text-display-sm text-ink dark:text-on-dark">
         {title}
       </Text>
       {canGoBack && <View className="w-[24px]" />}

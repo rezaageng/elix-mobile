@@ -27,31 +27,35 @@ export default function LoginScreen() {
   }
 
   return (
-    <SafeAreaView className="relative h-full w-full justify-end bg-white dark:bg-black">
+    <SafeAreaView className="relative h-full w-full justify-end bg-canvas dark:bg-surface-dark">
       <Image
         source={require("@/assets/images/login-background.jpeg")}
         contentFit="cover"
         style={{ width: "100%", height: "75%", position: "absolute", top: 0 }}
       />
-      <View className="z-10 h-[40%] justify-center gap-8 rounded-[2rem] bg-white p-4 dark:bg-black">
-        <Text className="text-center text-4xl font-semibold text-black dark:text-white">
+      <View className="z-10 h-[40%] justify-center gap-6 rounded-xl bg-canvas px-lg dark:bg-surface-dark">
+        <Text className="text-center font-display text-display-md text-ink dark:text-on-dark">
           Welcome to Elix
         </Text>
         <Button
-          variant="secondary"
+          variant="outline"
           onPress={handleGoogleLogin}
           disabled={isPending}
         >
           <AntDesign name="google" size={20} color={iconColor} />
-          <Text className="text-black dark:text-white">Login with Google</Text>
+          <Text className="font-body-medium text-button text-ink dark:text-on-dark">
+            Login with Google
+          </Text>
         </Button>
         <Button
-          variant="secondary"
+          variant="outline"
           onPress={handleTwitterLogin}
           disabled={isPending}
         >
           <AntDesign name="twitter" size={20} color={iconColor} />
-          <Text className="text-black dark:text-white">Login with Twitter</Text>
+          <Text className="font-body-medium text-button text-ink dark:text-on-dark">
+            Login with Twitter
+          </Text>
         </Button>
       </View>
     </SafeAreaView>

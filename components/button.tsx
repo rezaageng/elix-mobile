@@ -12,7 +12,6 @@ interface ButtonProps extends TouchableOpacityProps {
 
 export function Button({
   children,
-
   variant = "primary",
   className,
   ...props
@@ -20,15 +19,16 @@ export function Button({
   return (
     <TouchableOpacity
       className={cn(
-        "flex-row items-center justify-center gap-2 rounded-full px-4 py-2.5",
+        "flex-row items-center justify-center gap-2 rounded-md px-5 py-3",
         {
-          "bg-primary active:bg-primary/90": variant === "primary",
-          "bg-zinc-100 active:bg-zinc-200 dark:bg-zinc-900 dark:active:bg-zinc-800":
+          "bg-primary active:bg-primary-active": variant === "primary",
+          "rounded-md bg-canvas active:bg-surface-card dark:bg-surface-dark-elevated dark:active:bg-surface-dark":
             variant === "secondary",
-          "border border-primary bg-primary/10 active:bg-primary/20":
+          "border border-hairline bg-canvas active:bg-surface-card dark:border-hairline dark:bg-surface-dark-elevated dark:active:bg-surface-dark":
             variant === "outline",
-          "bg-red-500 active:bg-red-600": variant === "destructive",
-          "active:bg-zinc-100 dark:active:bg-zinc-900": variant === "ghost",
+          "bg-error active:bg-red-700": variant === "destructive",
+          "active:bg-surface-card dark:active:bg-surface-dark-elevated":
+            variant === "ghost",
 
           "opacity-50": props.disabled,
         },
@@ -39,9 +39,10 @@ export function Button({
     >
       {children || (
         <Text
-          className={cn("text-center font-medium", {
-            "text-white": variant === "primary" || variant === "destructive",
-            "text-black dark:text-white":
+          className={cn("font-body-medium text-button", {
+            "text-primary-foreground":
+              variant === "primary" || variant === "destructive",
+            "text-ink dark:text-on-dark":
               variant === "secondary" || variant === "ghost",
             "text-primary": variant === "outline",
           })}

@@ -3,13 +3,15 @@ import "@/app/global.css"
 import { QueryClientProvider } from "@tanstack/react-query"
 import { useEffect } from "react"
 import {
-  PlayfairDisplay_400Regular,
-  PlayfairDisplay_400Regular_Italic,
-  PlayfairDisplay_500Medium,
-  PlayfairDisplay_600SemiBold,
-  PlayfairDisplay_700Bold,
-  PlayfairDisplay_700Bold_Italic,
-} from "@expo-google-fonts/playfair-display"
+  CrimsonPro_400Regular,
+  CrimsonPro_400Regular_Italic,
+} from "@expo-google-fonts/crimson-pro"
+import {
+  Inter_400Regular,
+  Inter_500Medium,
+  Inter_600SemiBold,
+  Inter_700Bold,
+} from "@expo-google-fonts/inter"
 import { useFonts } from "expo-font"
 import { Stack, useRouter, useSegments } from "expo-router"
 import * as SplashScreen from "expo-splash-screen"
@@ -25,12 +27,12 @@ export default function RootLayout() {
   const router = useRouter()
 
   const [fontsLoaded] = useFonts({
-    PlayfairDisplay_400Regular,
-    PlayfairDisplay_500Medium,
-    PlayfairDisplay_600SemiBold,
-    PlayfairDisplay_700Bold,
-    PlayfairDisplay_400Regular_Italic,
-    PlayfairDisplay_700Bold_Italic,
+    CrimsonPro_400Regular,
+    CrimsonPro_400Regular_Italic,
+    Inter_400Regular,
+    Inter_500Medium,
+    Inter_600SemiBold,
+    Inter_700Bold,
   })
 
   useEffect(() => {
@@ -47,7 +49,7 @@ export default function RootLayout() {
     if (!session && !inAuthGroup) {
       router.replace("/login")
     } else if (session && inAuthGroup) {
-      router.replace("/(tabs)")
+      router.replace("/(tabs)/quest")
     }
   }, [session, isPending, segments, router])
 

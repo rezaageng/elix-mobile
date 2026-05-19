@@ -6,8 +6,10 @@ import { Button } from "@/components/button"
 
 export default function ProfileScreen() {
   return (
-    <SafeAreaView className="flex-1 items-center justify-center gap-4 bg-white dark:bg-black">
-      <Text className="text-black dark:text-white">ProfileScreen</Text>
+    <SafeAreaView className="flex-1 items-center justify-center gap-md bg-canvas dark:bg-surface-dark">
+      <Text className="font-display text-display-sm text-ink dark:text-on-dark">
+        Profile
+      </Text>
       <Button
         title="Log Out"
         variant="destructive"
