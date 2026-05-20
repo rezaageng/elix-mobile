@@ -90,10 +90,12 @@ export const useUserStats = (userId: string) => {
   });
 };
 
-export const useCurrentUser = () => {
+export const useCurrentUser = (options?: { enabled?: boolean }) => {
   return useQuery({
     queryKey: ["user", "me"],
     queryFn: getCurrentUser,
+    staleTime: 0,
+    ...options,
   });
 };
 

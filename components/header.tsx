@@ -16,7 +16,7 @@ export default function Header({ title, canGoBack = true }: HeaderProps) {
 
   return (
     <View
-      className={cn("flex-row items-center", {
+      className={cn("flex-row items-center px-4 py-2", {
         "justify-between": canGoBack,
         "justify-center": !canGoBack,
       })}

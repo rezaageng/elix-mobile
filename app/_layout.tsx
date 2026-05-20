@@ -1,6 +1,5 @@
 import "@/app/global.css"
 
-import { QueryClientProvider } from "@tanstack/react-query"
 import { useEffect } from "react"
 import {
   CrimsonPro_400Regular,
@@ -12,9 +11,12 @@ import {
   Inter_600SemiBold,
   Inter_700Bold,
 } from "@expo-google-fonts/inter"
+import { BottomSheetModalProvider } from "@gorhom/bottom-sheet"
+import { QueryClientProvider } from "@tanstack/react-query"
 import { useFonts } from "expo-font"
 import { Stack, useRouter, useSegments } from "expo-router"
 import * as SplashScreen from "expo-splash-screen"
+import { GestureHandlerRootView } from "react-native-gesture-handler"
 
 import { useSession } from "@/lib/auth-client"
 import { queryClient } from "@/lib/query-client"
@@ -22,10 +24,6 @@ import { queryClient } from "@/lib/query-client"
 SplashScreen.preventAutoHideAsync()
 
 export default function RootLayout() {
-  const { data: session, isPending } = useSession()
-  const segments = useSegments()
-  const router = useRouter()
-
   const [fontsLoaded, fontError] = useFonts({
     CrimsonPro_400Regular,
     CrimsonPro_400Regular_Italic,
@@ -41,23 +39,46 @@ export default function RootLayout() {
     }
   }, [fontsLoaded, fontError])
 
+  if (!fontsLoaded && !fontError) return
+
+  return (
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <QueryClientProvider client={queryClient}>
+        <BottomSheetModalProvider>
+          <RootNavigator />
+        </BottomSheetModalProvider>
+      </QueryClientProvider>
+    </GestureHandlerRootView>
+  )
+}
+
+function RootNavigator() {
+  const { data: session, isPending } = useSession()
+  const segments = useSegments()
+  const router = useRouter()
+
   useEffect(() => {
     if (isPending) return
 
     const inAuthGroup = segments[0] === "login"
+    const inRolesGroup = segments[0] === "roles"
 
     if (!session && !inAuthGroup) {
       router.replace("/login")
-    } else if (session && inAuthGroup) {
-      router.replace("/(tabs)")
+      return
+    }
+
+    if (!session) return
+
+    const user = session.user
+    const needsClass = !user.activeClassId
+
+    if (inAuthGroup) {
+      router.replace(needsClass ? "/roles" : "/(tabs)")
+    } else if (needsClass && !inRolesGroup) {
+      router.replace("/roles")
     }
   }, [session, isPending, segments, router])
 
-  if (!fontsLoaded && !fontError) return
-
-  return (
-    <QueryClientProvider client={queryClient}>
-      <Stack screenOptions={{ headerShown: false }} />
-    </QueryClientProvider>
-  )
+  return <Stack screenOptions={{ headerShown: false }} />
 }

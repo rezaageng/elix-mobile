@@ -1,3 +1,4 @@
+import { useRouter } from "expo-router"
 import { useState } from "react"
 import { RefreshControl, ScrollView, Text, View } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
@@ -8,6 +9,7 @@ import Header from "@/components/header"
 
 export default function QuestScreen() {
   const { data, isPending, refetch } = useCurrentUser()
+  const router = useRouter()
   const [refreshing, setRefreshing] = useState(false)
 
   const onRefresh = async () => {
@@ -38,7 +40,7 @@ export default function QuestScreen() {
             <Text className="font-body text-body-md text-muted dark:text-on-dark-soft">
               You haven't chosen a role yet.
             </Text>
-            <Button>
+            <Button onPress={() => router.push("/roles")}>
               <Text className="font-body-medium text-button text-primary-foreground">
                 Choose a Role
               </Text>

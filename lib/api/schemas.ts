@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from "zod"
 
 // ── Error ──
 
@@ -6,103 +6,100 @@ export const ErrorSchema = z.object({
   code: z.string(),
   message: z.string(),
   details: z.record(z.string(), z.unknown()).optional(),
-});
+})
 
 export const ErrorEnvelopeSchema = z.object({
   error: ErrorSchema,
-});
+})
 
 // ── Classes ──
 
 export const ClassSchema = z.object({
-  id: z.string().uuid(),
+  id: z.uuid(),
   name: z.string(),
   description: z.string(),
-  requirements: z.record(z.string(), z.unknown()).nullable(),
-  createdAt: z.string().datetime(),
-  updatedAt: z.string().datetime(),
-});
+  requirements: z.record(z.string(), z.unknown()).nullable().optional(),
+  createdAt: z.iso.datetime(),
+  updatedAt: z.iso.datetime(),
+})
 
 export const ClassChoiceSchema = z.object({
-  id: z.string().uuid(),
+  id: z.uuid(),
   userId: z.string(),
-  classId: z.string().uuid(),
-  level: z.number().int(),
-  currentXp: z.number().int(),
-  createdAt: z.string().datetime(),
-  updatedAt: z.string().datetime(),
-});
+  classId: z.uuid(),
+  chosenAt: z.iso.datetime(),
+})
 
 // ── Quests ──
 
 export const QuestSchema = z.object({
-  id: z.string().uuid(),
-  classId: z.string().uuid(),
+  id: z.uuid(),
+  classId: z.uuid(),
   name: z.string(),
   description: z.string(),
   type: z.string(),
   duration: z.number().int(),
-  requiredQuestId: z.string().uuid().nullable(),
-  createdAt: z.string().datetime(),
-  updatedAt: z.string().datetime(),
-});
+  requiredQuestId: z.uuid().nullable(),
+  createdAt: z.iso.datetime(),
+  updatedAt: z.iso.datetime(),
+})
 
 export const QuestProgressSchema = z.object({
-  id: z.string().uuid(),
+  id: z.uuid(),
   userId: z.string(),
-  questId: z.string().uuid(),
+  questId: z.uuid(),
   status: z.string(),
   restorableStreak: z.boolean(),
-  createdAt: z.string().datetime(),
-  updatedAt: z.string().datetime(),
-});
+  createdAt: z.iso.datetime(),
+  updatedAt: z.iso.datetime(),
+})
 
 export const LevelUpInfoSchema = z.object({
   from: z.number().int(),
   to: z.number().int(),
-});
+})
 
 // ── Guilds ──
 
 export const GuildSchema = z.object({
-  id: z.string().uuid(),
+  id: z.uuid(),
   name: z.string(),
   description: z.string().nullable(),
   ownerId: z.string(),
-  createdAt: z.string().datetime(),
-  updatedAt: z.string().datetime(),
-});
+  createdAt: z.iso.datetime(),
+  updatedAt: z.iso.datetime(),
+})
 
 export const GuildMemberSchema = z.object({
-  id: z.string().uuid(),
+  id: z.uuid(),
   name: z.string(),
   image: z.string().nullable(),
   role: z.string(),
   status: z.string(),
-});
+})
 
 export const GuildMemberRecordSchema = z.object({
-  id: z.string().uuid(),
-  guildId: z.string().uuid(),
+  id: z.uuid(),
+  guildId: z.uuid(),
   userId: z.string(),
   status: z.string(),
-  joinedAt: z.string().datetime(),
-});
+  joinedAt: z.iso.datetime(),
+})
 
 export const GuildMessageUserSchema = z.object({
-  id: z.string().uuid(),
+  id: z.uuid(),
   name: z.string(),
   username: z.string(),
   image: z.string().nullable(),
-});
+})
 
 export const GuildMessageSchema = z.object({
-  id: z.string().uuid(),
+  id: z.uuid(),
   content: z.string(),
   attachmentUrl: z.string().nullable(),
-  createdAt: z.string().datetime(),
+  createdAt: z.iso.datetime(),
   user: GuildMessageUserSchema,
-});
+})
 
 export const GuildLeaderboardEntrySchema = z.object({
   id: z.string(),
@@ -110,27 +107,27 @@ export const GuildLeaderboardEntrySchema = z.object({
   username: z.string(),
   image: z.string().nullable(),
   expThisWeek: z.number().int(),
-});
+})
 
 // ── Shop & Inventory ──
 
 export const ItemSchema = z.object({
-  id: z.string().uuid(),
+  id: z.uuid(),
   name: z.string(),
   description: z.string(),
   type: z.string(),
   price: z.number().int(),
   effects: z.record(z.string(), z.unknown()).nullable(),
-});
+})
 
 export const InventoryItemSchema = z.object({
-  id: z.string().uuid(),
+  id: z.uuid(),
   userId: z.string(),
-  itemId: z.string().uuid(),
+  itemId: z.uuid(),
   quantity: z.number().int(),
-  acquiredAt: z.string().datetime(),
+  acquiredAt: z.iso.datetime(),
   item: ItemSchema,
-});
+})
 
 // ── Users ──
 
@@ -148,15 +145,15 @@ export const PublicUserSchema = z.object({
   restorableStreak: z.number().int(),
   classes: z.array(ClassSchema),
   activeClass: ClassSchema.nullable(),
-  createdAt: z.string().datetime(),
-});
+  createdAt: z.iso.datetime(),
+})
 
 export const BaseStatsSchema = z.object({
   questsCompleted: z.number().int(),
   questsInProgress: z.number().int(),
   questsNotStarted: z.number().int(),
   classesChosen: z.number().int(),
-});
+})
 
 export const UserStatsSchema = z.object({
   progression: z.object({
@@ -170,111 +167,113 @@ export const UserStatsSchema = z.object({
   yearly: BaseStatsSchema,
   monthly: BaseStatsSchema,
   weekly: BaseStatsSchema,
-});
+})
 
 // ── Verification ──
 
 export const VerificationResultSchema = z.object({
   result: z.boolean(),
-});
+})
 
 // ── Request Body Schemas ──
 
 export const CreateClassBodySchema = z.object({
   name: z.string(),
   description: z.string(),
-});
+})
 
 export const UpdateClassBodySchema = z.object({
   name: z.string().optional(),
   description: z.string().optional(),
-});
+})
 
 export const CreateQuestBodySchema = z.object({
   name: z.string(),
   description: z.string(),
   type: z.enum(["daily", "weekly", "main"]),
   duration: z.number().int(),
-  classId: z.string().uuid(),
-  requiredQuestId: z.string().uuid().nullable().optional(),
-});
+  classId: z.uuid(),
+  requiredQuestId: z.uuid().nullable().optional(),
+})
 
 export const UpdateQuestBodySchema = z.object({
   name: z.string().optional(),
   description: z.string().optional(),
   type: z.enum(["daily", "weekly", "main"]).optional(),
   duration: z.number().int().optional(),
-});
+})
 
 export const OverrideQuestBodySchema = z.object({
   name: z.string().optional(),
   description: z.string().optional(),
   duration: z.number().int().optional(),
-});
+})
 
 export const UpdateQuestProgressBodySchema = z.object({
   status: z.enum(["in_progress", "completed"]),
-});
+})
 
 export const CreateGuildBodySchema = z.object({
   name: z.string(),
   description: z.string().optional(),
-});
+})
 
 export const ApproveMemberBodySchema = z.object({
-  userId: z.string().uuid(),
+  userId: z.uuid(),
   status: z.enum(["approved", "rejected"]),
-});
+})
 
 export const BuyItemBodySchema = z.object({
   quantity: z.number().int().optional(),
-});
+})
 
 export const UseItemBodySchema = z.object({
   quantity: z.number().int().optional(),
-  targetQuestId: z.string().uuid().optional(),
-});
+  targetQuestId: z.uuid().optional(),
+})
 
 // ── Response Wrapper Schemas ──
 
 export const DataWrapperSchema = <T extends z.ZodTypeAny>(schema: T) =>
-  z.object({ data: schema });
+  z.object({ data: schema })
 
 export const PaginatedMetaSchema = z.object({
   page: z.number().int(),
   limit: z.number().int(),
   totalItems: z.number().int(),
   totalPages: z.number().int(),
-});
+})
 
 // ── Types ──
 
-export type ApiErrorData = z.infer<typeof ErrorSchema>;
-export type ApiErrorEnvelope = z.infer<typeof ErrorEnvelopeSchema>;
-export type Class = z.infer<typeof ClassSchema>;
-export type ClassChoice = z.infer<typeof ClassChoiceSchema>;
-export type Quest = z.infer<typeof QuestSchema>;
-export type QuestProgress = z.infer<typeof QuestProgressSchema>;
-export type LevelUpInfo = z.infer<typeof LevelUpInfoSchema>;
-export type Guild = z.infer<typeof GuildSchema>;
-export type GuildMember = z.infer<typeof GuildMemberSchema>;
-export type GuildMemberRecord = z.infer<typeof GuildMemberRecordSchema>;
-export type GuildMessage = z.infer<typeof GuildMessageSchema>;
-export type GuildLeaderboardEntry = z.infer<typeof GuildLeaderboardEntrySchema>;
-export type Item = z.infer<typeof ItemSchema>;
-export type InventoryItem = z.infer<typeof InventoryItemSchema>;
-export type PublicUser = z.infer<typeof PublicUserSchema>;
-export type BaseStats = z.infer<typeof BaseStatsSchema>;
-export type UserStats = z.infer<typeof UserStatsSchema>;
-export type VerificationResult = z.infer<typeof VerificationResultSchema>;
-export type CreateClassBody = z.infer<typeof CreateClassBodySchema>;
-export type UpdateClassBody = z.infer<typeof UpdateClassBodySchema>;
-export type CreateQuestBody = z.infer<typeof CreateQuestBodySchema>;
-export type UpdateQuestBody = z.infer<typeof UpdateQuestBodySchema>;
-export type OverrideQuestBody = z.infer<typeof OverrideQuestBodySchema>;
-export type UpdateQuestProgressBody = z.infer<typeof UpdateQuestProgressBodySchema>;
-export type CreateGuildBody = z.infer<typeof CreateGuildBodySchema>;
-export type ApproveMemberBody = z.infer<typeof ApproveMemberBodySchema>;
-export type BuyItemBody = z.infer<typeof BuyItemBodySchema>;
-export type UseItemBody = z.infer<typeof UseItemBodySchema>;
-export type PaginatedMeta = z.infer<typeof PaginatedMetaSchema>;
+export type ApiErrorData = z.infer<typeof ErrorSchema>
+export type ApiErrorEnvelope = z.infer<typeof ErrorEnvelopeSchema>
+export type Class = z.infer<typeof ClassSchema>
+export type ClassChoice = z.infer<typeof ClassChoiceSchema>
+export type Quest = z.infer<typeof QuestSchema>
+export type QuestProgress = z.infer<typeof QuestProgressSchema>
+export type LevelUpInfo = z.infer<typeof LevelUpInfoSchema>
+export type Guild = z.infer<typeof GuildSchema>
+export type GuildMember = z.infer<typeof GuildMemberSchema>
+export type GuildMemberRecord = z.infer<typeof GuildMemberRecordSchema>
+export type GuildMessage = z.infer<typeof GuildMessageSchema>
+export type GuildLeaderboardEntry = z.infer<typeof GuildLeaderboardEntrySchema>
+export type Item = z.infer<typeof ItemSchema>
+export type InventoryItem = z.infer<typeof InventoryItemSchema>
+export type PublicUser = z.infer<typeof PublicUserSchema>
+export type BaseStats = z.infer<typeof BaseStatsSchema>
+export type UserStats = z.infer<typeof UserStatsSchema>
+export type VerificationResult = z.infer<typeof VerificationResultSchema>
+export type CreateClassBody = z.infer<typeof CreateClassBodySchema>
+export type UpdateClassBody = z.infer<typeof UpdateClassBodySchema>
+export type CreateQuestBody = z.infer<typeof CreateQuestBodySchema>
+export type UpdateQuestBody = z.infer<typeof UpdateQuestBodySchema>
+export type OverrideQuestBody = z.infer<typeof OverrideQuestBodySchema>
+export type UpdateQuestProgressBody = z.infer<
+  typeof UpdateQuestProgressBodySchema
+>
+export type CreateGuildBody = z.infer<typeof CreateGuildBodySchema>
+export type ApproveMemberBody = z.infer<typeof ApproveMemberBodySchema>
+export type BuyItemBody = z.infer<typeof BuyItemBodySchema>
+export type UseItemBody = z.infer<typeof UseItemBodySchema>
+export type PaginatedMeta = z.infer<typeof PaginatedMetaSchema>
