@@ -68,7 +68,7 @@ export default function CreateRoleScreen() {
     onSubmit: async ({ value }) => {
       const newClass = await createClassMutation.mutateAsync(value)
       await chooseClassMutation.mutateAsync(newClass.id)
-      router.replace("/(tabs)")
+      router.replace(`/roles/quests/create-main?classId=${newClass.id}`)
     },
   })
 
@@ -78,11 +78,7 @@ export default function CreateRoleScreen() {
   return (
     <SafeAreaView className="w-full flex-1 bg-canvas dark:bg-surface-dark">
       <Header title="Create Role" />
-      <KeyboardAvoidingView
-        className="flex-1"
-        behavior="padding"
-        keyboardVerticalOffset={80}
-      >
+      <KeyboardAvoidingView className="flex-1" behavior="padding">
         <View className="mt-lg gap-lg px-md">
           <form.Field
             name="name"
@@ -101,14 +97,14 @@ export default function CreateRoleScreen() {
                   Name
                 </Text>
                 <TextInput
-                  className="text-md rounded-md border border-hairline bg-canvas px-sm py-xs font-body text-ink dark:border-hairline dark:bg-surface-dark dark:text-on-dark"
+                  className="rounded-md border border-hairline bg-canvas px-sm py-xs font-body text-body-md leading-tight text-ink dark:border-hairline dark:bg-surface-dark dark:text-on-dark"
                   value={field.state.value}
                   onChangeText={field.handleChange}
                   onBlur={field.handleBlur}
                   placeholder="Enter role name"
                   placeholderTextColor="#8e8b82"
-                  placeholderClassName="text-md"
                   autoCapitalize="words"
+                  textAlignVertical="center"
                 />
                 {field.state.meta.errors.length > 0 && (
                   <Text className="font-body text-body-sm text-error">
@@ -138,13 +134,13 @@ export default function CreateRoleScreen() {
                   Description
                 </Text>
                 <TextInput
-                  className="text-md rounded-md border border-hairline bg-canvas p-sm font-body text-ink dark:border-hairline dark:bg-surface-dark dark:text-on-dark"
+                  className="h-24 rounded-md border border-hairline bg-canvas p-sm font-body text-body-md leading-tight text-ink dark:border-hairline dark:bg-surface-dark dark:text-on-dark"
                   value={field.state.value}
                   onChangeText={field.handleChange}
                   onBlur={field.handleBlur}
                   placeholder="Describe the role"
                   placeholderTextColor="#8e8b82"
-                  placeholderClassName="text-md"
+                  placeholderClassName="text-body-md"
                   multiline
                   textAlignVertical="top"
                 />

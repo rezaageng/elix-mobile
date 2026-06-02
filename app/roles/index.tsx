@@ -47,7 +47,7 @@ export default function RolesScreen() {
     try {
       await chooseClassMutation.mutateAsync(classId)
       await refetchSession()
-      router.replace("/(tabs)")
+      router.replace(`/roles/quests/create-recurring?classId=${classId}`)
     } catch {
       setSelectingId(undefined)
     }
