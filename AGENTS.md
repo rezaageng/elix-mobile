@@ -37,6 +37,8 @@ Expo React Native app ("Elix") using file-based routing via `expo-router`, Nativ
 - Auth: `@better-auth/expo` with `expo-secure-store` for cookie persistence; social providers Google and Twitter
 - Query: TanStack Query with 5-minute stale time, 2 retries (`lib/query-client.ts`)
 - Schemas: `lib/api/schemas.ts` uses Zod v4 (`z.uuid()`, `z.iso.datetime()`)
+- Backend Project: `../elix-server`
+- OpenAPI spec: `../elix-server/openapi.yaml` (used for API client generation and reference)
 
 ## Style & conventions
 
