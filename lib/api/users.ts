@@ -109,6 +109,25 @@ export const useUploadAvatar = () => {
   });
 };
 
+export const updateTimezone = async (timezone: string): Promise<{ timezone: string }> => {
+  const data = await apiFetch(
+    "/api/users/me/timezone",
+    { method: "PATCH", body: JSON.stringify({ timezone }) },
+    z.object({ data: z.object({ timezone: z.string() }) })
+  );
+  return data.data;
+};
+
+export const useUpdateTimezone = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: updateTimezone,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["user", "me"] });
+    },
+  });
+};
+
 export const useDeleteAvatar = () => {
   const queryClient = useQueryClient();
   return useMutation({

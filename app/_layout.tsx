@@ -20,6 +20,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler"
 
 import { useSession } from "@/lib/auth-client"
 import { queryClient } from "@/lib/query-client"
+import { updateTimezone } from "@/lib/api/users"
 
 SplashScreen.preventAutoHideAsync()
 
@@ -79,6 +80,17 @@ function RootNavigator() {
       router.replace("/roles")
     }
   }, [session, isPending, segments, router])
+
+  // Sync device timezone with backend
+  useEffect(() => {
+    if (!session) return
+    const deviceTz = Intl.DateTimeFormat().resolvedOptions().timeZone
+    if (deviceTz) {
+      updateTimezone(deviceTz).catch(() => {
+        // Silently fail — not critical
+      })
+    }
+  }, [session])
 
   return <Stack screenOptions={{ headerShown: false }} />
 }

@@ -1,5 +1,5 @@
 import { useForm } from "@tanstack/react-form"
-import { useRouter } from "expo-router"
+import { Stack, useRouter } from "expo-router"
 import {
   ActivityIndicator,
   KeyboardAvoidingView,
@@ -11,8 +11,8 @@ import { SafeAreaView } from "react-native-safe-area-context"
 import { z } from "zod"
 
 import { useChooseClass, useCreateClass } from "@/lib/api"
+import { useHeaderOptions } from "@/lib/header-options"
 import { Button } from "@/components/button"
-import Header from "@/components/header"
 
 const roleSchema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -76,8 +76,16 @@ export default function CreateRoleScreen() {
     createClassMutation.isPending || chooseClassMutation.isPending
 
   return (
-    <SafeAreaView className="w-full flex-1 bg-canvas dark:bg-surface-dark">
-      <Header title="Create Role" />
+    <SafeAreaView
+      edges={["bottom", "left", "right"]}
+      className="w-full flex-1 bg-canvas dark:bg-surface-dark"
+    >
+      <Stack.Screen
+        options={{
+          ...useHeaderOptions("Create Role"),
+          gestureEnabled: false,
+        }}
+      />
       <KeyboardAvoidingView className="flex-1" behavior="padding">
         <View className="mt-lg gap-lg px-md">
           <form.Field

@@ -2,11 +2,13 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { z } from "zod";
 import { apiFetch } from "@/lib/api/client";
 import {
+  ClassQuestSchema,
   LevelUpInfoSchema,
   QuestProgressSchema,
   QuestSchema,
 } from "@/lib/api/schemas";
 import type {
+  ClassQuest,
   CreateQuestBody,
   LevelUpInfo,
   OverrideQuestBody,
@@ -18,11 +20,11 @@ import type {
 
 // ── Fetch Functions ──
 
-export const getClassQuests = async (classId: string): Promise<Quest[]> => {
+export const getClassQuests = async (classId: string): Promise<ClassQuest[]> => {
   const data = await apiFetch(
     `/api/classes/${classId}/quests`,
     { method: "GET" },
-    z.object({ data: z.array(QuestSchema) })
+    z.object({ data: z.array(ClassQuestSchema) })
   );
   return data.data;
 };
@@ -213,6 +215,27 @@ export const useUpdateQuestProgress = () => {
         queryKey: ["classes", variables.classId, "quests", variables.questId, "progress"],
       });
       queryClient.invalidateQueries({ queryKey: ["user", "me"] });
+    },
+  });
+};
+
+export const startStarterQuests = async (classId: string): Promise<{ started: number }> => {
+  const data = await apiFetch(
+    `/api/classes/${classId}/quests/start`,
+    { method: "POST" },
+    z.object({ data: z.object({ started: z.number().int() }) })
+  );
+  return data.data;
+};
+
+export const useStartStarterQuests = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: ({ classId }: { classId: string }) => startStarterQuests(classId),
+    onSuccess: (_, variables) => {
+      queryClient.invalidateQueries({
+        queryKey: ["classes", variables.classId, "quests"],
+      });
     },
   });
 };

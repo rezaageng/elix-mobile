@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react"
 import { useQueryClient } from "@tanstack/react-query"
-import { useLocalSearchParams, useRouter } from "expo-router"
+import { Stack, useLocalSearchParams, useRouter } from "expo-router"
 import { Plus, X } from "lucide-react-native"
 import {
   ActivityIndicator,
@@ -17,13 +17,14 @@ import {
   createQuests,
   deleteQuest,
   overrideQuest,
+  startStarterQuests,
   useClassQuests,
 } from "@/lib/api"
 import type { CreateQuestBody } from "@/lib/api/schemas"
 import { useSession } from "@/lib/auth-client"
+import { useHeaderOptions } from "@/lib/header-options"
 import { useThemeColor } from "@/lib/use-theme-color"
 import { Button } from "@/components/button"
-import Header from "@/components/header"
 
 type QuestEntry = {
   key: number
@@ -64,6 +65,7 @@ export default function CreateRecurringQuestsScreen() {
 
   const errorColor = useThemeColor("error")
   const mutedColor = useThemeColor("foregroundMuted")
+  const headerOptions = useHeaderOptions("Daily & Weekly Quests")
 
   const [dailies, setDailies] = useState<QuestEntry[]>([newEntry()])
   const [weeklies, setWeeklies] = useState<QuestEntry[]>([newEntry()])
@@ -205,6 +207,7 @@ export default function CreateRecurringQuestsScreen() {
       }
 
       await Promise.all(operations)
+      await startStarterQuests(classId)
       queryClient.invalidateQueries({
         queryKey: ["classes", classId, "quests"],
       })
@@ -290,10 +293,17 @@ export default function CreateRecurringQuestsScreen() {
 
   return (
     <SafeAreaView
-      edges={["top"]}
+      edges={["bottom", "left", "right"]}
       className="w-full flex-1 bg-canvas dark:bg-surface-dark"
     >
-      <Header title="Daily & Weekly Quests" />
+      <Stack.Screen
+        options={{
+          ...headerOptions,
+          // eslint-disable-next-line unicorn/no-null
+          headerLeft: () => null,
+          gestureEnabled: false,
+        }}
+      />
       <KeyboardAvoidingView className="flex-1" behavior="padding">
         <ScrollView
           className="flex-1"

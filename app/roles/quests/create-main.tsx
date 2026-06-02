@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useQueryClient } from "@tanstack/react-query"
-import { useLocalSearchParams, useRouter } from "expo-router"
+import { Stack, useLocalSearchParams, useRouter } from "expo-router"
 import { X } from "lucide-react-native"
 import {
   ActivityIndicator,
@@ -16,8 +16,8 @@ import { SafeAreaView } from "react-native-safe-area-context"
 import { createQuests } from "@/lib/api"
 import type { CreateQuestBody, Quest } from "@/lib/api/schemas"
 import { useThemeColor } from "@/lib/use-theme-color"
+import { useHeaderOptions } from "@/lib/header-options"
 import { Button } from "@/components/button"
-import Header from "@/components/header"
 
 type MainQuestEntry = {
   key: number
@@ -126,10 +126,17 @@ export default function CreateMainQuestScreen() {
 
   return (
     <SafeAreaView
-      edges={["top"]}
+      edges={["bottom", "left", "right"]}
       className="w-full flex-1 bg-canvas dark:bg-surface-dark"
     >
-      <Header title="Main Quests" />
+      <Stack.Screen
+        options={{
+          ...useHeaderOptions("Main Quests"),
+          // eslint-disable-next-line unicorn/no-null
+          headerLeft: () => null,
+          gestureEnabled: false,
+        }}
+      />
       <KeyboardAvoidingView className="flex-1" behavior="padding">
         <ScrollView
           className="flex-1"

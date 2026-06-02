@@ -4,7 +4,7 @@ import {
   BottomSheetModal,
   BottomSheetView,
 } from "@gorhom/bottom-sheet"
-import { useRouter } from "expo-router"
+import { Stack, useRouter } from "expo-router"
 import { Plus } from "lucide-react-native"
 import {
   ActivityIndicator,
@@ -19,9 +19,9 @@ import { SafeAreaView } from "react-native-safe-area-context"
 import { useChooseClass, useClasses } from "@/lib/api"
 import type { Class } from "@/lib/api/schemas"
 import { useSession } from "@/lib/auth-client"
+import { useHeaderOptions } from "@/lib/header-options"
 import { useThemeColor } from "@/lib/use-theme-color"
 import { Button } from "@/components/button"
-import Header from "@/components/header"
 
 export default function RolesScreen() {
   const { data: classes, isPending, refetch } = useClasses()
@@ -108,10 +108,18 @@ export default function RolesScreen() {
   )
 
   return (
-    <SafeAreaView className="w-full flex-1 bg-canvas dark:bg-surface-dark">
-      <Header
-        title="Choose Your Role"
-        canGoBack={!!session?.user.activeClassId}
+    <SafeAreaView
+      edges={["bottom", "left", "right"]}
+      className="w-full flex-1 bg-canvas dark:bg-surface-dark"
+    >
+      <Stack.Screen
+        options={{
+          ...useHeaderOptions("Choose Your Role"),
+          headerLeft: session?.user.activeClassId
+            ? undefined
+            : // eslint-disable-next-line unicorn/no-null
+              () => null,
+        }}
       />
       <ScrollView
         className="flex-1"

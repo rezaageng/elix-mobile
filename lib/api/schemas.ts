@@ -49,9 +49,29 @@ export const QuestProgressSchema = z.object({
   userId: z.string(),
   questId: z.uuid(),
   status: z.string(),
-  restorableStreak: z.boolean(),
+  restorableStreak: z.boolean().optional(),
+  startedAt: z.iso.datetime().nullable().optional(),
+  completedAt: z.iso.datetime().nullable().optional(),
   createdAt: z.iso.datetime(),
   updatedAt: z.iso.datetime(),
+})
+
+export const QuestOverrideSchema = z.object({
+  id: z.uuid(),
+  userId: z.string(),
+  questId: z.uuid(),
+  name: z.string().nullable().optional(),
+  description: z.string().nullable().optional(),
+  duration: z.number().int().nullable().optional(),
+  createdAt: z.iso.datetime(),
+  updatedAt: z.iso.datetime(),
+})
+
+export const ClassQuestSchema = QuestSchema.extend({
+  progress: z.array(QuestProgressSchema).optional(),
+  overrides: z.array(QuestOverrideSchema).optional(),
+  xpReward: z.number().int().optional(),
+  goldReward: z.number().int().optional(),
 })
 
 export const LevelUpInfoSchema = z.object({
@@ -134,7 +154,7 @@ export const InventoryItemSchema = z.object({
 export const PublicUserSchema = z.object({
   id: z.string(),
   name: z.string(),
-  username: z.string(),
+  username: z.string().nullable(),
   displayUsername: z.string().nullable(),
   image: z.string().nullable(),
   level: z.number().int(),
@@ -190,7 +210,7 @@ export const UpdateClassBodySchema = z.object({
 export const CreateQuestBodySchema = z.object({
   name: z.string(),
   description: z.string(),
-  type: z.enum(["daily", "weekly", "main"]),
+  type: z.enum(["daily", "weekly", "main", "side"]),
   duration: z.number().int(),
   classId: z.uuid(),
   requiredQuestId: z.uuid().nullable().optional(),
@@ -251,6 +271,8 @@ export type ApiErrorEnvelope = z.infer<typeof ErrorEnvelopeSchema>
 export type Class = z.infer<typeof ClassSchema>
 export type ClassChoice = z.infer<typeof ClassChoiceSchema>
 export type Quest = z.infer<typeof QuestSchema>
+export type ClassQuest = z.infer<typeof ClassQuestSchema>
+export type QuestOverride = z.infer<typeof QuestOverrideSchema>
 export type QuestProgress = z.infer<typeof QuestProgressSchema>
 export type LevelUpInfo = z.infer<typeof LevelUpInfoSchema>
 export type Guild = z.infer<typeof GuildSchema>

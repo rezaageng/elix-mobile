@@ -5,7 +5,7 @@ import {
   BottomSheetView,
 } from "@gorhom/bottom-sheet"
 import { useQueryClient } from "@tanstack/react-query"
-import { useLocalSearchParams, useRouter } from "expo-router"
+import { Stack, useLocalSearchParams, useRouter } from "expo-router"
 import { ChevronDown, X } from "lucide-react-native"
 import {
   ActivityIndicator,
@@ -20,9 +20,9 @@ import { SafeAreaView } from "react-native-safe-area-context"
 
 import { createQuests, useClassQuests } from "@/lib/api"
 import type { CreateQuestBody } from "@/lib/api/schemas"
+import { useHeaderOptions } from "@/lib/header-options"
 import { useThemeColor } from "@/lib/use-theme-color"
 import { Button } from "@/components/button"
-import Header from "@/components/header"
 
 type SideQuestEntry = {
   key: number
@@ -132,10 +132,11 @@ export default function CreateSideQuestScreen() {
         const quest: CreateQuestBody = {
           name: entry.name.trim(),
           description: entry.description.trim(),
-          type: "main",
+          type: "side",
           duration: Number.parseInt(entry.duration, 10),
           classId,
-          requiredQuestId: entry.requiredQuestId,
+          // eslint-disable-next-line unicorn/no-null
+          requiredQuestId: entry.requiredQuestId ?? null,
         }
 
         const result = await createQuests(classId, [quest])
@@ -193,10 +194,17 @@ export default function CreateSideQuestScreen() {
 
   return (
     <SafeAreaView
-      edges={["top"]}
+      edges={["bottom", "left", "right"]}
       className="w-full flex-1 bg-canvas dark:bg-surface-dark"
     >
-      <Header title="Side Quests" />
+      <Stack.Screen
+            options={{
+              ...useHeaderOptions("Side Quests"),
+          // eslint-disable-next-line unicorn/no-null
+          headerLeft: () => null,
+              gestureEnabled: false,
+            }}
+          />
       <KeyboardAvoidingView className="flex-1" behavior="padding">
         <ScrollView
           className="flex-1"
