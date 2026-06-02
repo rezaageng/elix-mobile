@@ -1,0 +1,1136 @@
+{
+  "nodes": [
+    {
+      "id": "app_config",
+      "label": "Elix Expo Config",
+      "file_type": "code",
+      "source_file": "app.json",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "root_layout",
+      "label": "Root Layout",
+      "file_type": "code",
+      "source_file": "app/_layout.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "root_navigator",
+      "label": "Root Navigator",
+      "file_type": "code",
+      "source_file": "app/_layout.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "tab_layout",
+      "label": "Tab Layout",
+      "file_type": "code",
+      "source_file": "app/(tabs)/_layout.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "screen_quest",
+      "label": "Quest Tab Screen",
+      "file_type": "code",
+      "source_file": "app/(tabs)/index.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "screen_guild",
+      "label": "Guild Tab Screen",
+      "file_type": "code",
+      "source_file": "app/(tabs)/guild.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "screen_profile",
+      "label": "Profile Tab Screen",
+      "file_type": "code",
+      "source_file": "app/(tabs)/profile.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "screen_login",
+      "label": "Login Screen",
+      "file_type": "code",
+      "source_file": "app/login/index.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "screen_roles",
+      "label": "Roles Screen",
+      "file_type": "code",
+      "source_file": "app/roles/index.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "screen_create_role",
+      "label": "Create Role Screen",
+      "file_type": "code",
+      "source_file": "app/roles/create.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "screen_create_main_quest",
+      "label": "Create Main Quest Screen",
+      "file_type": "code",
+      "source_file": "app/roles/quests/create-main.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "screen_create_side_quest",
+      "label": "Create Side Quest Screen",
+      "file_type": "code",
+      "source_file": "app/roles/quests/create-side.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "screen_create_recurring_quests",
+      "label": "Create Recurring Quests Screen",
+      "file_type": "code",
+      "source_file": "app/roles/quests/create-recurring.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "component_button",
+      "label": "Button Component",
+      "file_type": "code",
+      "source_file": "components/button.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "component_header",
+      "label": "Header Component",
+      "file_type": "code",
+      "source_file": "components/header.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "api_fetch_client",
+      "label": "API Fetch Client",
+      "file_type": "code",
+      "source_file": "lib/api/client.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "api_classes_module",
+      "label": "Classes API Module",
+      "file_type": "code",
+      "source_file": "lib/api/classes.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "api_quests_module",
+      "label": "Quests API Module",
+      "file_type": "code",
+      "source_file": "lib/api/quests.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "api_schemas",
+      "label": "Shared API Schemas",
+      "file_type": "code",
+      "source_file": "lib/api/schemas.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "auth_client",
+      "label": "Auth Client",
+      "file_type": "code",
+      "source_file": "lib/auth-client.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "eslint_config",
+      "label": "ESLint Configuration",
+      "file_type": "code",
+      "source_file": "eslint.config.mjs",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "babel_config",
+      "label": "Babel Configuration",
+      "file_type": "code",
+      "source_file": "babel.config.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "vscode_settings",
+      "label": "VSCode Settings",
+      "file_type": "code",
+      "source_file": ".vscode/settings.json",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "vscode_extensions",
+      "label": "VSCode Extensions",
+      "file_type": "code",
+      "source_file": ".vscode/extensions.json",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "api_schemas_SchemaDefinitions",
+      "label": "Schema Definitions",
+      "file_type": "code",
+      "source_file": "lib/api/schemas.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "api_guilds_GuildsModule",
+      "label": "Guilds API Module",
+      "file_type": "code",
+      "source_file": "lib/api/guilds.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "api_quests_QuestsModule",
+      "label": "Quests API Module",
+      "file_type": "code",
+      "source_file": "lib/api/quests.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "api_shop_ShopModule",
+      "label": "Shop API Module",
+      "file_type": "code",
+      "source_file": "lib/api/shop.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "api_users_UsersModule",
+      "label": "Users API Module",
+      "file_type": "code",
+      "source_file": "lib/api/users.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "api_verification_VerificationModule",
+      "label": "Verification API Module",
+      "file_type": "code",
+      "source_file": "lib/api/verification.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "auth_AuthClient",
+      "label": "Auth Client",
+      "file_type": "code",
+      "source_file": "lib/auth-client.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "query_QueryClient",
+      "label": "Query Client",
+      "file_type": "code",
+      "source_file": "lib/query-client.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "design_ColorTokens",
+      "label": "Color Design Tokens",
+      "file_type": "code",
+      "source_file": "lib/colors.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "design_UseThemeColor",
+      "label": "useThemeColor Hook",
+      "file_type": "code",
+      "source_file": "lib/use-theme-color.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "design_TailwindConfig",
+      "label": "Tailwind Theme Configuration",
+      "file_type": "code",
+      "source_file": "tailwind.config.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "utils_CnUtility",
+      "label": "cn Utility Function",
+      "file_type": "code",
+      "source_file": "lib/utils.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "project_elix_mobile",
+      "label": "elix-mobile Project",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "android_icon_background",
+      "label": "Android Icon Background",
+      "file_type": "image",
+      "source_file": "assets/images/android-icon-background.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "android_icon_foreground",
+      "label": "Android Icon Foreground",
+      "file_type": "image",
+      "source_file": "assets/images/android-icon-foreground.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "android_icon_monochrome",
+      "label": "Android Icon Monochrome",
+      "file_type": "image",
+      "source_file": "assets/images/android-icon-monochrome.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "favicon",
+      "label": "Favicon",
+      "file_type": "image",
+      "source_file": "assets/images/favicon.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "app_icon",
+      "label": "App Icon",
+      "file_type": "image",
+      "source_file": "assets/images/icon.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "login_background",
+      "label": "Login Background",
+      "file_type": "image",
+      "source_file": "assets/images/login-background.jpeg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "partial_react_logo",
+      "label": "Partial React Logo",
+      "file_type": "image",
+      "source_file": "assets/images/partial-react-logo.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "react_logo",
+      "label": "React Logo",
+      "file_type": "image",
+      "source_file": "assets/images/react-logo.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "react_logo_2x",
+      "label": "React Logo (2x)",
+      "file_type": "image",
+      "source_file": "assets/images/react-logo@2x.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "react_logo_3x",
+      "label": "React Logo (3x)",
+      "file_type": "image",
+      "source_file": "assets/images/react-logo@3x.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "splash_icon",
+      "label": "Splash Icon",
+      "file_type": "image",
+      "source_file": "assets/images/splash-icon.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "api_classes_module",
+      "target": "api_fetch_client",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/api/classes.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "api_quests_module",
+      "target": "api_fetch_client",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/api/quests.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "api_fetch_client",
+      "target": "auth_client",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/api/client.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "api_classes_module",
+      "target": "api_schemas",
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/api/classes.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "api_quests_module",
+      "target": "api_schemas",
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/api/quests.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "screen_roles",
+      "target": "api_classes_module",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/roles/index.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "screen_create_role",
+      "target": "api_classes_module",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/roles/create.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "screen_create_main_quest",
+      "target": "api_quests_module",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/roles/quests/create-main.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "screen_create_side_quest",
+      "target": "api_quests_module",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/roles/quests/create-side.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "screen_create_recurring_quests",
+      "target": "api_quests_module",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/roles/quests/create-recurring.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "screen_profile",
+      "target": "auth_client",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/(tabs)/profile.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "screen_login",
+      "target": "auth_client",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/login/index.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "root_navigator",
+      "target": "screen_login",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "app/_layout.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "root_navigator",
+      "target": "screen_roles",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "app/_layout.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "root_navigator",
+      "target": "tab_layout",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "app/_layout.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "screen_quest",
+      "target": "screen_roles",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "app/(tabs)/index.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "screen_roles",
+      "target": "screen_create_role",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "app/roles/index.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "screen_create_role",
+      "target": "screen_create_main_quest",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "app/roles/create.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "screen_create_main_quest",
+      "target": "screen_create_side_quest",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "app/roles/quests/create-main.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "screen_create_side_quest",
+      "target": "screen_create_recurring_quests",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "app/roles/quests/create-side.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "screen_create_recurring_quests",
+      "target": "screen_quest",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "app/roles/quests/create-recurring.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "component_button",
+      "target": "screen_quest",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "components/button.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "component_button",
+      "target": "screen_profile",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "components/button.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "component_button",
+      "target": "screen_login",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "components/button.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "component_button",
+      "target": "screen_roles",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "components/button.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "component_button",
+      "target": "screen_create_role",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "components/button.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "component_button",
+      "target": "screen_create_main_quest",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "components/button.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "component_button",
+      "target": "screen_create_side_quest",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "components/button.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "component_button",
+      "target": "screen_create_recurring_quests",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "components/button.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "component_header",
+      "target": "screen_quest",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "components/header.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "component_header",
+      "target": "screen_roles",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "components/header.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "component_header",
+      "target": "screen_create_role",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "components/header.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "component_header",
+      "target": "screen_create_main_quest",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "components/header.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "component_header",
+      "target": "screen_create_side_quest",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "components/header.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "component_header",
+      "target": "screen_create_recurring_quests",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "components/header.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "api_schemas_SchemaDefinitions",
+      "target": "api_guilds_GuildsModule",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "lib/api/schemas.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "api_schemas_SchemaDefinitions",
+      "target": "api_quests_QuestsModule",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "lib/api/schemas.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "api_schemas_SchemaDefinitions",
+      "target": "api_shop_ShopModule",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "lib/api/schemas.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "api_schemas_SchemaDefinitions",
+      "target": "api_users_UsersModule",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "lib/api/schemas.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "api_schemas_SchemaDefinitions",
+      "target": "api_verification_VerificationModule",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "lib/api/schemas.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "design_ColorTokens",
+      "target": "design_TailwindConfig",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "lib/colors.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "design_ColorTokens",
+      "target": "design_UseThemeColor",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "lib/colors.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "query_QueryClient",
+      "target": "api_guilds_GuildsModule",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "lib/query-client.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "query_QueryClient",
+      "target": "api_quests_QuestsModule",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "lib/query-client.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "query_QueryClient",
+      "target": "api_shop_ShopModule",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "lib/query-client.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "query_QueryClient",
+      "target": "api_users_UsersModule",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "lib/query-client.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "query_QueryClient",
+      "target": "api_verification_VerificationModule",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "lib/query-client.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "api_quests_QuestsModule",
+      "target": "api_users_UsersModule",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "lib/api/quests.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "api_shop_ShopModule",
+      "target": "api_users_UsersModule",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "lib/api/shop.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "partial_react_logo",
+      "target": "react_logo",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "assets/images/partial-react-logo.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "react_logo",
+      "target": "react_logo_2x",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "assets/images/react-logo.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "react_logo",
+      "target": "react_logo_3x",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "assets/images/react-logo.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "react_logo_2x",
+      "target": "react_logo_3x",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "assets/images/react-logo@2x.png",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "quest_onboarding_pipeline",
+      "label": "Quest Onboarding Pipeline",
+      "nodes": [
+        "screen_create_main_quest",
+        "screen_create_side_quest",
+        "screen_create_recurring_quests"
+      ],
+      "relation": "form",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "app/roles/quests/create-main.tsx"
+    },
+    {
+      "id": "auth_guard_system",
+      "label": "Auth Guard Navigation System",
+      "nodes": [
+        "root_navigator",
+        "screen_login",
+        "screen_roles",
+        "tab_layout"
+      ],
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "app/_layout.tsx"
+    },
+    {
+      "id": "api_data_fetching_layer",
+      "label": "API Data Fetching Layer",
+      "nodes": [
+        "api_guilds_GuildsModule",
+        "api_quests_QuestsModule",
+        "api_shop_ShopModule",
+        "api_users_UsersModule",
+        "api_verification_VerificationModule"
+      ],
+      "relation": "implement",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "lib/api/index.ts"
+    },
+    {
+      "id": "user_state_cache_group",
+      "label": "User State Cache Invalidation Group",
+      "nodes": [
+        "api_quests_QuestsModule",
+        "api_shop_ShopModule",
+        "api_users_UsersModule"
+      ],
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "lib/api/quests.ts"
+    },
+    {
+      "id": "android_adaptive_icon",
+      "label": "Android Adaptive Icon Set",
+      "nodes": [
+        "android_icon_foreground",
+        "android_icon_background",
+        "android_icon_monochrome"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "assets/images"
+    }
+  ],
+  "input_tokens": 8750,
+  "output_tokens": 600
+}
