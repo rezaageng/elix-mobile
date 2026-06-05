@@ -190,7 +190,13 @@ export default function QuestDetailScreen() {
           {!completed && (
             <Button
               onPress={() => {
-                // TODO: implement submission
+                router.push({
+                  pathname: "/quest/verify" as any,
+                  params: {
+                    questId: quest.id,
+                    classId,
+                  },
+                })
               }}
             >
               <Text className="font-body-medium text-button text-primary-foreground">

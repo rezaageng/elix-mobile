@@ -18,6 +18,7 @@ import {
   useCreateQuests,
   useDeleteQuest,
   useOverrideQuest,
+  useStartQuestProgress,
 } from "@/lib/api"
 import type { ClassQuest, CreateQuestBody } from "@/lib/api/schemas"
 import { useHeaderOptions } from "@/lib/header-options"
@@ -52,6 +53,7 @@ export default function ManageQuestScreen() {
   const createQuestsMutation = useCreateQuests()
   const overrideQuestMutation = useOverrideQuest()
   const deleteQuestMutation = useDeleteQuest()
+  const startQuestProgressMutation = useStartQuestProgress()
 
   const [name, setName] = useState("")
   const [description, setDescription] = useState("")
@@ -74,7 +76,8 @@ export default function ManageQuestScreen() {
   const isPending =
     createQuestsMutation.isPending ||
     overrideQuestMutation.isPending ||
-    deleteQuestMutation.isPending
+    deleteQuestMutation.isPending ||
+    startQuestProgressMutation.isPending
 
   const handleSubmit = async () => {
     setError(undefined)
@@ -111,7 +114,11 @@ export default function ManageQuestScreen() {
           submissionType,
           duration: parsedDuration,
         }
-        await createQuestsMutation.mutateAsync({ classId, body: [body] })
+        const createdQuests = await createQuestsMutation.mutateAsync({ classId, body: [body] })
+        const createdQuestId = createdQuests[0]?.id
+        if (createdQuestId) {
+          await startQuestProgressMutation.mutateAsync({ classId, questId: createdQuestId })
+        }
       }
 
       router.back()

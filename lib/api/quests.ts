@@ -223,6 +223,9 @@ export const useUpdateQuestProgress = () => {
       queryClient.invalidateQueries({
         queryKey: ["classes", variables.classId, "quests", variables.questId, "progress"],
       });
+      queryClient.invalidateQueries({
+        queryKey: ["classes", variables.classId, "quests"],
+      });
       queryClient.invalidateQueries({ queryKey: ["user", "me"] });
     },
   });

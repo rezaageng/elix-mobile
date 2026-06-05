@@ -193,7 +193,9 @@ export const UserStatsSchema = z.object({
 // ── Verification ──
 
 export const VerificationResultSchema = z.object({
-  result: z.boolean(),
+  isValid: z.boolean(),
+  reasoning: z.string(),
+  feedback: z.string(),
 })
 
 // ── Request Body Schemas ──
