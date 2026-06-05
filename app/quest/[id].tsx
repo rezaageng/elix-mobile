@@ -67,6 +67,11 @@ export default function QuestDetailScreen() {
                   {quest.type}
                 </Text>
               </View>
+              <View className="rounded-full bg-canvas px-3 py-1 dark:bg-surface-dark">
+                <Text className="font-body-medium text-caption text-ink dark:text-on-dark">
+                  {quest.submissionType}
+                </Text>
+              </View>
               <Text
                 className={cn(
                   "font-body-medium text-caption",

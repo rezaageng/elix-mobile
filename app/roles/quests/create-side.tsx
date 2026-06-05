@@ -29,6 +29,7 @@ type SideQuestEntry = {
   name: string
   description: string
   duration: string
+  submissionType: "text" | "image"
   requiredQuestId: string | undefined
 }
 
@@ -40,6 +41,7 @@ function newEntry(): SideQuestEntry {
     name: "",
     description: "",
     duration: "3",
+    submissionType: "text",
     requiredQuestId: undefined,
   }
 }
@@ -133,8 +135,8 @@ export default function CreateSideQuestScreen() {
           name: entry.name.trim(),
           description: entry.description.trim(),
           type: "side",
+          submissionType: entry.submissionType,
           duration: Number.parseInt(entry.duration, 10),
-          classId,
           // eslint-disable-next-line unicorn/no-null
           requiredQuestId: entry.requiredQuestId ?? null,
         }
@@ -275,6 +277,32 @@ export default function CreateSideQuestScreen() {
                   placeholderTextColor="#8e8b82"
                   keyboardType="numeric"
                 />
+                <View className="flex-row gap-xs">
+                  <TouchableOpacity
+                    onPress={() =>
+                      updateEntry(entry.key, "submissionType", "text")
+                    }
+                    className={`flex-1 items-center rounded-md border px-sm py-xs ${entry.submissionType === "text" ? "border-primary bg-primary/10" : "border-hairline bg-canvas dark:bg-surface-dark"}`}
+                  >
+                    <Text
+                      className={`font-body-medium text-caption ${entry.submissionType === "text" ? "text-primary" : "text-muted dark:text-on-dark-soft"}`}
+                    >
+                      Text
+                    </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() =>
+                      updateEntry(entry.key, "submissionType", "image")
+                    }
+                    className={`flex-1 items-center rounded-md border px-sm py-xs ${entry.submissionType === "image" ? "border-primary bg-primary/10" : "border-hairline bg-canvas dark:bg-surface-dark"}`}
+                  >
+                    <Text
+                      className={`font-body-medium text-caption ${entry.submissionType === "image" ? "text-primary" : "text-muted dark:text-on-dark-soft"}`}
+                    >
+                      Image
+                    </Text>
+                  </TouchableOpacity>
+                </View>
               </View>
             </View>
           ))}

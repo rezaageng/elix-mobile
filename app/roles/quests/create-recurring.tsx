@@ -32,6 +32,7 @@ type QuestEntry = {
   name: string
   description: string
   duration: string
+  submissionType: "text" | "image"
 }
 
 let nextKey = 0
@@ -40,7 +41,8 @@ function fromExisting(
   questId: string,
   name: string,
   description: string,
-  duration: number
+  duration: number,
+  submissionType: "text" | "image"
 ): QuestEntry {
   return {
     key: nextKey++,
@@ -48,11 +50,18 @@ function fromExisting(
     name,
     description,
     duration: String(duration),
+    submissionType,
   }
 }
 
 function newEntry(): QuestEntry {
-  return { key: nextKey++, name: "", description: "", duration: "1" }
+  return {
+    key: nextKey++,
+    name: "",
+    description: "",
+    duration: "1",
+    submissionType: "image",
+  }
 }
 
 export default function CreateRecurringQuestsScreen() {
@@ -87,11 +96,27 @@ export default function CreateRecurringQuestsScreen() {
 
     const dailyQuests = existingQuests
       .filter((q) => q.type === "daily")
-      .map((q) => fromExisting(q.id, q.name, q.description, q.duration))
+      .map((q) =>
+        fromExisting(
+          q.id,
+          q.name,
+          q.description,
+          q.duration,
+          q.submissionType as "text" | "image"
+        )
+      )
 
     const weeklyQuests = existingQuests
       .filter((q) => q.type === "weekly")
-      .map((q) => fromExisting(q.id, q.name, q.description, q.duration))
+      .map((q) =>
+        fromExisting(
+          q.id,
+          q.name,
+          q.description,
+          q.duration,
+          q.submissionType as "text" | "image"
+        )
+      )
 
     if (dailyQuests.length > 0) setDailies(dailyQuests)
     if (weeklyQuests.length > 0) setWeeklies(weeklyQuests)
@@ -179,9 +204,9 @@ export default function CreateRecurringQuestsScreen() {
           const body: CreateQuestBody[] = newEntries.map((entry) => ({
             name: entry.name.trim(),
             description: entry.description.trim(),
+            submissionType: entry.submissionType,
             duration: Number.parseInt(entry.duration, 10) || 1,
             type: validDailies.includes(entry) ? "daily" : "weekly",
-            classId,
           }))
           operations.push(createQuests(classId, body))
         }
@@ -190,16 +215,16 @@ export default function CreateRecurringQuestsScreen() {
         const dailyQuests: CreateQuestBody[] = validDailies.map((entry) => ({
           name: entry.name.trim(),
           description: entry.description.trim(),
+          submissionType: entry.submissionType,
           duration: Number.parseInt(entry.duration, 10) || 1,
           type: "daily",
-          classId,
         }))
         const weeklyQuests: CreateQuestBody[] = validWeeklies.map((entry) => ({
           name: entry.name.trim(),
           description: entry.description.trim(),
+          submissionType: entry.submissionType,
           duration: Number.parseInt(entry.duration, 10) || 1,
           type: "weekly",
-          classId,
         }))
         operations.push(
           createQuests(classId, [...dailyQuests, ...weeklyQuests])
@@ -228,55 +253,85 @@ export default function CreateRecurringQuestsScreen() {
     entry: QuestEntry,
     list: QuestEntry[],
     setList: (value: QuestEntry[]) => void,
-    canRemove: boolean
+    canRemove: boolean,
+    label: string
   ) => (
     <View
       key={entry.key}
       className="mb-md rounded-lg bg-surface-card p-lg dark:bg-surface-dark-elevated"
     >
       <View className="mb-sm flex-row items-center justify-between">
-        <View className="flex-1 gap-sm">
-          <TextInput
-            className="h-10 rounded-md border border-hairline bg-canvas px-sm font-body text-body-md leading-tight text-ink dark:border-hairline dark:bg-surface-dark dark:text-on-dark"
-            value={entry.name}
-            onChangeText={(value) =>
-              updateEntry(list, setList, entry.key, "name", value)
-            }
-            placeholder="Quest name"
-            placeholderTextColor="#8e8b82"
-            autoCapitalize="words"
-          />
-          <TextInput
-            className="h-10 rounded-md border border-hairline bg-canvas px-sm font-body text-body-sm leading-tight text-ink dark:border-hairline dark:bg-surface-dark dark:text-on-dark"
-            value={entry.duration}
-            onChangeText={(value) =>
-              updateEntry(list, setList, entry.key, "duration", value)
-            }
-            placeholder="Days"
-            placeholderTextColor="#8e8b82"
-            keyboardType="numeric"
-          />
-        </View>
+        <Text className="font-body-medium text-body-md text-ink dark:text-on-dark">
+          {label}
+        </Text>
         {canRemove && (
           <TouchableOpacity
             onPress={() => removeEntry(list, setList, entry)}
-            className="ml-sm rounded-full p-xs active:bg-surface-soft dark:active:bg-surface-dark-soft"
+            className="rounded-full p-xs active:bg-surface-soft dark:active:bg-surface-dark-soft"
           >
             <X size={18} color={errorColor} />
           </TouchableOpacity>
         )}
       </View>
-      <TextInput
-        className="h-20 rounded-md border border-hairline bg-canvas p-sm font-body text-body-sm leading-tight text-ink dark:border-hairline dark:bg-surface-dark dark:text-on-dark"
-        value={entry.description}
-        onChangeText={(value) =>
-          updateEntry(list, setList, entry.key, "description", value)
-        }
-        placeholder="Quest description"
-        placeholderTextColor="#8e8b82"
-        multiline
-        textAlignVertical="top"
-      />
+      <View className="gap-sm">
+        <TextInput
+          className="h-10 rounded-md border border-hairline bg-canvas px-sm font-body text-body-md leading-tight text-ink dark:border-hairline dark:bg-surface-dark dark:text-on-dark"
+          value={entry.name}
+          onChangeText={(value) =>
+            updateEntry(list, setList, entry.key, "name", value)
+          }
+          placeholder="Quest name"
+          placeholderTextColor="#8e8b82"
+          autoCapitalize="words"
+        />
+        <TextInput
+          className="h-20 rounded-md border border-hairline bg-canvas p-sm font-body text-body-md leading-tight text-ink dark:border-hairline dark:bg-surface-dark dark:text-on-dark"
+          value={entry.description}
+          onChangeText={(value) =>
+            updateEntry(list, setList, entry.key, "description", value)
+          }
+          placeholder="Quest description"
+          placeholderTextColor="#8e8b82"
+          multiline
+          textAlignVertical="top"
+        />
+        <TextInput
+          className="h-10 rounded-md border border-hairline bg-canvas px-sm font-body text-body-md leading-tight text-ink dark:border-hairline dark:bg-surface-dark dark:text-on-dark"
+          value={entry.duration}
+          onChangeText={(value) =>
+            updateEntry(list, setList, entry.key, "duration", value)
+          }
+          placeholder="Duration (days)"
+          placeholderTextColor="#8e8b82"
+          keyboardType="numeric"
+        />
+        <View className="flex-row gap-xs">
+          <TouchableOpacity
+            onPress={() =>
+              updateEntry(list, setList, entry.key, "submissionType", "text")
+            }
+            className={`flex-1 items-center rounded-md border px-sm py-xs ${entry.submissionType === "text" ? "border-primary bg-primary/10" : "border-hairline bg-canvas dark:bg-surface-dark"}`}
+          >
+            <Text
+              className={`font-body-medium text-caption ${entry.submissionType === "text" ? "text-primary" : "text-muted dark:text-on-dark-soft"}`}
+            >
+              Text
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              updateEntry(list, setList, entry.key, "submissionType", "image")
+            }
+            className={`flex-1 items-center rounded-md border px-sm py-xs ${entry.submissionType === "image" ? "border-primary bg-primary/10" : "border-hairline bg-canvas dark:bg-surface-dark"}`}
+          >
+            <Text
+              className={`font-body-medium text-caption ${entry.submissionType === "image" ? "text-primary" : "text-muted dark:text-on-dark-soft"}`}
+            >
+              Image
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </View>
     </View>
   )
 
@@ -332,8 +387,14 @@ export default function CreateRecurringQuestsScreen() {
                 </Text>
               </TouchableOpacity>
             </View>
-            {dailies.map((entry) =>
-              renderQuestCard(entry, dailies, setDailies, dailies.length > 1)
+            {dailies.map((entry, index) =>
+              renderQuestCard(
+                entry,
+                dailies,
+                setDailies,
+                dailies.length > 1,
+                `Daily Quest ${index + 1}`
+              )
             )}
           </View>
 
@@ -353,8 +414,14 @@ export default function CreateRecurringQuestsScreen() {
                 </Text>
               </TouchableOpacity>
             </View>
-            {weeklies.map((entry) =>
-              renderQuestCard(entry, weeklies, setWeeklies, weeklies.length > 1)
+            {weeklies.map((entry, index) =>
+              renderQuestCard(
+                entry,
+                weeklies,
+                setWeeklies,
+                weeklies.length > 1,
+                `Weekly Quest ${index + 1}`
+              )
             )}
           </View>
 

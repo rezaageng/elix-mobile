@@ -38,6 +38,7 @@ export const QuestSchema = z.object({
   name: z.string(),
   description: z.string(),
   type: z.string(),
+  submissionType: z.string(),
   duration: z.number().int(),
   requiredQuestId: z.uuid().nullable(),
   createdAt: z.iso.datetime(),
@@ -211,8 +212,8 @@ export const CreateQuestBodySchema = z.object({
   name: z.string(),
   description: z.string(),
   type: z.enum(["daily", "weekly", "main", "side"]),
+  submissionType: z.enum(["image", "text"]),
   duration: z.number().int(),
-  classId: z.uuid(),
   requiredQuestId: z.uuid().nullable().optional(),
 })
 
@@ -220,6 +221,7 @@ export const UpdateQuestBodySchema = z.object({
   name: z.string().optional(),
   description: z.string().optional(),
   type: z.enum(["daily", "weekly", "main"]).optional(),
+  submissionType: z.enum(["image", "text"]).optional(),
   duration: z.number().int().optional(),
 })
 
