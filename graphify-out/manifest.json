@@ -60,7 +60,7 @@
     "semantic_hash": ""
   },
   "/Users/rezaa/developments/codes/elix-mobile/app/roles/quests/create-recurring.tsx": {
-    "mtime": 1780637123.1703415,
+    "mtime": 1780656783.7671113,
     "ast_hash": "f3572f726c0fa3ce24fb2bcc9d6dbc4c",
     "semantic_hash": ""
   },
@@ -110,13 +110,13 @@
     "semantic_hash": "2586a450cfc924d45e45d0da1ed63d9a"
   },
   "/Users/rezaa/developments/codes/elix-mobile/lib/api/quests.ts": {
-    "mtime": 1780642132.8938901,
-    "ast_hash": "e3eba9ad32cd5e19c90a68ecb34345df",
+    "mtime": 1780656271.5938509,
+    "ast_hash": "ac1d5ff99e37313891a90091c76bd84a",
     "semantic_hash": ""
   },
   "/Users/rezaa/developments/codes/elix-mobile/lib/api/schemas.ts": {
-    "mtime": 1780637117.7982721,
-    "ast_hash": "f1dca12a11c2bea0799a48ac760133c9",
+    "mtime": 1780649114.7235005,
+    "ast_hash": "02d90e0b311101adcf248d03d6f8d237",
     "semantic_hash": ""
   },
   "/Users/rezaa/developments/codes/elix-mobile/lib/api/shop.ts": {
@@ -175,9 +175,9 @@
     "semantic_hash": "cddc0642ef0537e73ebd55b26d7f5ace"
   },
   "/Users/rezaa/developments/codes/elix-mobile/package.json": {
-    "mtime": 1779206155.192508,
-    "ast_hash": "810feeea2722f12d0d410e9aaa0110df",
-    "semantic_hash": "810feeea2722f12d0d410e9aaa0110df"
+    "mtime": 1780651421.861617,
+    "ast_hash": "2876cf6c227553077092396765d75392",
+    "semantic_hash": ""
   },
   "/Users/rezaa/developments/codes/elix-mobile/skills-lock.json": {
     "mtime": 1779191951.6197839,
@@ -275,8 +275,8 @@
     "semantic_hash": ""
   },
   "/Users/rezaa/developments/codes/elix-mobile/app/quest/[id].tsx": {
-    "mtime": 1780642369.4327362,
-    "ast_hash": "bc904f8aad0cdc522ec1bb5bebf1a88f",
+    "mtime": 1780649267.3042753,
+    "ast_hash": "9ebc578cb32fc734ab9dfaf688e670ad",
     "semantic_hash": ""
   },
   "/Users/rezaa/developments/codes/elix-mobile/lib/header-options.tsx": {
@@ -455,13 +455,23 @@
     "semantic_hash": ""
   },
   "/Users/rezaa/developments/codes/elix-mobile/app/quest/manage.tsx": {
-    "mtime": 1780644792.884969,
-    "ast_hash": "f41e05a701c7098b9a17e5a5913ed3d6",
+    "mtime": 1780657084.3626647,
+    "ast_hash": "eb000f69bc1af466a6bbf8f798004d0c",
     "semantic_hash": ""
   },
   "/Users/rezaa/developments/codes/elix-mobile/components/quest-actions-sheet.tsx": {
     "mtime": 1780641442.682667,
     "ast_hash": "650c112837093ca67b5a6a8ac0775a8a",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/app/quest/camera.tsx": {
+    "mtime": 1780653578.8476465,
+    "ast_hash": "b8065ce54af241cc30f895fe639c8f4b",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/app/quest/verify.tsx": {
+    "mtime": 1780658006.9853826,
+    "ast_hash": "3892ab6b376a660c5ed6351ea82f149e",
     "semantic_hash": ""
   }
 }

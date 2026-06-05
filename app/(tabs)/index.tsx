@@ -1,5 +1,5 @@
 import { useRouter } from "expo-router"
-import { Plus, Timer } from "lucide-react-native"
+import { Flame, Plus, Timer } from "lucide-react-native"
 import { useRef, useState, type ReactNode } from "react"
 import {
   Alert,
@@ -213,6 +213,49 @@ function QuestCard({
   )
 }
 
+function hasCompletedQuestToday(quests: ClassQuest[]): boolean {
+  const now = new Date()
+  const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate())
+  const endOfToday = new Date(startOfToday.getTime() + 24 * 60 * 60 * 1000)
+
+  for (const quest of quests) {
+    const completedAt = quest.progress?.[0]?.completedAt
+    if (completedAt) {
+      const completedDate = new Date(completedAt)
+      if (completedDate >= startOfToday && completedDate < endOfToday) {
+        return true
+      }
+    }
+  }
+  return false
+}
+
+function StreakBadge({
+  streak,
+  quests,
+}: {
+  streak: number
+  quests: ClassQuest[]
+}) {
+  const active = hasCompletedQuestToday(quests)
+  return (
+    <View className="flex-row items-center gap-1.5 rounded-full bg-surface-card px-3 py-1.5 dark:bg-surface-dark-elevated">
+      <Flame
+        size={18}
+        color={active ? "#e8a55a" : "#8e8b82"}
+      />
+      <Text
+        className={cn(
+          "font-body-semibold text-body-sm",
+          active ? "text-ink dark:text-on-dark" : "text-muted-soft dark:text-on-dark-soft"
+        )}
+      >
+        {streak}
+      </Text>
+    </View>
+  )
+}
+
 function SectionHeader({ title }: { title: string }) {
   return (
     <View className="mb-2 mt-4 flex-row items-center gap-2">
@@ -388,7 +431,15 @@ export default function QuestScreen() {
 
   return (
     <SafeAreaView className="w-full flex-1 bg-canvas dark:bg-surface-dark">
-      <Header title="Elix" canGoBack={false} />
+      <Header
+        title="Elix"
+        canGoBack={false}
+        right={
+          user ? (
+            <StreakBadge streak={user.streak} quests={quests ?? []} />
+          ) : undefined
+        }
+      />
 
       <View className="mb-4 h-10">
         <ScrollView
