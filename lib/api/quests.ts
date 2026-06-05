@@ -122,6 +122,9 @@ export const useCreateQuests = () => {
       queryClient.invalidateQueries({
         queryKey: ["classes", variables.classId, "quests"],
       });
+      queryClient.refetchQueries({
+        queryKey: ["classes", variables.classId, "quests"],
+      });
     },
   });
 };
@@ -158,6 +161,9 @@ export const useDeleteQuest = () => {
       queryClient.invalidateQueries({
         queryKey: ["classes", variables.classId, "quests"],
       });
+      queryClient.refetchQueries({
+        queryKey: ["classes", variables.classId, "quests"],
+      });
     },
   });
 };
@@ -176,6 +182,9 @@ export const useOverrideQuest = () => {
     }) => overrideQuest(classId, questId, body),
     onSuccess: (_, variables) => {
       queryClient.invalidateQueries({
+        queryKey: ["classes", variables.classId, "quests"],
+      });
+      queryClient.refetchQueries({
         queryKey: ["classes", variables.classId, "quests"],
       });
     },

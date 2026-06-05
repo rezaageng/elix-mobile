@@ -1,7 +1,8 @@
 import { useRouter } from "expo-router"
-import { Timer } from "lucide-react-native"
-import { useState, type ReactNode } from "react"
+import { Plus, Timer } from "lucide-react-native"
+import { useRef, useState, type ReactNode } from "react"
 import {
+  Alert,
   RefreshControl,
   ScrollView,
   Text,
@@ -10,10 +11,14 @@ import {
 } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
 
-import { useClassQuests, useCurrentUser } from "@/lib/api"
+import { useClassQuests, useCurrentUser, useDeleteQuest } from "@/lib/api"
 import type { ClassQuest } from "@/lib/api/schemas"
 import { cn } from "@/lib/utils"
 import Header from "@/components/header"
+import {
+  QuestActionsSheet,
+  type QuestActionsSheetReference,
+} from "@/components/quest-actions-sheet"
 
 type QuestTab = "all" | "main" | "side" | "weekly" | "daily"
 
@@ -26,6 +31,15 @@ const TABS: { key: QuestTab; label: string }[] = [
 ]
 
 const TYPE_ORDER: QuestTab[] = ["main", "side", "weekly", "daily"]
+
+function getEffectiveQuestValues(quest: ClassQuest) {
+  const override = quest.overrides?.at(-1)
+  return {
+    name: override?.name ?? quest.name,
+    description: override?.description ?? quest.description,
+    duration: override?.duration ?? quest.duration,
+  }
+}
 
 function getQuestStatus(quest: ClassQuest): string {
   return quest.progress?.[0]?.status ?? "not_started"
@@ -101,11 +115,21 @@ function getDurationInfo(
   return { text: `${formatHours(remainingHours)} left`, isOverdue: false }
 }
 
-function QuestCard({ quest }: { quest: ClassQuest }) {
+function QuestCard({
+  quest,
+  onLongPress,
+}: {
+  quest: ClassQuest
+  onLongPress?: () => void
+}) {
   const router = useRouter()
   const status = getQuestStatus(quest)
   const completed = status === "completed"
-  const durationInfo = getDurationInfo(quest)
+  const effective = getEffectiveQuestValues(quest)
+  const durationInfo = getDurationInfo({ ...quest, duration: effective.duration })
+
+  const canManage =
+    (quest.type === "daily" || quest.type === "weekly") && !completed
 
   return (
     <TouchableOpacity
@@ -113,73 +137,77 @@ function QuestCard({ quest }: { quest: ClassQuest }) {
       onPress={() =>
         router.push({ pathname: "/quest/[id]", params: { id: quest.id } })
       }
+      onLongPress={canManage ? onLongPress : undefined}
+      delayLongPress={400}
       className={cn(
-        "flex-row items-center justify-between rounded-xl bg-surface-card p-4 dark:bg-surface-dark-elevated",
+        "rounded-xl bg-surface-card p-4 dark:bg-surface-dark-elevated",
         completed && "opacity-60"
       )}
     >
-      <View className="flex-1 pr-3">
-        <Text
-          className={cn(
-            "font-body-semibold text-body-md text-ink dark:text-on-dark",
-            completed && "line-through"
-          )}
-        >
-          {quest.name}
-        </Text>
-        {quest.description && (
+      <View className="flex-row items-center justify-between">
+        <View className="flex-1 pr-3">
           <Text
-            numberOfLines={1}
             className={cn(
-              "mt-1 font-body text-body-sm text-muted dark:text-on-dark-soft",
+              "font-body-semibold text-body-md text-ink dark:text-on-dark",
               completed && "line-through"
             )}
           >
-            {quest.description}
+            {effective.name}
           </Text>
-        )}
-        <View className="mt-2 flex-row items-center gap-2">
-          <View className="rounded-full bg-canvas px-2 py-0.5 dark:bg-surface-dark">
-            <Text className="font-body text-caption text-ink dark:text-on-dark">
-              {quest.type}
-            </Text>
-          </View>
-          {completed ? (
-            <Text className="font-body text-caption text-muted dark:text-on-dark-soft">
-              Completed
-            </Text>
-          ) : (
-            <Text className="font-body text-caption text-muted dark:text-on-dark-soft">
-              {status === "in_progress" ? "In Progress" : "Not Started"}
-            </Text>
-          )}
-        </View>
-      </View>
-      <View className="items-end">
-        <Text className="font-body-semibold text-body-sm text-primary">
-          {quest.xpReward ?? 0} XP
-        </Text>
-        <Text className="mt-0.5 font-body text-caption text-muted dark:text-on-dark-soft">
-          {quest.goldReward ?? 0} G
-        </Text>
-        {durationInfo && (
-          <View className="mt-0.5 flex-row items-center gap-1">
-            <Timer
-              size={12}
-              color={durationInfo.isOverdue ? "#c64545" : "#6c6a64"}
-            />
+          {effective.description && (
             <Text
+              numberOfLines={1}
               className={cn(
-                "font-body text-caption",
-                durationInfo.isOverdue
-                  ? "text-error"
-                  : "text-muted dark:text-on-dark-soft"
+                "mt-1 font-body text-body-sm text-muted dark:text-on-dark-soft",
+                completed && "line-through"
               )}
             >
-              {durationInfo.text}
+              {effective.description}
             </Text>
+          )}
+          <View className="mt-2 flex-row items-center gap-2">
+            <View className="rounded-full bg-canvas px-2 py-0.5 dark:bg-surface-dark">
+              <Text className="font-body text-caption text-ink dark:text-on-dark">
+                {quest.type}
+              </Text>
+            </View>
+            {completed ? (
+              <Text className="font-body text-caption text-muted dark:text-on-dark-soft">
+                Completed
+              </Text>
+            ) : (
+              <Text className="font-body text-caption text-muted dark:text-on-dark-soft">
+                {status === "in_progress" ? "In Progress" : "Not Started"}
+              </Text>
+            )}
           </View>
-        )}
+        </View>
+        <View className="items-end">
+          <Text className="font-body-semibold text-body-sm text-primary">
+            {quest.xpReward ?? 0} XP
+          </Text>
+          <Text className="mt-0.5 font-body text-caption text-muted dark:text-on-dark-soft">
+            {quest.goldReward ?? 0} G
+          </Text>
+          {durationInfo && (
+            <View className="mt-0.5 flex-row items-center gap-1">
+              <Timer
+                size={12}
+                color={durationInfo.isOverdue ? "#c64545" : "#6c6a64"}
+              />
+              <Text
+                className={cn(
+                  "font-body text-caption",
+                  durationInfo.isOverdue
+                    ? "text-error"
+                    : "text-muted dark:text-on-dark-soft"
+                )}
+              >
+                {durationInfo.text}
+              </Text>
+            </View>
+          )}
+        </View>
       </View>
     </TouchableOpacity>
   )
@@ -198,6 +226,7 @@ function SectionHeader({ title }: { title: string }) {
 }
 
 export default function QuestScreen() {
+  const router = useRouter()
   const { data: user, isPending: userLoading } = useCurrentUser()
   const classId = user?.activeClass?.id
   const {
@@ -205,6 +234,7 @@ export default function QuestScreen() {
     isPending: questsLoading,
     refetch,
   } = useClassQuests(classId ?? "")
+  const deleteQuestMutation = useDeleteQuest()
   const [refreshing, setRefreshing] = useState(false)
   const [activeTab, setActiveTab] = useState<QuestTab>("all")
 
@@ -215,6 +245,31 @@ export default function QuestScreen() {
   }
 
   const isLoading = userLoading || (!!classId && questsLoading)
+  const sheetReference = useRef<QuestActionsSheetReference>(null)
+
+  const handleEditQuest = (questId: string, questType: string) => {
+    if (!classId) return
+    router.push({
+      pathname: "/quest/manage" as any,
+      params: { classId, type: questType, questId },
+    })
+  }
+
+  const handleDeleteQuest = (questId: string) => {
+    if (!classId) return
+    Alert.alert("Delete Quest", "Are you sure you want to delete this quest?", [
+      { text: "Cancel", style: "cancel" },
+      {
+        text: "Delete",
+        style: "destructive",
+        onPress: () => {
+          deleteQuestMutation.mutate({ classId, questId })
+        },
+      },
+    ])
+  }
+
+  const showAddButton = activeTab === "daily" || activeTab === "weekly"
 
   let content: ReactNode
   if (!user?.activeClass) {
@@ -261,7 +316,13 @@ export default function QuestScreen() {
             <SectionHeader key={`header-${type}`} title={type} />,
             <View key={`list-${type}`} className="gap-3">
               {typeQuests.map((quest) => (
-                <QuestCard key={quest.id} quest={quest} />
+                <QuestCard
+                  key={quest.id}
+                  quest={quest}
+                  onLongPress={() =>
+                    sheetReference.current?.open(quest.id, quest.type, quest.name)
+                  }
+                />
               ))}
             </View>,
           ]
@@ -292,7 +353,13 @@ export default function QuestScreen() {
           active.length > 0 && (
             <View key="list-active" className="gap-3">
               {active.map((quest) => (
-                <QuestCard key={quest.id} quest={quest} />
+                <QuestCard
+                  key={quest.id}
+                  quest={quest}
+                  onLongPress={() =>
+                    sheetReference.current?.open(quest.id, quest.type, quest.name)
+                  }
+                />
               ))}
             </View>
           ),
@@ -302,7 +369,13 @@ export default function QuestScreen() {
           completed.length > 0 && (
             <View key="list-completed" className="gap-3">
               {completed.map((quest) => (
-                <QuestCard key={quest.id} quest={quest} />
+                <QuestCard
+                  key={quest.id}
+                  quest={quest}
+                  onLongPress={() =>
+                    sheetReference.current?.open(quest.id, quest.type, quest.name)
+                  }
+                />
               ))}
             </View>
           ),
@@ -364,8 +437,30 @@ export default function QuestScreen() {
           />
         }
       >
+        {showAddButton && classId && (
+          <TouchableOpacity
+            onPress={() =>
+              router.push({
+                pathname: "/quest/manage" as any,
+                params: { classId, type: activeTab },
+              })
+            }
+            className="mb-4 flex-row items-center justify-center gap-xs rounded-xl border border-dashed border-hairline bg-surface-card py-3 dark:border-hairline-dark dark:bg-surface-dark-elevated"
+          >
+            <Plus size={18} color="#6c6a64" />
+            <Text className="font-body-medium text-body-sm text-muted dark:text-on-dark-soft">
+              Add {activeTab === "daily" ? "Daily" : "Weekly"} Quest
+            </Text>
+          </TouchableOpacity>
+        )}
         {content}
       </ScrollView>
+
+      <QuestActionsSheet
+        ref={sheetReference}
+        onEdit={handleEditQuest}
+        onDelete={handleDeleteQuest}
+      />
     </SafeAreaView>
   )
 }
