@@ -12,19 +12,21 @@ import {
   View,
 } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
-
 import {
   createQuests,
   deleteQuest,
   overrideQuest,
   startStarterQuests,
+  updateQuest,
   useClassQuests,
+  useCurrentUser,
 } from "@/lib/api"
 import type { CreateQuestBody } from "@/lib/api/schemas"
 import { useSession } from "@/lib/auth-client"
 import { useHeaderOptions } from "@/lib/header-options"
 import { useThemeColor } from "@/lib/use-theme-color"
 import { Button } from "@/components/button"
+import { NativeDateTimePicker } from "@/components/native-datetime-picker"
 
 type QuestEntry = {
   key: number
@@ -33,6 +35,7 @@ type QuestEntry = {
   description: string
   duration: string
   submissionType: "text" | "image"
+  startsAt?: Date
 }
 
 let nextKey = 0
@@ -42,7 +45,8 @@ function fromExisting(
   name: string,
   description: string,
   duration: number,
-  submissionType: "text" | "image"
+  submissionType: "text" | "image",
+  startsAt?: string
 ): QuestEntry {
   return {
     key: nextKey++,
@@ -51,6 +55,7 @@ function fromExisting(
     description,
     duration: String(duration),
     submissionType,
+    startsAt: startsAt ? new Date(startsAt) : undefined,
   }
 }
 
@@ -64,10 +69,21 @@ function newEntry(): QuestEntry {
   }
 }
 
+function getQuestType(
+  entry: QuestEntry,
+  validDailies: QuestEntry[],
+  validWeeklies: QuestEntry[]
+): "daily" | "weekly" | "event" {
+  if (validDailies.includes(entry)) return "daily"
+  if (validWeeklies.includes(entry)) return "weekly"
+  return "event"
+}
+
 export default function CreateRecurringQuestsScreen() {
   const { classId } = useLocalSearchParams<{ classId: string }>()
   const { data: existingQuests, isPending: isQuestsPending } =
     useClassQuests(classId)
+  const { data: user } = useCurrentUser()
   const { refetch: refetchSession } = useSession()
   const queryClient = useQueryClient()
   const router = useRouter()
@@ -78,6 +94,7 @@ export default function CreateRecurringQuestsScreen() {
 
   const [dailies, setDailies] = useState<QuestEntry[]>([newEntry()])
   const [weeklies, setWeeklies] = useState<QuestEntry[]>([newEntry()])
+  const [events, setEvents] = useState<QuestEntry[]>([newEntry()])
   const [removedIds, setRemovedIds] = useState<string[]>([])
   const [initialized, setInitialized] = useState(false)
   const [error, setError] = useState<string>()
@@ -87,14 +104,22 @@ export default function CreateRecurringQuestsScreen() {
     () =>
       !!existingQuests &&
       (existingQuests.some((q) => q.type === "daily") ||
-        existingQuests.some((q) => q.type === "weekly")),
+        existingQuests.some((q) => q.type === "weekly") ||
+        existingQuests.some((q) => q.type === "event")),
     [existingQuests]
   )
 
   useEffect(() => {
     if (!existingQuests || initialized) return
 
-    const dailyQuests = existingQuests
+    // Only show role quests (shared) and current user's personal quests
+    const visibleQuests = existingQuests.filter((q) => {
+      const isRoleQuest = !q.authorId || q.authorId === user?.id
+      const isOwnPersonal = q.authorId === user?.id
+      return isRoleQuest || isOwnPersonal
+    })
+
+    const dailyQuests = visibleQuests
       .filter((q) => q.type === "daily")
       .map((q) =>
         fromExisting(
@@ -102,11 +127,12 @@ export default function CreateRecurringQuestsScreen() {
           q.name,
           q.description,
           q.duration,
-          q.submissionType as "text" | "image"
+          q.submissionType as "text" | "image",
+          q.startsAt ?? undefined
         )
       )
 
-    const weeklyQuests = existingQuests
+    const weeklyQuests = visibleQuests
       .filter((q) => q.type === "weekly")
       .map((q) =>
         fromExisting(
@@ -114,15 +140,30 @@ export default function CreateRecurringQuestsScreen() {
           q.name,
           q.description,
           q.duration,
-          q.submissionType as "text" | "image"
+          q.submissionType as "text" | "image",
+          q.startsAt ?? undefined
+        )
+      )
+
+    const eventQuests = visibleQuests
+      .filter((q) => q.type === "event")
+      .map((q) =>
+        fromExisting(
+          q.id,
+          q.name,
+          q.description,
+          q.duration,
+          q.submissionType as "text" | "image",
+          q.startsAt ?? undefined
         )
       )
 
     if (dailyQuests.length > 0) setDailies(dailyQuests)
     if (weeklyQuests.length > 0) setWeeklies(weeklyQuests)
+    if (eventQuests.length > 0) setEvents(eventQuests)
 
     setInitialized(true)
-  }, [existingQuests, initialized])
+  }, [existingQuests, initialized, user])
 
   const updateEntry = (
     list: QuestEntry[],
@@ -159,17 +200,16 @@ export default function CreateRecurringQuestsScreen() {
     const validWeeklies = weeklies.filter(
       (entry) => entry.name.trim() && entry.description.trim()
     )
+    const validEvents = events.filter(
+      (entry) => entry.name.trim() && entry.description.trim()
+    )
 
-    if (validDailies.length === 0 && validWeeklies.length === 0) {
-      setError("Add at least one daily or weekly quest")
-      return
-    }
-    if (validDailies.length === 0) {
-      setError("Add at least one daily quest")
-      return
-    }
-    if (validWeeklies.length === 0) {
-      setError("Add at least one weekly quest")
+    if (
+      validDailies.length === 0 &&
+      validWeeklies.length === 0 &&
+      validEvents.length === 0
+    ) {
+      setError("Add at least one quest")
       return
     }
 
@@ -183,22 +223,36 @@ export default function CreateRecurringQuestsScreen() {
       }
 
       if (isEditMode) {
-        // Override modified existing quests
-        for (const entry of [...validDailies, ...validWeeklies]) {
+        // Update existing quests: authors use updateQuest, non-authors use overrideQuest
+        // Both now support startsAt
+        for (const entry of [...validDailies, ...validWeeklies, ...validEvents]) {
           if (!entry.questId) continue
-          operations.push(
-            overrideQuest(classId, entry.questId, {
-              name: entry.name.trim(),
-              description: entry.description.trim(),
-              duration: Number.parseInt(entry.duration, 10) || 1,
-            })
-          )
+          const existingQuest = existingQuests?.find((q) => q.id === entry.questId)
+          const isQuestAuthor = existingQuest?.authorId === user?.id
+          const baseBody = {
+            name: entry.name.trim(),
+            description: entry.description.trim(),
+            duration: Number.parseInt(entry.duration, 10) || 1,
+            startsAt: entry.startsAt
+              ? entry.startsAt.toISOString()
+              : undefined,
+          }
+          if (isQuestAuthor) {
+            operations.push(updateQuest(classId, entry.questId, baseBody))
+          } else {
+            operations.push(overrideQuest(classId, entry.questId, baseBody))
+          }
         }
 
         // Create new quests (entries without questId)
         const newDailyEntries = validDailies.filter((entry) => !entry.questId)
         const newWeeklyEntries = validWeeklies.filter((entry) => !entry.questId)
-        const newEntries = [...newDailyEntries, ...newWeeklyEntries]
+        const newEventEntries = validEvents.filter((entry) => !entry.questId)
+        const newEntries = [
+          ...newDailyEntries,
+          ...newWeeklyEntries,
+          ...newEventEntries,
+        ]
 
         if (newEntries.length > 0) {
           const body: CreateQuestBody[] = newEntries.map((entry) => ({
@@ -206,7 +260,10 @@ export default function CreateRecurringQuestsScreen() {
             description: entry.description.trim(),
             submissionType: entry.submissionType,
             duration: Number.parseInt(entry.duration, 10) || 1,
-            type: validDailies.includes(entry) ? "daily" : "weekly",
+            type: getQuestType(entry, validDailies, validWeeklies),
+            startsAt: entry.startsAt
+              ? entry.startsAt.toISOString()
+              : undefined,
           }))
           operations.push(createQuests(classId, body))
         }
@@ -218,6 +275,9 @@ export default function CreateRecurringQuestsScreen() {
           submissionType: entry.submissionType,
           duration: Number.parseInt(entry.duration, 10) || 1,
           type: "daily",
+          startsAt: entry.startsAt
+            ? entry.startsAt.toISOString()
+            : undefined,
         }))
         const weeklyQuests: CreateQuestBody[] = validWeeklies.map((entry) => ({
           name: entry.name.trim(),
@@ -225,15 +285,35 @@ export default function CreateRecurringQuestsScreen() {
           submissionType: entry.submissionType,
           duration: Number.parseInt(entry.duration, 10) || 1,
           type: "weekly",
+          startsAt: entry.startsAt
+            ? entry.startsAt.toISOString()
+            : undefined,
+        }))
+        const eventQuests: CreateQuestBody[] = validEvents.map((entry) => ({
+          name: entry.name.trim(),
+          description: entry.description.trim(),
+          submissionType: entry.submissionType,
+          duration: Number.parseInt(entry.duration, 10) || 1,
+          type: "event",
+          startsAt: entry.startsAt
+            ? entry.startsAt.toISOString()
+            : undefined,
         }))
         operations.push(
-          createQuests(classId, [...dailyQuests, ...weeklyQuests])
+          createQuests(classId, [
+            ...dailyQuests,
+            ...weeklyQuests,
+            ...eventQuests,
+          ])
         )
       }
 
       await Promise.all(operations)
       await startStarterQuests(classId)
-      queryClient.invalidateQueries({
+      await queryClient.invalidateQueries({
+        queryKey: ["classes", classId, "quests"],
+      })
+      await queryClient.refetchQueries({
         queryKey: ["classes", classId, "quests"],
       })
       await refetchSession()
@@ -254,7 +334,8 @@ export default function CreateRecurringQuestsScreen() {
     list: QuestEntry[],
     setList: (value: QuestEntry[]) => void,
     canRemove: boolean,
-    label: string
+    label: string,
+    pickerMode: "time" | "datetime" | "weekday"
   ) => (
     <View
       key={entry.key}
@@ -301,9 +382,25 @@ export default function CreateRecurringQuestsScreen() {
           onChangeText={(value) =>
             updateEntry(list, setList, entry.key, "duration", value)
           }
-          placeholder="Duration (days)"
+          placeholder="Duration (hours)"
           placeholderTextColor="#8e8b82"
           keyboardType="numeric"
+        />
+        <NativeDateTimePicker
+          value={entry.startsAt}
+          onChange={(selectedDate) =>
+            setList(
+              list.map((item) =>
+                item.key === entry.key
+                  ? { ...item, startsAt: selectedDate }
+                  : item
+              )
+            )
+          }
+          mode={pickerMode}
+          label={
+            pickerMode === "time" ? "Start Time" : "Start Date & Time"
+          }
         />
         <View className="flex-row gap-xs">
           <TouchableOpacity
@@ -393,7 +490,8 @@ export default function CreateRecurringQuestsScreen() {
                 dailies,
                 setDailies,
                 dailies.length > 1,
-                `Daily Quest ${index + 1}`
+                `Daily Quest ${index + 1}`,
+                "time"
               )
             )}
           </View>
@@ -420,7 +518,36 @@ export default function CreateRecurringQuestsScreen() {
                 weeklies,
                 setWeeklies,
                 weeklies.length > 1,
-                `Weekly Quest ${index + 1}`
+                `Weekly Quest ${index + 1}`,
+                "weekday"
+              )
+            )}
+          </View>
+
+          {/* Event Quests Section */}
+          <View className="mb-lg">
+            <View className="mb-sm flex-row items-center justify-between">
+              <Text className="font-body-medium text-title-sm text-ink dark:text-on-dark">
+                Event Quests
+              </Text>
+              <TouchableOpacity
+                onPress={() => setEvents([...events, newEntry()])}
+                className="flex-row items-center gap-xs rounded-md px-sm py-xs active:bg-surface-soft dark:active:bg-surface-dark-soft"
+              >
+                <Plus size={16} color={mutedColor} />
+                <Text className="font-body-medium text-body-sm text-muted dark:text-on-dark-soft">
+                  Add
+                </Text>
+              </TouchableOpacity>
+            </View>
+            {events.map((entry, index) =>
+              renderQuestCard(
+                entry,
+                events,
+                setEvents,
+                events.length > 1,
+                `Event Quest ${index + 1}`,
+                "datetime"
               )
             )}
           </View>

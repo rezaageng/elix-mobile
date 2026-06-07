@@ -110,6 +110,7 @@ export const useClassQuests = (classId: string) => {
     queryKey: ["classes", classId, "quests"],
     queryFn: () => getClassQuests(classId),
     enabled: !!classId,
+    staleTime: 0,
   });
 };
 

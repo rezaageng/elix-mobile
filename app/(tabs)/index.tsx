@@ -20,17 +20,25 @@ import {
   type QuestActionsSheetReference,
 } from "@/components/quest-actions-sheet"
 
-type QuestTab = "all" | "main" | "side" | "weekly" | "daily"
+type QuestTab = "all" | "main" | "side" | "weekly" | "daily" | "event"
 
 const TABS: { key: QuestTab; label: string }[] = [
   { key: "all", label: "All" },
   { key: "main", label: "Main" },
   { key: "side", label: "Side" },
+  { key: "event", label: "Event" },
   { key: "weekly", label: "Weekly" },
   { key: "daily", label: "Daily" },
 ]
 
-const TYPE_ORDER: QuestTab[] = ["main", "side", "weekly", "daily"]
+const TYPE_ORDER: QuestTab[] = ["main", "side", "event", "weekly", "daily"]
+
+function getQuestTypeLabel(tab: QuestTab): string {
+  if (tab === "daily") return "Daily"
+  if (tab === "weekly") return "Weekly"
+  if (tab === "event") return "Event"
+  return ""
+}
 
 function getEffectiveQuestValues(quest: ClassQuest) {
   const override = quest.overrides?.at(-1)
@@ -38,11 +46,28 @@ function getEffectiveQuestValues(quest: ClassQuest) {
     name: override?.name ?? quest.name,
     description: override?.description ?? quest.description,
     duration: override?.duration ?? quest.duration,
+    startsAt: override?.startsAt ?? quest.startsAt,
   }
 }
 
 function getQuestStatus(quest: ClassQuest): string {
   return quest.progress?.[0]?.status ?? "not_started"
+}
+
+function getQuestStatusLabel(quest: ClassQuest): string {
+  const status = getQuestStatus(quest)
+  if (status === "completed") return "Completed"
+  if (status === "in_progress") return "In Progress"
+  const effective = getEffectiveQuestValues(quest)
+  if (status === "not_started" && effective.startsAt) {
+    return new Date(effective.startsAt).toLocaleString(undefined, {
+      month: "short",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    })
+  }
+  return "Not Started"
 }
 
 function isActive(quest: ClassQuest): boolean {
@@ -129,7 +154,7 @@ function QuestCard({
   const durationInfo = getDurationInfo({ ...quest, duration: effective.duration })
 
   const canManage =
-    (quest.type === "daily" || quest.type === "weekly") && !completed
+    (quest.type === "daily" || quest.type === "weekly" || quest.type === "event") && !completed
 
   return (
     <TouchableOpacity
@@ -171,15 +196,21 @@ function QuestCard({
                 {quest.type}
               </Text>
             </View>
-            {completed ? (
-              <Text className="font-body text-caption text-muted dark:text-on-dark-soft">
-                Completed
-              </Text>
-            ) : (
-              <Text className="font-body text-caption text-muted dark:text-on-dark-soft">
-                {status === "in_progress" ? "In Progress" : "Not Started"}
-              </Text>
-            )}
+            <Text
+              className={cn(
+                "font-body text-caption",
+                completed && "text-muted dark:text-on-dark-soft",
+                !completed &&
+                  status === "not_started" &&
+                  effective.startsAt &&
+                  "text-primary",
+                !completed &&
+                  !(status === "not_started" && effective.startsAt) &&
+                  "text-muted dark:text-on-dark-soft"
+              )}
+            >
+              {getQuestStatusLabel(quest)}
+            </Text>
           </View>
         </View>
         <View className="items-end">
@@ -312,7 +343,8 @@ export default function QuestScreen() {
     ])
   }
 
-  const showAddButton = activeTab === "daily" || activeTab === "weekly"
+  const showAddButton =
+    activeTab === "daily" || activeTab === "weekly" || activeTab === "event"
 
   let content: ReactNode
   if (!user?.activeClass) {
@@ -500,7 +532,7 @@ export default function QuestScreen() {
           >
             <Plus size={18} color="#6c6a64" />
             <Text className="font-body-medium text-body-sm text-muted dark:text-on-dark-soft">
-              Add {activeTab === "daily" ? "Daily" : "Weekly"} Quest
+              Add {getQuestTypeLabel(activeTab)} Quest
             </Text>
           </TouchableOpacity>
         )}

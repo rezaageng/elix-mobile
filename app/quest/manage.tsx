@@ -12,17 +12,19 @@ import {
   View,
 } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
-
 import {
   useClassQuests,
   useCreateQuests,
+  useCurrentUser,
   useDeleteQuest,
   useOverrideQuest,
   useStartQuestProgress,
+  useUpdateQuest,
 } from "@/lib/api"
 import type { ClassQuest, CreateQuestBody } from "@/lib/api/schemas"
 import { useHeaderOptions } from "@/lib/header-options"
 import { Button } from "@/components/button"
+import { NativeDateTimePicker } from "@/components/native-datetime-picker"
 
 function getEffectiveQuestValues(quest: ClassQuest) {
   const override = quest.overrides?.at(-1)
@@ -30,17 +32,19 @@ function getEffectiveQuestValues(quest: ClassQuest) {
     name: override?.name ?? quest.name,
     description: override?.description ?? quest.description,
     duration: override?.duration ?? quest.duration,
+    startsAt: override?.startsAt ?? quest.startsAt,
   }
 }
 
 export default function ManageQuestScreen() {
   const { classId, type, questId } = useLocalSearchParams<{
     classId: string
-    type: "daily" | "weekly"
+    type: "daily" | "weekly" | "event"
     questId?: string
   }>()
 
   const isEditMode = !!questId
+  const { data: user } = useCurrentUser()
   const { data: quests } = useClassQuests(classId)
   const existingQuest = quests?.find((q) => q.id === questId)
   const effective = existingQuest ? getEffectiveQuestValues(existingQuest) : undefined
@@ -50,8 +54,17 @@ export default function ManageQuestScreen() {
     isEditMode ? "Edit Quest" : `New ${type} quest`
   )
 
+  function getPickerMode(): "time" | "datetime" | "weekday" {
+    if (type === "daily") return "time"
+    if (type === "weekly") return "weekday"
+    return "datetime"
+  }
+
+  const pickerMode = getPickerMode()
+
   const createQuestsMutation = useCreateQuests()
   const overrideQuestMutation = useOverrideQuest()
+  const updateQuestMutation = useUpdateQuest()
   const deleteQuestMutation = useDeleteQuest()
   const startQuestProgressMutation = useStartQuestProgress()
 
@@ -59,8 +72,11 @@ export default function ManageQuestScreen() {
   const [description, setDescription] = useState("")
   const [duration, setDuration] = useState("1")
   const [submissionType, setSubmissionType] = useState<"text" | "image">("image")
+  const [startsAt, setStartsAt] = useState<Date | undefined>()
   const [error, setError] = useState<string>()
   const [initialized, setInitialized] = useState(false)
+
+  const isQuestAuthor = existingQuest?.authorId === user?.id
 
   useEffect(() => {
     if (!effective || initialized) return
@@ -69,6 +85,7 @@ export default function ManageQuestScreen() {
     setDuration(String(effective.duration))
     if (existingQuest) {
       setSubmissionType(existingQuest.submissionType as "text" | "image")
+      setStartsAt(existingQuest.startsAt ? new Date(existingQuest.startsAt) : undefined)
     }
     setInitialized(true)
   }, [effective, existingQuest, initialized])
@@ -97,15 +114,26 @@ export default function ManageQuestScreen() {
 
     try {
       if (isEditMode && questId) {
-        await overrideQuestMutation.mutateAsync({
-          classId,
-          questId,
-          body: {
-            name: trimmedName,
-            description: trimmedDescription,
-            duration: parsedDuration,
-          },
-        })
+        await (isQuestAuthor
+          ? updateQuestMutation.mutateAsync({
+              classId,
+              questId,
+              body: {
+                name: trimmedName,
+                description: trimmedDescription,
+                duration: parsedDuration,
+                startsAt: startsAt ? startsAt.toISOString() : undefined,
+              },
+            })
+          : overrideQuestMutation.mutateAsync({
+              classId,
+              questId,
+              body: {
+                name: trimmedName,
+                description: trimmedDescription,
+                duration: parsedDuration,
+              },
+            }))
       } else {
         const body: CreateQuestBody = {
           name: trimmedName,
@@ -113,11 +141,15 @@ export default function ManageQuestScreen() {
           type,
           submissionType,
           duration: parsedDuration,
+          startsAt: startsAt ? startsAt.toISOString() : undefined,
         }
         const createdQuests = await createQuestsMutation.mutateAsync({ classId, body: [body] })
         const createdQuestId = createdQuests[0]?.id
         if (createdQuestId) {
-          await startQuestProgressMutation.mutateAsync({ classId, questId: createdQuestId })
+          const isFuture = startsAt && startsAt.getTime() > Date.now()
+          if (!isFuture) {
+            await startQuestProgressMutation.mutateAsync({ classId, questId: createdQuestId })
+          }
         }
       }
 
@@ -227,6 +259,22 @@ export default function ManageQuestScreen() {
               keyboardType="numeric"
             />
           </View>
+
+          {(!isEditMode || type === "daily" || type === "weekly" || type === "event") && (
+            <View className="mt-md gap-sm">
+              <Text className="font-body-medium text-body-md text-ink dark:text-on-dark">
+                {pickerMode === "time" ? "Start Time" : "Start Date & Time"}
+              </Text>
+              <NativeDateTimePicker
+                value={startsAt}
+                onChange={(selectedDate) => setStartsAt(selectedDate)}
+                mode={pickerMode}
+                label={
+                  pickerMode === "time" ? "Start Time" : "Start Date & Time"
+                }
+              />
+            </View>
+          )}
 
           {!isEditMode && (
             <View className="mt-md gap-sm">

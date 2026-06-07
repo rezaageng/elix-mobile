@@ -15,6 +15,7 @@ function getEffectiveQuestValues(quest: ClassQuest) {
     name: override?.name ?? quest.name,
     description: override?.description ?? quest.description,
     duration: override?.duration ?? quest.duration,
+    startsAt: override?.startsAt ?? quest.startsAt,
   }
 }
 
@@ -30,7 +31,7 @@ export default function QuestDetailScreen() {
   const status = quest?.progress?.[0]?.status ?? "not_started"
   const completed = status === "completed"
   const canManage =
-    (quest?.type === "daily" || quest?.type === "weekly") && !completed
+    (quest?.type === "daily" || quest?.type === "weekly" || quest?.type === "event") && !completed
 
   const router = useRouter()
   const baseOptions = useHeaderOptions(effective?.name ?? "Quest")
@@ -114,6 +115,14 @@ export default function QuestDetailScreen() {
                 {(() => {
                   if (completed) return "Completed"
                   if (status === "in_progress") return "In Progress"
+                  if (effective?.startsAt) {
+                    return new Date(effective.startsAt).toLocaleString(undefined, {
+                      month: "short",
+                      day: "numeric",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })
+                  }
                   return "Not Started"
                 })()}
               </Text>
@@ -143,10 +152,19 @@ export default function QuestDetailScreen() {
               </View>
               <View>
                 <Text className="font-body text-caption text-muted dark:text-on-dark-soft">
-                  Duration
+                  {status === "not_started" && effective?.startsAt
+                    ? "Starts At"
+                    : "Duration"}
                 </Text>
                 <Text className="font-body-semibold text-body-md text-ink dark:text-on-dark">
-                  {effective?.duration ?? quest.duration}h
+                  {status === "not_started" && effective?.startsAt
+                    ? new Date(effective.startsAt).toLocaleString(undefined, {
+                        month: "short",
+                        day: "numeric",
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })
+                    : `${effective?.duration ?? quest.duration}h`}
                 </Text>
               </View>
             </View>
@@ -189,6 +207,7 @@ export default function QuestDetailScreen() {
 
           {!completed && (
             <Button
+              disabled={status === "not_started"}
               onPress={() => {
                 router.push({
                   pathname: "/quest/verify" as any,
@@ -200,7 +219,7 @@ export default function QuestDetailScreen() {
               }}
             >
               <Text className="font-body-medium text-button text-primary-foreground">
-                Submit Quest
+                {status === "not_started" ? "Not Started" : "Submit Quest"}
               </Text>
             </Button>
           )}

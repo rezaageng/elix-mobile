@@ -164,8 +164,6 @@ export default function CreateSideQuestScreen() {
     }
   }
 
-  console.log(mainQuestOptions)
-
   const renderPrerequisitePicker = (entry: SideQuestEntry) => {
     const selectedQuest = mainQuestOptions.find(
       (o) => o.id === entry.requiredQuestId

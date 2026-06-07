@@ -41,6 +41,8 @@ export const QuestSchema = z.object({
   submissionType: z.string(),
   duration: z.number().int(),
   requiredQuestId: z.uuid().nullable(),
+  authorId: z.string().nullable().optional(),
+  startsAt: z.iso.datetime().nullable().optional(),
   createdAt: z.iso.datetime(),
   updatedAt: z.iso.datetime(),
 })
@@ -64,6 +66,7 @@ export const QuestOverrideSchema = z.object({
   name: z.string().nullable().optional(),
   description: z.string().nullable().optional(),
   duration: z.number().int().nullable().optional(),
+  startsAt: z.iso.datetime().nullable().optional(),
   createdAt: z.iso.datetime(),
   updatedAt: z.iso.datetime(),
 })
@@ -214,24 +217,27 @@ export const UpdateClassBodySchema = z.object({
 export const CreateQuestBodySchema = z.object({
   name: z.string(),
   description: z.string(),
-  type: z.enum(["daily", "weekly", "main", "side"]),
+  type: z.enum(["daily", "weekly", "main", "side", "event"]),
   submissionType: z.enum(["image", "text"]),
   duration: z.number().int(),
   requiredQuestId: z.uuid().nullable().optional(),
+  startsAt: z.iso.datetime().optional().nullable(),
 })
 
 export const UpdateQuestBodySchema = z.object({
   name: z.string().optional(),
   description: z.string().optional(),
-  type: z.enum(["daily", "weekly", "main"]).optional(),
+  type: z.enum(["daily", "weekly", "main", "event"]).optional(),
   submissionType: z.enum(["image", "text"]).optional(),
   duration: z.number().int().optional(),
+  startsAt: z.iso.datetime().optional().nullable(),
 })
 
 export const OverrideQuestBodySchema = z.object({
   name: z.string().optional(),
   description: z.string().optional(),
   duration: z.number().int().optional(),
+  startsAt: z.iso.datetime().optional().nullable(),
 })
 
 export const UpdateQuestProgressBodySchema = z.object({
