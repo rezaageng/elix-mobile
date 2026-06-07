@@ -158,6 +158,7 @@ export const PublicUserSchema = z.object({
   username: z.string().nullable(),
   displayUsername: z.string().nullable(),
   image: z.string().nullable(),
+  banner: z.string().nullable().optional(),
   level: z.number().int(),
   xp: z.number().int(),
   gold: z.number().int(),

@@ -1,16 +1,16 @@
 # Graph Report - elix-mobile  (2026-06-05)
 
 ## Corpus Check
-- 82 files · ~113,562 words
+- 82 files · ~113,715 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 421 nodes · 619 edges · 40 communities (27 shown, 13 thin omitted)
-- Extraction: 95% EXTRACTED · 5% INFERRED · 0% AMBIGUOUS · INFERRED: 32 edges (avg confidence: 0.83)
+- 422 nodes · 620 edges · 42 communities (28 shown, 14 thin omitted)
+- Extraction: 95% EXTRACTED · 5% INFERRED · 0% AMBIGUOUS · INFERRED: 30 edges (avg confidence: 0.83)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `4b9c0c1d`
+- Built from commit: `4b72052a`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -42,6 +42,7 @@
 - [[_COMMUNITY_Community 26|Community 26]]
 - [[_COMMUNITY_Community 28|Community 28]]
 - [[_COMMUNITY_Community 29|Community 29]]
+- [[_COMMUNITY_Community 31|Community 31]]
 - [[_COMMUNITY_Community 32|Community 32]]
 - [[_COMMUNITY_Community 33|Community 33]]
 - [[_COMMUNITY_Community 34|Community 34]]
@@ -50,6 +51,7 @@
 - [[_COMMUNITY_Community 38|Community 38]]
 - [[_COMMUNITY_Community 39|Community 39]]
 - [[_COMMUNITY_Community 40|Community 40]]
+- [[_COMMUNITY_Community 41|Community 41]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `apiFetch()` - 40 edges
@@ -64,15 +66,15 @@
 10. `CreateQuestBody` - 6 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `QuestDetailScreen()` --calls--> `useClassQuests()`  [INFERRED]
+- `QuestScreen()` --calls--> `useClassQuests()`  [INFERRED]
+  app/(tabs)/index.tsx → lib/api/quests.ts
+- `QuestDetailScreen()` --calls--> `useDeleteQuest()`  [INFERRED]
   app/quest/[id].tsx → lib/api/quests.ts
 - `ManageQuestScreen()` --calls--> `useClassQuests()`  [INFERRED]
   app/quest/manage.tsx → lib/api/quests.ts
 - `ManageQuestScreen()` --calls--> `useCreateQuests()`  [INFERRED]
   app/quest/manage.tsx → lib/api/quests.ts
 - `ManageQuestScreen()` --calls--> `useDeleteQuest()`  [INFERRED]
-  app/quest/manage.tsx → lib/api/quests.ts
-- `ManageQuestScreen()` --calls--> `useOverrideQuest()`  [INFERRED]
   app/quest/manage.tsx → lib/api/quests.ts
 
 ## Import Cycles
@@ -85,15 +87,15 @@
 - **User State Cache Invalidation Group** — api_quests_QuestsModule, api_shop_ShopModule, api_users_UsersModule [INFERRED 0.80]
 - **Android Adaptive Icon Set** — android_icon_foreground, android_icon_background, android_icon_monochrome [EXTRACTED 1.00]
 
-## Communities (40 total, 13 thin omitted)
+## Communities (42 total, 14 thin omitted)
 
 ### Community 0 - "Community 0"
-Cohesion: 0.07
-Nodes (38): useChooseClass(), useClasses(), useCreateClass(), ApiError, FetchOptions, createQuests(), deleteQuest(), overrideQuest() (+30 more)
+Cohesion: 0.09
+Nodes (30): useClasses(), ApiError, FetchOptions, createQuests(), useClassQuests(), CreateQuestBody, Button(), ButtonProps (+22 more)
 
 ### Community 1 - "Community 1"
-Cohesion: 0.12
-Nodes (11): PaginatedMeta, PaginatedMetaSchema, PublicUser, PublicUserSchema, UserStats, UserStatsSchema, deleteAvatar(), getCurrentUser() (+3 more)
+Cohesion: 0.09
+Nodes (21): apiFetch(), approveMember(), createGuild(), getGuild(), getGuildLeaderboard(), getGuildMessages(), joinGuild(), searchGuilds() (+13 more)
 
 ### Community 2 - "Community 2"
 Cohesion: 0.04
@@ -120,12 +122,12 @@ Cohesion: 0.09
 Nodes (22): devDependencies, eslint, eslint-config-expo, @eslint/eslintrc, eslint-plugin-unicorn, @ianvs/prettier-plugin-sort-imports, prettier, prettier-plugin-tailwindcss (+14 more)
 
 ### Community 8 - "Community 8"
-Cohesion: 0.11
-Nodes (17): getClassQuests(), startQuestProgress(), updateQuestProgress(), useCreateQuests(), useOverrideQuest(), useStartQuestProgress(), ClassQuestSchema, CreateQuestBody (+9 more)
+Cohesion: 0.09
+Nodes (21): deleteQuest(), getClassQuests(), overrideQuest(), startQuestProgress(), updateQuest(), updateQuestProgress(), useCreateQuests(), useOverrideQuest() (+13 more)
 
 ### Community 9 - "Community 9"
-Cohesion: 0.29
-Nodes (11): Classes API Module, API Fetch Client, Auth Client, Button Component, Header Component, Root Navigator, Create Role Screen, Login Screen (+3 more)
+Cohesion: 0.31
+Nodes (10): Classes API Module, API Fetch Client, Auth Client, Button Component, Root Navigator, Create Role Screen, Login Screen, Profile Tab Screen (+2 more)
 
 ### Community 10 - "Community 10"
 Cohesion: 0.50
@@ -159,41 +161,45 @@ Nodes (4): Partial React Logo, React Logo, React Logo (2x), React Logo (3x)
 Cohesion: 0.67
 Nodes (3): Color Design Tokens, Tailwind Theme Configuration, useThemeColor Hook
 
+### Community 31 - "Community 31"
+Cohesion: 0.40
+Nodes (3): VerificationResult, VerificationResultSchema, submitVerification()
+
 ### Community 37 - "Community 37"
-Cohesion: 0.18
-Nodes (8): useUpdateQuestProgress(), LevelUpInfo, VerificationResult, VerificationResultSchema, submitVerification(), clearPendingCameraImageUri(), getPendingCameraImageUri(), VerifySubmissionScreen()
+Cohesion: 0.32
+Nodes (5): useUpdateQuestProgress(), LevelUpInfo, clearPendingCameraImageUri(), getPendingCameraImageUri(), VerifySubmissionScreen()
 
 ### Community 38 - "Community 38"
-Cohesion: 0.10
-Nodes (22): chooseClass(), createClass(), deleteClass(), getClass(), getClasses(), updateClass(), apiFetch(), approveMember() (+14 more)
+Cohesion: 0.09
+Nodes (18): chooseClass(), createClass(), deleteClass(), getClass(), getClasses(), updateClass(), useChooseClass(), useCreateClass() (+10 more)
 
 ### Community 39 - "Community 39"
-Cohesion: 0.13
-Nodes (20): useDeleteQuest(), ClassQuest, useCurrentUser(), QuestActionsSheet, QuestActionsSheetProps, QuestActionsSheetReference, getEffectiveQuestValues(), QuestDetailScreen() (+12 more)
+Cohesion: 0.14
+Nodes (19): useDeleteQuest(), useCurrentUser(), QuestActionsSheet, QuestActionsSheetProps, QuestActionsSheetReference, formatHours(), getDurationInfo(), getEffectiveQuestValues() (+11 more)
 
 ### Community 40 - "Community 40"
 Cohesion: 0.13
 Nodes (10): BuyItemBody, InventoryItem, InventoryItemSchema, Item, ItemSchema, UseItemBody, buyItem(), consumeItem() (+2 more)
 
 ## Knowledge Gaps
-- **179 isolated node(s):** `ErrorSchema`, `ErrorEnvelopeSchema`, `QuestOverrideSchema`, `GuildMessageUserSchema`, `BaseStatsSchema` (+174 more)
+- **179 isolated node(s):** `QuestTab`, `TABS`, `TYPE_ORDER`, `HeaderProps`, `ErrorSchema` (+174 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **13 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **14 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `apiFetch()` connect `Community 38` to `Community 0`, `Community 1`, `Community 4`, `Community 37`, `Community 8`, `Community 40`?**
+- **Why does `apiFetch()` connect `Community 1` to `Community 0`, `Community 4`, `Community 38`, `Community 8`, `Community 40`, `Community 31`?**
   _High betweenness centrality (0.037) - this node is a cross-community bridge._
 - **Why does `Classes API Module` connect `Community 9` to `Community 5`?**
-  _High betweenness centrality (0.025) - this node is a cross-community bridge._
+  _High betweenness centrality (0.023) - this node is a cross-community bridge._
 - **Why does `dependencies` connect `Community 2` to `Community 7`?**
   _High betweenness centrality (0.022) - this node is a cross-community bridge._
-- **What connects `ErrorSchema`, `ErrorEnvelopeSchema`, `QuestOverrideSchema` to the rest of the system?**
+- **What connects `QuestTab`, `TABS`, `TYPE_ORDER` to the rest of the system?**
   _179 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
-  _Cohesion score 0.06775956284153005 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.09485815602836879 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**
-  _Cohesion score 0.11764705882352941 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.09116809116809117 - nodes in this community are weakly interconnected._
 - **Should `Community 2` be split into smaller, more focused modules?**
   _Cohesion score 0.044444444444444446 - nodes in this community are weakly interconnected._

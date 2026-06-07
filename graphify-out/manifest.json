@@ -25,8 +25,8 @@
     "semantic_hash": "ff448d60c59db6d5f34839031cd72be2"
   },
   "/Users/rezaa/developments/codes/elix-mobile/app/(tabs)/index.tsx": {
-    "mtime": 1780645624.0415394,
-    "ast_hash": "635b0d199d589784b369de40e4d5ade5",
+    "mtime": 1780659188.4255524,
+    "ast_hash": "8323c9d25acbe7a2ee48821b31febab1",
     "semantic_hash": ""
   },
   "/Users/rezaa/developments/codes/elix-mobile/app/(tabs)/profile.tsx": {
@@ -80,9 +80,9 @@
     "semantic_hash": "afca96da7e19cc1a70bef894a50b9e39"
   },
   "/Users/rezaa/developments/codes/elix-mobile/components/header.tsx": {
-    "mtime": 1779267089.0238101,
-    "ast_hash": "5762453da9584d1ef24bf0981bce934e",
-    "semantic_hash": "5762453da9584d1ef24bf0981bce934e"
+    "mtime": 1780658884.6261222,
+    "ast_hash": "b7f57d8d0cd481654b86a989640d33b2",
+    "semantic_hash": ""
   },
   "/Users/rezaa/developments/codes/elix-mobile/eslint.config.mjs": {
     "mtime": 1779191951.565027,

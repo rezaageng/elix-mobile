@@ -65,6 +65,19 @@ export const deleteAvatar = async (): Promise<void> => {
   await apiFetch("/api/users/me/avatar", { method: "DELETE" }, z.void());
 };
 
+export const uploadBanner = async (formData: FormData): Promise<{ url: string }> => {
+  const data = await apiFetch(
+    "/api/users/me/banner",
+    { method: "POST", body: formData },
+    z.object({ data: z.object({ url: z.string() }) })
+  );
+  return data.data;
+};
+
+export const deleteBanner = async (): Promise<void> => {
+  await apiFetch("/api/users/me/banner", { method: "DELETE" }, z.void());
+};
+
 // ── React Query Hooks ──
 
 export const useUsers = (parameters?: { q?: string; page?: number; limit?: number }) => {
@@ -132,6 +145,26 @@ export const useDeleteAvatar = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: deleteAvatar,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["user", "me"] });
+    },
+  });
+};
+
+export const useUploadBanner = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: uploadBanner,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["user", "me"] });
+    },
+  });
+};
+
+export const useDeleteBanner = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: deleteBanner,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["user", "me"] });
     },
