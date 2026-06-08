@@ -476,20 +476,9 @@ export default function CreateRecurringQuestsScreen() {
         >
           {/* Daily Quests Section */}
           <View className="mb-lg">
-            <View className="mb-sm flex-row items-center justify-between">
-              <Text className="font-body-medium text-title-sm text-ink dark:text-on-dark">
-                Daily Quests
-              </Text>
-              <TouchableOpacity
-                onPress={() => setDailies([...dailies, newEntry()])}
-                className="flex-row items-center gap-xs rounded-md px-sm py-xs active:bg-surface-soft dark:active:bg-surface-dark-soft"
-              >
-                <Plus size={16} color={mutedColor} />
-                <Text className="font-body-medium text-body-sm text-muted dark:text-on-dark-soft">
-                  Add
-                </Text>
-              </TouchableOpacity>
-            </View>
+            <Text className="mb-sm font-body-medium text-title-sm text-ink dark:text-on-dark">
+              Daily Quests
+            </Text>
             {dailies.map((entry, index) =>
               renderQuestCard(
                 entry,
@@ -500,24 +489,22 @@ export default function CreateRecurringQuestsScreen() {
                 "time"
               )
             )}
+            <TouchableOpacity
+              onPress={() => setDailies([...dailies, newEntry()])}
+              className="mt-sm flex-row items-center justify-center gap-xs rounded-md border border-dashed border-hairline bg-surface-card py-sm dark:border-hairline-dark dark:bg-surface-dark-elevated"
+            >
+              <Plus size={16} color={mutedColor} />
+              <Text className="font-body-medium text-body-sm text-muted dark:text-on-dark-soft">
+                Add Daily Quest
+              </Text>
+            </TouchableOpacity>
           </View>
 
           {/* Weekly Quests Section */}
           <View className="mb-lg">
-            <View className="mb-sm flex-row items-center justify-between">
-              <Text className="font-body-medium text-title-sm text-ink dark:text-on-dark">
-                Weekly Quests
-              </Text>
-              <TouchableOpacity
-                onPress={() => setWeeklies([...weeklies, newEntry()])}
-                className="flex-row items-center gap-xs rounded-md px-sm py-xs active:bg-surface-soft dark:active:bg-surface-dark-soft"
-              >
-                <Plus size={16} color={mutedColor} />
-                <Text className="font-body-medium text-body-sm text-muted dark:text-on-dark-soft">
-                  Add
-                </Text>
-              </TouchableOpacity>
-            </View>
+            <Text className="mb-sm font-body-medium text-title-sm text-ink dark:text-on-dark">
+              Weekly Quests
+            </Text>
             {weeklies.map((entry, index) =>
               renderQuestCard(
                 entry,
@@ -528,24 +515,22 @@ export default function CreateRecurringQuestsScreen() {
                 "weekday"
               )
             )}
+            <TouchableOpacity
+              onPress={() => setWeeklies([...weeklies, newEntry()])}
+              className="mt-sm flex-row items-center justify-center gap-xs rounded-md border border-dashed border-hairline bg-surface-card py-sm dark:border-hairline-dark dark:bg-surface-dark-elevated"
+            >
+              <Plus size={16} color={mutedColor} />
+              <Text className="font-body-medium text-body-sm text-muted dark:text-on-dark-soft">
+                Add Weekly Quest
+              </Text>
+            </TouchableOpacity>
           </View>
 
           {/* Event Quests Section */}
           <View className="mb-lg">
-            <View className="mb-sm flex-row items-center justify-between">
-              <Text className="font-body-medium text-title-sm text-ink dark:text-on-dark">
-                Event Quests
-              </Text>
-              <TouchableOpacity
-                onPress={() => setEvents([...events, newEntry()])}
-                className="flex-row items-center gap-xs rounded-md px-sm py-xs active:bg-surface-soft dark:active:bg-surface-dark-soft"
-              >
-                <Plus size={16} color={mutedColor} />
-                <Text className="font-body-medium text-body-sm text-muted dark:text-on-dark-soft">
-                  Add
-                </Text>
-              </TouchableOpacity>
-            </View>
+            <Text className="mb-sm font-body-medium text-title-sm text-ink dark:text-on-dark">
+              Event Quests
+            </Text>
             {events.map((entry, index) =>
               renderQuestCard(
                 entry,
@@ -556,6 +541,15 @@ export default function CreateRecurringQuestsScreen() {
                 "datetime"
               )
             )}
+            <TouchableOpacity
+              onPress={() => setEvents([...events, newEntry()])}
+              className="mt-sm flex-row items-center justify-center gap-xs rounded-md border border-dashed border-hairline bg-surface-card py-sm dark:border-hairline-dark dark:bg-surface-dark-elevated"
+            >
+              <Plus size={16} color={mutedColor} />
+              <Text className="font-body-medium text-body-sm text-muted dark:text-on-dark-soft">
+                Add Event Quest
+              </Text>
+            </TouchableOpacity>
           </View>
 
           {error && (
