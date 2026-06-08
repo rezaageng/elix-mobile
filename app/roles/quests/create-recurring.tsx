@@ -217,9 +217,15 @@ export default function CreateRecurringQuestsScreen() {
       setIsPending(true)
       const operations: Promise<unknown>[] = []
 
-      // Delete removed quests
+      // Delete removed quests (authors delete, non-authors hide via override)
       for (const questId of removedIds) {
-        operations.push(deleteQuest(classId, questId))
+        const existingQuest = existingQuests?.find((q) => q.id === questId)
+        const isQuestAuthor = existingQuest?.authorId === user?.id
+        if (isQuestAuthor) {
+          operations.push(deleteQuest(classId, questId))
+        } else {
+          operations.push(overrideQuest(classId, questId, { hidden: true }))
+        }
       }
 
       if (isEditMode) {

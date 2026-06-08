@@ -67,6 +67,7 @@ export const QuestOverrideSchema = z.object({
   description: z.string().nullable().optional(),
   duration: z.number().int().nullable().optional(),
   startsAt: z.iso.datetime().nullable().optional(),
+  hidden: z.boolean().nullable().optional(),
   createdAt: z.iso.datetime(),
   updatedAt: z.iso.datetime(),
 })
@@ -238,6 +239,7 @@ export const OverrideQuestBodySchema = z.object({
   description: z.string().optional(),
   duration: z.number().int().optional(),
   startsAt: z.iso.datetime().optional().nullable(),
+  hidden: z.boolean().optional(),
 })
 
 export const UpdateQuestProgressBodySchema = z.object({

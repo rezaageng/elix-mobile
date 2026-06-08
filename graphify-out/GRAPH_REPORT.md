@@ -1,16 +1,16 @@
-# Graph Report - elix-mobile  (2026-06-07)
+# Graph Report - elix-mobile  (2026-06-08)
 
 ## Corpus Check
-- 90 files · ~116,441 words
+- 91 files · ~117,716 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 501 nodes · 734 edges · 44 communities (30 shown, 14 thin omitted)
-- Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 29 edges (avg confidence: 0.83)
+- 511 nodes · 753 edges · 44 communities (31 shown, 13 thin omitted)
+- Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 30 edges (avg confidence: 0.83)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `76d4fc02`
+- Built from commit: `5af49101`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -62,10 +62,10 @@
 4. `Button()` - 13 edges
 5. `agent` - 9 edges
 6. `useClassQuests()` - 9 edges
-7. `cn()` - 8 edges
-8. `ClassQuest` - 7 edges
-9. `scripts` - 7 edges
-10. `ManageQuestScreen()` - 7 edges
+7. `ManageQuestScreen()` - 8 edges
+8. `cn()` - 8 edges
+9. `ClassQuest` - 7 edges
+10. `scripts` - 7 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `QuestScreen()` --calls--> `useClassQuests()`  [INFERRED]
@@ -76,7 +76,7 @@
   app/quest/manage.tsx → lib/api/quests.ts
 - `ManageQuestScreen()` --calls--> `useCreateQuests()`  [INFERRED]
   app/quest/manage.tsx → lib/api/quests.ts
-- `ManageQuestScreen()` --calls--> `useOverrideQuest()`  [INFERRED]
+- `ManageQuestScreen()` --calls--> `useDeleteQuest()`  [INFERRED]
   app/quest/manage.tsx → lib/api/quests.ts
 
 ## Import Cycles
@@ -89,19 +89,19 @@
 - **User State Cache Invalidation Group** — api_quests_QuestsModule, api_shop_ShopModule, api_users_UsersModule [INFERRED 0.80]
 - **Android Adaptive Icon Set** — android_icon_foreground, android_icon_background, android_icon_monochrome [EXTRACTED 1.00]
 
-## Communities (44 total, 14 thin omitted)
+## Communities (44 total, 13 thin omitted)
 
 ### Community 0 - "Community 0"
-Cohesion: 0.09
-Nodes (34): useChooseClass(), useClasses(), useCreateClass(), ApiError, FetchOptions, createQuests(), useClassQuests(), CreateQuestBody (+26 more)
+Cohesion: 0.07
+Nodes (37): useChooseClass(), useClasses(), useCreateClass(), ApiError, FetchOptions, createQuests(), deleteQuest(), overrideQuest() (+29 more)
 
 ### Community 1 - "Community 1"
-Cohesion: 0.10
-Nodes (10): PaginatedMeta, PaginatedMetaSchema, PublicUserSchema, UserStatsSchema, deleteAvatar(), getCurrentUser(), getUser(), getUserStats() (+2 more)
+Cohesion: 0.29
+Nodes (7): scripts, android, ios, lint, reset-project, start, web
 
 ### Community 2 - "Community 2"
 Cohesion: 0.04
-Nodes (47): dependencies, better-auth, @better-auth/expo, clsx, expo, expo-camera, expo-constants, expo-font (+39 more)
+Nodes (48): dependencies, better-auth, @better-auth/expo, clsx, expo, expo-camera, expo-constants, expo-font (+40 more)
 
 ### Community 3 - "Community 3"
 Cohesion: 0.06
@@ -112,20 +112,20 @@ Cohesion: 0.09
 Nodes (12): ApproveMemberBody, CreateGuildBody, Guild, GuildLeaderboardEntry, GuildLeaderboardEntrySchema, GuildMember, GuildMemberRecord, GuildMemberRecordSchema (+4 more)
 
 ### Community 5 - "Community 5"
-Cohesion: 0.09
-Nodes (21): ApiErrorData, ApiErrorEnvelope, ApproveMemberBodySchema, BaseStatsSchema, BuyItemBodySchema, CreateClassBodySchema, CreateGuildBodySchema, CreateQuestBodySchema (+13 more)
+Cohesion: 0.10
+Nodes (18): ApiErrorData, ApiErrorEnvelope, ApproveMemberBodySchema, BaseStatsSchema, BuyItemBodySchema, CreateClassBodySchema, CreateGuildBodySchema, CreateQuestBodySchema (+10 more)
 
 ### Community 6 - "Community 6"
 Cohesion: 0.07
 Nodes (26): backgroundColor, backgroundImage, foregroundImage, monochromeImage, adaptiveIcon, edgeToEdgeEnabled, predictiveBackGestureEnabled, reactCompiler (+18 more)
 
 ### Community 7 - "Community 7"
-Cohesion: 0.09
-Nodes (22): devDependencies, eslint, eslint-config-expo, @eslint/eslintrc, eslint-plugin-unicorn, @ianvs/prettier-plugin-sort-imports, prettier, prettier-plugin-tailwindcss (+14 more)
+Cohesion: 0.18
+Nodes (11): devDependencies, eslint, eslint-config-expo, @eslint/eslintrc, eslint-plugin-unicorn, @ianvs/prettier-plugin-sort-imports, prettier, prettier-plugin-tailwindcss (+3 more)
 
 ### Community 8 - "Community 8"
-Cohesion: 0.12
-Nodes (13): deleteQuest(), overrideQuest(), startQuestProgress(), updateQuestProgress(), ClassQuestSchema, LevelUpInfoSchema, OverrideQuestBody, Quest (+5 more)
+Cohesion: 0.07
+Nodes (28): getClassQuests(), startQuestProgress(), updateQuest(), updateQuestProgress(), useCreateQuests(), useOverrideQuest(), useStartQuestProgress(), useUpdateQuest() (+20 more)
 
 ### Community 9 - "Community 9"
 Cohesion: 0.33
@@ -165,51 +165,55 @@ Nodes (3): Color Design Tokens, Tailwind Theme Configuration, useThemeColor Hook
 
 ### Community 31 - "Community 31"
 Cohesion: 0.05
-Nodes (37): agent, council, designer, explorer, fixer, librarian, observer, oracle (+29 more)
+Nodes (38): agent, council, designer, explorer, fixer, librarian, observer, oracle (+30 more)
 
 ### Community 37 - "Community 37"
-Cohesion: 0.32
-Nodes (5): useUpdateQuestProgress(), LevelUpInfo, clearPendingCameraImageUri(), getPendingCameraImageUri(), VerifySubmissionScreen()
+Cohesion: 0.40
+Nodes (3): VerificationResult, VerificationResultSchema, submitVerification()
 
 ### Community 38 - "Community 38"
-Cohesion: 0.10
-Nodes (22): chooseClass(), createClass(), deleteClass(), getClass(), getClasses(), updateClass(), apiFetch(), approveMember() (+14 more)
+Cohesion: 0.11
+Nodes (20): chooseClass(), createClass(), deleteClass(), getClass(), getClasses(), updateClass(), apiFetch(), approveMember() (+12 more)
 
 ### Community 39 - "Community 39"
-Cohesion: 0.10
-Nodes (26): useCreateQuests(), useDeleteQuest(), useOverrideQuest(), useStartQuestProgress(), ClassQuest, QuestActionsSheet, QuestActionsSheetProps, QuestActionsSheetReference (+18 more)
+Cohesion: 0.12
+Nodes (23): useDeleteQuest(), ClassQuest, QuestActionsSheet, QuestActionsSheetProps, QuestActionsSheetReference, getEffectiveQuestValues(), QuestDetailScreen(), formatHours() (+15 more)
 
 ### Community 40 - "Community 40"
 Cohesion: 0.13
 Nodes (10): BuyItemBody, InventoryItem, InventoryItemSchema, Item, ItemSchema, UseItemBody, buyItem(), consumeItem() (+2 more)
 
+### Community 41 - "Community 41"
+Cohesion: 0.40
+Nodes (4): main, name, private, version
+
 ### Community 42 - "Community 42"
-Cohesion: 0.09
-Nodes (21): Class, PublicUser, UserStats, useCurrentUser(), useUserStats(), ProfileSettings, SettingsSchema, useProfileSettings() (+13 more)
+Cohesion: 0.05
+Nodes (31): Class, PaginatedMeta, PaginatedMetaSchema, PublicUser, PublicUserSchema, UserStats, UserStatsSchema, deleteAvatar() (+23 more)
 
 ### Community 43 - "Community 43"
 Cohesion: 0.40
 Nodes (4): BaseStats, PeriodKey, periodLabels, StatsLineChartProps
 
 ## Knowledge Gaps
-- **215 isolated node(s):** `TabKey`, `PeriodKey`, `periodLabels`, `PeriodFilter`, `filters` (+210 more)
+- **220 isolated node(s):** `QuestTab`, `TABS`, `TYPE_ORDER`, `QuestEntry`, `SideQuestEntry` (+215 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **14 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **13 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `apiFetch()` connect `Community 38` to `Community 0`, `Community 1`, `Community 4`, `Community 5`, `Community 8`, `Community 40`, `Community 42`?**
-  _High betweenness centrality (0.035) - this node is a cross-community bridge._
+- **Why does `apiFetch()` connect `Community 38` to `Community 0`, `Community 4`, `Community 37`, `Community 8`, `Community 40`, `Community 42`?**
+  _High betweenness centrality (0.034) - this node is a cross-community bridge._
 - **Why does `Classes API Module` connect `Community 9` to `Community 5`?**
   _High betweenness centrality (0.017) - this node is a cross-community bridge._
-- **Why does `dependencies` connect `Community 2` to `Community 7`?**
+- **Why does `dependencies` connect `Community 2` to `Community 41`?**
   _High betweenness centrality (0.017) - this node is a cross-community bridge._
-- **What connects `TabKey`, `PeriodKey`, `periodLabels` to the rest of the system?**
-  _215 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `QuestTab`, `TABS`, `TYPE_ORDER` to the rest of the system?**
+  _220 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
-  _Cohesion score 0.08705882352941176 - nodes in this community are weakly interconnected._
-- **Should `Community 1` be split into smaller, more focused modules?**
-  _Cohesion score 0.09523809523809523 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06954997077732321 - nodes in this community are weakly interconnected._
 - **Should `Community 2` be split into smaller, more focused modules?**
-  _Cohesion score 0.0425531914893617 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.041666666666666664 - nodes in this community are weakly interconnected._
+- **Should `Community 3` be split into smaller, more focused modules?**
+  _Cohesion score 0.06060606060606061 - nodes in this community are weakly interconnected._
