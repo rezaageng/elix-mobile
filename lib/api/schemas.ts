@@ -84,6 +84,10 @@ export const LevelUpInfoSchema = z.object({
   to: z.number().int(),
 })
 
+// ── Shared ──
+
+export const ImageUrlSchema = z.string().url()
+
 // ── Guilds ──
 
 export const GuildSchema = z.object({
@@ -98,7 +102,7 @@ export const GuildSchema = z.object({
 export const GuildMemberSchema = z.object({
   id: z.uuid(),
   name: z.string(),
-  image: z.string().nullable(),
+  image: ImageUrlSchema.nullable(),
   role: z.string(),
   status: z.string(),
 })
@@ -115,7 +119,7 @@ export const GuildMessageUserSchema = z.object({
   id: z.uuid(),
   name: z.string(),
   username: z.string(),
-  image: z.string().nullable(),
+  image: ImageUrlSchema.nullable(),
 })
 
 export const GuildMessageSchema = z.object({
@@ -130,7 +134,7 @@ export const GuildLeaderboardEntrySchema = z.object({
   id: z.string(),
   name: z.string(),
   username: z.string(),
-  image: z.string().nullable(),
+  image: ImageUrlSchema.nullable(),
   expThisWeek: z.number().int(),
 })
 
@@ -161,8 +165,8 @@ export const PublicUserSchema = z.object({
   name: z.string(),
   username: z.string().nullable(),
   displayUsername: z.string().nullable(),
-  image: z.string().nullable(),
-  banner: z.string().nullable().optional(),
+  image: ImageUrlSchema.nullable(),
+  banner: ImageUrlSchema.nullable().optional(),
   level: z.number().int(),
   xp: z.number().int(),
   gold: z.number().int(),

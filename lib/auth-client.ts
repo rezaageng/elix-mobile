@@ -1,6 +1,9 @@
 import { expoClient } from "@better-auth/expo/client"
 import { createAuthClient } from "better-auth/react"
-import { inferAdditionalFields } from "better-auth/client/plugins"
+import {
+  inferAdditionalFields,
+  usernameClient,
+} from "better-auth/client/plugins"
 import * as SecureStore from "expo-secure-store"
 
 export const authClient = createAuthClient({
@@ -11,6 +14,7 @@ export const authClient = createAuthClient({
       storagePrefix: "auth",
       storage: SecureStore,
     }),
+    usernameClient(),
     inferAdditionalFields({
       user: {
         activeClassId: {

@@ -1,4 +1,8 @@
 export { ActivityTab, CollectionsTab } from "@/components/profile/tabs-section"
 export { AvatarSection } from "@/components/profile/avatar-section"
+export { EditProfileSheet, type EditProfileSheetReference } from "@/components/profile/edit-profile-sheet"
+export { ImagePickerSheet, type ImagePickerSheetReference } from "@/components/profile/image-picker-sheet"
+export { ImageViewerModal } from "@/components/profile/image-viewer-modal"
+export { ProfileHeader } from "@/components/profile/profile-header"
 export { SettingsSheet, type SettingsSheetReference } from "@/components/profile/settings-sheet"
 export { StatsSection } from "@/components/profile/stats-section"

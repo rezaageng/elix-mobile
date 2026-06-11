@@ -1,7 +1,9 @@
-import { useRef, useState } from "react"
-import { Image } from "expo-image"
+import { useCallback, useRef, useState } from "react"
+import { useQueryClient } from "@tanstack/react-query"
+import * as ImagePicker from "expo-image-picker"
 import { Pencil, Settings } from "lucide-react-native"
 import {
+  Alert,
   Animated,
   RefreshControl,
   Text,
@@ -11,15 +13,28 @@ import {
 } from "react-native"
 import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context"
 
-import { useClassQuests, useCurrentUser, useUserStats } from "@/lib/api"
+import {
+  useClassQuests,
+  useCurrentUser,
+  useUploadAvatar,
+  useUploadBanner,
+  useUserStats,
+} from "@/lib/api"
 import type { Class, ClassQuest, UserStats } from "@/lib/api/schemas"
+import { authClient } from "@/lib/auth-client"
 import { useProfileSettings, type ProfileSettings } from "@/lib/settings-store"
 import {
   ActivityTab,
   AvatarSection,
   CollectionsTab,
+  EditProfileSheet,
+  ImagePickerSheet,
+  ImageViewerModal,
+  ProfileHeader,
   SettingsSheet,
   StatsSection,
+  type EditProfileSheetReference,
+  type ImagePickerSheetReference,
   type SettingsSheetReference,
 } from "@/components/profile"
 
@@ -27,6 +42,7 @@ const BANNER_HEIGHT = 150
 const HEADER_THRESHOLD = 100
 
 type TabKey = "stats" | "activity" | "collections"
+type ImageTarget = "avatar" | "banner"
 
 export default function ProfileScreen() {
   const {
@@ -44,7 +60,23 @@ export default function ProfileScreen() {
   const { data: settings } = useProfileSettings()
   const [activeTab, setActiveTab] = useState<TabKey>("stats")
   const settingsSheetReference = useRef<SettingsSheetReference>(null)
+  const editProfileSheetReference = useRef<EditProfileSheetReference>(null)
+  const avatarPickerReference = useRef<ImagePickerSheetReference>(null)
+  const bannerPickerReference = useRef<ImagePickerSheetReference>(null)
   const scrollY = useRef(new Animated.Value(0)).current
+
+  const [viewerImage, setViewerImage] = useState<string | undefined>()
+  const [viewerVisible, setViewerVisible] = useState(false)
+  const [viewerTarget, setViewerTarget] = useState<ImageTarget>("avatar")
+
+  const [pendingAvatarUri, setPendingAvatarUri] = useState<string | undefined>()
+  const [pendingBannerUri, setPendingBannerUri] = useState<string | undefined>()
+  const imagePickMode = useRef<"immediate" | "deferred">("immediate")
+
+  const uploadAvatar = useUploadAvatar()
+  const uploadBanner = useUploadBanner()
+  const queryClient = useQueryClient()
+  const [isUpdatingProfile, setIsUpdatingProfile] = useState(false)
 
   const onRefresh = async () => {
     setRefreshing(true)
@@ -70,6 +102,167 @@ export default function ProfileScreen() {
     extrapolate: "clamp",
   })
 
+  const openImageViewer = useCallback(
+    (target: ImageTarget, uri: string | undefined) => {
+      if (!uri) return
+      setViewerTarget(target)
+      setViewerImage(uri)
+      setViewerVisible(true)
+    },
+    []
+  )
+
+  const closeImageViewer = useCallback(() => {
+    setViewerVisible(false)
+    setViewerImage(undefined)
+  }, [])
+
+  const handleUploadImage = useCallback(
+    async (target: ImageTarget, uri: string) => {
+      const filename = uri.split("/").pop() ?? "photo.jpg"
+      const match = /\.\w+$/.exec(filename)
+      const type = match ? `image/${match[0].slice(1)}` : "image/jpeg"
+
+      const formData = new FormData()
+      formData.append("image", {
+        uri,
+        name: filename,
+        type,
+      } as unknown as Blob)
+
+      try {
+        const mutation = target === "avatar" ? uploadAvatar : uploadBanner
+        await mutation.mutateAsync(formData)
+      } catch {
+        Alert.alert(
+          "Upload Failed",
+          `Failed to upload ${target}. Please try again.`
+        )
+      }
+    },
+    [uploadAvatar, uploadBanner]
+  )
+
+  const handlePickFromGallery = useCallback(
+    async (target: ImageTarget) => {
+      const result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ["images"],
+        allowsEditing: true,
+        aspect: target === "avatar" ? [1, 1] : [16, 9],
+        quality: 0.8,
+      })
+      if (!result.canceled && result.assets && result.assets.length > 0) {
+        const uri = result.assets[0]?.uri
+        if (uri) {
+          if (imagePickMode.current === "deferred") {
+            if (target === "avatar") {
+              setPendingAvatarUri(uri)
+              avatarPickerReference.current?.dismiss()
+            } else {
+              setPendingBannerUri(uri)
+              bannerPickerReference.current?.dismiss()
+            }
+          } else {
+            if (target === "avatar") avatarPickerReference.current?.dismiss()
+            else bannerPickerReference.current?.dismiss()
+            await handleUploadImage(target, uri)
+          }
+        }
+      }
+    },
+    [handleUploadImage]
+  )
+
+  const handleTakePhoto = useCallback(
+    async (target: ImageTarget) => {
+      const permission = await ImagePicker.requestCameraPermissionsAsync()
+      if (!permission.granted) {
+        Alert.alert(
+          "Camera Permission",
+          "Camera permission is required to take photos."
+        )
+        return
+      }
+      const result = await ImagePicker.launchCameraAsync({
+        allowsEditing: true,
+        aspect: target === "avatar" ? [1, 1] : [16, 9],
+        quality: 0.8,
+      })
+      if (!result.canceled && result.assets && result.assets.length > 0) {
+        const uri = result.assets[0]?.uri
+        if (uri) {
+          if (imagePickMode.current === "deferred") {
+            if (target === "avatar") {
+              setPendingAvatarUri(uri)
+              avatarPickerReference.current?.dismiss()
+            } else {
+              setPendingBannerUri(uri)
+              bannerPickerReference.current?.dismiss()
+            }
+          } else {
+            if (target === "avatar") avatarPickerReference.current?.dismiss()
+            else bannerPickerReference.current?.dismiss()
+            await handleUploadImage(target, uri)
+          }
+        }
+      }
+    },
+    [handleUploadImage]
+  )
+
+  const handleEditProfile = useCallback(() => {
+    imagePickMode.current = "deferred"
+    editProfileSheetReference.current?.present()
+  }, [])
+
+  const handleSaveProfile = useCallback(
+    async (data: {
+      name: string
+      username: string
+      avatarUri?: string
+      bannerUri?: string
+    }) => {
+      setIsUpdatingProfile(true)
+      try {
+        const body: { name?: string; username?: string } = {}
+        if (data.name !== user?.name) body.name = data.name
+        if (data.username !== (user?.username ?? ""))
+          body.username = data.username || undefined
+
+        if (Object.keys(body).length > 0) {
+          const result = await authClient.updateUser(body)
+          if (result.error) {
+            Alert.alert(
+              "Update Failed",
+              result.error.message || "Failed to update profile."
+            )
+            return
+          }
+        }
+
+        if (data.avatarUri) {
+          await handleUploadImage("avatar", data.avatarUri)
+        }
+        if (data.bannerUri) {
+          await handleUploadImage("banner", data.bannerUri)
+        }
+
+        await queryClient.invalidateQueries({ queryKey: ["user", "me"] })
+        editProfileSheetReference.current?.dismiss()
+      } catch {
+        Alert.alert(
+          "Update Failed",
+          "Failed to update profile. Please try again."
+        )
+      } finally {
+        setIsUpdatingProfile(false)
+        setPendingAvatarUri(undefined)
+        setPendingBannerUri(undefined)
+      }
+    },
+    [user, queryClient, handleUploadImage]
+  )
+
   const isLoading = userLoading || statsLoading
 
   if (isLoading && !user) {
@@ -94,49 +287,6 @@ export default function ProfileScreen() {
 
   return (
     <View className="flex-1 bg-canvas dark:bg-surface-dark">
-      {/* Floating Header */}
-      <View
-        className="absolute left-0 right-0 top-0 z-50"
-        style={{ paddingTop: insets.top }}
-      >
-        <Animated.View
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: headerBackground,
-          }}
-        />
-
-        <View className="flex-row items-center justify-between px-4 py-3">
-          <Animated.Text
-            className="font-display text-display-sm text-ink dark:text-on-dark"
-            style={{ opacity: headerOpacity }}
-          >
-            {user.displayUsername ?? user.username ?? user.name}
-          </Animated.Text>
-
-          <View className="flex-row items-center gap-2">
-            <TouchableOpacity
-              className="rounded-full bg-black/20 p-2"
-              activeOpacity={0.7}
-            >
-              <Pencil size={20} color="#ffffff" />
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              onPress={() => settingsSheetReference.current?.present()}
-              className="rounded-full bg-black/20 p-2"
-              activeOpacity={0.7}
-            >
-              <Settings size={20} color="#ffffff" />
-            </TouchableOpacity>
-          </View>
-        </View>
-      </View>
-
       <Animated.ScrollView
         refreshControl={
           <RefreshControl
@@ -154,41 +304,16 @@ export default function ProfileScreen() {
         )}
         scrollEventThrottle={16}
       >
-        {/* Full-width Banner */}
-        <View style={{ height: BANNER_HEIGHT }}>
-          {user.banner ? (
-            <Image
-              source={{ uri: user.banner }}
-              style={{ width: "100%", height: BANNER_HEIGHT }}
-              contentFit="cover"
-              transition={200}
-            />
-          ) : (
-            <View className="h-full w-full bg-primary" />
-          )}
-        </View>
-
-        {/* Avatar overlapping banner */}
-        <View className="px-4">
-          <View className="relative" style={{ marginTop: -40 }}>
-            <View className="h-20 w-20 overflow-hidden rounded-full border-4 border-canvas dark:border-surface-dark">
-              {user.image ? (
-                <Image
-                  source={{ uri: user.image }}
-                  style={{ width: 80, height: 80 }}
-                  contentFit="cover"
-                  transition={200}
-                />
-              ) : (
-                <View className="h-full w-full items-center justify-center bg-surface-card dark:bg-surface-dark">
-                  <Text className="font-display text-display-md text-ink dark:text-on-dark">
-                    {user.name.charAt(0).toUpperCase()}
-                  </Text>
-                </View>
-              )}
-            </View>
-          </View>
-        </View>
+        <ProfileHeader
+          user={user}
+          bannerHeight={BANNER_HEIGHT}
+          onBannerPress={() =>
+            openImageViewer("banner", user.banner ?? undefined)
+          }
+          onAvatarPress={() =>
+            openImageViewer("avatar", user.image ?? undefined)
+          }
+        />
 
         {/* Profile Info */}
         <AvatarSection
@@ -233,8 +358,92 @@ export default function ProfileScreen() {
         <View className="h-8" />
       </Animated.ScrollView>
 
+      {/* Full-width header background + title - fades in on scroll */}
+      <Animated.View
+        className="absolute left-0 right-0 top-0"
+        style={{
+          paddingTop: insets.top,
+          opacity: headerOpacity,
+          backgroundColor: headerBackground,
+          zIndex: 40,
+        }}
+      >
+        <View className="flex-row items-center justify-between px-4 py-3">
+          <Text className="font-display text-display-sm text-ink dark:text-on-dark">
+            {user.displayUsername ?? user.username ?? user.name}
+          </Text>
+          <View className="w-24" />
+        </View>
+      </Animated.View>
+
+      {/* Buttons - always visible, hug content on the right */}
+      <View
+        className="absolute right-0 top-0"
+        style={{ paddingTop: insets.top, zIndex: 50 }}
+      >
+        <View className="flex-row items-center gap-2 px-4 py-3">
+          <TouchableOpacity
+            onPress={handleEditProfile}
+            className="rounded-full bg-black/20 p-2"
+            activeOpacity={0.7}
+          >
+            <Pencil size={20} color="#ffffff" />
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => settingsSheetReference.current?.present()}
+            className="rounded-full bg-black/20 p-2"
+            activeOpacity={0.7}
+          >
+            <Settings size={20} color="#ffffff" />
+          </TouchableOpacity>
+        </View>
+      </View>
+
       {/* Settings Sheet */}
       <SettingsSheet ref={settingsSheetReference} />
+
+      {/* Edit Profile Sheet */}
+      <EditProfileSheet
+        ref={editProfileSheetReference}
+        user={user}
+        pendingAvatarUri={pendingAvatarUri}
+        pendingBannerUri={pendingBannerUri}
+        onSave={handleSaveProfile}
+        onChangeAvatar={() => avatarPickerReference.current?.present()}
+        onChangeBanner={() => bannerPickerReference.current?.present()}
+        isLoading={isUpdatingProfile}
+      />
+
+      {/* Avatar Picker Sheet */}
+      <ImagePickerSheet
+        ref={avatarPickerReference}
+        onTakePhoto={() => handleTakePhoto("avatar")}
+        onPickFromGallery={() => handlePickFromGallery("avatar")}
+      />
+
+      {/* Banner Picker Sheet */}
+      <ImagePickerSheet
+        ref={bannerPickerReference}
+        onTakePhoto={() => handleTakePhoto("banner")}
+        onPickFromGallery={() => handlePickFromGallery("banner")}
+      />
+
+      {/* Image Viewer Modal */}
+      <ImageViewerModal
+        visible={viewerVisible}
+        uri={viewerImage}
+        onClose={closeImageViewer}
+        onEdit={() => {
+          closeImageViewer()
+          imagePickMode.current = "immediate"
+          if (viewerTarget === "avatar") {
+            avatarPickerReference.current?.present()
+          } else {
+            bannerPickerReference.current?.present()
+          }
+        }}
+      />
     </View>
   )
 }
