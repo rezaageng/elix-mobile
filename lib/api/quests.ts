@@ -29,6 +29,17 @@ export const getClassQuests = async (classId: string): Promise<ClassQuest[]> => 
   return data.data;
 };
 
+export const getClassQuestsForAuthoring = async (
+  classId: string
+): Promise<ClassQuest[]> => {
+  const data = await apiFetch(
+    `/api/classes/${classId}/quests?authoring=true`,
+    { method: "GET" },
+    z.object({ data: z.array(ClassQuestSchema) })
+  );
+  return data.data;
+};
+
 export const createQuests = async (
   classId: string,
   body: CreateQuestBody[]
@@ -109,6 +120,15 @@ export const useClassQuests = (classId: string) => {
   return useQuery({
     queryKey: ["classes", classId, "quests"],
     queryFn: () => getClassQuests(classId),
+    enabled: !!classId,
+    staleTime: 0,
+  });
+};
+
+export const useClassQuestsForAuthoring = (classId: string) => {
+  return useQuery({
+    queryKey: ["classes", classId, "quests", "authoring"],
+    queryFn: () => getClassQuestsForAuthoring(classId),
     enabled: !!classId,
     staleTime: 0,
   });

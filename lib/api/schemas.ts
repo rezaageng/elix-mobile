@@ -19,6 +19,7 @@ export const ClassSchema = z.object({
   name: z.string(),
   description: z.string(),
   requirements: z.record(z.string(), z.unknown()).nullable().optional(),
+  authorId: z.string(),
   createdAt: z.iso.datetime(),
   updatedAt: z.iso.datetime(),
 })
@@ -232,9 +233,10 @@ export const CreateQuestBodySchema = z.object({
 export const UpdateQuestBodySchema = z.object({
   name: z.string().optional(),
   description: z.string().optional(),
-  type: z.enum(["daily", "weekly", "main", "event"]).optional(),
+  type: z.enum(["daily", "weekly", "main", "side", "event"]).optional(),
   submissionType: z.enum(["image", "text"]).optional(),
   duration: z.number().int().optional(),
+  requiredQuestId: z.uuid().nullable().optional(),
   startsAt: z.iso.datetime().optional().nullable(),
 })
 

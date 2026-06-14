@@ -57,7 +57,10 @@ function getZodErrorMessage(error: unknown): string | undefined {
 }
 
 export default function CreateMainQuestScreen() {
-  const { classId } = useLocalSearchParams<{ classId: string }>()
+  const { classId, returnTo } = useLocalSearchParams<{
+    classId: string
+    returnTo?: string
+  }>()
   const queryClient = useQueryClient()
   const router = useRouter()
 
@@ -135,7 +138,11 @@ export default function CreateMainQuestScreen() {
 
         router.replace({
           pathname: "/roles/quests/create-side",
-          params: { classId, mainQuestIds: createdIds.join(",") },
+          params: {
+            classId,
+            mainQuestIds: createdIds.join(","),
+            ...(returnTo ? { returnTo } : {}),
+          },
         })
       } catch (catchedError) {
         setError(

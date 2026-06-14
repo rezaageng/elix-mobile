@@ -1,7 +1,12 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useMemo, useRef, useState } from "react"
+import {
+  BottomSheetBackdrop,
+  BottomSheetModal,
+  BottomSheetView,
+} from "@gorhom/bottom-sheet"
 import { useForm } from "@tanstack/react-form"
 import { Stack, useLocalSearchParams, useRouter } from "expo-router"
-import { ChevronLeft } from "lucide-react-native"
+import { ChevronDown, ChevronLeft } from "lucide-react-native"
 import {
   ActivityIndicator,
   Alert,
@@ -16,16 +21,16 @@ import { SafeAreaView } from "react-native-safe-area-context"
 import { z } from "zod"
 
 import {
-  useClassQuests,
+  useClassQuestsForAuthoring,
   useCreateQuests,
   useCurrentUser,
   useDeleteQuest,
   useOverrideQuest,
-  useStartQuestProgress,
   useUpdateQuest,
 } from "@/lib/api"
 import type { ClassQuest, CreateQuestBody } from "@/lib/api/schemas"
 import { useHeaderOptions } from "@/lib/header-options"
+import { useThemeColor } from "@/lib/use-theme-color"
 import { Button } from "@/components/button"
 import { NativeDateTimePicker } from "@/components/native-datetime-picker"
 
@@ -50,6 +55,7 @@ const questSchema = z.object({
     { message: "Duration must be a positive integer" }
   ),
   submissionType: z.enum(["text", "image"]),
+  requiredQuestId: z.string().optional(),
   startsAt: z.date().optional(),
 })
 
@@ -77,22 +83,34 @@ function getZodErrorMessage(error: unknown): string | undefined {
 export default function ManageQuestScreen() {
   const { classId, type, questId } = useLocalSearchParams<{
     classId: string
-    type: "daily" | "weekly" | "event"
+    type: "main" | "side" | "daily" | "weekly" | "event"
     questId?: string
   }>()
 
   const isEditMode = !!questId
   const { data: user } = useCurrentUser()
-  const { data: quests } = useClassQuests(classId)
+  const { data: quests } = useClassQuestsForAuthoring(classId)
   const existingQuest = quests?.find((q) => q.id === questId)
   const effective = existingQuest
     ? getEffectiveQuestValues(existingQuest)
     : undefined
 
+  const mainQuestOptions = useMemo(() => {
+    if (!quests) return []
+    return quests
+      .filter((quest) => quest.type === "main")
+      .map((quest) => ({ id: quest.id, name: quest.name }))
+  }, [quests])
+
   const router = useRouter()
   const headerOptions = useHeaderOptions(
     isEditMode ? "Edit Quest" : `New ${type} quest`
   )
+  const foregroundColor = useThemeColor("foreground")
+  const mutedColor = useThemeColor("muted")
+  const surfaceCardColor = useThemeColor("surface-card")
+
+  const prereqSheetReference = useRef<BottomSheetModal>(null)
 
   function getPickerMode(): "time" | "datetime" | "weekday" {
     if (type === "daily") return "time"
@@ -106,7 +124,6 @@ export default function ManageQuestScreen() {
   const overrideQuestMutation = useOverrideQuest()
   const updateQuestMutation = useUpdateQuest()
   const deleteQuestMutation = useDeleteQuest()
-  const startQuestProgressMutation = useStartQuestProgress()
 
   const [error, setError] = useState<string>()
   const [initialized, setInitialized] = useState(false)
@@ -119,6 +136,7 @@ export default function ManageQuestScreen() {
       description: "",
       duration: "1",
       submissionType: "image" as "text" | "image",
+      requiredQuestId: undefined as string | undefined,
       startsAt: undefined as Date | undefined,
     },
     validators: {
@@ -157,6 +175,9 @@ export default function ManageQuestScreen() {
                   name: trimmedName,
                   description: trimmedDescription,
                   duration: parsedDuration,
+                  requiredQuestId:
+                    // eslint-disable-next-line unicorn/no-null
+                    type === "side" ? value.requiredQuestId ?? null : undefined,
                   startsAt: value.startsAt
                     ? value.startsAt.toISOString()
                     : undefined,
@@ -178,23 +199,15 @@ export default function ManageQuestScreen() {
             type,
             submissionType: value.submissionType,
             duration: parsedDuration,
+            requiredQuestId:
+              // eslint-disable-next-line unicorn/no-null
+              type === "side" ? value.requiredQuestId ?? null : undefined,
             startsAt: value.startsAt ? value.startsAt.toISOString() : undefined,
           }
-          const createdQuests = await createQuestsMutation.mutateAsync({
+          await createQuestsMutation.mutateAsync({
             classId,
             body: [body],
           })
-          const createdQuestId = createdQuests[0]?.id
-          if (createdQuestId) {
-            const isFuture =
-              value.startsAt && value.startsAt.getTime() > Date.now()
-            if (!isFuture) {
-              await startQuestProgressMutation.mutateAsync({
-                classId,
-                questId: createdQuestId,
-              })
-            }
-          }
         }
 
         router.back()
@@ -209,6 +222,10 @@ export default function ManageQuestScreen() {
   })
 
   useEffect(() => {
+    setInitialized(false)
+  }, [questId])
+
+  useEffect(() => {
     if (!effective || initialized) return
     form.setFieldValue("name", effective.name)
     form.setFieldValue("description", effective.description)
@@ -217,6 +234,10 @@ export default function ManageQuestScreen() {
       form.setFieldValue(
         "submissionType",
         existingQuest.submissionType as "text" | "image"
+      )
+      form.setFieldValue(
+        "requiredQuestId",
+        existingQuest.requiredQuestId ?? undefined
       )
       form.setFieldValue(
         "startsAt",
@@ -229,8 +250,31 @@ export default function ManageQuestScreen() {
   const isPending =
     createQuestsMutation.isPending ||
     overrideQuestMutation.isPending ||
-    deleteQuestMutation.isPending ||
-    startQuestProgressMutation.isPending
+    deleteQuestMutation.isPending
+
+  const openPrereqSheet = () => {
+    prereqSheetReference.current?.present()
+  }
+
+  const selectPrereq = (questId_: string) => {
+    form.setFieldValue(
+      "requiredQuestId",
+      questId_ || undefined
+    )
+    prereqSheetReference.current?.dismiss()
+  }
+
+  const renderBackdrop = useCallback(
+    (props: any) => (
+      <BottomSheetBackdrop
+        {...props}
+        disappearsOnIndex={-1}
+        appearsOnIndex={0}
+        pressBehavior="close"
+      />
+    ),
+    []
+  )
 
   const handleDelete = () => {
     if (!questId) return
@@ -371,7 +415,9 @@ export default function ManageQuestScreen() {
             {(field) => (
               <View className="mt-md gap-sm">
                 <Text className="font-body-medium text-body-md text-ink dark:text-on-dark">
-                  Duration (hours)
+                  {type === "main" || type === "side"
+                    ? "Duration (days)"
+                    : "Duration (hours)"}
                 </Text>
                 <TextInput
                   className="rounded-md border border-hairline bg-canvas px-sm py-1.5 font-body text-md text-ink dark:border-hairline dark:bg-surface-dark dark:text-on-dark"
@@ -392,8 +438,7 @@ export default function ManageQuestScreen() {
             )}
           </form.Field>
 
-          {(!isEditMode ||
-            type === "daily" ||
+          {(type === "daily" ||
             type === "weekly" ||
             type === "event") && (
             <form.Field name="startsAt">
@@ -451,6 +496,42 @@ export default function ManageQuestScreen() {
             </form.Field>
           )}
 
+          {type === "side" && (
+            <form.Field name="requiredQuestId">
+              {(field) => {
+                const selectedQuest = mainQuestOptions.find(
+                  (option) => option.id === field.state.value
+                )
+
+                return (
+                  <View className="mt-md gap-sm">
+                    <Text className="font-body-medium text-body-md text-ink dark:text-on-dark">
+                      Prerequisite
+                    </Text>
+                    <TouchableOpacity
+                      onPress={openPrereqSheet}
+                      className="flex-row items-center justify-between rounded-md border border-hairline bg-canvas px-sm py-1.5 dark:border-hairline dark:bg-surface-dark"
+                    >
+                      <Text
+                        className={`font-body text-md ${
+                          selectedQuest
+                            ? "text-ink dark:text-on-dark"
+                            : "text-muted-soft"
+                        }`}
+                        numberOfLines={1}
+                      >
+                        {selectedQuest
+                          ? selectedQuest.name
+                          : "Select a main quest"}
+                      </Text>
+                      <ChevronDown size={16} color={foregroundColor} />
+                    </TouchableOpacity>
+                  </View>
+                )
+              }}
+            </form.Field>
+          )}
+
           {error && (
             <Text className="mt-md font-body text-body-sm text-error">
               {error}
@@ -489,6 +570,73 @@ export default function ManageQuestScreen() {
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
+
+      <BottomSheetModal
+        ref={prereqSheetReference}
+        index={0}
+        snapPoints={["40%"]}
+        backdropComponent={renderBackdrop}
+        enablePanDownToClose
+        handleIndicatorStyle={{
+          backgroundColor: mutedColor,
+          width: 40,
+          height: 4,
+          borderRadius: 2,
+        }}
+        backgroundStyle={{
+          backgroundColor: surfaceCardColor,
+        }}
+      >
+        <BottomSheetView
+          className="flex-1"
+          style={{ backgroundColor: surfaceCardColor }}
+        >
+          <form.Field name="requiredQuestId">
+            {(field) => (
+              <>
+                <Text className="mb-md px-xl font-body-medium text-title-sm text-ink dark:text-on-dark">
+                  Select Prerequisite
+                </Text>
+                <TouchableOpacity
+                  onPress={() => selectPrereq("")}
+                  activeOpacity={0.7}
+                  className="flex-row items-center justify-between px-xl py-md active:bg-surface-soft dark:active:bg-surface-dark-soft"
+                >
+                  <Text className="flex-1 font-body text-body-md text-muted dark:text-on-dark-soft">
+                    No prerequisite
+                  </Text>
+                  {field.state.value === undefined && (
+                    <View className="ml-sm h-5 w-5 items-center justify-center rounded-full bg-primary">
+                      <Text className="font-body-bold text-caption text-primary-foreground">
+                        ✓
+                      </Text>
+                    </View>
+                  )}
+                </TouchableOpacity>
+                {mainQuestOptions.map((option) => (
+                  <TouchableOpacity
+                    key={option.id}
+                    onPress={() => selectPrereq(option.id)}
+                    activeOpacity={0.7}
+                    className="flex-row items-center justify-between px-xl py-md active:bg-surface-soft dark:active:bg-surface-dark-soft"
+                  >
+                    <Text className="flex-1 font-body text-body-md text-ink dark:text-on-dark">
+                      {option.name}
+                    </Text>
+                    {field.state.value === option.id && (
+                      <View className="ml-sm h-5 w-5 items-center justify-center rounded-full bg-primary">
+                        <Text className="font-body-bold text-caption text-primary-foreground">
+                          ✓
+                        </Text>
+                      </View>
+                    )}
+                  </TouchableOpacity>
+                ))}
+              </>
+            )}
+          </form.Field>
+        </BottomSheetView>
+      </BottomSheetModal>
     </SafeAreaView>
   )
 }

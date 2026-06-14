@@ -1,5 +1,6 @@
+import { useEffect } from "react"
 import { useForm } from "@tanstack/react-form"
-import { Stack, useRouter } from "expo-router"
+import { Stack, useLocalSearchParams, useRouter } from "expo-router"
 import {
   ActivityIndicator,
   KeyboardAvoidingView,
@@ -10,8 +11,14 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context"
 import { z } from "zod"
 
-import { useChooseClass, useCreateClass } from "@/lib/api"
+import {
+  useChooseClass,
+  useClass,
+  useCreateClass,
+  useUpdateClass,
+} from "@/lib/api"
 import { useHeaderOptions } from "@/lib/header-options"
+import { useThemeColor } from "@/lib/use-theme-color"
 import { Button } from "@/components/button"
 
 const roleSchema = z.object({
@@ -35,8 +42,21 @@ function getZodErrorMessage(error: unknown): string | undefined {
 
 export default function CreateRoleScreen() {
   const router = useRouter()
+  const { classId, choose } = useLocalSearchParams<{
+    classId?: string
+    choose?: string
+  }>()
+  const isEditing = !!classId
+  const shouldChooseClass = choose !== "false"
+
   const createClassMutation = useCreateClass()
   const chooseClassMutation = useChooseClass()
+  const updateClassMutation = useUpdateClass()
+  const { data: existingClass, isLoading: classLoading } = useClass(
+    classId ?? ""
+  )
+  const primaryColor = useThemeColor("primary")
+  const headerOptions = useHeaderOptions(isEditing ? "Edit Role" : "Create Role")
 
   const form = useForm({
     defaultValues: { name: "", description: "" },
@@ -66,14 +86,49 @@ export default function CreateRoleScreen() {
       },
     },
     onSubmit: async ({ value }) => {
-      const newClass = await createClassMutation.mutateAsync(value)
-      await chooseClassMutation.mutateAsync(newClass.id)
-      router.replace(`/roles/quests/create-main?classId=${newClass.id}`)
+      if (isEditing) {
+        await updateClassMutation.mutateAsync({
+          classId: classId!,
+          body: value,
+        })
+        router.back()
+      } else if (shouldChooseClass) {
+        const newClass = await createClassMutation.mutateAsync(value)
+        await chooseClassMutation.mutateAsync(newClass.id)
+        router.replace(`/roles/quests/create-main?classId=${newClass.id}`)
+      } else {
+        const newClass = await createClassMutation.mutateAsync(value)
+        router.replace(`/roles/quests/create-main?classId=${newClass.id}&returnTo=profile`)
+      }
     },
   })
 
+  useEffect(() => {
+    if (existingClass) {
+      form.setFieldValue("name", existingClass.name)
+      form.setFieldValue("description", existingClass.description)
+    }
+  }, [existingClass, form])
+
   const isPending =
-    createClassMutation.isPending || chooseClassMutation.isPending
+    createClassMutation.isPending ||
+    chooseClassMutation.isPending ||
+    updateClassMutation.isPending ||
+    classLoading
+
+  if (classLoading) {
+    return (
+      <SafeAreaView
+        edges={["bottom", "left", "right"]}
+        className="w-full flex-1 items-center justify-center bg-canvas dark:bg-surface-dark"
+      >
+        <ActivityIndicator size="large" color={primaryColor} />
+      </SafeAreaView>
+    )
+  }
+
+  const mutationError =
+    createClassMutation.error ?? updateClassMutation.error
 
   return (
     <SafeAreaView
@@ -82,7 +137,7 @@ export default function CreateRoleScreen() {
     >
       <Stack.Screen
         options={{
-          ...useHeaderOptions("Create Role"),
+          ...headerOptions,
           gestureEnabled: false,
         }}
       />
@@ -161,9 +216,9 @@ export default function CreateRoleScreen() {
             )}
           </form.Field>
 
-          {createClassMutation.error && (
+          {mutationError && (
             <Text className="font-body text-body-sm text-error">
-              {createClassMutation.error.message}
+              {mutationError.message}
             </Text>
           )}
 
@@ -178,7 +233,7 @@ export default function CreateRoleScreen() {
                   <ActivityIndicator size="small" color="#ffffff" />
                 ) : (
                   <Text className="font-body-medium text-button text-primary-foreground">
-                    Create Role
+                    {isEditing ? "Save Changes" : "Create Role"}
                   </Text>
                 )}
               </Button>

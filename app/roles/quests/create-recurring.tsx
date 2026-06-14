@@ -20,7 +20,7 @@ import {
   overrideQuest,
   startStarterQuests,
   updateQuest,
-  useClassQuests,
+  useClassQuestsForAuthoring,
   useCurrentUser,
 } from "@/lib/api"
 import type { CreateQuestBody } from "@/lib/api/schemas"
@@ -99,9 +99,12 @@ function getQuestType(
 }
 
 export default function CreateRecurringQuestsScreen() {
-  const { classId } = useLocalSearchParams<{ classId: string }>()
+  const { classId, returnTo } = useLocalSearchParams<{
+    classId: string
+    returnTo?: string
+  }>()
   const { data: existingQuests, isPending: isQuestsPending } =
-    useClassQuests(classId)
+    useClassQuestsForAuthoring(classId)
   const { data: user } = useCurrentUser()
   const { refetch: refetchSession } = useSession()
   const queryClient = useQueryClient()
@@ -272,15 +275,23 @@ export default function CreateRecurringQuestsScreen() {
         }
 
         await Promise.all(operations)
-        await startStarterQuests(classId)
+        if (user?.activeClass?.id === classId) {
+          await startStarterQuests(classId)
+        }
         await queryClient.invalidateQueries({
           queryKey: ["classes", classId, "quests"],
         })
         await queryClient.refetchQueries({
           queryKey: ["classes", classId, "quests"],
         })
+        await queryClient.invalidateQueries({
+          queryKey: ["classes", classId, "quests", "authoring"],
+        })
+        await queryClient.refetchQueries({
+          queryKey: ["classes", classId, "quests", "authoring"],
+        })
         await refetchSession()
-        router.replace("/(tabs)")
+        router.replace(returnTo === "profile" ? "/(tabs)/profile" : "/(tabs)")
       } catch (catchedError) {
         setError(
           catchedError instanceof Error
@@ -390,7 +401,10 @@ export default function CreateRecurringQuestsScreen() {
     pickerMode: "time" | "datetime" | "weekday",
     onRemove: () => void
   ) => (
-    <View className="mb-md rounded-lg bg-surface-card p-lg dark:bg-surface-dark-elevated">
+    <View
+      key={`${arrayName}-${index}`}
+      className="mb-md rounded-lg bg-surface-card p-lg dark:bg-surface-dark-elevated"
+    >
       <View className="mb-sm flex-row items-center justify-between">
         <Text className="font-body-medium text-body-md text-ink dark:text-on-dark">
           {label}

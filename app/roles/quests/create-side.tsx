@@ -20,7 +20,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context"
 import { z } from "zod"
 
-import { createQuests, useClassQuests } from "@/lib/api"
+import { createQuests, useClassQuestsForAuthoring } from "@/lib/api"
 import type { CreateQuestBody } from "@/lib/api/schemas"
 import { useHeaderOptions } from "@/lib/header-options"
 import { useThemeColor } from "@/lib/use-theme-color"
@@ -44,6 +44,7 @@ const entrySchema = z.object({
   description: descriptionSchema,
   duration: durationSchema,
   submissionType: submissionTypeSchema,
+  requiredQuestId: z.string().optional(),
 })
 
 const entriesSchema = z
@@ -62,11 +63,11 @@ function getZodErrorMessage(error: unknown): string | undefined {
 }
 
 export default function CreateSideQuestScreen() {
-  const { classId, mainQuestIds } = useLocalSearchParams<{
+  const { classId, returnTo } = useLocalSearchParams<{
     classId: string
-    mainQuestIds: string
+    returnTo?: string
   }>()
-  const { data: existingQuests } = useClassQuests(classId)
+  const { data: existingQuests } = useClassQuestsForAuthoring(classId)
   const queryClient = useQueryClient()
   const router = useRouter()
 
@@ -74,21 +75,17 @@ export default function CreateSideQuestScreen() {
   const surfaceCardColor = useThemeColor("surface-card")
   const foregroundColor = useThemeColor("foreground")
 
-  const mainIds = useMemo(
-    () => (mainQuestIds ? mainQuestIds.split(",") : []),
-    [mainQuestIds]
-  )
-
   const mainQuestOptions = useMemo(() => {
     if (!existingQuests) return []
     return existingQuests
-      .filter((quest) => quest.type === "main" && mainIds.includes(quest.id))
+      .filter((quest) => quest.type === "main")
       .map((quest) => ({ id: quest.id, name: quest.name }))
-  }, [existingQuests, mainIds])
+  }, [existingQuests])
 
   const [error, setError] = useState<string>()
   const [isPending, setIsPending] = useState(false)
   const [pickingIndex, setPickingIndex] = useState<number>()
+  const pickingIndexReference = useRef<number | undefined>(undefined)
   const keyCounter = useRef(1)
   const [entryKeys, setEntryKeys] = useState<number[]>([0])
 
@@ -152,8 +149,14 @@ export default function CreateSideQuestScreen() {
         queryClient.invalidateQueries({
           queryKey: ["classes", classId, "quests"],
         })
+        queryClient.invalidateQueries({
+          queryKey: ["classes", classId, "quests", "authoring"],
+        })
 
-        router.replace(`/roles/quests/create-recurring?classId=${classId}`)
+        router.replace({
+          pathname: "/roles/quests/create-recurring",
+          params: { classId, ...(returnTo ? { returnTo } : {}) },
+        })
       } catch (catchedError) {
         setError(
           catchedError instanceof Error
@@ -167,19 +170,18 @@ export default function CreateSideQuestScreen() {
   })
 
   const openPrereqSheet = (index: number) => {
+    pickingIndexReference.current = index
     setPickingIndex(index)
     sheetReference.current?.present()
   }
 
   const selectPrereq = (questId: string) => {
-    if (pickingIndex !== undefined) {
-      const current = form.getFieldValue("entries")
-      const updated = [...current]
-      updated[pickingIndex] = {
-        ...updated[pickingIndex],
-        requiredQuestId: questId || undefined,
-      }
-      form.setFieldValue("entries", updated)
+    const index = pickingIndexReference.current
+    if (index !== undefined) {
+      form.setFieldValue(
+        `entries[${index}].requiredQuestId`,
+        questId || undefined
+      )
     }
     sheetReference.current?.dismiss()
   }
@@ -209,37 +211,39 @@ export default function CreateSideQuestScreen() {
     setEntryKeys(entryKeys.filter((_, index) => index !== removeIndex))
   }
 
-  const renderPrerequisitePicker = (index: number) => {
-    const entries = form.getFieldValue("entries")
-    const entry = entries[index]
-    const selectedQuest = mainQuestOptions.find(
-      (o) => o.id === entry?.requiredQuestId
-    )
+  const renderPrerequisitePicker = (index: number) => (
+    <form.Field name={`entries[${index}].requiredQuestId`}>
+      {(field) => {
+        const selectedQuest = mainQuestOptions.find(
+          (o) => o.id === field.state.value
+        )
 
-    return (
-      <View className="mb-sm gap-sm">
-        <Text className="font-body text-caption text-muted dark:text-on-dark-soft">
-          Prerequisite
-        </Text>
-        <TouchableOpacity
-          onPress={() => openPrereqSheet(index)}
-          className="flex-row items-center justify-between rounded-md border border-hairline bg-canvas px-sm py-1.5 dark:border-hairline dark:bg-surface-dark"
-        >
-          <Text
-            className={`font-body text-md ${
-              selectedQuest
-                ? "text-ink dark:text-on-dark"
-                : "text-muted-soft"
-            }`}
-            numberOfLines={1}
-          >
-            {selectedQuest ? selectedQuest.name : "Select a main quest"}
-          </Text>
-          <ChevronDown size={16} color={foregroundColor} />
-        </TouchableOpacity>
-      </View>
-    )
-  }
+        return (
+          <View className="mb-sm gap-sm">
+            <Text className="font-body text-caption text-muted dark:text-on-dark-soft">
+              Prerequisite
+            </Text>
+            <TouchableOpacity
+              onPress={() => openPrereqSheet(index)}
+              className="flex-row items-center justify-between rounded-md border border-hairline bg-canvas px-sm py-1.5 dark:border-hairline dark:bg-surface-dark"
+            >
+              <Text
+                className={`font-body text-md ${
+                  selectedQuest
+                    ? "text-ink dark:text-on-dark"
+                    : "text-muted-soft"
+                }`}
+                numberOfLines={1}
+              >
+                {selectedQuest ? selectedQuest.name : "Select a main quest"}
+              </Text>
+              <ChevronDown size={16} color={foregroundColor} />
+            </TouchableOpacity>
+          </View>
+        )
+      }}
+    </form.Field>
+  )
 
   return (
     <SafeAreaView
@@ -482,46 +486,52 @@ export default function CreateSideQuestScreen() {
           className="flex-1"
           style={{ backgroundColor: surfaceCardColor }}
         >
-          <Text className="mb-md px-xl font-body-medium text-title-sm text-ink dark:text-on-dark">
-            Select Prerequisite
-          </Text>
-          <TouchableOpacity
-            onPress={() => selectPrereq("")}
-            className="flex-row items-center justify-between px-xl py-md active:bg-surface-soft dark:active:bg-surface-dark-soft"
-          >
-            <Text className="flex-1 font-body text-body-md text-muted dark:text-on-dark-soft">
-              No prerequisite
-            </Text>
-            {pickingIndex !== undefined &&
-              form.getFieldValue("entries")[pickingIndex]
-                ?.requiredQuestId === undefined && (
-                <View className="ml-sm h-5 w-5 items-center justify-center rounded-full bg-primary">
-                  <Text className="font-body-bold text-caption text-primary-foreground">
-                    ✓
+          {pickingIndex !== undefined && (
+            <form.Field name={`entries[${pickingIndex}].requiredQuestId`}>
+              {(field) => (
+                <>
+                  <Text className="mb-md px-xl font-body-medium text-title-sm text-ink dark:text-on-dark">
+                    Select Prerequisite
                   </Text>
-                </View>
+                  <TouchableOpacity
+                    onPress={() => selectPrereq("")}
+                    activeOpacity={0.7}
+                    className="flex-row items-center justify-between px-xl py-md active:bg-surface-soft dark:active:bg-surface-dark-soft"
+                  >
+                    <Text className="flex-1 font-body text-body-md text-muted dark:text-on-dark-soft">
+                      No prerequisite
+                    </Text>
+                    {field.state.value === undefined && (
+                      <View className="ml-sm h-5 w-5 items-center justify-center rounded-full bg-primary">
+                        <Text className="font-body-bold text-caption text-primary-foreground">
+                          ✓
+                        </Text>
+                      </View>
+                    )}
+                  </TouchableOpacity>
+                  {mainQuestOptions.map((option) => (
+                    <TouchableOpacity
+                      key={option.id}
+                      onPress={() => selectPrereq(option.id)}
+                      activeOpacity={0.7}
+                      className="flex-row items-center justify-between px-xl py-md active:bg-surface-soft dark:active:bg-surface-dark-soft"
+                    >
+                      <Text className="flex-1 font-body text-body-md text-ink dark:text-on-dark">
+                        {option.name}
+                      </Text>
+                      {field.state.value === option.id && (
+                        <View className="ml-sm h-5 w-5 items-center justify-center rounded-full bg-primary">
+                          <Text className="font-body-bold text-caption text-primary-foreground">
+                            ✓
+                          </Text>
+                        </View>
+                      )}
+                    </TouchableOpacity>
+                  ))}
+                </>
               )}
-          </TouchableOpacity>
-          {mainQuestOptions.map((option) => (
-            <TouchableOpacity
-              key={option.id}
-              onPress={() => selectPrereq(option.id)}
-              className="flex-row items-center justify-between px-xl py-md active:bg-surface-soft dark:active:bg-surface-dark-soft"
-            >
-              <Text className="flex-1 font-body text-body-md text-ink dark:text-on-dark">
-                {option.name}
-              </Text>
-              {pickingIndex !== undefined &&
-                form.getFieldValue("entries")[pickingIndex]
-                  ?.requiredQuestId === option.id && (
-                <View className="ml-sm h-5 w-5 items-center justify-center rounded-full bg-primary">
-                  <Text className="font-body-bold text-caption text-primary-foreground">
-                    ✓
-                  </Text>
-                </View>
-              )}
-            </TouchableOpacity>
-          ))}
+            </form.Field>
+          )}
         </BottomSheetView>
       </BottomSheetModal>
     </SafeAreaView>

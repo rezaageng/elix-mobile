@@ -1,6 +1,7 @@
 import { useCallback, useRef, useState } from "react"
 import { useQueryClient } from "@tanstack/react-query"
 import * as ImagePicker from "expo-image-picker"
+import { useRouter } from "expo-router"
 import { Pencil, Settings } from "lucide-react-native"
 import {
   Alert,
@@ -14,8 +15,11 @@ import {
 import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context"
 
 import {
+  useChooseClass,
   useClassQuests,
+  useClasses,
   useCurrentUser,
+  useDeleteClass,
   useUploadAvatar,
   useUploadBanner,
   useUserStats,
@@ -28,12 +32,14 @@ import {
   AvatarSection,
   CollectionsTab,
   EditProfileSheet,
+  EditRoleSheet,
   ImagePickerSheet,
   ImageViewerModal,
   ProfileHeader,
   SettingsSheet,
   StatsSection,
   type EditProfileSheetReference,
+  type EditRoleSheetReference,
   type ImagePickerSheetReference,
   type SettingsSheetReference,
 } from "@/components/profile"
@@ -56,14 +62,21 @@ export default function ProfileScreen() {
     refetch: refetchStats,
   } = useUserStats(user?.id ?? "")
   const { data: quests } = useClassQuests(user?.activeClass?.id ?? "")
+  const { data: allClasses } = useClasses()
+  const deleteClassMutation = useDeleteClass()
+  const chooseClassMutation = useChooseClass()
+  const [isSwitchingRole, setIsSwitchingRole] = useState(false)
   const [refreshing, setRefreshing] = useState(false)
   const { data: settings } = useProfileSettings()
   const [activeTab, setActiveTab] = useState<TabKey>("stats")
   const settingsSheetReference = useRef<SettingsSheetReference>(null)
   const editProfileSheetReference = useRef<EditProfileSheetReference>(null)
+  const editRoleSheetReference = useRef<EditRoleSheetReference>(null)
   const avatarPickerReference = useRef<ImagePickerSheetReference>(null)
   const bannerPickerReference = useRef<ImagePickerSheetReference>(null)
   const scrollY = useRef(new Animated.Value(0)).current
+  const router = useRouter()
+  const [selectedRoleId, setSelectedRoleId] = useState<string>()
 
   const [viewerImage, setViewerImage] = useState<string | undefined>()
   const [viewerVisible, setViewerVisible] = useState(false)
@@ -77,6 +90,85 @@ export default function ProfileScreen() {
   const uploadBanner = useUploadBanner()
   const queryClient = useQueryClient()
   const [isUpdatingProfile, setIsUpdatingProfile] = useState(false)
+
+  const handleAddRole = useCallback(() => {
+    router.push("/roles/create?choose=false")
+  }, [router])
+
+  const handleBrowseRoles = useCallback(() => {
+    router.push("/roles")
+  }, [router])
+
+  const handleEditRole = useCallback(
+    (classId: string) => {
+      setSelectedRoleId(classId)
+      editRoleSheetReference.current?.present()
+    },
+    []
+  )
+
+  const handleDeleteRole = useCallback(
+    (classId: string) => {
+      Alert.alert("Delete Role", "Are you sure? This cannot be undone.", [
+        { text: "Cancel", style: "cancel" },
+        {
+          text: "Delete",
+          style: "destructive",
+          onPress: async () => {
+            try {
+              await deleteClassMutation.mutateAsync(classId)
+              queryClient.invalidateQueries({ queryKey: ["user", "me"] })
+            } catch {
+              Alert.alert(
+                "Delete Failed",
+                "Failed to delete role. Please try again."
+              )
+            }
+          },
+        },
+      ])
+    },
+    [deleteClassMutation, queryClient]
+  )
+
+  const handleEditRoleSelect = useCallback(
+    (optionId: "details" | "main" | "side" | "recurring") => {
+      if (!selectedRoleId) return
+      switch (optionId) {
+        case "details": {
+          router.push(`/roles/create?classId=${selectedRoleId}`)
+          break
+        }
+        case "main":
+        case "side":
+        case "recurring": {
+          router.push({
+            pathname: "/roles/quests/edit-list",
+            params: { classId: selectedRoleId, type: optionId },
+          })
+          break
+        }
+      }
+      setSelectedRoleId(undefined)
+    },
+    [router, selectedRoleId]
+  )
+
+  const handleSwitchRole = useCallback(
+    async (classId: string) => {
+      if (classId === user?.activeClass?.id) return
+      setIsSwitchingRole(true)
+      try {
+        await chooseClassMutation.mutateAsync(classId)
+        await queryClient.invalidateQueries({ queryKey: ["user", "me"] })
+      } catch {
+        Alert.alert("Switch Failed", "Failed to switch role. Please try again.")
+      } finally {
+        setIsSwitchingRole(false)
+      }
+    },
+    [chooseClassMutation, queryClient, user?.activeClass?.id]
+  )
 
   const onRefresh = async () => {
     setRefreshing(true)
@@ -349,8 +441,15 @@ export default function ProfileScreen() {
             stats={stats}
             quests={quests ?? []}
             settings={settings}
-            classes={user.classes}
+            classes={allClasses?.filter((c) => c.authorId === user.id) ?? []}
             activeClass={user.activeClass}
+            userId={user.id}
+            onAddRole={handleAddRole}
+            onBrowseRoles={handleBrowseRoles}
+            onEditRole={handleEditRole}
+            onDeleteRole={handleDeleteRole}
+            onSwitchRole={handleSwitchRole}
+            isSwitchingRole={isSwitchingRole}
           />
         </View>
 
@@ -402,6 +501,12 @@ export default function ProfileScreen() {
 
       {/* Settings Sheet */}
       <SettingsSheet ref={settingsSheetReference} />
+
+      {/* Edit Role Sheet */}
+      <EditRoleSheet
+        ref={editRoleSheetReference}
+        onSelect={handleEditRoleSelect}
+      />
 
       {/* Edit Profile Sheet */}
       <EditProfileSheet
@@ -455,6 +560,13 @@ function TabContent({
   settings,
   classes,
   activeClass,
+  userId,
+  onAddRole,
+  onBrowseRoles,
+  onEditRole,
+  onDeleteRole,
+  onSwitchRole,
+  isSwitchingRole,
 }: {
   activeTab: TabKey
   stats: UserStats | undefined
@@ -462,6 +574,13 @@ function TabContent({
   settings: ProfileSettings | undefined
   classes: Class[]
   activeClass: Class | null
+  userId: string
+  onAddRole: () => void
+  onBrowseRoles: () => void
+  onEditRole: (classId: string) => void
+  onDeleteRole: (classId: string) => void
+  onSwitchRole: (classId: string) => void
+  isSwitchingRole: boolean
 }) {
   if (activeTab === "stats") {
     if (stats) {
@@ -482,7 +601,19 @@ function TabContent({
     )
   }
 
-  return <CollectionsTab classes={classes} activeClass={activeClass} />
+  return (
+    <CollectionsTab
+      classes={classes}
+      activeClass={activeClass}
+      userId={userId}
+      onAddRole={onAddRole}
+      onBrowseRoles={onBrowseRoles}
+      onEditRole={onEditRole}
+      onDeleteRole={onDeleteRole}
+      onSwitchRole={onSwitchRole}
+      isSwitchingRole={isSwitchingRole}
+    />
+  )
 }
 
 function TabButton({
