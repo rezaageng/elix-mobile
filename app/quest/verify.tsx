@@ -1,4 +1,5 @@
 import { useCallback, useMemo, useRef, useState } from "react"
+import { useForm } from "@tanstack/react-form"
 import {
   BottomSheetBackdrop,
   BottomSheetModal,
@@ -8,7 +9,6 @@ import { Image } from "expo-image"
 import * as ImagePicker from "expo-image-picker"
 import {
   Stack,
-  useFocusEffect,
   useLocalSearchParams,
   useRouter,
 } from "expo-router"
@@ -33,6 +33,7 @@ import {
   View,
 } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
+import { z } from "zod"
 
 import {
   useClassQuests,
@@ -45,10 +46,20 @@ import { useHeaderOptions } from "@/lib/header-options"
 import { useThemeColor } from "@/lib/use-theme-color"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/button"
-import {
-  clearPendingCameraImageUri,
-  getPendingCameraImageUri,
-} from "@/app/quest/camera"
+
+const textSubmissionSchema = z.string().min(1, "Please enter your submission text.")
+const imageSubmissionSchema = z.string().min(1, "Please take or select a photo.")
+
+function getZodErrorMessage(error: unknown): string | undefined {
+  if (!error) return
+  if (Array.isArray(error)) {
+    return (error[0] as { message?: string })?.message
+  }
+  const zodError = error as {
+    issues?: { message: string }[]
+  }
+  return zodError.issues?.[0]?.message
+}
 
 export default function VerifySubmissionScreen() {
   const { questId, classId } = useLocalSearchParams<{
@@ -64,8 +75,6 @@ export default function VerifySubmissionScreen() {
   const submitVerification = useSubmitVerification()
   const updateProgress = useUpdateQuestProgress()
 
-  const [textContent, setTextContent] = useState("")
-  const [capturedImage, setCapturedImage] = useState<string | undefined>()
   const [verificationResult, setVerificationResult] = useState<
     VerificationResult | undefined
   >()
@@ -98,15 +107,78 @@ export default function VerifySubmissionScreen() {
     [quest]
   )
 
-  useFocusEffect(
-    useCallback(() => {
-      const uri = getPendingCameraImageUri()
-      if (uri) {
-        setCapturedImage(uri)
-        clearPendingCameraImageUri()
+  const form = useForm({
+    defaultValues: {
+      textContent: "",
+      capturedImage: undefined as string | undefined,
+    },
+    validators: {
+      onSubmit: ({ value }) => {
+        if (effectiveQuest?.submissionType === "text") {
+          const result = textSubmissionSchema.safeParse(value.textContent)
+          if (!result.success) {
+            return {
+              textContent:
+                getZodErrorMessage(result.error) ??
+                "Please enter your submission text.",
+            }
+          }
+        } else {
+          const result = imageSubmissionSchema.safeParse(value.capturedImage)
+          if (!result.success) {
+            return {
+              capturedImage:
+                getZodErrorMessage(result.error) ??
+                "Please take or select a photo.",
+            }
+          }
+        }
+      },
+    },
+    onSubmit: async ({ value }) => {
+      if (!effectiveQuest) return
+
+      const formData = new FormData()
+      formData.append("task", effectiveQuest.name)
+      formData.append("description", effectiveQuest.description)
+      formData.append("type", effectiveQuest.submissionType)
+
+      if (effectiveQuest.submissionType === "text") {
+        formData.append("text", value.textContent!.trim())
+      } else {
+        const capturedImg = value.capturedImage!
+        const filename = capturedImg.split("/").pop() ?? "photo.jpg"
+        const match = /\.\w+$/.exec(filename)
+        const type = match ? `image/${match[0].slice(1)}` : "image/jpeg"
+        formData.append("image", {
+          uri: capturedImg,
+          name: filename,
+          type,
+        } as unknown as Blob)
       }
-    }, [])
-  )
+
+      try {
+        const result = await submitVerification.mutateAsync(formData)
+        setVerificationResult(result)
+
+        if (result.isValid && effectiveClassId && questId) {
+          const progressResult = await updateProgress.mutateAsync({
+            classId: effectiveClassId,
+            questId,
+            body: { status: "completed" },
+          })
+          if (progressResult.levelUp) {
+            setLevelUpInfo(progressResult.levelUp)
+          }
+        }
+      } catch {
+        Alert.alert(
+          "Verification Failed",
+          "Unable to verify your submission. Please try again."
+        )
+      }
+    },
+  })
 
   const openImageSourceSheet = useCallback(() => {
     sheetReference.current?.present()
@@ -124,13 +196,28 @@ export default function VerifySubmissionScreen() {
     []
   )
 
-  const handleTakePhoto = useCallback(() => {
+  const handleTakePhoto = useCallback(async () => {
     sheetReference.current?.dismiss()
-    router.push({
-      pathname: "/quest/camera" as any,
-      params: { questId, classId },
+    const permission = await ImagePicker.requestCameraPermissionsAsync()
+    if (!permission.granted) {
+      Alert.alert(
+        "Camera Permission",
+        "Camera permission is required to take photos."
+      )
+      return
+    }
+    const result = await ImagePicker.launchCameraAsync({
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 0.8,
     })
-  }, [router, questId, classId])
+    if (!result.canceled && result.assets && result.assets.length > 0) {
+      const uri = result.assets[0]?.uri
+      if (uri) {
+        form.setFieldValue("capturedImage", uri)
+      }
+    }
+  }, [form])
 
   const handlePickFromGallery = useCallback(async () => {
     sheetReference.current?.dismiss()
@@ -143,88 +230,21 @@ export default function VerifySubmissionScreen() {
     if (!result.canceled && result.assets && result.assets.length > 0) {
       const uri = result.assets[0]?.uri
       if (uri) {
-        setCapturedImage(uri)
+        form.setFieldValue("capturedImage", uri)
       }
     }
-  }, [])
+  }, [form])
 
   const handleRetake = useCallback(() => {
-    setCapturedImage(undefined)
-    clearPendingCameraImageUri()
+    form.setFieldValue("capturedImage", undefined)
     setVerificationResult(undefined)
-  }, [])
-
-  const buildFormData = useCallback((): FormData | undefined => {
-    if (!effectiveQuest) return undefined
-
-    const formData = new FormData()
-    formData.append("task", effectiveQuest.name)
-    formData.append("description", effectiveQuest.description)
-    formData.append("type", effectiveQuest.submissionType)
-
-    if (effectiveQuest.submissionType === "text") {
-      if (!textContent.trim()) {
-        Alert.alert("Empty Submission", "Please enter your submission text.")
-        return undefined
-      }
-      formData.append("text", textContent.trim())
-    } else {
-      if (!capturedImage) {
-        Alert.alert("No Image", "Please take or select a photo.")
-        return undefined
-      }
-      const filename = capturedImage.split("/").pop() ?? "photo.jpg"
-      const match = /\.\w+$/.exec(filename)
-      const type = match ? `image/${match[0].slice(1)}` : "image/jpeg"
-      formData.append("image", {
-        uri: capturedImage,
-        name: filename,
-        type,
-      } as unknown as Blob)
-    }
-
-    return formData
-  }, [effectiveQuest, textContent, capturedImage])
-
-  const handleSubmit = useCallback(async () => {
-    const formData = buildFormData()
-    if (!formData) return
-
-    try {
-      const result = await submitVerification.mutateAsync(formData)
-      setVerificationResult(result)
-
-      if (result.isValid && effectiveClassId && questId) {
-        const progressResult = await updateProgress.mutateAsync({
-          classId: effectiveClassId,
-          questId,
-          body: { status: "completed" },
-        })
-        if (progressResult.levelUp) {
-          setLevelUpInfo(progressResult.levelUp)
-        }
-      }
-    } catch {
-      Alert.alert(
-        "Verification Failed",
-        "Unable to verify your submission. Please try again."
-      )
-    }
-  }, [
-    buildFormData,
-    submitVerification,
-    updateProgress,
-    effectiveClassId,
-    questId,
-  ])
+  }, [form])
 
   const handleReset = useCallback(() => {
     setVerificationResult(undefined)
-    setTextContent("")
-    setCapturedImage(undefined)
     setLevelUpInfo(undefined)
-    clearPendingCameraImageUri()
-  }, [])
+    form.reset()
+  }, [form])
 
   if (!quest || !effectiveQuest) {
     return (
@@ -297,7 +317,9 @@ export default function VerifySubmissionScreen() {
                   <Text
                     className={cn(
                       "font-body-semibold text-body-md",
-                      verificationResult.isValid ? "text-success" : "text-error"
+                      verificationResult.isValid
+                        ? "text-success"
+                        : "text-error"
                     )}
                   >
                     {verificationResult.isValid
@@ -381,69 +403,102 @@ export default function VerifySubmissionScreen() {
             {verificationResult === undefined && (
               <>
                 {effectiveQuest.submissionType === "text" ? (
-                  <View className="rounded-xl bg-surface-card p-4 dark:bg-surface-dark-elevated">
-                    <Text className="font-body-semibold text-body-md text-ink dark:text-on-dark">
-                      Your Submission
-                    </Text>
-                    <Text className="mt-1 font-body text-caption text-muted dark:text-on-dark-soft">
-                      Markdown formatting is supported.
-                    </Text>
-                    <TextInput
-                      className="mt-3 min-h-[160] rounded-md border border-hairline bg-canvas p-3 font-body text-body-md text-ink dark:border-hairline dark:bg-surface-dark dark:text-on-dark"
-                      multiline
-                      textAlignVertical="top"
-                      placeholder="Describe your quest completion..."
-                      placeholderTextColor="#8e8b82"
-                      value={textContent}
-                      onChangeText={setTextContent}
-                      editable={!isSubmitting}
-                    />
-                  </View>
-                ) : (
-                  <View className="overflow-hidden rounded-xl bg-surface-card dark:bg-surface-dark-elevated">
-                    {capturedImage ? (
-                      <View className="relative aspect-[4/3] w-full">
-                        <Image
-                          source={{ uri: capturedImage }}
-                          style={{ width: "100%", height: "100%" }}
-                          contentFit="cover"
+                  <form.Field
+                    name="textContent"
+                    validators={{
+                      onChange: ({ value }) => {
+                        if (effectiveQuest?.submissionType === "text") {
+                          const result = textSubmissionSchema.safeParse(value)
+                          if (!result.success) {
+                            return (
+                              getZodErrorMessage(result.error) ??
+                              "Please enter your submission text."
+                            )
+                          }
+                        }
+                      },
+                    }}
+                  >
+                    {(field) => (
+                      <View className="rounded-xl bg-surface-card p-4 dark:bg-surface-dark-elevated">
+                        <Text className="font-body-semibold text-body-md text-ink dark:text-on-dark">
+                          Your Submission
+                        </Text>
+                        <Text className="mt-1 font-body text-caption text-muted dark:text-on-dark-soft">
+                          Markdown formatting is supported.
+                        </Text>
+                        <TextInput
+                          className="mt-3 rounded-md border border-hairline bg-canvas px-sm py-2 font-body text-md text-ink dark:border-hairline dark:bg-surface-dark dark:text-on-dark"
+                          multiline
+                          textAlignVertical="top"
+                          placeholder="Describe your quest completion..."
+                          placeholderTextColor="#8e8b82"
+                          value={field.state.value}
+                          onChangeText={field.handleChange}
+                          editable={!isSubmitting}
                         />
-                        <View className="absolute bottom-0 left-0 right-0 flex-row gap-2 bg-surface-dark/70 p-3">
-                          <Button
-                            variant="secondary"
-                            className="flex-1"
-                            onPress={handleRetake}
-                          >
-                            <RefreshCw size={16} color="#6c6a64" />
-                            <Text className="font-body-medium text-button text-ink dark:text-on-dark">
-                              Retake
-                            </Text>
-                          </Button>
-                        </View>
+                        {field.state.meta.errors.length > 0 && (
+                          <Text className="mt-1 font-body text-body-sm text-error">
+                            {field.state.meta.errors.map(String).join(", ")}
+                          </Text>
+                        )}
                       </View>
-                    ) : (
-                      <TouchableOpacity
-                        onPress={openImageSourceSheet}
-                        activeOpacity={0.7}
-                        className="aspect-[4/3] w-full items-center justify-center bg-surface-soft p-6 dark:bg-surface-dark-soft"
-                      >
-                        <View className="rounded-full bg-canvas p-4 dark:bg-surface-dark">
-                          <CameraIcon size={32} color={mutedColor} />
-                        </View>
-                        <Text className="mt-3 text-center font-body text-body-md text-muted dark:text-on-dark-soft">
-                          Tap to add image proof
-                        </Text>
-                        <Text className="mt-1 text-center font-body text-caption text-muted-soft">
-                          Take a photo or choose from gallery
-                        </Text>
-                      </TouchableOpacity>
                     )}
-                  </View>
+                  </form.Field>
+                ) : (
+                  <form.Field name="capturedImage">
+                    {(field) => (
+                      <View className="overflow-hidden rounded-xl bg-surface-card dark:bg-surface-dark-elevated">
+                        {field.state.value ? (
+                          <View className="relative aspect-[4/3] w-full">
+                            <Image
+                              source={{ uri: field.state.value }}
+                              style={{ width: "100%", height: "100%" }}
+                              contentFit="cover"
+                            />
+                            <View className="absolute bottom-0 left-0 right-0 flex-row gap-2 bg-surface-dark/70 p-3">
+                              <Button
+                                variant="secondary"
+                                className="flex-1"
+                                onPress={handleRetake}
+                              >
+                                <RefreshCw size={16} color="#6c6a64" />
+                                <Text className="font-body-medium text-button text-ink dark:text-on-dark">
+                                  Retake
+                                </Text>
+                              </Button>
+                            </View>
+                          </View>
+                        ) : (
+                          <TouchableOpacity
+                            onPress={openImageSourceSheet}
+                            activeOpacity={0.7}
+                            className="aspect-[4/3] w-full items-center justify-center bg-surface-soft p-6 dark:bg-surface-dark-soft"
+                          >
+                            <View className="rounded-full bg-canvas p-4 dark:bg-surface-dark">
+                              <CameraIcon size={32} color={mutedColor} />
+                            </View>
+                            <Text className="mt-3 text-center font-body text-body-md text-muted dark:text-on-dark-soft">
+                              Tap to add image proof
+                            </Text>
+                            <Text className="mt-1 text-center font-body text-caption text-muted-soft">
+                              Take a photo or choose from gallery
+                            </Text>
+                          </TouchableOpacity>
+                        )}
+                        {field.state.meta.errors.length > 0 && (
+                          <Text className="px-3 pb-2 font-body text-body-sm text-error">
+                            {field.state.meta.errors.map(String).join(", ")}
+                          </Text>
+                        )}
+                      </View>
+                    )}
+                  </form.Field>
                 )}
 
                 {/* Submit Button */}
                 <Button
-                  onPress={handleSubmit}
+                  onPress={form.handleSubmit}
                   disabled={isSubmitting}
                   className="mt-2"
                 >

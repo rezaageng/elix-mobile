@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useForm } from "@tanstack/react-form"
 import { Stack, useLocalSearchParams, useRouter } from "expo-router"
 import { ChevronLeft } from "lucide-react-native"
 import {
@@ -12,6 +13,8 @@ import {
   View,
 } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
+import { z } from "zod"
+
 import {
   useClassQuests,
   useCreateQuests,
@@ -36,6 +39,41 @@ function getEffectiveQuestValues(quest: ClassQuest) {
   }
 }
 
+const questSchema = z.object({
+  name: z.string().min(1, "Quest name is required"),
+  description: z.string().min(1, "Quest description is required"),
+  duration: z.string().refine(
+    (value) => {
+      const number_ = Number.parseInt(value, 10)
+      return !Number.isNaN(number_) && number_ >= 1
+    },
+    { message: "Duration must be a positive integer" }
+  ),
+  submissionType: z.enum(["text", "image"]),
+  startsAt: z.date().optional(),
+})
+
+const nameSchema = z.string().min(1, "Quest name is required")
+const descriptionSchema = z.string().min(1, "Quest description is required")
+const durationSchema = z.string().refine(
+  (value) => {
+    const number_ = Number.parseInt(value, 10)
+    return !Number.isNaN(number_) && number_ >= 1
+  },
+  { message: "Duration must be a positive integer" }
+)
+
+function getZodErrorMessage(error: unknown): string | undefined {
+  if (!error) return
+  if (Array.isArray(error)) {
+    return (error[0] as { message?: string })?.message
+  }
+  const zodError = error as {
+    issues?: { message: string }[]
+  }
+  return zodError.issues?.[0]?.message
+}
+
 export default function ManageQuestScreen() {
   const { classId, type, questId } = useLocalSearchParams<{
     classId: string
@@ -47,7 +85,9 @@ export default function ManageQuestScreen() {
   const { data: user } = useCurrentUser()
   const { data: quests } = useClassQuests(classId)
   const existingQuest = quests?.find((q) => q.id === questId)
-  const effective = existingQuest ? getEffectiveQuestValues(existingQuest) : undefined
+  const effective = existingQuest
+    ? getEffectiveQuestValues(existingQuest)
+    : undefined
 
   const router = useRouter()
   const headerOptions = useHeaderOptions(
@@ -68,27 +108,123 @@ export default function ManageQuestScreen() {
   const deleteQuestMutation = useDeleteQuest()
   const startQuestProgressMutation = useStartQuestProgress()
 
-  const [name, setName] = useState("")
-  const [description, setDescription] = useState("")
-  const [duration, setDuration] = useState("1")
-  const [submissionType, setSubmissionType] = useState<"text" | "image">("image")
-  const [startsAt, setStartsAt] = useState<Date | undefined>()
   const [error, setError] = useState<string>()
   const [initialized, setInitialized] = useState(false)
 
   const isQuestAuthor = existingQuest?.authorId === user?.id
 
+  const form = useForm({
+    defaultValues: {
+      name: "",
+      description: "",
+      duration: "1",
+      submissionType: "image" as "text" | "image",
+      startsAt: undefined as Date | undefined,
+    },
+    validators: {
+      onSubmit: ({ value }) => {
+        const result = questSchema.safeParse(value)
+        if (!result.success) {
+          const errors: Record<string, string> = {}
+          const issues = result.error?.issues
+          if (issues) {
+            for (const issue of issues) {
+              const field = String(issue.path[0] ?? "")
+              if (field && !errors[field]) {
+                errors[field] = issue.message
+              }
+            }
+          }
+          if (Object.keys(errors).length > 0) return errors
+          return "Please fix the form errors"
+        }
+      },
+    },
+    onSubmit: async ({ value }) => {
+      setError(undefined)
+
+      const trimmedName = value.name.trim()
+      const trimmedDescription = value.description.trim()
+      const parsedDuration = Number.parseInt(value.duration, 10) || 1
+
+      try {
+        if (isEditMode && questId) {
+          await (isQuestAuthor
+            ? updateQuestMutation.mutateAsync({
+                classId,
+                questId,
+                body: {
+                  name: trimmedName,
+                  description: trimmedDescription,
+                  duration: parsedDuration,
+                  startsAt: value.startsAt
+                    ? value.startsAt.toISOString()
+                    : undefined,
+                },
+              })
+            : overrideQuestMutation.mutateAsync({
+                classId,
+                questId,
+                body: {
+                  name: trimmedName,
+                  description: trimmedDescription,
+                  duration: parsedDuration,
+                },
+              }))
+        } else {
+          const body: CreateQuestBody = {
+            name: trimmedName,
+            description: trimmedDescription,
+            type,
+            submissionType: value.submissionType,
+            duration: parsedDuration,
+            startsAt: value.startsAt ? value.startsAt.toISOString() : undefined,
+          }
+          const createdQuests = await createQuestsMutation.mutateAsync({
+            classId,
+            body: [body],
+          })
+          const createdQuestId = createdQuests[0]?.id
+          if (createdQuestId) {
+            const isFuture =
+              value.startsAt && value.startsAt.getTime() > Date.now()
+            if (!isFuture) {
+              await startQuestProgressMutation.mutateAsync({
+                classId,
+                questId: createdQuestId,
+              })
+            }
+          }
+        }
+
+        router.back()
+      } catch (catchedError) {
+        setError(
+          catchedError instanceof Error
+            ? catchedError.message
+            : "Failed to save quest"
+        )
+      }
+    },
+  })
+
   useEffect(() => {
     if (!effective || initialized) return
-    setName(effective.name)
-    setDescription(effective.description)
-    setDuration(String(effective.duration))
+    form.setFieldValue("name", effective.name)
+    form.setFieldValue("description", effective.description)
+    form.setFieldValue("duration", String(effective.duration))
     if (existingQuest) {
-      setSubmissionType(existingQuest.submissionType as "text" | "image")
-      setStartsAt(existingQuest.startsAt ? new Date(existingQuest.startsAt) : undefined)
+      form.setFieldValue(
+        "submissionType",
+        existingQuest.submissionType as "text" | "image"
+      )
+      form.setFieldValue(
+        "startsAt",
+        existingQuest.startsAt ? new Date(existingQuest.startsAt) : undefined
+      )
     }
     setInitialized(true)
-  }, [effective, existingQuest, initialized])
+  }, [effective, existingQuest, initialized, form])
 
   const isPending =
     createQuestsMutation.isPending ||
@@ -96,98 +232,27 @@ export default function ManageQuestScreen() {
     deleteQuestMutation.isPending ||
     startQuestProgressMutation.isPending
 
-  const handleSubmit = async () => {
-    setError(undefined)
-
-    const trimmedName = name.trim()
-    const trimmedDescription = description.trim()
-    const parsedDuration = Number.parseInt(duration, 10) || 1
-
-    if (!trimmedName) {
-      setError("Quest name is required")
-      return
-    }
-    if (!trimmedDescription) {
-      setError("Quest description is required")
-      return
-    }
-
-    try {
-      if (isEditMode && questId) {
-        await (isQuestAuthor
-          ? updateQuestMutation.mutateAsync({
-              classId,
-              questId,
-              body: {
-                name: trimmedName,
-                description: trimmedDescription,
-                duration: parsedDuration,
-                startsAt: startsAt ? startsAt.toISOString() : undefined,
-              },
-            })
-          : overrideQuestMutation.mutateAsync({
-              classId,
-              questId,
-              body: {
-                name: trimmedName,
-                description: trimmedDescription,
-                duration: parsedDuration,
-              },
-            }))
-      } else {
-        const body: CreateQuestBody = {
-          name: trimmedName,
-          description: trimmedDescription,
-          type,
-          submissionType,
-          duration: parsedDuration,
-          startsAt: startsAt ? startsAt.toISOString() : undefined,
-        }
-        const createdQuests = await createQuestsMutation.mutateAsync({ classId, body: [body] })
-        const createdQuestId = createdQuests[0]?.id
-        if (createdQuestId) {
-          const isFuture = startsAt && startsAt.getTime() > Date.now()
-          if (!isFuture) {
-            await startQuestProgressMutation.mutateAsync({ classId, questId: createdQuestId })
-          }
-        }
-      }
-
-      router.back()
-    } catch (catchedError) {
-      setError(
-        catchedError instanceof Error
-          ? catchedError.message
-          : "Failed to save quest"
-      )
-    }
-  }
-
   const handleDelete = () => {
     if (!questId) return
-    Alert.alert(
-      "Delete Quest",
-      "Are you sure you want to delete this quest?",
-      [
-        { text: "Cancel", style: "cancel" },
-        {
-          text: "Delete",
-          style: "destructive",
-          onPress: async () => {
-            try {
-              await deleteQuestMutation.mutateAsync({ classId, questId })
-              router.back()
-            } catch (catchedError) {
-              setError(
-                catchedError instanceof Error
-                  ? catchedError.message
-                  : "Failed to delete quest"
-              )
-            }
-          },
+    Alert.alert("Delete Quest", "Are you sure you want to delete this quest?", [
+      { text: "Cancel", style: "cancel" },
+      {
+        text: "Delete",
+        style: "destructive",
+        onPress: async () => {
+          try {
+            await deleteQuestMutation.mutateAsync({ classId, questId })
+            router.back()
+          } catch (catchedError) {
+            setError(
+              catchedError instanceof Error
+                ? catchedError.message
+                : "Failed to delete quest"
+            )
+          }
         },
-      ]
-    )
+      },
+    ])
   }
 
   return (
@@ -217,93 +282,173 @@ export default function ManageQuestScreen() {
           }}
           keyboardShouldPersistTaps="handled"
         >
-          <View className="gap-sm">
-            <Text className="font-body-medium text-body-md text-ink dark:text-on-dark">
-              Name
-            </Text>
-            <TextInput
-              className="h-10 rounded-md border border-hairline bg-canvas px-sm font-body text-body-md leading-tight text-ink dark:border-hairline dark:bg-surface-dark dark:text-on-dark"
-              value={name}
-              onChangeText={setName}
-              placeholder="Quest name"
-              placeholderTextColor="#8e8b82"
-              autoCapitalize="words"
-            />
-          </View>
-
-          <View className="mt-md gap-sm">
-            <Text className="font-body-medium text-body-md text-ink dark:text-on-dark">
-              Description
-            </Text>
-            <TextInput
-              className="h-20 rounded-md border border-hairline bg-canvas p-sm font-body text-body-md leading-tight text-ink dark:border-hairline dark:bg-surface-dark dark:text-on-dark"
-              value={description}
-              onChangeText={setDescription}
-              placeholder="Quest description"
-              placeholderTextColor="#8e8b82"
-              multiline
-              textAlignVertical="top"
-            />
-          </View>
-
-          <View className="mt-md gap-sm">
-            <Text className="font-body-medium text-body-md text-ink dark:text-on-dark">
-              Duration (hours)
-            </Text>
-            <TextInput
-              className="h-10 rounded-md border border-hairline bg-canvas px-sm font-body text-body-md leading-tight text-ink dark:border-hairline dark:bg-surface-dark dark:text-on-dark"
-              value={duration}
-              onChangeText={setDuration}
-              placeholder="Duration in hours"
-              placeholderTextColor="#8e8b82"
-              keyboardType="numeric"
-            />
-          </View>
-
-          {(!isEditMode || type === "daily" || type === "weekly" || type === "event") && (
-            <View className="mt-md gap-sm">
-              <Text className="font-body-medium text-body-md text-ink dark:text-on-dark">
-                {pickerMode === "time" ? "Start Time" : "Start Date & Time"}
-              </Text>
-              <NativeDateTimePicker
-                value={startsAt}
-                onChange={(selectedDate) => setStartsAt(selectedDate)}
-                mode={pickerMode}
-                label={
-                  pickerMode === "time" ? "Start Time" : "Start Date & Time"
+          <form.Field
+            name="name"
+            validators={{
+              onChange: ({ value }) => {
+                const result = nameSchema.safeParse(value)
+                if (!result.success) {
+                  return getZodErrorMessage(result.error) ?? "Invalid name"
                 }
-              />
-            </View>
+              },
+            }}
+          >
+            {(field) => (
+              <View className="gap-sm">
+                <Text className="font-body-medium text-body-md text-ink dark:text-on-dark">
+                  Name
+                </Text>
+                <TextInput
+                  className="rounded-md border border-hairline bg-canvas px-sm py-1.5 font-body text-md text-ink dark:border-hairline dark:bg-surface-dark dark:text-on-dark"
+                  value={field.state.value}
+                  onChangeText={field.handleChange}
+                  onBlur={field.handleBlur}
+                  placeholder="Quest name"
+                  placeholderTextColor="#8e8b82"
+                  autoCapitalize="words"
+                  textAlignVertical="center"
+                />
+                {field.state.meta.errors.length > 0 && (
+                  <Text className="font-body text-body-sm text-error">
+                    {field.state.meta.errors.map(String).join(", ")}
+                  </Text>
+                )}
+              </View>
+            )}
+          </form.Field>
+
+          <form.Field
+            name="description"
+            validators={{
+              onChange: ({ value }) => {
+                const result = descriptionSchema.safeParse(value)
+                if (!result.success) {
+                  return (
+                    getZodErrorMessage(result.error) ?? "Invalid description"
+                  )
+                }
+              },
+            }}
+          >
+            {(field) => (
+              <View className="mt-md gap-sm">
+                <Text className="font-body-medium text-body-md text-ink dark:text-on-dark">
+                  Description
+                </Text>
+                <TextInput
+                  className="rounded-md border border-hairline bg-canvas px-sm py-2 font-body text-md text-ink dark:border-hairline dark:bg-surface-dark dark:text-on-dark"
+                  value={field.state.value}
+                  onChangeText={field.handleChange}
+                  onBlur={field.handleBlur}
+                  placeholder="Quest description"
+                  placeholderTextColor="#8e8b82"
+                  multiline
+                  textAlignVertical="top"
+                />
+                {field.state.meta.errors.length > 0 && (
+                  <Text className="font-body text-body-sm text-error">
+                    {field.state.meta.errors.map(String).join(", ")}
+                  </Text>
+                )}
+              </View>
+            )}
+          </form.Field>
+
+          <form.Field
+            name="duration"
+            validators={{
+              onChange: ({ value }) => {
+                const result = durationSchema.safeParse(value)
+                if (!result.success) {
+                  return (
+                    getZodErrorMessage(result.error) ??
+                    "Duration must be a positive integer"
+                  )
+                }
+              },
+            }}
+          >
+            {(field) => (
+              <View className="mt-md gap-sm">
+                <Text className="font-body-medium text-body-md text-ink dark:text-on-dark">
+                  Duration (hours)
+                </Text>
+                <TextInput
+                  className="rounded-md border border-hairline bg-canvas px-sm py-1.5 font-body text-md text-ink dark:border-hairline dark:bg-surface-dark dark:text-on-dark"
+                  value={field.state.value}
+                  onChangeText={field.handleChange}
+                  onBlur={field.handleBlur}
+                  placeholder="Duration in hours"
+                  placeholderTextColor="#8e8b82"
+                  keyboardType="numeric"
+                  textAlignVertical="center"
+                />
+                {field.state.meta.errors.length > 0 && (
+                  <Text className="font-body text-body-sm text-error">
+                    {field.state.meta.errors.map(String).join(", ")}
+                  </Text>
+                )}
+              </View>
+            )}
+          </form.Field>
+
+          {(!isEditMode ||
+            type === "daily" ||
+            type === "weekly" ||
+            type === "event") && (
+            <form.Field name="startsAt">
+              {(field) => (
+                <View className="mt-md gap-sm">
+                  <Text className="font-body-medium text-body-md text-ink dark:text-on-dark">
+                    {pickerMode === "time" ? "Start Time" : "Start Date & Time"}
+                  </Text>
+                  <NativeDateTimePicker
+                    value={field.state.value}
+                    onChange={(selectedDate) =>
+                      field.handleChange(selectedDate)
+                    }
+                    mode={pickerMode}
+                    label={
+                      pickerMode === "time" ? "Start Time" : "Start Date & Time"
+                    }
+                  />
+                </View>
+              )}
+            </form.Field>
           )}
 
           {!isEditMode && (
-            <View className="mt-md gap-sm">
-              <Text className="font-body-medium text-body-md text-ink dark:text-on-dark">
-                Submission Type
-              </Text>
-              <View className="flex-row gap-xs">
-                <TouchableOpacity
-                  onPress={() => setSubmissionType("text")}
-                  className={`flex-1 items-center rounded-md border px-sm py-xs ${submissionType === "text" ? "border-primary bg-primary/10" : "border-hairline bg-canvas dark:bg-surface-dark"}`}
-                >
-                  <Text
-                    className={`font-body-medium text-caption ${submissionType === "text" ? "text-primary" : "text-muted dark:text-on-dark-soft"}`}
-                  >
-                    Text
+            <form.Field name="submissionType">
+              {(field) => (
+                <View className="mt-md gap-sm">
+                  <Text className="font-body-medium text-body-md text-ink dark:text-on-dark">
+                    Submission Type
                   </Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  onPress={() => setSubmissionType("image")}
-                  className={`flex-1 items-center rounded-md border px-sm py-xs ${submissionType === "image" ? "border-primary bg-primary/10" : "border-hairline bg-canvas dark:bg-surface-dark"}`}
-                >
-                  <Text
-                    className={`font-body-medium text-caption ${submissionType === "image" ? "text-primary" : "text-muted dark:text-on-dark-soft"}`}
-                  >
-                    Image
-                  </Text>
-                </TouchableOpacity>
-              </View>
-            </View>
+                  <View className="flex-row gap-xs">
+                    <TouchableOpacity
+                      onPress={() => field.handleChange("text")}
+                      className={`flex-1 items-center rounded-md border px-sm py-1.5 ${field.state.value === "text" ? "border-primary bg-primary/10" : "border-hairline bg-canvas dark:bg-surface-dark"}`}
+                    >
+                      <Text
+                        className={`font-body-medium text-md ${field.state.value === "text" ? "text-primary" : "text-muted dark:text-on-dark-soft"}`}
+                      >
+                        Text
+                      </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      onPress={() => field.handleChange("image")}
+                      className={`flex-1 items-center rounded-md border px-sm py-1.5 ${field.state.value === "image" ? "border-primary bg-primary/10" : "border-hairline bg-canvas dark:bg-surface-dark"}`}
+                    >
+                      <Text
+                        className={`font-body-medium text-md ${field.state.value === "image" ? "text-primary" : "text-muted dark:text-on-dark-soft"}`}
+                      >
+                        Image
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              )}
+            </form.Field>
           )}
 
           {error && (
@@ -313,15 +458,22 @@ export default function ManageQuestScreen() {
           )}
 
           <View className="mt-xl gap-sm">
-            <Button onPress={handleSubmit} disabled={isPending}>
-              {isPending ? (
-                <ActivityIndicator size="small" color="#ffffff" />
-              ) : (
-                <Text className="font-body-medium text-button text-primary-foreground">
-                  {isEditMode ? "Save Changes" : "Create Quest"}
-                </Text>
+            <form.Subscribe selector={(state) => state.isSubmitting}>
+              {(isSubmitting) => (
+                <Button
+                  onPress={form.handleSubmit}
+                  disabled={isPending || isSubmitting}
+                >
+                  {isPending || isSubmitting ? (
+                    <ActivityIndicator size="small" color="#ffffff" />
+                  ) : (
+                    <Text className="font-body-medium text-button text-primary-foreground">
+                      {isEditMode ? "Save Changes" : "Create Quest"}
+                    </Text>
+                  )}
+                </Button>
               )}
-            </Button>
+            </form.Subscribe>
 
             {isEditMode && (
               <Button

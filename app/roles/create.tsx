@@ -105,7 +105,7 @@ export default function CreateRoleScreen() {
                   Name
                 </Text>
                 <TextInput
-                  className="rounded-md border border-hairline bg-canvas px-sm py-xs font-body text-body-md leading-tight text-ink dark:border-hairline dark:bg-surface-dark dark:text-on-dark"
+                  className="rounded-md border border-hairline bg-canvas px-sm py-1.5 font-body text-md text-ink dark:border-hairline dark:bg-surface-dark dark:text-on-dark"
                   value={field.state.value}
                   onChangeText={field.handleChange}
                   onBlur={field.handleBlur}
@@ -142,13 +142,13 @@ export default function CreateRoleScreen() {
                   Description
                 </Text>
                 <TextInput
-                  className="h-24 rounded-md border border-hairline bg-canvas p-sm font-body text-body-md leading-tight text-ink dark:border-hairline dark:bg-surface-dark dark:text-on-dark"
+                  className="rounded-md border border-hairline bg-canvas px-sm py-2 font-body text-md text-ink dark:border-hairline dark:bg-surface-dark dark:text-on-dark"
                   value={field.state.value}
                   onChangeText={field.handleChange}
                   onBlur={field.handleBlur}
                   placeholder="Describe the role"
                   placeholderTextColor="#8e8b82"
-                  placeholderClassName="text-body-md"
+                  placeholderClassName="text-md"
                   multiline
                   textAlignVertical="top"
                 />

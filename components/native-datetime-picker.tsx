@@ -104,9 +104,9 @@ export function NativeDateTimePicker({
     <>
       <TouchableOpacity
         onPress={handleOpen}
-        className="flex-row items-center justify-between rounded-md border border-hairline bg-canvas px-sm py-xs dark:border-hairline dark:bg-surface-dark"
+        className="flex-row items-center justify-between rounded-md border border-hairline bg-canvas px-sm py-1.5 dark:border-hairline dark:bg-surface-dark"
       >
-        <Text className="font-body text-body-sm text-ink dark:text-on-dark">
+        <Text className="font-body text-md text-ink dark:text-on-dark">
           {displayLabel()}
         </Text>
         <Text className="font-body text-caption text-muted dark:text-on-dark-soft">
