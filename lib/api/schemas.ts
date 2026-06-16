@@ -53,9 +53,11 @@ export const QuestProgressSchema = z.object({
   userId: z.string(),
   questId: z.uuid(),
   status: z.string(),
-  restorableStreak: z.boolean().optional(),
   startedAt: z.iso.datetime().nullable().optional(),
   completedAt: z.iso.datetime().nullable().optional(),
+  rewardMultiplier: z.string().nullable().optional(),
+  xpEarned: z.number().int().nullable().optional(),
+  goldEarned: z.number().int().nullable().optional(),
   createdAt: z.iso.datetime(),
   updatedAt: z.iso.datetime(),
 })
@@ -147,7 +149,9 @@ export const ItemSchema = z.object({
   description: z.string(),
   type: z.string(),
   price: z.number().int(),
-  effects: z.record(z.string(), z.unknown()).nullable(),
+  isActive: z.boolean(),
+  createdAt: z.iso.datetime(),
+  updatedAt: z.iso.datetime(),
 })
 
 export const InventoryItemSchema = z.object({
@@ -155,11 +159,18 @@ export const InventoryItemSchema = z.object({
   userId: z.string(),
   itemId: z.uuid(),
   quantity: z.number().int(),
-  acquiredAt: z.iso.datetime(),
+  createdAt: z.iso.datetime(),
+  updatedAt: z.iso.datetime(),
   item: ItemSchema,
 })
 
 // ── Users ──
+
+export const ActiveBuffSchema = z.object({
+  type: z.enum(["xp_boost", "gold_boost"]),
+  multiplier: z.string(),
+  expiresAt: z.iso.datetime(),
+})
 
 export const PublicUserSchema = z.object({
   id: z.string(),
@@ -176,6 +187,7 @@ export const PublicUserSchema = z.object({
   restorableStreak: z.number().int(),
   classes: z.array(ClassSchema),
   activeClass: ClassSchema.nullable(),
+  activeBuffs: z.array(ActiveBuffSchema).default([]),
   createdAt: z.iso.datetime(),
 })
 
@@ -292,6 +304,7 @@ export type ClassChoice = z.infer<typeof ClassChoiceSchema>
 export type Quest = z.infer<typeof QuestSchema>
 export type ClassQuest = z.infer<typeof ClassQuestSchema>
 export type QuestOverride = z.infer<typeof QuestOverrideSchema>
+export type ActiveBuff = z.infer<typeof ActiveBuffSchema>
 export type QuestProgress = z.infer<typeof QuestProgressSchema>
 export type LevelUpInfo = z.infer<typeof LevelUpInfoSchema>
 export type Guild = z.infer<typeof GuildSchema>

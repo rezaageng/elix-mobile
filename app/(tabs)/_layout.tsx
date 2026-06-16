@@ -7,6 +7,14 @@ export default function TabLayout() {
         <Label>Quest</Label>
         <Icon sf="target" drawable="custom_quest_drawable" />
       </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="shop">
+        <Label>Shop</Label>
+        <Icon sf="bag.fill" drawable="custom_shop_drawable" />
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="inventory">
+        <Label>Inventory</Label>
+        <Icon sf="archivebox.fill" drawable="custom_inventory_drawable" />
+      </NativeTabs.Trigger>
       <NativeTabs.Trigger name="guild">
         <Label>Guild</Label>
         <Icon sf="person.3.fill" drawable="custom_guild_drawable" />

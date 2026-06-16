@@ -12,7 +12,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context"
 
 import { useClassQuests, useCurrentUser, useDeleteQuest } from "@/lib/api"
-import type { ClassQuest } from "@/lib/api/schemas"
+import type { ActiveBuff, ClassQuest } from "@/lib/api/schemas"
 import { cn } from "@/lib/utils"
 import Header from "@/components/header"
 import {
@@ -143,15 +143,20 @@ function getDurationInfo(
 function QuestCard({
   quest,
   onLongPress,
+  activeBuffs,
 }: {
   quest: ClassQuest
   onLongPress?: () => void
+  activeBuffs?: ActiveBuff[]
 }) {
   const router = useRouter()
   const status = getQuestStatus(quest)
   const completed = status === "completed"
   const effective = getEffectiveQuestValues(quest)
   const durationInfo = getDurationInfo({ ...quest, duration: effective.duration })
+
+  const xpBuff = activeBuffs?.find((b) => b.type === "xp_boost")
+  const goldBuff = activeBuffs?.find((b) => b.type === "gold_boost")
 
   const canManage =
     (quest.type === "daily" || quest.type === "weekly" || quest.type === "event") && !completed
@@ -214,12 +219,30 @@ function QuestCard({
           </View>
         </View>
         <View className="items-end">
-          <Text className="font-body-semibold text-body-sm text-primary">
-            {quest.xpReward ?? 0} XP
-          </Text>
-          <Text className="mt-0.5 font-body text-caption text-muted dark:text-on-dark-soft">
-            {quest.goldReward ?? 0} G
-          </Text>
+          <View className="flex-row items-center gap-1">
+            <Text className="font-body-semibold text-body-sm text-primary">
+              {quest.xpReward ?? 0} XP
+            </Text>
+            {xpBuff && (
+              <View className="rounded-full bg-accent-amber/10 px-1.5 py-0.5">
+                <Text className="font-body-semibold text-caption text-accent-amber">
+                  x{xpBuff.multiplier}
+                </Text>
+              </View>
+            )}
+          </View>
+          <View className="mt-0.5 flex-row items-center gap-1">
+            <Text className="font-body text-caption text-muted dark:text-on-dark-soft">
+              {quest.goldReward ?? 0} G
+            </Text>
+            {goldBuff && (
+              <View className="rounded-full bg-accent-amber/10 px-1.5 py-0.5">
+                <Text className="font-body-semibold text-caption text-accent-amber">
+                  x{goldBuff.multiplier}
+                </Text>
+              </View>
+            )}
+          </View>
           {durationInfo && (
             <View className="mt-0.5 flex-row items-center gap-1">
               <Timer
@@ -394,6 +417,7 @@ export default function QuestScreen() {
                 <QuestCard
                   key={quest.id}
                   quest={quest}
+                  activeBuffs={user?.activeBuffs ?? []}
                   onLongPress={() =>
                     sheetReference.current?.open(quest.id, quest.type, quest.name)
                   }
@@ -431,6 +455,7 @@ export default function QuestScreen() {
                 <QuestCard
                   key={quest.id}
                   quest={quest}
+                  activeBuffs={user?.activeBuffs ?? []}
                   onLongPress={() =>
                     sheetReference.current?.open(quest.id, quest.type, quest.name)
                   }
@@ -447,6 +472,7 @@ export default function QuestScreen() {
                 <QuestCard
                   key={quest.id}
                   quest={quest}
+                  activeBuffs={user?.activeBuffs ?? []}
                   onLongPress={() =>
                     sheetReference.current?.open(quest.id, quest.type, quest.name)
                   }

@@ -45,3 +45,6 @@ app-example
 
 .env
 
+# Deepwork session state
+.slim/deepwork/
+

@@ -79,6 +79,10 @@ export default function VerifySubmissionScreen() {
     VerificationResult | undefined
   >()
   const [levelUpInfo, setLevelUpInfo] = useState<LevelUpInfo | undefined>()
+  const [earnedRewards, setEarnedRewards] = useState<{
+    xp: number | null | undefined
+    gold: number | null | undefined
+  } | undefined>()
 
   const sheetReference = useRef<BottomSheetModal>(null)
   const mutedColor = useThemeColor("foregroundMuted")
@@ -166,6 +170,10 @@ export default function VerifySubmissionScreen() {
             classId: effectiveClassId,
             questId,
             body: { status: "completed" },
+          })
+          setEarnedRewards({
+            xp: progressResult.data.xpEarned,
+            gold: progressResult.data.goldEarned,
           })
           if (progressResult.levelUp) {
             setLevelUpInfo(progressResult.levelUp)
@@ -344,7 +352,7 @@ export default function VerifySubmissionScreen() {
                           XP
                         </Text>
                         <Text className="font-body-semibold text-body-md text-primary">
-                          +{quest?.xpReward ?? 0}
+                          +{earnedRewards?.xp ?? quest?.xpReward ?? 0}
                         </Text>
                       </View>
                       <View>
@@ -352,7 +360,7 @@ export default function VerifySubmissionScreen() {
                           Gold
                         </Text>
                         <Text className="font-body-semibold text-body-md text-primary">
-                          +{quest?.goldReward ?? 0}
+                          +{earnedRewards?.gold ?? quest?.goldReward ?? 0}
                         </Text>
                       </View>
                       {levelUpInfo && (
