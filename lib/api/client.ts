@@ -13,7 +13,7 @@ export class ApiError extends Error {
   }
 }
 
-const BASE_URL = process.env.EXPO_PUBLIC_API_URL
+export const BASE_URL = process.env.EXPO_PUBLIC_API_URL as string
 
 if (!BASE_URL) {
   throw new Error("EXPO_PUBLIC_API_URL is not defined")

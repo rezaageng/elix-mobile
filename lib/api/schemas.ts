@@ -97,13 +97,14 @@ export const GuildSchema = z.object({
   id: z.uuid(),
   name: z.string(),
   description: z.string().nullable(),
-  ownerId: z.string(),
+  imageUrl: z.string().nullable(),
+  headerUrl: z.string().nullable(),
   createdAt: z.iso.datetime(),
   updatedAt: z.iso.datetime(),
 })
 
 export const GuildMemberSchema = z.object({
-  id: z.uuid(),
+  id: z.string(),
   name: z.string(),
   image: ImageUrlSchema.nullable(),
   role: z.string(),
@@ -119,7 +120,7 @@ export const GuildMemberRecordSchema = z.object({
 })
 
 export const GuildMessageUserSchema = z.object({
-  id: z.uuid(),
+  id: z.string(),
   name: z.string(),
   username: z.string(),
   image: ImageUrlSchema.nullable(),
@@ -127,7 +128,7 @@ export const GuildMessageUserSchema = z.object({
 
 export const GuildMessageSchema = z.object({
   id: z.uuid(),
-  content: z.string(),
+  content: z.string().nullable(),
   attachmentUrl: z.string().nullable(),
   createdAt: z.iso.datetime(),
   user: GuildMessageUserSchema,
@@ -264,6 +265,11 @@ export const UpdateQuestProgressBodySchema = z.object({
   status: z.enum(["in_progress", "completed"]),
 })
 
+export const UpdateGuildBodySchema = z.object({
+  name: z.string().optional(),
+  description: z.string().optional(),
+})
+
 export const CreateGuildBodySchema = z.object({
   name: z.string(),
   description: z.string().optional(),
@@ -272,6 +278,24 @@ export const CreateGuildBodySchema = z.object({
 export const ApproveMemberBodySchema = z.object({
   userId: z.uuid(),
   status: z.enum(["approved", "rejected"]),
+})
+
+export const UpdateMemberRoleBodySchema = z.object({
+  userId: z.uuid(),
+  role: z.enum(["member", "admin"]),
+})
+
+export const CreateGuildMessageBodySchema = z.object({
+  content: z.string().optional(),
+  attachmentUrl: z.string().url().optional(),
+})
+
+export const UploadMessageAttachmentResponseSchema = z.object({
+  url: z.string().url(),
+})
+
+export const GuildImageUploadResponseSchema = z.object({
+  url: z.string().url(),
 })
 
 export const BuyItemBodySchema = z.object({
@@ -327,7 +351,11 @@ export type UpdateQuestProgressBody = z.infer<
   typeof UpdateQuestProgressBodySchema
 >
 export type CreateGuildBody = z.infer<typeof CreateGuildBodySchema>
+export type UpdateGuildBody = z.infer<typeof UpdateGuildBodySchema>
+export type GuildImageUploadResponse = z.infer<typeof GuildImageUploadResponseSchema>
 export type ApproveMemberBody = z.infer<typeof ApproveMemberBodySchema>
+export type UpdateMemberRoleBody = z.infer<typeof UpdateMemberRoleBodySchema>
+export type CreateGuildMessageBody = z.infer<typeof CreateGuildMessageBodySchema>
 export type BuyItemBody = z.infer<typeof BuyItemBodySchema>
 export type UseItemBody = z.infer<typeof UseItemBodySchema>
 export type PaginatedMeta = z.infer<typeof PaginatedMetaSchema>
