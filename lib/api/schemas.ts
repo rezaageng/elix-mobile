@@ -199,6 +199,27 @@ export const BaseStatsSchema = z.object({
   classesChosen: z.number().int(),
 })
 
+export const TimelinePointSchema = z.object({
+  label: z.string(),
+  value: z.number().int().nonnegative(),
+})
+
+export const TimelineSchema = z.object({
+  all: z.array(TimelinePointSchema),
+  yearly: z.array(TimelinePointSchema),
+  monthly: z.array(TimelinePointSchema),
+  weekly: z.array(TimelinePointSchema),
+})
+
+export const UserActivityItemSchema = z.object({
+  id: z.string(),
+  questName: z.string(),
+  completedAt: z.iso.datetime(),
+  className: z.string(),
+})
+
+export type UserActivityItem = z.infer<typeof UserActivityItemSchema>
+
 export const UserStatsSchema = z.object({
   progression: z.object({
     level: z.number().int(),
@@ -211,6 +232,7 @@ export const UserStatsSchema = z.object({
   yearly: BaseStatsSchema,
   monthly: BaseStatsSchema,
   weekly: BaseStatsSchema,
+  timeline: TimelineSchema,
 })
 
 // ── Verification ──

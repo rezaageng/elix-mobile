@@ -1,5 +1,6 @@
 export { ActivityTab, CollectionsTab } from "@/components/profile/tabs-section"
 export { AvatarSection } from "@/components/profile/avatar-section"
+export { ProfileScreen } from "@/components/profile/profile-screen"
 export { EditProfileSheet, type EditProfileSheetReference } from "@/components/profile/edit-profile-sheet"
 export { EditRoleSheet, type EditRoleSheetReference } from "@/components/profile/edit-role-sheet"
 export { ImagePickerSheet, type ImagePickerSheetReference } from "@/components/profile/image-picker-sheet"

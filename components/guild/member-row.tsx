@@ -10,6 +10,7 @@ interface MemberRowProps {
   guildId: string
   canManage: boolean
   isCurrentUser: boolean
+  onPress?: () => void
   onActionSheet: (member: GuildMember) => void
 }
 
@@ -50,12 +51,17 @@ export default function MemberRow({
   guildId,
   canManage,
   isCurrentUser,
+  onPress,
   onActionSheet,
 }: MemberRowProps) {
   const mutedColor = useThemeColor("muted")
 
   return (
-    <View className="flex-row items-center gap-sm rounded-lg bg-surface-card p-md dark:bg-surface-dark-elevated">
+    <TouchableOpacity
+      onPress={onPress}
+      activeOpacity={0.7}
+      className="flex-row items-center gap-sm rounded-lg bg-surface-card p-md dark:bg-surface-dark-elevated"
+    >
       {member.image ? (
         <Image
           source={{ uri: member.image }}
@@ -88,6 +94,6 @@ export default function MemberRow({
           <MoreVertical size={18} color={mutedColor} />
         </TouchableOpacity>
       )}
-    </View>
+    </TouchableOpacity>
   )
 }

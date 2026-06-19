@@ -17,7 +17,7 @@ import {
   View,
 } from "react-native"
 
-import type { Class, ClassQuest } from "@/lib/api/schemas"
+import type { Class, UserActivityItem } from "@/lib/api/schemas"
 import { useThemeColor } from "@/lib/use-theme-color"
 
 function formatDate(dateString: string | null | undefined): string {
@@ -39,32 +39,8 @@ function formatTime(dateString: string | null | undefined): string {
   })
 }
 
-function getQuestStatus(quest: ClassQuest): string {
-  return quest.progress?.[0]?.status ?? "not_started"
-}
-
-export function ActivityTab({
-  quests,
-  showQuestNames,
-  hideActivity,
-}: {
-  quests: ClassQuest[]
-  showQuestNames: boolean
-  hideActivity: boolean
-}) {
-  if (hideActivity) {
-    return (
-      <View className="items-center py-12">
-        <Text className="font-body text-body-sm text-muted">Activity hidden</Text>
-      </View>
-    )
-  }
-
-  const completed = quests
-    .filter((q) => getQuestStatus(q) === "completed")
-    .slice(0, 15)
-
-  if (completed.length === 0) {
+export function ActivityTab({ activity }: { activity: UserActivityItem[] }) {
+  if (activity.length === 0) {
     return (
       <View className="items-center py-12">
         <Text className="font-body text-body-sm text-muted">No completed quests yet</Text>
@@ -74,13 +50,12 @@ export function ActivityTab({
 
   return (
     <View className="gap-0">
-      {completed.map((quest, index) => {
-        const progress = quest.progress?.[0]
-        const completedAt = progress?.completedAt
-        const isLast = index === completed.length - 1
+      {activity.map((item, index) => {
+        const completedAt = item.completedAt
+        const isLast = index === activity.length - 1
 
         return (
-          <View key={quest.id} className="flex-row">
+          <View key={item.id} className="flex-row">
             {/* Timeline line */}
             <View className="items-center px-2">
               <View className="h-3 w-3 rounded-full bg-primary" />
@@ -90,11 +65,16 @@ export function ActivityTab({
             </View>
 
             {/* Content */}
-            <View className={`flex-1 pb-6 ${isLast ? "" : "border-b border-hairline"}`}>
+            <View className="flex-1 pb-6">
               <View className="gap-1">
                 <Text className="font-body-medium text-body-sm text-ink dark:text-on-dark">
-                  {showQuestNames ? quest.name : "Quest completed"}
+                  {item.questName}
                 </Text>
+                {item.className && (
+                  <Text className="font-body text-caption text-muted">
+                    {item.className}
+                  </Text>
+                )}
                 <View className="flex-row gap-2">
                   <Text className="font-body text-caption text-muted">
                     {formatDate(completedAt)}
@@ -116,6 +96,7 @@ export function CollectionsTab({
   classes,
   activeClass,
   userId,
+  isOwnProfile = true,
   onAddRole,
   onBrowseRoles,
   onEditRole,
@@ -126,6 +107,7 @@ export function CollectionsTab({
   classes: Class[]
   activeClass: Class | null
   userId: string
+  isOwnProfile?: boolean
   onAddRole: () => void
   onBrowseRoles: () => void
   onEditRole: (classId: string) => void
@@ -192,16 +174,16 @@ export function CollectionsTab({
         <Text className="font-body text-body-sm text-muted">
           No roles created
         </Text>
-        {addRoleCard}
-        {browseRolesCard}
+        {isOwnProfile && addRoleCard}
+        {isOwnProfile && browseRolesCard}
       </View>
     )
   }
 
   return (
     <View className="gap-3">
-      {addRoleCard}
-      {browseRolesCard}
+      {isOwnProfile && addRoleCard}
+      {isOwnProfile && browseRolesCard}
 
       {/* Created roles */}
       {createdRoles.map((cls) => {
@@ -234,24 +216,26 @@ export function CollectionsTab({
                   </View>
                 )}
               </View>
-              <View className="flex-row items-center gap-2">
-                <TouchableOpacity
-                  onPress={() => onEditRole(cls.id)}
-                  className="rounded-full p-1.5"
-                  activeOpacity={0.7}
-                  hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-                >
-                  <Pencil size={16} color={mutedColor} />
-                </TouchableOpacity>
-                <TouchableOpacity
-                  onPress={() => onDeleteRole(cls.id)}
-                  className="rounded-full p-1.5"
-                  activeOpacity={0.7}
-                  hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-                >
-                  <Trash2 size={16} color={errorColor} />
-                </TouchableOpacity>
-              </View>
+              {isOwnProfile && (
+                <View className="flex-row items-center gap-2">
+                  <TouchableOpacity
+                    onPress={() => onEditRole(cls.id)}
+                    className="rounded-full p-1.5"
+                    activeOpacity={0.7}
+                    hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+                  >
+                    <Pencil size={16} color={mutedColor} />
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() => onDeleteRole(cls.id)}
+                    className="rounded-full p-1.5"
+                    activeOpacity={0.7}
+                    hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+                  >
+                    <Trash2 size={16} color={errorColor} />
+                  </TouchableOpacity>
+                </View>
+              )}
             </View>
             <Text className="font-body text-caption text-muted">
               {cls.description}
@@ -291,24 +275,26 @@ export function CollectionsTab({
             </Text>
           </View>
 
-          <TouchableOpacity
-            onPress={() => selectedRole && onSwitchRole(selectedRole.id)}
-            disabled={isSwitchingRole}
-            className={`mt-lg items-center rounded-md bg-primary py-3 active:bg-primary-active ${
-              isSwitchingRole ? "opacity-50" : ""
-            }`}
-            activeOpacity={0.8}
-          >
-            {isSwitchingRole ? (
-              <ActivityIndicator size="small" color={primaryForegroundColor} />
-            ) : (
-              <Text className="font-body-medium text-button text-primary-foreground">
-                {activeClass?.id === selectedRole?.id
-                  ? "Active Role"
-                  : "Switch to this role"}
-              </Text>
-            )}
-          </TouchableOpacity>
+          {isOwnProfile && (
+            <TouchableOpacity
+              onPress={() => selectedRole && onSwitchRole(selectedRole.id)}
+              disabled={isSwitchingRole}
+              className={`mt-lg items-center rounded-md bg-primary py-3 active:bg-primary-active ${
+                isSwitchingRole ? "opacity-50" : ""
+              }`}
+              activeOpacity={0.8}
+            >
+              {isSwitchingRole ? (
+                <ActivityIndicator size="small" color={primaryForegroundColor} />
+              ) : (
+                <Text className="font-body-medium text-button text-primary-foreground">
+                  {activeClass?.id === selectedRole?.id
+                    ? "Active Role"
+                    : "Switch to this role"}
+                </Text>
+              )}
+            </TouchableOpacity>
+          )}
         </BottomSheetView>
       </BottomSheetModal>
     </View>

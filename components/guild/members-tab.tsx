@@ -1,4 +1,5 @@
 import { LogOut } from "lucide-react-native"
+import { useRouter } from "expo-router"
 import { Alert, RefreshControl, ScrollView, Text, View } from "react-native"
 
 import { Button } from "@/components/button"
@@ -24,6 +25,7 @@ export default function MembersTab({
   onRefresh,
   refreshing,
 }: MembersTabProps) {
+  const router = useRouter()
   const leaveGuild = useLeaveGuild()
   const updateRole = useUpdateMemberRole()
   const kickMember = useKickMember()
@@ -161,6 +163,15 @@ export default function MembersTab({
               guildId={guild.id}
               canManage={isAdmin}
               isCurrentUser={member.id === currentUserId}
+              onPress={
+                member.id === currentUserId
+                  ? undefined
+                  : () =>
+                      router.push({
+                        pathname: "/user/[id]" as never,
+                        params: { id: member.id },
+                      })
+              }
               onActionSheet={handleAction}
             />
           ))}

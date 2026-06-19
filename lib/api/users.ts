@@ -4,9 +4,10 @@ import { apiFetch } from "@/lib/api/client";
 import {
   PaginatedMetaSchema,
   PublicUserSchema,
+  UserActivityItemSchema,
   UserStatsSchema,
 } from "@/lib/api/schemas";
-import type { PaginatedMeta, PublicUser, UserStats } from "@/lib/api/schemas";
+import type { PaginatedMeta, PublicUser, UserActivityItem, UserStats } from "@/lib/api/schemas";
 
 // ── Fetch Functions ──
 
@@ -39,6 +40,15 @@ export const getUserStats = async (userId: string): Promise<UserStats> => {
     `/api/users/${userId}/stats`,
     { method: "GET" },
     z.object({ data: UserStatsSchema })
+  );
+  return data.data;
+};
+
+export const getUserActivity = async (userId: string): Promise<UserActivityItem[]> => {
+  const data = await apiFetch(
+    `/api/users/${userId}/activity`,
+    { method: "GET" },
+    z.object({ data: z.array(UserActivityItemSchema) })
   );
   return data.data;
 };
@@ -99,6 +109,14 @@ export const useUserStats = (userId: string) => {
   return useQuery({
     queryKey: ["users", userId, "stats"],
     queryFn: () => getUserStats(userId),
+    enabled: !!userId,
+  });
+};
+
+export const useUserActivity = (userId: string) => {
+  return useQuery({
+    queryKey: ["users", userId, "activity"],
+    queryFn: () => getUserActivity(userId),
     enabled: !!userId,
   });
 };

@@ -4,7 +4,7 @@ import { LineChart } from "react-native-gifted-charts"
 
 import type { UserStats } from "@/lib/api/schemas"
 
-type PeriodFilter = "all" | "weekly" | "monthly" | "yearly"
+type PeriodFilter = "all" | "weekly" | "yearly"
 
 interface StatsSectionProps {
   stats: UserStats
@@ -13,7 +13,6 @@ interface StatsSectionProps {
 const filters: { key: PeriodFilter; label: string }[] = [
   { key: "all", label: "All" },
   { key: "weekly", label: "Week" },
-  { key: "monthly", label: "Month" },
   { key: "yearly", label: "Year" },
 ]
 
@@ -21,61 +20,31 @@ export function StatsSection({ stats }: StatsSectionProps) {
   const [period, setPeriod] = useState<PeriodFilter>("all")
 
   const chartData = useMemo(() => {
-    if (period === "weekly") {
-      const total = stats.weekly.questsCompleted
-      return [
-        { value: Math.max(0, Math.round(total * 0.1)), label: "Sun", dataPointText: "" },
-        { value: Math.max(0, Math.round(total * 0.15)), label: "Mon", dataPointText: "" },
-        { value: Math.max(0, Math.round(total * 0.2)), label: "Tue", dataPointText: "" },
-        { value: Math.max(0, Math.round(total * 0.25)), label: "Wed", dataPointText: "" },
-        { value: Math.max(0, Math.round(total * 0.15)), label: "Thu", dataPointText: "" },
-        { value: Math.max(0, Math.round(total * 0.1)), label: "Fri", dataPointText: "" },
-        { value: Math.max(0, Math.round(total * 0.05)), label: "Sat", dataPointText: total.toString() },
-      ]
+    const timeline = stats.timeline?.[period]
+    if (timeline && timeline.length > 0) {
+      return timeline.map((point, index) => ({
+        value: point.value,
+        label: point.label,
+        dataPointText: index === timeline.length - 1 ? point.value.toString() : "",
+      }))
     }
 
-    if (period === "monthly") {
-      const total = stats.monthly.questsCompleted
-      return [
-        { value: Math.max(0, Math.round(total * 0.2)), label: "W1", dataPointText: "" },
-        { value: Math.max(0, Math.round(total * 0.25)), label: "W2", dataPointText: "" },
-        { value: Math.max(0, Math.round(total * 0.3)), label: "W3", dataPointText: "" },
-        { value: Math.max(0, Math.round(total * 0.25)), label: "W4", dataPointText: total.toString() },
-      ]
+    // Fallback for older backend responses: show the period total as a single point
+    const totals: Record<PeriodFilter, number> = {
+      all: stats.allTime.questsCompleted,
+      weekly: stats.weekly.questsCompleted,
+      yearly: stats.yearly.questsCompleted,
     }
+    const total = totals[period]
 
-    if (period === "yearly") {
-      const total = stats.yearly.questsCompleted
-      return [
-        { value: Math.max(0, Math.round(total * 0.05)), label: "Jan", dataPointText: "" },
-        { value: Math.max(0, Math.round(total * 0.08)), label: "Feb", dataPointText: "" },
-        { value: Math.max(0, Math.round(total * 0.1)), label: "Mar", dataPointText: "" },
-        { value: Math.max(0, Math.round(total * 0.1)), label: "Apr", dataPointText: "" },
-        { value: Math.max(0, Math.round(total * 0.12)), label: "May", dataPointText: "" },
-        { value: Math.max(0, Math.round(total * 0.12)), label: "Jun", dataPointText: "" },
-        { value: Math.max(0, Math.round(total * 0.1)), label: "Jul", dataPointText: "" },
-        { value: Math.max(0, Math.round(total * 0.08)), label: "Aug", dataPointText: "" },
-        { value: Math.max(0, Math.round(total * 0.08)), label: "Sep", dataPointText: "" },
-        { value: Math.max(0, Math.round(total * 0.07)), label: "Oct", dataPointText: "" },
-        { value: Math.max(0, Math.round(total * 0.05)), label: "Nov", dataPointText: "" },
-        { value: Math.max(0, Math.round(total * 0.05)), label: "Dec", dataPointText: total.toString() },
-      ]
-    }
-
-    // All - show years
-    const total = stats.allTime.questsCompleted
-    const currentYear = new Date().getFullYear()
-    return [
-      { value: Math.max(0, Math.round(total * 0.1)), label: (currentYear - 3).toString(), dataPointText: "" },
-      { value: Math.max(0, Math.round(total * 0.2)), label: (currentYear - 2).toString(), dataPointText: "" },
-      { value: Math.max(0, Math.round(total * 0.3)), label: (currentYear - 1).toString(), dataPointText: "" },
-      { value: total, label: currentYear.toString(), dataPointText: total.toString() },
-    ]
+    return [{ value: total, label: "", dataPointText: total.toString() }]
   }, [stats, period])
 
   const maxValue = useMemo(() => {
     return Math.max(...chartData.map((d) => d.value), 1)
   }, [chartData])
+
+  const spacing = chartData.length > 1 ? 250 / (chartData.length - 1) : 65
 
   return (
     <View className="gap-4 py-4">
@@ -116,9 +85,10 @@ export function StatsSection({ stats }: StatsSectionProps) {
             width={300}
             height={160}
             maxValue={maxValue * 1.2}
-            noOfSections={3}
-            spacing={65}
-            initialSpacing={10}
+            noOfSections={4}
+            spacing={spacing}
+            initialSpacing={25}
+            rotateLabel
             color="#cc785c"
             startFillColor="#cc785c"
             endFillColor="#cc785c"
@@ -129,7 +99,18 @@ export function StatsSection({ stats }: StatsSectionProps) {
             dataPointsRadius={3}
             textColor="#141413"
             textFontSize={10}
-            hideRules
+            focusEnabled
+            showDataPointLabelOnFocus
+            unFocusOnPressOut={false}
+            focusedDataPointColor="#cc785c"
+            focusedDataPointRadius={5}
+            focusedDataPointLabelComponent={(item: { value: number }) => (
+              <View className="rounded-md bg-primary px-1.5 py-0.5">
+                <Text className="font-body-bold text-caption text-primary-foreground">
+                  {item.value}
+                </Text>
+              </View>
+            )}
             hideYAxisText
             xAxisLabelTextStyle={{ fontSize: 10, color: "#6c6a64" }}
             xAxisColor="#e6dfd8"
