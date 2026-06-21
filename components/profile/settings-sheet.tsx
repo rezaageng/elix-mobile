@@ -1,4 +1,4 @@
-import React, { forwardRef, useCallback } from "react"
+import React, { forwardRef, useCallback, useEffect } from "react"
 import {
   BottomSheetBackdrop,
   BottomSheetModal,
@@ -7,6 +7,11 @@ import {
 import { Alert, Switch, Text, TouchableOpacity, useColorScheme, View } from "react-native"
 
 import { authClient } from "@/lib/auth-client"
+import {
+  cancelQuestNotifications,
+  cancelStreakReminder,
+  scheduleStreakReminder,
+} from "@/lib/notifications/scheduler"
 import {
   useProfileSettings,
   useUpdateProfileSettings,
@@ -38,6 +43,26 @@ export interface SettingsSheetReference {
       },
       [updateSettings]
     )
+
+    // Sync streak reminder with toggle
+    useEffect(() => {
+      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone
+      if (settings?.pushStreakWillBreak ?? true) {
+        scheduleStreakReminder(tz, true).catch(() => {})
+      } else {
+        cancelStreakReminder().catch(() => {})
+      }
+    }, [settings?.pushStreakWillBreak])
+
+    // Cancel quest notifications when either quest toggle is turned off
+    // ponytail: when turned back on, index.tsx effect picks up the setting change via React Query cache and reschedules
+    useEffect(() => {
+      const starting = settings?.pushQuestStarting ?? true
+      const endingSoon = settings?.pushQuestEndingSoon ?? true
+      if (!starting || !endingSoon) {
+        cancelQuestNotifications().catch(() => {})
+      }
+    }, [settings?.pushQuestStarting, settings?.pushQuestEndingSoon])
 
     const handleLogout = useCallback(() => {
       Alert.alert("Log Out", "Are you sure you want to log out?", [
@@ -106,6 +131,45 @@ export interface SettingsSheetReference {
               value={!(settings?.showQuestNamesInActivity ?? true)}
               onValueChange={(v) => updateSetting("showQuestNamesInActivity", !v)}
               disabled={updateSettings.isPending || (settings?.hideActivityCompletely ?? false)}
+            />
+
+            {/* Notifications */}
+            <View className="mb-3 mt-6 px-2">
+              <Text className="font-body-bold text-caption-uppercase text-muted">
+                Notifications
+              </Text>
+            </View>
+
+            <SettingRow
+              label="Quest starting"
+              description="Notify when a quest starts"
+              value={settings?.pushQuestStarting ?? true}
+              onValueChange={(v) => updateSetting("pushQuestStarting", v)}
+              disabled={updateSettings.isPending}
+            />
+
+            <SettingRow
+              label="Quest ending soon"
+              description="Notify when a quest is about to end"
+              value={settings?.pushQuestEndingSoon ?? true}
+              onValueChange={(v) => updateSetting("pushQuestEndingSoon", v)}
+              disabled={updateSettings.isPending}
+            />
+
+            <SettingRow
+              label="Streak will break"
+              description="Remind you to complete a quest daily"
+              value={settings?.pushStreakWillBreak ?? true}
+              onValueChange={(v) => updateSetting("pushStreakWillBreak", v)}
+              disabled={updateSettings.isPending}
+            />
+
+            <SettingRow
+              label="Guild messages"
+              description="In-app notifications for new guild messages"
+              value={settings?.pushGuildMessages ?? true}
+              onValueChange={(v) => updateSetting("pushGuildMessages", v)}
+              disabled={updateSettings.isPending}
             />
 
             {/* Account */}

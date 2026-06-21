@@ -74,7 +74,7 @@ export function StatsSection({ stats }: StatsSectionProps) {
       </View>
 
       {/* Line Chart - inside card */}
-      <View className="gap-3 rounded-lg bg-surface-card p-3 dark:bg-surface-dark">
+      <View className="gap-3 rounded-lg bg-surface-card p-3 dark:bg-surface-dark-elevated">
         <Text className="font-body-medium text-caption text-muted px-1">
           Quest Completions
         </Text>

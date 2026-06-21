@@ -341,6 +341,20 @@ export const PaginatedMetaSchema = z.object({
   totalPages: z.number().int(),
 })
 
+// ── Notifications ──
+
+export const PushTokenSchema = z.object({
+  id: z.uuid(),
+  userId: z.string(),
+  token: z.string(),
+  platform: z.enum(["expo", "apns", "fcm"]),
+  deviceName: z.string().nullable().optional(),
+  lastSeenAt: z.iso.datetime(),
+  createdAt: z.iso.datetime(),
+})
+
+export type PushToken = z.infer<typeof PushTokenSchema>
+
 // ── Types ──
 
 export type ApiErrorData = z.infer<typeof ErrorSchema>

@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native"
-import { SafeAreaView } from "react-native-safe-area-context"
+import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context"
 
 import {
   useBuyItem,
@@ -177,6 +177,7 @@ function ShopItemCard({
 }
 
 export default function ShopScreen() {
+  const insets = useSafeAreaInsets()
   const { data: user, isPending: userLoading } = useCurrentUser()
   const {
     data: items,
@@ -268,6 +269,7 @@ export default function ShopScreen() {
     <SafeAreaView className="w-full flex-1 bg-canvas dark:bg-surface-dark">
       <Header
         title="Shop"
+        titleAlign="left"
         canGoBack={false}
         right={user ? <GoldChip gold={user.gold} /> : undefined}
       />
@@ -276,7 +278,7 @@ export default function ShopScreen() {
 
       <ScrollView
         className="flex-1"
-        contentContainerStyle={{ flexGrow: 1, paddingHorizontal: 16, paddingBottom: 24 }}
+        contentContainerStyle={{ flexGrow: 1, paddingHorizontal: 16, paddingBottom: insets.bottom + 64 }}
         refreshControl={
           <RefreshControl
             refreshing={isLoading || refreshing}

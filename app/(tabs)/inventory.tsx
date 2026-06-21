@@ -8,7 +8,7 @@ import {
   Text,
   View,
 } from "react-native"
-import { SafeAreaView } from "react-native-safe-area-context"
+import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context"
 
 import {
   useClassQuests,
@@ -118,6 +118,7 @@ function InventoryCard({
 }
 
 export default function InventoryScreen() {
+  const insets = useSafeAreaInsets()
   const { data: user, isPending: userLoading } = useCurrentUser()
   const {
     data: inventory,
@@ -280,6 +281,7 @@ export default function InventoryScreen() {
     <SafeAreaView className="w-full flex-1 bg-canvas dark:bg-surface-dark">
       <Header
         title="Inventory"
+        titleAlign="left"
         canGoBack={false}
         right={user ? <GoldChip gold={user.gold} /> : undefined}
       />
@@ -290,7 +292,7 @@ export default function InventoryScreen() {
           flexGrow: 1,
           paddingHorizontal: 16,
           paddingTop: 16,
-          paddingBottom: 24,
+          paddingBottom: insets.bottom + 64,
         }}
         refreshControl={
           <RefreshControl

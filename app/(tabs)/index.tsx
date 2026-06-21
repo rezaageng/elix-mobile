@@ -1,6 +1,6 @@
 import { useRouter } from "expo-router"
 import { Flame, Plus, Timer } from "lucide-react-native"
-import { useRef, useState, type ReactNode } from "react"
+import { useEffect, useRef, useState, type ReactNode } from "react"
 import {
   Alert,
   RefreshControl,
@@ -9,10 +9,16 @@ import {
   TouchableOpacity,
   View,
 } from "react-native"
-import { SafeAreaView } from "react-native-safe-area-context"
+import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context"
 
 import { useClassQuests, useCurrentUser, useDeleteQuest } from "@/lib/api"
 import type { ActiveBuff, ClassQuest } from "@/lib/api/schemas"
+import {
+  cancelStreakReminder,
+  scheduleQuestNotifications,
+  scheduleStreakReminder,
+} from "@/lib/notifications/scheduler"
+import { useProfileSettings } from "@/lib/settings-store"
 import { cn } from "@/lib/utils"
 import Header from "@/components/header"
 import {
@@ -324,6 +330,7 @@ function SectionHeader({ title }: { title: string }) {
 
 export default function QuestScreen() {
   const router = useRouter()
+  const insets = useSafeAreaInsets()
   const { data: user, isPending: userLoading } = useCurrentUser()
   const classId = user?.activeClass?.id
   const {
@@ -343,6 +350,26 @@ export default function QuestScreen() {
 
   const isLoading = userLoading || (!!classId && questsLoading)
   const sheetReference = useRef<QuestActionsSheetReference>(null)
+  const { data: settings } = useProfileSettings()
+
+  // Schedule local notifications for quests and streak
+  useEffect(() => {
+    if (!quests) return
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone
+
+    scheduleQuestNotifications(quests, tz, {
+      starting: settings?.pushQuestStarting ?? true,
+      endingSoon: settings?.pushQuestEndingSoon ?? true,
+    }).catch(() => {
+      // Silently fail — local scheduling is non-critical
+    })
+
+    if (settings?.pushStreakWillBreak ?? true) {
+      scheduleStreakReminder(tz, true).catch(() => {})
+    } else {
+      cancelStreakReminder().catch(() => {})
+    }
+  }, [quests, settings?.pushQuestStarting, settings?.pushQuestEndingSoon, settings?.pushStreakWillBreak])
 
   const handleEditQuest = (questId: string, questType: string) => {
     if (!classId) return
@@ -427,7 +454,7 @@ export default function QuestScreen() {
           ]
         })
 
-        content = <View className="pb-6">{sections}</View>
+        content = <View>{sections}</View>
       }
     } else {
       const tabQuests = allQuests.filter((q) => q.type === activeTab)
@@ -482,7 +509,7 @@ export default function QuestScreen() {
           ),
         ].filter(Boolean)
 
-        content = <View className="pb-6">{sections}</View>
+        content = <View>{sections}</View>
       }
     }
   }
@@ -491,10 +518,13 @@ export default function QuestScreen() {
     <SafeAreaView className="w-full flex-1 bg-canvas dark:bg-surface-dark">
       <Header
         title="Elix"
+        titleAlign="left"
         canGoBack={false}
         right={
           user ? (
-            <StreakBadge streak={user.streak} quests={quests ?? []} />
+            <View className="flex-row items-center gap-3">
+              <StreakBadge streak={user.streak} quests={quests ?? []} />
+            </View>
           ) : undefined
         }
       />
@@ -538,7 +568,7 @@ export default function QuestScreen() {
 
       <ScrollView
         className="flex-1"
-        contentContainerStyle={{ flexGrow: 1, paddingHorizontal: 16 }}
+        contentContainerStyle={{ flexGrow: 1, paddingHorizontal: 16, paddingBottom: insets.bottom + 64 }}
         refreshControl={
           <RefreshControl
             refreshing={isLoading || refreshing}

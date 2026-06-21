@@ -1,8 +1,14 @@
 import { Icon, Label, NativeTabs } from "expo-router/unstable-native-tabs"
+import { useColorScheme } from "react-native"
 
 export default function TabLayout() {
+  const colorScheme = useColorScheme()
   return (
-    <NativeTabs tintColor="#cc785c">
+    <NativeTabs
+      tintColor="#cc785c"
+      backgroundColor={colorScheme === "dark" ? "#181715" : "#faf9f5"}
+      disableTransparentOnScrollEdge
+    >
       <NativeTabs.Trigger name="index">
         <Label>Quest</Label>
         <Icon sf="target" drawable="custom_quest_drawable" />

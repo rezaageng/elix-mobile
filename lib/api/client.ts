@@ -79,9 +79,13 @@ export async function apiFetch<T>(
 
   const parsed = schema.safeParse(json)
 
-  console.log(parsed)
-
   if (!parsed.success) {
+    console.error("[apiFetch] Response validation failed", {
+      path,
+      status: response.status,
+      body: json,
+      issues: parsed.error.issues,
+    })
     throw new ApiError(
       `Response validation failed: ${parsed.error.message}`,
       response.status,

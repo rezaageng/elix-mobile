@@ -421,10 +421,11 @@ export function ProfileScreen({ userId }: ProfileScreenProps) {
             onRefresh={onRefresh}
             tintColor="#cc785c"
             colors={["#cc785c"]}
-            progressViewOffset={insets.top + 24}
+            progressViewOffset={insets.top + 96}
           />
         }
         className="flex-1"
+        contentContainerStyle={{ paddingBottom: insets.bottom + 64 }}
         onScroll={Animated.event(
           [{ nativeEvent: { contentOffset: { y: scrollY } } }],
           { useNativeDriver: false }
@@ -482,7 +483,7 @@ export function ProfileScreen({ userId }: ProfileScreenProps) {
         </View>
 
         {/* Bottom padding */}
-        <View className="h-8" />
+        <View className="h-24" />
       </Animated.ScrollView>
 
       {/* Back button - always visible on other users' profiles */}

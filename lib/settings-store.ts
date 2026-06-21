@@ -5,11 +5,19 @@ import { apiFetch } from "@/lib/api/client";
 export interface ProfileSettings {
   showQuestNamesInActivity: boolean;
   hideActivityCompletely: boolean;
+  pushGuildMessages: boolean;
+  pushQuestStarting: boolean;
+  pushQuestEndingSoon: boolean;
+  pushStreakWillBreak: boolean;
 }
 
 const SettingsSchema = z.object({
   showQuestNamesInActivity: z.boolean(),
   hideActivityCompletely: z.boolean(),
+  pushGuildMessages: z.boolean(),
+  pushQuestStarting: z.boolean(),
+  pushQuestEndingSoon: z.boolean(),
+  pushStreakWillBreak: z.boolean(),
 });
 
 export const getProfileSettings = async (): Promise<ProfileSettings> => {

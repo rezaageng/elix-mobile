@@ -7,6 +7,7 @@ import {
   Text,
   View,
 } from "react-native"
+import { useSafeAreaInsets } from "react-native-safe-area-context"
 
 import { Button } from "@/components/button"
 import { CreateGuildSheet } from "@/components/guild/create-guild-sheet"
@@ -22,6 +23,7 @@ interface DiscoveryScreenProps {
 }
 
 export default function DiscoveryScreen({ onGuildJoined }: DiscoveryScreenProps) {
+  const insets = useSafeAreaInsets()
   const [searchQuery, setSearchQuery] = useState("")
   const [debouncedQuery, setDebouncedQuery] = useState("")
   const [selectedGuild, setSelectedGuild] = useState<Guild>()
@@ -72,7 +74,7 @@ export default function DiscoveryScreen({ onGuildJoined }: DiscoveryScreenProps)
     <View className="flex-1 bg-canvas dark:bg-surface-dark">
       <ScrollView
         className="flex-1"
-        contentContainerStyle={{ paddingHorizontal: 16, paddingVertical: 8, gap: 24 }}
+        contentContainerStyle={{ paddingHorizontal: 16, paddingVertical: 8, gap: 24, paddingBottom: insets.bottom + 64 }}
         refreshControl={
           <RefreshControl refreshing={loadingMyGuilds} onRefresh={onRefresh} />
         }

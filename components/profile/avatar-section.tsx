@@ -74,7 +74,7 @@ function StatItem({
   label: string
 }) {
   return (
-    <View className="flex-1 items-center gap-1.5 rounded-lg bg-surface-card p-3 dark:bg-surface-dark">
+    <View className="flex-1 items-center gap-1.5 rounded-lg bg-surface-card p-3 dark:bg-surface-dark-elevated">
       <Text className="font-display text-display-xs text-ink dark:text-on-dark">
         {value}
       </Text>

@@ -298,7 +298,7 @@ export default function GuildHome({
     <View className="flex-1 bg-canvas dark:bg-surface-dark">
       <ScrollView
         className="flex-1"
-        contentContainerStyle={{ paddingBottom: 16 }}
+        contentContainerStyle={{ paddingBottom: insets.bottom + 64 }}
         showsVerticalScrollIndicator={false}
         refreshControl={
           <RefreshControl
@@ -306,6 +306,7 @@ export default function GuildHome({
             onRefresh={onRefresh}
             tintColor="#cc785c"
             colors={["#cc785c"]}
+            progressViewOffset={insets.top + 96}
           />
         }
       >

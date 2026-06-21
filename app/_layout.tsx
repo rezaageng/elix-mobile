@@ -21,6 +21,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler"
 import { useSession } from "@/lib/auth-client"
 import { queryClient } from "@/lib/query-client"
 import { updateTimezone } from "@/lib/api/users"
+import { useNotificationSetup } from "@/lib/notifications/use-notifications"
 
 SplashScreen.preventAutoHideAsync()
 
@@ -91,6 +92,9 @@ function RootNavigator() {
       })
     }
   }, [session])
+
+  // Notification setup (push registration, tap handling)
+  useNotificationSetup(session?.user?.id)
 
   return <Stack screenOptions={{ headerShown: false }} />
 }
