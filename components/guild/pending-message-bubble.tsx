@@ -1,12 +1,7 @@
+import { useState } from "react"
 import { Image } from "expo-image"
 import { RotateCcw } from "lucide-react-native"
-import { useState } from "react"
-import {
-  Text,
-  TouchableOpacity,
-  View,
-  useWindowDimensions,
-} from "react-native"
+import { Text, TouchableOpacity, useWindowDimensions, View } from "react-native"
 
 import { ImageViewerModal } from "@/components/profile/image-viewer-modal"
 
@@ -53,8 +48,8 @@ export default function PendingMessageBubble({
   const hasContent = message.content.length > 0
 
   return (
-    <View className="flex-row flex-row-reverse gap-xs">
-      <View className="max-w-[80%] gap-1 items-end">
+    <View className="flex-row-reverse gap-xs">
+      <View className="max-w-[80%] items-end gap-1">
         <View
           className={`gap-xs overflow-hidden rounded-xl bg-surface-soft px-3 py-2 dark:bg-surface-dark-soft ${
             message.status === "sending" ? "opacity-60" : ""

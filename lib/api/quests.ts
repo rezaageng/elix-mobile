@@ -248,6 +248,13 @@ export const useUpdateQuestProgress = () => {
         queryKey: ["classes", variables.classId, "quests"],
       });
       queryClient.invalidateQueries({ queryKey: ["user", "me"] });
+
+      if (variables.body.status === "completed") {
+        queryClient.invalidateQueries({
+          predicate: (query) =>
+            query.queryKey[0] === "guilds" && query.queryKey[2] === "leaderboard",
+        });
+      }
     },
   });
 };

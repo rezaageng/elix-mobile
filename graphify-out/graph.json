@@ -528,7 +528,7 @@
       "label": "TabLayout()",
       "file_type": "code",
       "source_file": "app/(tabs)/_layout.tsx",
-      "source_location": "L3",
+      "source_location": "L4",
       "id": "tabs_layout_tablayout",
       "community": 19,
       "norm_label": "tablayout()"
@@ -773,7 +773,7 @@
       "source_file": "app/(tabs)/profile.tsx",
       "source_location": "L1",
       "id": "tabs_profile",
-      "community": 18,
+      "community": 38,
       "norm_label": "profile.tsx"
     },
     {
@@ -782,7 +782,7 @@
       "source_file": "app/(tabs)/profile.tsx",
       "source_location": "L3",
       "id": "tabs_profile_profiletabscreen",
-      "community": 18,
+      "community": 38,
       "norm_label": "profiletabscreen()"
     },
     {
@@ -944,7 +944,7 @@
       "source_file": "app/guild/leaderboard.tsx",
       "source_location": "L1",
       "id": "guild_leaderboard",
-      "community": 96,
+      "community": 68,
       "norm_label": "leaderboard.tsx"
     },
     {
@@ -953,7 +953,7 @@
       "source_file": "app/guild/leaderboard.tsx",
       "source_location": "L7",
       "id": "guild_leaderboard_guildleaderboardscreen",
-      "community": 96,
+      "community": 68,
       "norm_label": "guildleaderboardscreen()"
     },
     {
@@ -962,7 +962,7 @@
       "source_file": "app/guild/members.tsx",
       "source_location": "L1",
       "id": "guild_members",
-      "community": 96,
+      "community": 42,
       "norm_label": "members.tsx"
     },
     {
@@ -971,7 +971,7 @@
       "source_file": "app/guild/members.tsx",
       "source_location": "L10",
       "id": "guild_members_guildmembersscreen",
-      "community": 96,
+      "community": 42,
       "norm_label": "guildmembersscreen()"
     },
     {
@@ -980,7 +980,7 @@
       "source_file": "app/login/index.tsx",
       "source_location": "L1",
       "id": "login_index",
-      "community": 18,
+      "community": 105,
       "norm_label": "index.tsx"
     },
     {
@@ -989,7 +989,7 @@
       "source_file": "app/login/index.tsx",
       "source_location": "L10",
       "id": "login_index_loginscreen",
-      "community": 0,
+      "community": 105,
       "norm_label": "loginscreen()"
     },
     {
@@ -998,7 +998,7 @@
       "source_file": "app/quest/[id].tsx",
       "source_location": "L1",
       "id": "quest_id",
-      "community": 105,
+      "community": 92,
       "norm_label": "[id].tsx"
     },
     {
@@ -1007,7 +1007,7 @@
       "source_file": "app/quest/[id].tsx",
       "source_location": "L12",
       "id": "quest_id_geteffectivequestvalues",
-      "community": 105,
+      "community": 92,
       "norm_label": "geteffectivequestvalues()"
     },
     {
@@ -1016,7 +1016,7 @@
       "source_file": "app/quest/[id].tsx",
       "source_location": "L22",
       "id": "quest_id_questdetailscreen",
-      "community": 105,
+      "community": 92,
       "norm_label": "questdetailscreen()"
     },
     {
@@ -1097,7 +1097,7 @@
       "source_file": "app/quest/verify.tsx",
       "source_location": "L1",
       "id": "quest_verify",
-      "community": 105,
+      "community": 92,
       "norm_label": "verify.tsx"
     },
     {
@@ -1106,7 +1106,7 @@
       "source_file": "app/quest/verify.tsx",
       "source_location": "L50",
       "id": "quest_verify_textsubmissionschema",
-      "community": 105,
+      "community": 92,
       "norm_label": "textsubmissionschema"
     },
     {
@@ -1115,7 +1115,7 @@
       "source_file": "app/quest/verify.tsx",
       "source_location": "L51",
       "id": "quest_verify_imagesubmissionschema",
-      "community": 105,
+      "community": 92,
       "norm_label": "imagesubmissionschema"
     },
     {
@@ -1124,7 +1124,7 @@
       "source_file": "app/quest/verify.tsx",
       "source_location": "L53",
       "id": "quest_verify_getzoderrormessage",
-      "community": 105,
+      "community": 92,
       "norm_label": "getzoderrormessage()"
     },
     {
@@ -1133,7 +1133,7 @@
       "source_file": "app/quest/verify.tsx",
       "source_location": "L64",
       "id": "quest_verify_verifysubmissionscreen",
-      "community": 105,
+      "community": 92,
       "norm_label": "verifysubmissionscreen()"
     },
     {
@@ -1142,7 +1142,7 @@
       "source_file": "app/roles/create.tsx",
       "source_location": "L1",
       "id": "roles_create",
-      "community": 96,
+      "community": 105,
       "norm_label": "create.tsx"
     },
     {
@@ -1151,7 +1151,7 @@
       "source_file": "app/roles/create.tsx",
       "source_location": "L24",
       "id": "roles_create_roleschema",
-      "community": 96,
+      "community": 105,
       "norm_label": "roleschema"
     },
     {
@@ -1160,7 +1160,7 @@
       "source_file": "app/roles/create.tsx",
       "source_location": "L29",
       "id": "roles_create_nameschema",
-      "community": 96,
+      "community": 105,
       "norm_label": "nameschema"
     },
     {
@@ -1169,7 +1169,7 @@
       "source_file": "app/roles/create.tsx",
       "source_location": "L30",
       "id": "roles_create_descriptionschema",
-      "community": 96,
+      "community": 105,
       "norm_label": "descriptionschema"
     },
     {
@@ -1178,7 +1178,7 @@
       "source_file": "app/roles/create.tsx",
       "source_location": "L32",
       "id": "roles_create_getzoderrormessage",
-      "community": 96,
+      "community": 105,
       "norm_label": "getzoderrormessage()"
     },
     {
@@ -1187,7 +1187,7 @@
       "source_file": "app/roles/create.tsx",
       "source_location": "L43",
       "id": "roles_create_createrolescreen",
-      "community": 96,
+      "community": 105,
       "norm_label": "createrolescreen()"
     },
     {
@@ -1196,7 +1196,7 @@
       "source_file": "app/roles/index.tsx",
       "source_location": "L1",
       "id": "roles_index",
-      "community": 18,
+      "community": 105,
       "norm_label": "index.tsx"
     },
     {
@@ -1205,7 +1205,7 @@
       "source_file": "app/roles/index.tsx",
       "source_location": "L26",
       "id": "roles_index_rolesscreen",
-      "community": 18,
+      "community": 68,
       "norm_label": "rolesscreen()"
     },
     {
@@ -1385,7 +1385,7 @@
       "source_file": "app/roles/quests/create-side.tsx",
       "source_location": "L1",
       "id": "quests_create_side",
-      "community": 84,
+      "community": 68,
       "norm_label": "create-side.tsx"
     },
     {
@@ -1394,7 +1394,7 @@
       "source_file": "app/roles/quests/create-side.tsx",
       "source_location": "L29",
       "id": "quests_create_side_nameschema",
-      "community": 84,
+      "community": 68,
       "norm_label": "nameschema"
     },
     {
@@ -1403,7 +1403,7 @@
       "source_file": "app/roles/quests/create-side.tsx",
       "source_location": "L30",
       "id": "quests_create_side_descriptionschema",
-      "community": 84,
+      "community": 68,
       "norm_label": "descriptionschema"
     },
     {
@@ -1412,7 +1412,7 @@
       "source_file": "app/roles/quests/create-side.tsx",
       "source_location": "L31",
       "id": "quests_create_side_durationschema",
-      "community": 84,
+      "community": 68,
       "norm_label": "durationschema"
     },
     {
@@ -1421,7 +1421,7 @@
       "source_file": "app/roles/quests/create-side.tsx",
       "source_location": "L40",
       "id": "quests_create_side_submissiontypeschema",
-      "community": 84,
+      "community": 68,
       "norm_label": "submissiontypeschema"
     },
     {
@@ -1430,7 +1430,7 @@
       "source_file": "app/roles/quests/create-side.tsx",
       "source_location": "L42",
       "id": "quests_create_side_entryschema",
-      "community": 84,
+      "community": 68,
       "norm_label": "entryschema"
     },
     {
@@ -1439,7 +1439,7 @@
       "source_file": "app/roles/quests/create-side.tsx",
       "source_location": "L50",
       "id": "quests_create_side_entriesschema",
-      "community": 84,
+      "community": 68,
       "norm_label": "entriesschema"
     },
     {
@@ -1448,7 +1448,7 @@
       "source_file": "app/roles/quests/create-side.tsx",
       "source_location": "L54",
       "id": "quests_create_side_getzoderrormessage",
-      "community": 84,
+      "community": 68,
       "norm_label": "getzoderrormessage()"
     },
     {
@@ -1457,7 +1457,7 @@
       "source_file": "app/roles/quests/create-side.tsx",
       "source_location": "L65",
       "id": "quests_create_side_createsidequestscreen",
-      "community": 84,
+      "community": 68,
       "norm_label": "createsidequestscreen()"
     },
     {
@@ -1466,7 +1466,7 @@
       "source_file": "app/roles/quests/edit-list.tsx",
       "source_location": "L1",
       "id": "quests_edit_list",
-      "community": 44,
+      "community": 0,
       "norm_label": "edit-list.tsx"
     },
     {
@@ -1475,7 +1475,7 @@
       "source_file": "app/roles/quests/edit-list.tsx",
       "source_location": "L19",
       "id": "quests_edit_list_typefilters",
-      "community": 44,
+      "community": 0,
       "norm_label": "typefilters"
     },
     {
@@ -1484,7 +1484,7 @@
       "source_file": "app/roles/quests/edit-list.tsx",
       "source_location": "L29",
       "id": "quests_edit_list_typetitles",
-      "community": 44,
+      "community": 0,
       "norm_label": "typetitles"
     },
     {
@@ -1493,7 +1493,7 @@
       "source_file": "app/roles/quests/edit-list.tsx",
       "source_location": "L35",
       "id": "quests_edit_list_typelabels",
-      "community": 44,
+      "community": 0,
       "norm_label": "typelabels"
     },
     {
@@ -1502,7 +1502,7 @@
       "source_file": "app/roles/quests/edit-list.tsx",
       "source_location": "L41",
       "id": "quests_edit_list_editquestlistscreen",
-      "community": 44,
+      "community": 68,
       "norm_label": "editquestlistscreen()"
     },
     {
@@ -1511,7 +1511,7 @@
       "source_file": "app/user/[id].tsx",
       "source_location": "L1",
       "id": "user_id",
-      "community": 18,
+      "community": 38,
       "norm_label": "[id].tsx"
     },
     {
@@ -1520,7 +1520,7 @@
       "source_file": "app/user/[id].tsx",
       "source_location": "L7",
       "id": "user_id_userprofilescreen",
-      "community": 18,
+      "community": 38,
       "norm_label": "userprofilescreen()"
     },
     {
@@ -1653,7 +1653,7 @@
       "label": "DiscoveryScreenProps",
       "file_type": "code",
       "source_file": "components/guild/discovery-screen.tsx",
-      "source_location": "L20",
+      "source_location": "L21",
       "id": "guild_discovery_screen_discoveryscreenprops",
       "community": 42,
       "norm_label": "discoveryscreenprops"
@@ -1662,7 +1662,7 @@
       "label": "DiscoveryScreen()",
       "file_type": "code",
       "source_file": "components/guild/discovery-screen.tsx",
-      "source_location": "L24",
+      "source_location": "L25",
       "id": "guild_discovery_screen_discoveryscreen",
       "community": 42,
       "norm_label": "discoveryscreen()"
@@ -1673,7 +1673,7 @@
       "source_file": "components/guild/edit-guild-sheet.tsx",
       "source_location": "L1",
       "id": "guild_edit_guild_sheet",
-      "community": 95,
+      "community": 42,
       "norm_label": "edit-guild-sheet.tsx"
     },
     {
@@ -1682,7 +1682,7 @@
       "source_file": "components/guild/edit-guild-sheet.tsx",
       "source_location": "L20",
       "id": "guild_edit_guild_sheet_editguildsheetreference",
-      "community": 95,
+      "community": 42,
       "norm_label": "editguildsheetreference"
     },
     {
@@ -1691,7 +1691,7 @@
       "source_file": "components/guild/edit-guild-sheet.tsx",
       "source_location": "L25",
       "id": "guild_edit_guild_sheet_editguildsheetprops",
-      "community": 95,
+      "community": 42,
       "norm_label": "editguildsheetprops"
     },
     {
@@ -1700,7 +1700,7 @@
       "source_file": "components/guild/edit-guild-sheet.tsx",
       "source_location": "L45",
       "id": "guild_edit_guild_sheet_editguildsheet",
-      "community": 95,
+      "community": 42,
       "norm_label": "editguildsheet"
     },
     {
@@ -1709,7 +1709,7 @@
       "source_file": "components/guild/guild-card.tsx",
       "source_location": "L1",
       "id": "guild_guild_card",
-      "community": 0,
+      "community": 42,
       "norm_label": "guild-card.tsx"
     },
     {
@@ -1718,7 +1718,7 @@
       "source_file": "components/guild/guild-card.tsx",
       "source_location": "L8",
       "id": "guild_guild_card_guildcardprops",
-      "community": 0,
+      "community": 42,
       "norm_label": "guildcardprops"
     },
     {
@@ -1727,7 +1727,7 @@
       "source_file": "components/guild/guild-card.tsx",
       "source_location": "L13",
       "id": "guild_guild_card_guildcard",
-      "community": 0,
+      "community": 42,
       "norm_label": "guildcard()"
     },
     {
@@ -1781,7 +1781,7 @@
       "source_file": "components/guild/guild-home.tsx",
       "source_location": "L1",
       "id": "guild_guild_home",
-      "community": 95,
+      "community": 42,
       "norm_label": "guild-home.tsx"
     },
     {
@@ -1790,7 +1790,7 @@
       "source_file": "components/guild/guild-home.tsx",
       "source_location": "L44",
       "id": "guild_guild_home_guildhomeprops",
-      "community": 95,
+      "community": 42,
       "norm_label": "guildhomeprops"
     },
     {
@@ -1799,7 +1799,7 @@
       "source_file": "components/guild/guild-home.tsx",
       "source_location": "L50",
       "id": "guild_guild_home_base_menu_items",
-      "community": 95,
+      "community": 42,
       "norm_label": "base_menu_items"
     },
     {
@@ -1808,7 +1808,7 @@
       "source_file": "components/guild/guild-home.tsx",
       "source_location": "L71",
       "id": "guild_guild_home_imagetarget",
-      "community": 95,
+      "community": 42,
       "norm_label": "imagetarget"
     },
     {
@@ -1817,7 +1817,7 @@
       "source_file": "components/guild/guild-home.tsx",
       "source_location": "L73",
       "id": "guild_guild_home_guildhome",
-      "community": 95,
+      "community": 42,
       "norm_label": "guildhome()"
     },
     {
@@ -1835,7 +1835,7 @@
       "source_file": "components/guild/leaderboard-row.tsx",
       "source_location": "L1",
       "id": "guild_leaderboard_row",
-      "community": 109,
+      "community": 42,
       "norm_label": "leaderboard-row.tsx"
     },
     {
@@ -1844,7 +1844,7 @@
       "source_file": "components/guild/leaderboard-row.tsx",
       "source_location": "L6",
       "id": "guild_leaderboard_row_leaderboardrowprops",
-      "community": 109,
+      "community": 42,
       "norm_label": "leaderboardrowprops"
     },
     {
@@ -1853,7 +1853,7 @@
       "source_file": "components/guild/leaderboard-row.tsx",
       "source_location": "L11",
       "id": "guild_leaderboard_row_getinitial",
-      "community": 109,
+      "community": 42,
       "norm_label": "getinitial()"
     },
     {
@@ -1862,7 +1862,7 @@
       "source_file": "components/guild/leaderboard-row.tsx",
       "source_location": "L15",
       "id": "guild_leaderboard_row_rankbadge",
-      "community": 109,
+      "community": 42,
       "norm_label": "rankbadge()"
     },
     {
@@ -1871,7 +1871,7 @@
       "source_file": "components/guild/leaderboard-row.tsx",
       "source_location": "L44",
       "id": "guild_leaderboard_row_leaderboardrow",
-      "community": 109,
+      "community": 42,
       "norm_label": "leaderboardrow()"
     },
     {
@@ -1880,7 +1880,7 @@
       "source_file": "components/guild/leaderboard-tab.tsx",
       "source_location": "L1",
       "id": "guild_leaderboard_tab",
-      "community": 0,
+      "community": 42,
       "norm_label": "leaderboard-tab.tsx"
     },
     {
@@ -1889,7 +1889,7 @@
       "source_file": "components/guild/leaderboard-tab.tsx",
       "source_location": "L8",
       "id": "guild_leaderboard_tab_leaderboardtabprops",
-      "community": 0,
+      "community": 42,
       "norm_label": "leaderboardtabprops"
     },
     {
@@ -1898,7 +1898,7 @@
       "source_file": "components/guild/leaderboard-tab.tsx",
       "source_location": "L12",
       "id": "guild_leaderboard_tab_leaderboardtab",
-      "community": 0,
+      "community": 42,
       "norm_label": "leaderboardtab()"
     },
     {
@@ -1907,7 +1907,7 @@
       "source_file": "components/guild/member-row.tsx",
       "source_location": "L1",
       "id": "guild_member_row",
-      "community": 38,
+      "community": 42,
       "norm_label": "member-row.tsx"
     },
     {
@@ -1916,7 +1916,7 @@
       "source_file": "components/guild/member-row.tsx",
       "source_location": "L8",
       "id": "guild_member_row_memberrowprops",
-      "community": 38,
+      "community": 42,
       "norm_label": "memberrowprops"
     },
     {
@@ -1925,7 +1925,7 @@
       "source_file": "components/guild/member-row.tsx",
       "source_location": "L17",
       "id": "guild_member_row_rolebadge",
-      "community": 38,
+      "community": 42,
       "norm_label": "rolebadge()"
     },
     {
@@ -1934,7 +1934,7 @@
       "source_file": "components/guild/member-row.tsx",
       "source_location": "L45",
       "id": "guild_member_row_getinitial",
-      "community": 38,
+      "community": 42,
       "norm_label": "getinitial()"
     },
     {
@@ -1943,7 +1943,7 @@
       "source_file": "components/guild/member-row.tsx",
       "source_location": "L49",
       "id": "guild_member_row_memberrow",
-      "community": 38,
+      "community": 42,
       "norm_label": "memberrow()"
     },
     {
@@ -1952,7 +1952,7 @@
       "source_file": "components/guild/members-tab.tsx",
       "source_location": "L1",
       "id": "guild_members_tab",
-      "community": 38,
+      "community": 42,
       "norm_label": "members-tab.tsx"
     },
     {
@@ -1961,7 +1961,7 @@
       "source_file": "components/guild/members-tab.tsx",
       "source_location": "L11",
       "id": "guild_members_tab_memberstabprops",
-      "community": 38,
+      "community": 42,
       "norm_label": "memberstabprops"
     },
     {
@@ -1970,7 +1970,7 @@
       "source_file": "components/guild/members-tab.tsx",
       "source_location": "L20",
       "id": "guild_members_tab_memberstab",
-      "community": 38,
+      "community": 42,
       "norm_label": "memberstab()"
     },
     {
@@ -1979,7 +1979,7 @@
       "source_file": "components/guild/message-bubble.tsx",
       "source_location": "L1",
       "id": "guild_message_bubble",
-      "community": 98,
+      "community": 94,
       "norm_label": "message-bubble.tsx"
     },
     {
@@ -1988,7 +1988,7 @@
       "source_file": "components/guild/message-bubble.tsx",
       "source_location": "L8",
       "id": "guild_message_bubble_messagebubbleprops",
-      "community": 98,
+      "community": 94,
       "norm_label": "messagebubbleprops"
     },
     {
@@ -1997,7 +1997,7 @@
       "source_file": "components/guild/message-bubble.tsx",
       "source_location": "L13",
       "id": "guild_message_bubble_formatmessagetime",
-      "community": 98,
+      "community": 94,
       "norm_label": "formatmessagetime()"
     },
     {
@@ -2006,7 +2006,7 @@
       "source_file": "components/guild/message-bubble.tsx",
       "source_location": "L21",
       "id": "guild_message_bubble_getinitial",
-      "community": 98,
+      "community": 94,
       "norm_label": "getinitial()"
     },
     {
@@ -2015,7 +2015,7 @@
       "source_file": "components/guild/message-bubble.tsx",
       "source_location": "L25",
       "id": "guild_message_bubble_messagebubble",
-      "community": 98,
+      "community": 94,
       "norm_label": "messagebubble()"
     },
     {
@@ -2024,7 +2024,7 @@
       "source_file": "components/guild/message-list.tsx",
       "source_location": "L1",
       "id": "guild_message_list",
-      "community": 90,
+      "community": 94,
       "norm_label": "message-list.tsx"
     },
     {
@@ -2033,7 +2033,7 @@
       "source_file": "components/guild/message-list.tsx",
       "source_location": "L20",
       "id": "guild_message_list_messagelistprops",
-      "community": 90,
+      "community": 94,
       "norm_label": "messagelistprops"
     },
     {
@@ -2042,7 +2042,7 @@
       "source_file": "components/guild/message-list.tsx",
       "source_location": "L27",
       "id": "guild_message_list_listitem",
-      "community": 90,
+      "community": 94,
       "norm_label": "listitem"
     },
     {
@@ -2051,7 +2051,7 @@
       "source_file": "components/guild/message-list.tsx",
       "source_location": "L32",
       "id": "guild_message_list_formatdaylabel",
-      "community": 90,
+      "community": 94,
       "norm_label": "formatdaylabel()"
     },
     {
@@ -2060,7 +2060,7 @@
       "source_file": "components/guild/message-list.tsx",
       "source_location": "L46",
       "id": "guild_message_list_buildlistitems",
-      "community": 90,
+      "community": 94,
       "norm_label": "buildlistitems()"
     },
     {
@@ -2069,7 +2069,7 @@
       "source_file": "components/guild/message-list.tsx",
       "source_location": "L76",
       "id": "guild_message_list_messagelist",
-      "community": 90,
+      "community": 94,
       "norm_label": "messagelist()"
     },
     {
@@ -2078,7 +2078,7 @@
       "source_file": "components/guild/pending-message-bubble.tsx",
       "source_location": "L1",
       "id": "guild_pending_message_bubble",
-      "community": 0,
+      "community": 94,
       "norm_label": "pending-message-bubble.tsx"
     },
     {
@@ -2087,7 +2087,7 @@
       "source_file": "components/guild/pending-message-bubble.tsx",
       "source_location": "L13",
       "id": "guild_pending_message_bubble_pendingattachment",
-      "community": 0,
+      "community": 94,
       "norm_label": "pendingattachment"
     },
     {
@@ -2096,7 +2096,7 @@
       "source_file": "components/guild/pending-message-bubble.tsx",
       "source_location": "L21",
       "id": "guild_pending_message_bubble_pendingmessage",
-      "community": 90,
+      "community": 94,
       "norm_label": "pendingmessage"
     },
     {
@@ -2105,7 +2105,7 @@
       "source_file": "components/guild/pending-message-bubble.tsx",
       "source_location": "L29",
       "id": "guild_pending_message_bubble_pendingmessagebubbleprops",
-      "community": 0,
+      "community": 94,
       "norm_label": "pendingmessagebubbleprops"
     },
     {
@@ -2114,7 +2114,7 @@
       "source_file": "components/guild/pending-message-bubble.tsx",
       "source_location": "L34",
       "id": "guild_pending_message_bubble_formatmessagetime",
-      "community": 0,
+      "community": 94,
       "norm_label": "formatmessagetime()"
     },
     {
@@ -2123,7 +2123,7 @@
       "source_file": "components/guild/pending-message-bubble.tsx",
       "source_location": "L42",
       "id": "guild_pending_message_bubble_pendingmessagebubble",
-      "community": 0,
+      "community": 94,
       "norm_label": "pendingmessagebubble()"
     },
     {
@@ -2132,7 +2132,7 @@
       "source_file": "components/guild/pending-requests.tsx",
       "source_location": "L1",
       "id": "guild_pending_requests",
-      "community": 38,
+      "community": 42,
       "norm_label": "pending-requests.tsx"
     },
     {
@@ -2141,7 +2141,7 @@
       "source_file": "components/guild/pending-requests.tsx",
       "source_location": "L7",
       "id": "guild_pending_requests_pendingrequestsprops",
-      "community": 38,
+      "community": 42,
       "norm_label": "pendingrequestsprops"
     },
     {
@@ -2150,7 +2150,7 @@
       "source_file": "components/guild/pending-requests.tsx",
       "source_location": "L12",
       "id": "guild_pending_requests_getinitial",
-      "community": 38,
+      "community": 42,
       "norm_label": "getinitial()"
     },
     {
@@ -2159,7 +2159,7 @@
       "source_file": "components/guild/pending-requests.tsx",
       "source_location": "L16",
       "id": "guild_pending_requests_pendingrequestrow",
-      "community": 38,
+      "community": 42,
       "norm_label": "pendingrequestrow()"
     },
     {
@@ -2168,7 +2168,7 @@
       "source_file": "components/guild/pending-requests.tsx",
       "source_location": "L91",
       "id": "guild_pending_requests_pendingrequests",
-      "community": 38,
+      "community": 42,
       "norm_label": "pendingrequests()"
     },
     {
@@ -2177,7 +2177,7 @@
       "source_file": "components/guild/search-bar.tsx",
       "source_location": "L1",
       "id": "guild_search_bar",
-      "community": 0,
+      "community": 105,
       "norm_label": "search-bar.tsx"
     },
     {
@@ -2186,7 +2186,7 @@
       "source_file": "components/guild/search-bar.tsx",
       "source_location": "L8",
       "id": "guild_search_bar_searchbarprops",
-      "community": 0,
+      "community": 105,
       "norm_label": "searchbarprops"
     },
     {
@@ -2195,7 +2195,7 @@
       "source_file": "components/guild/search-bar.tsx",
       "source_location": "L14",
       "id": "guild_search_bar_searchbar",
-      "community": 0,
+      "community": 105,
       "norm_label": "searchbar()"
     },
     {
@@ -2204,7 +2204,7 @@
       "source_file": "components/header.tsx",
       "source_location": "L1",
       "id": "components_header",
-      "community": 96,
+      "community": 105,
       "norm_label": "header.tsx"
     },
     {
@@ -2213,16 +2213,16 @@
       "source_file": "components/header.tsx",
       "source_location": "L9",
       "id": "components_header_headerprops",
-      "community": 96,
+      "community": 105,
       "norm_label": "headerprops"
     },
     {
       "label": "Header()",
       "file_type": "code",
       "source_file": "components/header.tsx",
-      "source_location": "L15",
+      "source_location": "L16",
       "id": "components_header_header",
-      "community": 96,
+      "community": 105,
       "norm_label": "header()"
     },
     {
@@ -2276,7 +2276,7 @@
       "source_file": "components/profile/avatar-section.tsx",
       "source_location": "L1",
       "id": "profile_avatar_section",
-      "community": 18,
+      "community": 32,
       "norm_label": "avatar-section.tsx"
     },
     {
@@ -2285,7 +2285,7 @@
       "source_file": "components/profile/avatar-section.tsx",
       "source_location": "L5",
       "id": "profile_avatar_section_avatarsectionprops",
-      "community": 18,
+      "community": 32,
       "norm_label": "avatarsectionprops"
     },
     {
@@ -2294,7 +2294,7 @@
       "source_file": "components/profile/avatar-section.tsx",
       "source_location": "L10",
       "id": "profile_avatar_section_avatarsection",
-      "community": 18,
+      "community": 32,
       "norm_label": "avatarsection()"
     },
     {
@@ -2303,7 +2303,7 @@
       "source_file": "components/profile/avatar-section.tsx",
       "source_location": "L69",
       "id": "profile_avatar_section_statitem",
-      "community": 18,
+      "community": 32,
       "norm_label": "statitem()"
     },
     {
@@ -2312,7 +2312,7 @@
       "source_file": "components/profile/edit-profile-sheet.tsx",
       "source_location": "L1",
       "id": "profile_edit_profile_sheet",
-      "community": 18,
+      "community": 32,
       "norm_label": "edit-profile-sheet.tsx"
     },
     {
@@ -2321,7 +2321,7 @@
       "source_file": "components/profile/edit-profile-sheet.tsx",
       "source_location": "L21",
       "id": "profile_edit_profile_sheet_editprofilesheetreference",
-      "community": 18,
+      "community": 32,
       "norm_label": "editprofilesheetreference"
     },
     {
@@ -2330,7 +2330,7 @@
       "source_file": "components/profile/edit-profile-sheet.tsx",
       "source_location": "L26",
       "id": "profile_edit_profile_sheet_editprofilesheetprops",
-      "community": 18,
+      "community": 32,
       "norm_label": "editprofilesheetprops"
     },
     {
@@ -2339,7 +2339,7 @@
       "source_file": "components/profile/edit-profile-sheet.tsx",
       "source_location": "L43",
       "id": "profile_edit_profile_sheet_profileschema",
-      "community": 18,
+      "community": 32,
       "norm_label": "profileschema"
     },
     {
@@ -2348,7 +2348,7 @@
       "source_file": "components/profile/edit-profile-sheet.tsx",
       "source_location": "L55",
       "id": "profile_edit_profile_sheet_nameschema",
-      "community": 18,
+      "community": 32,
       "norm_label": "nameschema"
     },
     {
@@ -2357,7 +2357,7 @@
       "source_file": "components/profile/edit-profile-sheet.tsx",
       "source_location": "L56",
       "id": "profile_edit_profile_sheet_usernameschema",
-      "community": 18,
+      "community": 32,
       "norm_label": "usernameschema"
     },
     {
@@ -2366,7 +2366,7 @@
       "source_file": "components/profile/edit-profile-sheet.tsx",
       "source_location": "L65",
       "id": "profile_edit_profile_sheet_getzoderrormessage",
-      "community": 18,
+      "community": 32,
       "norm_label": "getzoderrormessage()"
     },
     {
@@ -2375,7 +2375,7 @@
       "source_file": "components/profile/edit-profile-sheet.tsx",
       "source_location": "L76",
       "id": "profile_edit_profile_sheet_editprofilesheet",
-      "community": 18,
+      "community": 32,
       "norm_label": "editprofilesheet"
     },
     {
@@ -2384,7 +2384,7 @@
       "source_file": "components/profile/edit-role-sheet.tsx",
       "source_location": "L1",
       "id": "profile_edit_role_sheet",
-      "community": 18,
+      "community": 98,
       "norm_label": "edit-role-sheet.tsx"
     },
     {
@@ -2393,7 +2393,7 @@
       "source_file": "components/profile/edit-role-sheet.tsx",
       "source_location": "L12",
       "id": "profile_edit_role_sheet_editrolesheetreference",
-      "community": 18,
+      "community": 98,
       "norm_label": "editrolesheetreference"
     },
     {
@@ -2402,7 +2402,7 @@
       "source_file": "components/profile/edit-role-sheet.tsx",
       "source_location": "L14",
       "id": "profile_edit_role_sheet_option",
-      "community": 18,
+      "community": 98,
       "norm_label": "option"
     },
     {
@@ -2411,7 +2411,7 @@
       "source_file": "components/profile/edit-role-sheet.tsx",
       "source_location": "L20",
       "id": "profile_edit_role_sheet_options",
-      "community": 18,
+      "community": 98,
       "norm_label": "options"
     },
     {
@@ -2420,7 +2420,7 @@
       "source_file": "components/profile/edit-role-sheet.tsx",
       "source_location": "L43",
       "id": "profile_edit_role_sheet_editrolesheetprops",
-      "community": 18,
+      "community": 98,
       "norm_label": "editrolesheetprops"
     },
     {
@@ -2429,7 +2429,7 @@
       "source_file": "components/profile/edit-role-sheet.tsx",
       "source_location": "L47",
       "id": "profile_edit_role_sheet_editrolesheet",
-      "community": 18,
+      "community": 98,
       "norm_label": "editrolesheet"
     },
     {
@@ -2438,7 +2438,7 @@
       "source_file": "components/profile/image-picker-sheet.tsx",
       "source_location": "L1",
       "id": "profile_image_picker_sheet",
-      "community": 18,
+      "community": 98,
       "norm_label": "image-picker-sheet.tsx"
     },
     {
@@ -2447,7 +2447,7 @@
       "source_file": "components/profile/image-picker-sheet.tsx",
       "source_location": "L10",
       "id": "profile_image_picker_sheet_imagepickersheetreference",
-      "community": 18,
+      "community": 98,
       "norm_label": "imagepickersheetreference"
     },
     {
@@ -2456,7 +2456,7 @@
       "source_file": "components/profile/image-picker-sheet.tsx",
       "source_location": "L15",
       "id": "profile_image_picker_sheet_imagepickersheetprops",
-      "community": 18,
+      "community": 98,
       "norm_label": "imagepickersheetprops"
     },
     {
@@ -2465,7 +2465,7 @@
       "source_file": "components/profile/image-picker-sheet.tsx",
       "source_location": "L20",
       "id": "profile_image_picker_sheet_imagepickersheet",
-      "community": 18,
+      "community": 98,
       "norm_label": "imagepickersheet"
     },
     {
@@ -2501,7 +2501,7 @@
       "source_file": "components/profile/image-viewer-modal.tsx",
       "source_location": "L37",
       "id": "profile_image_viewer_modal_imageviewermodal",
-      "community": 18,
+      "community": 98,
       "norm_label": "imageviewermodal()"
     },
     {
@@ -2519,7 +2519,7 @@
       "source_file": "components/profile/index.ts",
       "source_location": "L1",
       "id": "profile_index",
-      "community": 18,
+      "community": 98,
       "norm_label": "index.ts"
     },
     {
@@ -2573,7 +2573,7 @@
       "source_file": "components/profile/profile-header.tsx",
       "source_location": "L1",
       "id": "profile_profile_header",
-      "community": 18,
+      "community": 32,
       "norm_label": "profile-header.tsx"
     },
     {
@@ -2582,7 +2582,7 @@
       "source_file": "components/profile/profile-header.tsx",
       "source_location": "L8",
       "id": "profile_profile_header_profileheaderprops",
-      "community": 18,
+      "community": 32,
       "norm_label": "profileheaderprops"
     },
     {
@@ -2591,7 +2591,7 @@
       "source_file": "components/profile/profile-header.tsx",
       "source_location": "L19",
       "id": "profile_profile_header_profileheader",
-      "community": 18,
+      "community": 32,
       "norm_label": "profileheader()"
     },
     {
@@ -2645,14 +2645,14 @@
       "source_file": "components/profile/profile-screen.tsx",
       "source_location": "L70",
       "id": "profile_profile_screen_profilescreen",
-      "community": 18,
+      "community": 38,
       "norm_label": "profilescreen()"
     },
     {
       "label": "TabContent()",
       "file_type": "code",
       "source_file": "components/profile/profile-screen.tsx",
-      "source_location": "L620",
+      "source_location": "L621",
       "id": "profile_profile_screen_tabcontent",
       "community": 18,
       "norm_label": "tabcontent()"
@@ -2661,7 +2661,7 @@
       "label": "TabButton()",
       "file_type": "code",
       "source_file": "components/profile/profile-screen.tsx",
-      "source_location": "L682",
+      "source_location": "L683",
       "id": "profile_profile_screen_tabbutton",
       "community": 18,
       "norm_label": "tabbutton()"
@@ -2672,7 +2672,7 @@
       "source_file": "components/profile/settings-sheet.tsx",
       "source_location": "L1",
       "id": "profile_settings_sheet",
-      "community": 18,
+      "community": 24,
       "norm_label": "settings-sheet.tsx"
     },
     {
@@ -2681,7 +2681,7 @@
       "source_file": "components/profile/settings-sheet.tsx",
       "source_location": "L21",
       "id": "profile_settings_sheet_settingssheetreference",
-      "community": 18,
+      "community": 24,
       "norm_label": "settingssheetreference"
     },
     {
@@ -2690,7 +2690,7 @@
       "source_file": "components/profile/settings-sheet.tsx",
       "source_location": "L26",
       "id": "profile_settings_sheet_settingssheet",
-      "community": 18,
+      "community": 24,
       "norm_label": "settingssheet"
     },
     {
@@ -2699,7 +2699,7 @@
       "source_file": "components/profile/settings-sheet.tsx",
       "source_location": "L197",
       "id": "profile_settings_sheet_settingrow",
-      "community": 18,
+      "community": 24,
       "norm_label": "settingrow()"
     },
     {
@@ -2708,7 +2708,7 @@
       "source_file": "components/profile/stats-section.tsx",
       "source_location": "L1",
       "id": "profile_stats_section",
-      "community": 18,
+      "community": 84,
       "norm_label": "stats-section.tsx"
     },
     {
@@ -2717,7 +2717,7 @@
       "source_file": "components/profile/stats-section.tsx",
       "source_location": "L7",
       "id": "profile_stats_section_periodfilter",
-      "community": 18,
+      "community": 84,
       "norm_label": "periodfilter"
     },
     {
@@ -2726,7 +2726,7 @@
       "source_file": "components/profile/stats-section.tsx",
       "source_location": "L9",
       "id": "profile_stats_section_statssectionprops",
-      "community": 18,
+      "community": 84,
       "norm_label": "statssectionprops"
     },
     {
@@ -2735,7 +2735,7 @@
       "source_file": "components/profile/stats-section.tsx",
       "source_location": "L13",
       "id": "profile_stats_section_filters",
-      "community": 18,
+      "community": 84,
       "norm_label": "filters"
     },
     {
@@ -2744,7 +2744,7 @@
       "source_file": "components/profile/stats-section.tsx",
       "source_location": "L19",
       "id": "profile_stats_section_statssection",
-      "community": 18,
+      "community": 84,
       "norm_label": "statssection()"
     },
     {
@@ -3428,7 +3428,7 @@
       "source_file": "lib/api/classes.ts",
       "source_location": "L70",
       "id": "api_classes_useclasses",
-      "community": 18,
+      "community": 38,
       "norm_label": "useclasses()"
     },
     {
@@ -3437,7 +3437,7 @@
       "source_file": "lib/api/classes.ts",
       "source_location": "L77",
       "id": "api_classes_usecreateclass",
-      "community": 96,
+      "community": 105,
       "norm_label": "usecreateclass()"
     },
     {
@@ -3446,7 +3446,7 @@
       "source_file": "lib/api/classes.ts",
       "source_location": "L87",
       "id": "api_classes_useclass",
-      "community": 96,
+      "community": 105,
       "norm_label": "useclass()"
     },
     {
@@ -3455,7 +3455,7 @@
       "source_file": "lib/api/classes.ts",
       "source_location": "L95",
       "id": "api_classes_useupdateclass",
-      "community": 96,
+      "community": 105,
       "norm_label": "useupdateclass()"
     },
     {
@@ -3464,7 +3464,7 @@
       "source_file": "lib/api/classes.ts",
       "source_location": "L114",
       "id": "api_classes_usedeleteclass",
-      "community": 18,
+      "community": 38,
       "norm_label": "usedeleteclass()"
     },
     {
@@ -3473,7 +3473,7 @@
       "source_file": "lib/api/classes.ts",
       "source_location": "L124",
       "id": "api_classes_usechooseclass",
-      "community": 18,
+      "community": 38,
       "norm_label": "usechooseclass()"
     },
     {
@@ -3482,7 +3482,7 @@
       "source_file": "lib/api/client.ts",
       "source_location": "L1",
       "id": "api_client",
-      "community": 108,
+      "community": 37,
       "norm_label": "client.ts"
     },
     {
@@ -3491,7 +3491,7 @@
       "source_file": "lib/api/client.ts",
       "source_location": "L5",
       "id": "api_client_apierror",
-      "community": 108,
+      "community": 37,
       "norm_label": "apierror"
     },
     {
@@ -3500,7 +3500,7 @@
       "source_file": "lib/api/client.ts",
       "source_location": "L6",
       "id": "api_client_apierror_constructor",
-      "community": 108,
+      "community": 37,
       "norm_label": ".constructor()"
     },
     {
@@ -3509,7 +3509,7 @@
       "source_file": "lib/api/client.ts",
       "source_location": "L16",
       "id": "api_client_base_url",
-      "community": 108,
+      "community": 37,
       "norm_label": "base_url"
     },
     {
@@ -3518,7 +3518,7 @@
       "source_file": "lib/api/client.ts",
       "source_location": "L22",
       "id": "api_client_fetchoptions",
-      "community": 108,
+      "community": 37,
       "norm_label": "fetchoptions"
     },
     {
@@ -3725,7 +3725,7 @@
       "source_file": "lib/api/guilds.ts",
       "source_location": "L258",
       "id": "api_guilds_useguild",
-      "community": 96,
+      "community": 42,
       "norm_label": "useguild()"
     },
     {
@@ -3743,7 +3743,7 @@
       "source_file": "lib/api/guilds.ts",
       "source_location": "L276",
       "id": "api_guilds_useapprovemember",
-      "community": 38,
+      "community": 42,
       "norm_label": "useapprovemember()"
     },
     {
@@ -3752,7 +3752,7 @@
       "source_file": "lib/api/guilds.ts",
       "source_location": "L292",
       "id": "api_guilds_useguildleaderboard",
-      "community": 0,
+      "community": 42,
       "norm_label": "useguildleaderboard()"
     },
     {
@@ -3770,7 +3770,7 @@
       "source_file": "lib/api/guilds.ts",
       "source_location": "L307",
       "id": "api_guilds_useguildmessages",
-      "community": 90,
+      "community": 94,
       "norm_label": "useguildmessages()"
     },
     {
@@ -3806,7 +3806,7 @@
       "source_file": "lib/api/guilds.ts",
       "source_location": "L463",
       "id": "api_guilds_useupdatememberrole",
-      "community": 38,
+      "community": 42,
       "norm_label": "useupdatememberrole()"
     },
     {
@@ -3815,7 +3815,7 @@
       "source_file": "lib/api/guilds.ts",
       "source_location": "L479",
       "id": "api_guilds_useleaveguild",
-      "community": 38,
+      "community": 42,
       "norm_label": "useleaveguild()"
     },
     {
@@ -3824,7 +3824,7 @@
       "source_file": "lib/api/guilds.ts",
       "source_location": "L489",
       "id": "api_guilds_useupdateguild",
-      "community": 95,
+      "community": 42,
       "norm_label": "useupdateguild()"
     },
     {
@@ -3833,7 +3833,7 @@
       "source_file": "lib/api/guilds.ts",
       "source_location": "L506",
       "id": "api_guilds_useuploadguildimage",
-      "community": 95,
+      "community": 42,
       "norm_label": "useuploadguildimage()"
     },
     {
@@ -3842,7 +3842,7 @@
       "source_file": "lib/api/guilds.ts",
       "source_location": "L524",
       "id": "api_guilds_usekickmember",
-      "community": 38,
+      "community": 42,
       "norm_label": "usekickmember()"
     },
     {
@@ -3851,7 +3851,7 @@
       "source_file": "lib/api/guilds.ts",
       "source_location": "L535",
       "id": "api_guilds_usedeleteguild",
-      "community": 95,
+      "community": 42,
       "norm_label": "usedeleteguild()"
     },
     {
@@ -3869,7 +3869,7 @@
       "source_file": "lib/api/index.ts",
       "source_location": "L1",
       "id": "api_index",
-      "community": 18,
+      "community": 0,
       "norm_label": "index.ts"
     },
     {
@@ -3887,7 +3887,7 @@
       "source_file": "lib/api/notifications.ts",
       "source_location": "L5",
       "id": "api_notifications_registerpushtoken",
-      "community": 91,
+      "community": 93,
       "norm_label": "registerpushtoken()"
     },
     {
@@ -3896,7 +3896,7 @@
       "source_file": "lib/api/quests.ts",
       "source_location": "L1",
       "id": "api_quests",
-      "community": 37,
+      "community": 5,
       "norm_label": "quests.ts"
     },
     {
@@ -3905,7 +3905,7 @@
       "source_file": "lib/api/quests.ts",
       "source_location": "L23",
       "id": "api_quests_getclassquests",
-      "community": 37,
+      "community": 5,
       "norm_label": "getclassquests()"
     },
     {
@@ -3914,7 +3914,7 @@
       "source_file": "lib/api/quests.ts",
       "source_location": "L32",
       "id": "api_quests_getclassquestsforauthoring",
-      "community": 37,
+      "community": 5,
       "norm_label": "getclassquestsforauthoring()"
     },
     {
@@ -3923,7 +3923,7 @@
       "source_file": "lib/api/quests.ts",
       "source_location": "L43",
       "id": "api_quests_createquests",
-      "community": 84,
+      "community": 68,
       "norm_label": "createquests()"
     },
     {
@@ -3959,7 +3959,7 @@
       "source_file": "lib/api/quests.ts",
       "source_location": "L89",
       "id": "api_quests_startquestprogress",
-      "community": 37,
+      "community": 5,
       "norm_label": "startquestprogress()"
     },
     {
@@ -3968,7 +3968,7 @@
       "source_file": "lib/api/quests.ts",
       "source_location": "L101",
       "id": "api_quests_updatequestprogress",
-      "community": 37,
+      "community": 5,
       "norm_label": "updatequestprogress()"
     },
     {
@@ -3977,7 +3977,7 @@
       "source_file": "lib/api/quests.ts",
       "source_location": "L119",
       "id": "api_quests_useclassquests",
-      "community": 84,
+      "community": 92,
       "norm_label": "useclassquests()"
     },
     {
@@ -3986,7 +3986,7 @@
       "source_file": "lib/api/quests.ts",
       "source_location": "L128",
       "id": "api_quests_useclassquestsforauthoring",
-      "community": 44,
+      "community": 68,
       "norm_label": "useclassquestsforauthoring()"
     },
     {
@@ -4013,7 +4013,7 @@
       "source_file": "lib/api/quests.ts",
       "source_location": "L176",
       "id": "api_quests_usedeletequest",
-      "community": 44,
+      "community": 92,
       "norm_label": "usedeletequest()"
     },
     {
@@ -4040,14 +4040,14 @@
       "source_file": "lib/api/quests.ts",
       "source_location": "L231",
       "id": "api_quests_useupdatequestprogress",
-      "community": 105,
+      "community": 92,
       "norm_label": "useupdatequestprogress()"
     },
     {
       "label": "startStarterQuests()",
       "file_type": "code",
       "source_file": "lib/api/quests.ts",
-      "source_location": "L255",
+      "source_location": "L262",
       "id": "api_quests_startstarterquests",
       "community": 71,
       "norm_label": "startstarterquests()"
@@ -4056,9 +4056,9 @@
       "label": "useStartStarterQuests()",
       "file_type": "code",
       "source_file": "lib/api/quests.ts",
-      "source_location": "L264",
+      "source_location": "L271",
       "id": "api_quests_usestartstarterquests",
-      "community": 37,
+      "community": 5,
       "norm_label": "usestartstarterquests()"
     },
     {
@@ -4112,7 +4112,7 @@
       "source_file": "lib/api/schemas.ts",
       "source_location": "L36",
       "id": "api_schemas_questschema",
-      "community": 37,
+      "community": 5,
       "norm_label": "questschema"
     },
     {
@@ -4121,7 +4121,7 @@
       "source_file": "lib/api/schemas.ts",
       "source_location": "L51",
       "id": "api_schemas_questprogressschema",
-      "community": 37,
+      "community": 5,
       "norm_label": "questprogressschema"
     },
     {
@@ -4139,7 +4139,7 @@
       "source_file": "lib/api/schemas.ts",
       "source_location": "L78",
       "id": "api_schemas_classquestschema",
-      "community": 37,
+      "community": 5,
       "norm_label": "classquestschema"
     },
     {
@@ -4148,7 +4148,7 @@
       "source_file": "lib/api/schemas.ts",
       "source_location": "L85",
       "id": "api_schemas_levelupinfoschema",
-      "community": 37,
+      "community": 5,
       "norm_label": "levelupinfoschema"
     },
     {
@@ -4220,7 +4220,7 @@
       "source_file": "lib/api/schemas.ts",
       "source_location": "L147",
       "id": "api_schemas_itemschema",
-      "community": 5,
+      "community": 37,
       "norm_label": "itemschema"
     },
     {
@@ -4229,7 +4229,7 @@
       "source_file": "lib/api/schemas.ts",
       "source_location": "L158",
       "id": "api_schemas_inventoryitemschema",
-      "community": 5,
+      "community": 37,
       "norm_label": "inventoryitemschema"
     },
     {
@@ -4310,7 +4310,7 @@
       "source_file": "lib/api/schemas.ts",
       "source_location": "L240",
       "id": "api_schemas_verificationresultschema",
-      "community": 5,
+      "community": 90,
       "norm_label": "verificationresultschema"
     },
     {
@@ -4535,7 +4535,7 @@
       "source_file": "lib/api/schemas.ts",
       "source_location": "L365",
       "id": "api_schemas_classquest",
-      "community": 18,
+      "community": 0,
       "norm_label": "classquest"
     },
     {
@@ -4553,7 +4553,7 @@
       "source_file": "lib/api/schemas.ts",
       "source_location": "L367",
       "id": "api_schemas_activebuff",
-      "community": 39,
+      "community": 5,
       "norm_label": "activebuff"
     },
     {
@@ -4562,7 +4562,7 @@
       "source_file": "lib/api/schemas.ts",
       "source_location": "L368",
       "id": "api_schemas_questprogress",
-      "community": 37,
+      "community": 5,
       "norm_label": "questprogress"
     },
     {
@@ -4571,7 +4571,7 @@
       "source_file": "lib/api/schemas.ts",
       "source_location": "L369",
       "id": "api_schemas_levelupinfo",
-      "community": 105,
+      "community": 5,
       "norm_label": "levelupinfo"
     },
     {
@@ -4580,7 +4580,7 @@
       "source_file": "lib/api/schemas.ts",
       "source_location": "L370",
       "id": "api_schemas_guild",
-      "community": 95,
+      "community": 42,
       "norm_label": "guild"
     },
     {
@@ -4589,7 +4589,7 @@
       "source_file": "lib/api/schemas.ts",
       "source_location": "L371",
       "id": "api_schemas_guildmember",
-      "community": 38,
+      "community": 42,
       "norm_label": "guildmember"
     },
     {
@@ -4607,7 +4607,7 @@
       "source_file": "lib/api/schemas.ts",
       "source_location": "L373",
       "id": "api_schemas_guildmessage",
-      "community": 98,
+      "community": 94,
       "norm_label": "guildmessage"
     },
     {
@@ -4616,7 +4616,7 @@
       "source_file": "lib/api/schemas.ts",
       "source_location": "L374",
       "id": "api_schemas_guildleaderboardentry",
-      "community": 109,
+      "community": 42,
       "norm_label": "guildleaderboardentry"
     },
     {
@@ -4634,7 +4634,7 @@
       "source_file": "lib/api/schemas.ts",
       "source_location": "L376",
       "id": "api_schemas_inventoryitem",
-      "community": 5,
+      "community": 45,
       "norm_label": "inventoryitem"
     },
     {
@@ -4643,7 +4643,7 @@
       "source_file": "lib/api/schemas.ts",
       "source_location": "L377",
       "id": "api_schemas_publicuser",
-      "community": 18,
+      "community": 32,
       "norm_label": "publicuser"
     },
     {
@@ -4661,7 +4661,7 @@
       "source_file": "lib/api/schemas.ts",
       "source_location": "L379",
       "id": "api_schemas_userstats",
-      "community": 18,
+      "community": 84,
       "norm_label": "userstats"
     },
     {
@@ -4670,7 +4670,7 @@
       "source_file": "lib/api/schemas.ts",
       "source_location": "L380",
       "id": "api_schemas_verificationresult",
-      "community": 5,
+      "community": 90,
       "norm_label": "verificationresult"
     },
     {
@@ -4706,7 +4706,7 @@
       "source_file": "lib/api/schemas.ts",
       "source_location": "L384",
       "id": "api_schemas_updatequestbody",
-      "community": 37,
+      "community": 5,
       "norm_label": "updatequestbody"
     },
     {
@@ -4715,7 +4715,7 @@
       "source_file": "lib/api/schemas.ts",
       "source_location": "L385",
       "id": "api_schemas_overridequestbody",
-      "community": 37,
+      "community": 5,
       "norm_label": "overridequestbody"
     },
     {
@@ -4724,7 +4724,7 @@
       "source_file": "lib/api/schemas.ts",
       "source_location": "L386",
       "id": "api_schemas_updatequestprogressbody",
-      "community": 37,
+      "community": 5,
       "norm_label": "updatequestprogressbody"
     },
     {
@@ -4787,7 +4787,7 @@
       "source_file": "lib/api/schemas.ts",
       "source_location": "L395",
       "id": "api_schemas_buyitembody",
-      "community": 5,
+      "community": 37,
       "norm_label": "buyitembody"
     },
     {
@@ -4796,7 +4796,7 @@
       "source_file": "lib/api/schemas.ts",
       "source_location": "L396",
       "id": "api_schemas_useitembody",
-      "community": 5,
+      "community": 37,
       "norm_label": "useitembody"
     },
     {
@@ -4814,7 +4814,7 @@
       "source_file": "lib/api/shop.ts",
       "source_location": "L1",
       "id": "api_shop",
-      "community": 5,
+      "community": 37,
       "norm_label": "shop.ts"
     },
     {
@@ -4823,7 +4823,7 @@
       "source_file": "lib/api/shop.ts",
       "source_location": "L12",
       "id": "api_shop_getshopitems",
-      "community": 5,
+      "community": 37,
       "norm_label": "getshopitems()"
     },
     {
@@ -4832,7 +4832,7 @@
       "source_file": "lib/api/shop.ts",
       "source_location": "L21",
       "id": "api_shop_buyitem",
-      "community": 5,
+      "community": 37,
       "norm_label": "buyitem()"
     },
     {
@@ -4841,7 +4841,7 @@
       "source_file": "lib/api/shop.ts",
       "source_location": "L33",
       "id": "api_shop_getinventory",
-      "community": 5,
+      "community": 37,
       "norm_label": "getinventory()"
     },
     {
@@ -4850,7 +4850,7 @@
       "source_file": "lib/api/shop.ts",
       "source_location": "L42",
       "id": "api_shop_consumeitem",
-      "community": 5,
+      "community": 37,
       "norm_label": "consumeitem()"
     },
     {
@@ -5003,7 +5003,7 @@
       "source_file": "lib/api/users.ts",
       "source_location": "L108",
       "id": "api_users_useuserstats",
-      "community": 18,
+      "community": 38,
       "norm_label": "useuserstats()"
     },
     {
@@ -5021,7 +5021,7 @@
       "source_file": "lib/api/users.ts",
       "source_location": "L124",
       "id": "api_users_usecurrentuser",
-      "community": 44,
+      "community": 92,
       "norm_label": "usecurrentuser()"
     },
     {
@@ -5030,7 +5030,7 @@
       "source_file": "lib/api/users.ts",
       "source_location": "L133",
       "id": "api_users_useuploadavatar",
-      "community": 18,
+      "community": 38,
       "norm_label": "useuploadavatar()"
     },
     {
@@ -5066,7 +5066,7 @@
       "source_file": "lib/api/users.ts",
       "source_location": "L172",
       "id": "api_users_useuploadbanner",
-      "community": 18,
+      "community": 38,
       "norm_label": "useuploadbanner()"
     },
     {
@@ -5084,7 +5084,7 @@
       "source_file": "lib/api/verification.ts",
       "source_location": "L1",
       "id": "api_verification",
-      "community": 5,
+      "community": 90,
       "norm_label": "verification.ts"
     },
     {
@@ -5093,7 +5093,7 @@
       "source_file": "lib/api/verification.ts",
       "source_location": "L9",
       "id": "api_verification_submitverification",
-      "community": 5,
+      "community": 90,
       "norm_label": "submitverification()"
     },
     {
@@ -5102,7 +5102,7 @@
       "source_file": "lib/api/verification.ts",
       "source_location": "L22",
       "id": "api_verification_usesubmitverification",
-      "community": 105,
+      "community": 92,
       "norm_label": "usesubmitverification()"
     },
     {
@@ -5111,7 +5111,7 @@
       "source_file": "lib/auth-client.ts",
       "source_location": "L1",
       "id": "lib_auth_client",
-      "community": 18,
+      "community": 24,
       "norm_label": "auth-client.ts"
     },
     {
@@ -5120,7 +5120,7 @@
       "source_file": "lib/auth-client.ts",
       "source_location": "L9",
       "id": "lib_auth_client_authclient",
-      "community": 18,
+      "community": 24,
       "norm_label": "authclient"
     },
     {
@@ -5165,7 +5165,7 @@
       "source_file": "lib/header-options.tsx",
       "source_location": "L1",
       "id": "lib_header_options",
-      "community": 96,
+      "community": 0,
       "norm_label": "header-options.tsx"
     },
     {
@@ -5174,7 +5174,7 @@
       "source_file": "lib/header-options.tsx",
       "source_location": "L8",
       "id": "lib_header_options_backbutton",
-      "community": 96,
+      "community": 0,
       "norm_label": "backbutton()"
     },
     {
@@ -5183,7 +5183,7 @@
       "source_file": "lib/header-options.tsx",
       "source_location": "L17",
       "id": "lib_header_options_useheaderoptions",
-      "community": 96,
+      "community": 68,
       "norm_label": "useheaderoptions()"
     },
     {
@@ -5192,7 +5192,7 @@
       "source_file": "lib/notifications/register.ts",
       "source_location": "L1",
       "id": "notifications_register",
-      "community": 91,
+      "community": 93,
       "norm_label": "register.ts"
     },
     {
@@ -5201,7 +5201,7 @@
       "source_file": "lib/notifications/register.ts",
       "source_location": "L10",
       "id": "notifications_register_getprojectid",
-      "community": 91,
+      "community": 93,
       "norm_label": "getprojectid()"
     },
     {
@@ -5210,7 +5210,7 @@
       "source_file": "lib/notifications/register.ts",
       "source_location": "L19",
       "id": "notifications_register_registerforpushnotificationsasync",
-      "community": 91,
+      "community": 93,
       "norm_label": "registerforpushnotificationsasync()"
     },
     {
@@ -5219,7 +5219,7 @@
       "source_file": "lib/notifications/register.ts",
       "source_location": "L59",
       "id": "notifications_register_registerpushtokenifneeded",
-      "community": 91,
+      "community": 93,
       "norm_label": "registerpushtokenifneeded()"
     },
     {
@@ -5228,7 +5228,7 @@
       "source_file": "lib/notifications/scheduler.ts",
       "source_location": "L1",
       "id": "notifications_scheduler",
-      "community": 39,
+      "community": 24,
       "norm_label": "scheduler.ts"
     },
     {
@@ -5237,7 +5237,7 @@
       "source_file": "lib/notifications/scheduler.ts",
       "source_location": "L9",
       "id": "notifications_scheduler_questid",
-      "community": 39,
+      "community": 24,
       "norm_label": "questid()"
     },
     {
@@ -5246,7 +5246,7 @@
       "source_file": "lib/notifications/scheduler.ts",
       "source_location": "L13",
       "id": "notifications_scheduler_isquestnotification",
-      "community": 39,
+      "community": 24,
       "norm_label": "isquestnotification()"
     },
     {
@@ -5255,7 +5255,7 @@
       "source_file": "lib/notifications/scheduler.ts",
       "source_location": "L23",
       "id": "notifications_scheduler_schedulequestnotifications",
-      "community": 39,
+      "community": 24,
       "norm_label": "schedulequestnotifications()"
     },
     {
@@ -5264,7 +5264,7 @@
       "source_file": "lib/notifications/scheduler.ts",
       "source_location": "L80",
       "id": "notifications_scheduler_cancelquestnotifications",
-      "community": 39,
+      "community": 24,
       "norm_label": "cancelquestnotifications()"
     },
     {
@@ -5273,7 +5273,7 @@
       "source_file": "lib/notifications/scheduler.ts",
       "source_location": "L94",
       "id": "notifications_scheduler_schedulestreakreminder",
-      "community": 39,
+      "community": 24,
       "norm_label": "schedulestreakreminder()"
     },
     {
@@ -5282,7 +5282,7 @@
       "source_file": "lib/notifications/scheduler.ts",
       "source_location": "L122",
       "id": "notifications_scheduler_cancelstreakreminder",
-      "community": 39,
+      "community": 24,
       "norm_label": "cancelstreakreminder()"
     },
     {
@@ -5291,7 +5291,7 @@
       "source_file": "lib/notifications/use-notifications.ts",
       "source_location": "L1",
       "id": "notifications_use_notifications",
-      "community": 91,
+      "community": 93,
       "norm_label": "use-notifications.ts"
     },
     {
@@ -5327,7 +5327,7 @@
       "source_file": "lib/settings-store.ts",
       "source_location": "L1",
       "id": "lib_settings_store",
-      "community": 18,
+      "community": 24,
       "norm_label": "settings-store.ts"
     },
     {
@@ -5336,7 +5336,7 @@
       "source_file": "lib/settings-store.ts",
       "source_location": "L5",
       "id": "lib_settings_store_profilesettings",
-      "community": 18,
+      "community": 24,
       "norm_label": "profilesettings"
     },
     {
@@ -5345,7 +5345,7 @@
       "source_file": "lib/settings-store.ts",
       "source_location": "L14",
       "id": "lib_settings_store_settingsschema",
-      "community": 18,
+      "community": 24,
       "norm_label": "settingsschema"
     },
     {
@@ -5354,7 +5354,7 @@
       "source_file": "lib/settings-store.ts",
       "source_location": "L23",
       "id": "lib_settings_store_getprofilesettings",
-      "community": 18,
+      "community": 24,
       "norm_label": "getprofilesettings()"
     },
     {
@@ -5363,7 +5363,7 @@
       "source_file": "lib/settings-store.ts",
       "source_location": "L34",
       "id": "lib_settings_store_updateprofilesettings",
-      "community": 18,
+      "community": 24,
       "norm_label": "updateprofilesettings()"
     },
     {
@@ -5372,7 +5372,7 @@
       "source_file": "lib/settings-store.ts",
       "source_location": "L47",
       "id": "lib_settings_store_useprofilesettings",
-      "community": 18,
+      "community": 24,
       "norm_label": "useprofilesettings()"
     },
     {
@@ -5381,7 +5381,7 @@
       "source_file": "lib/settings-store.ts",
       "source_location": "L54",
       "id": "lib_settings_store_useupdateprofilesettings",
-      "community": 18,
+      "community": 24,
       "norm_label": "useupdateprofilesettings()"
     },
     {
@@ -5399,7 +5399,7 @@
       "source_file": "lib/use-theme-color.ts",
       "source_location": "L13",
       "id": "lib_use_theme_color_usethemecolor",
-      "community": 0,
+      "community": 105,
       "norm_label": "usethemecolor()"
     },
     {
@@ -12635,222 +12635,15 @@
       "source_file": "lib/auth-client.ts",
       "source_location": "L29",
       "id": "lib_auth_client_usesession",
-      "community": 18,
+      "community": 91,
       "norm_label": "{ usesession }"
-    },
-    {
-      "label": "getNotifications()",
-      "file_type": "code",
-      "source_file": "lib/api/notifications.ts",
-      "source_location": "L24",
-      "community": 93,
-      "norm_label": "getnotifications()",
-      "id": "api_notifications_getnotifications"
-    },
-    {
-      "label": "getUnreadCount()",
-      "file_type": "code",
-      "source_file": "lib/api/notifications.ts",
-      "source_location": "L38",
-      "community": 93,
-      "norm_label": "getunreadcount()",
-      "id": "api_notifications_getunreadcount"
-    },
-    {
-      "label": "markNotificationRead()",
-      "file_type": "code",
-      "source_file": "lib/api/notifications.ts",
-      "source_location": "L47",
-      "community": 93,
-      "norm_label": "marknotificationread()",
-      "id": "api_notifications_marknotificationread"
-    },
-    {
-      "label": "markAllNotificationsRead()",
-      "file_type": "code",
-      "source_file": "lib/api/notifications.ts",
-      "source_location": "L58",
-      "community": 93,
-      "norm_label": "markallnotificationsread()",
-      "id": "api_notifications_markallnotificationsread"
-    },
-    {
-      "label": "useNotifications()",
-      "file_type": "code",
-      "source_file": "lib/api/notifications.ts",
-      "source_location": "L81",
-      "community": 93,
-      "norm_label": "usenotifications()",
-      "id": "api_notifications_usenotifications"
-    },
-    {
-      "label": "useUnreadNotificationCount()",
-      "file_type": "code",
-      "source_file": "lib/api/notifications.ts",
-      "source_location": "L88",
-      "community": 93,
-      "norm_label": "useunreadnotificationcount()",
-      "id": "api_notifications_useunreadnotificationcount"
-    },
-    {
-      "label": "useMarkNotificationRead()",
-      "file_type": "code",
-      "source_file": "lib/api/notifications.ts",
-      "source_location": "L96",
-      "community": 93,
-      "norm_label": "usemarknotificationread()",
-      "id": "api_notifications_usemarknotificationread"
-    },
-    {
-      "label": "useMarkAllNotificationsRead()",
-      "file_type": "code",
-      "source_file": "lib/api/notifications.ts",
-      "source_location": "L106",
-      "community": 93,
-      "norm_label": "usemarkallnotificationsread()",
-      "id": "api_notifications_usemarkallnotificationsread"
-    },
-    {
-      "label": "useNotificationSocketIO()",
-      "file_type": "code",
-      "source_file": "lib/api/notifications.ts",
-      "source_location": "L116",
-      "community": 91,
-      "norm_label": "usenotificationsocketio()",
-      "id": "api_notifications_usenotificationsocketio"
-    },
-    {
-      "label": "NotificationTypeSchema",
-      "file_type": "code",
-      "source_file": "lib/api/schemas.ts",
-      "source_location": "L346",
-      "community": 5,
-      "norm_label": "notificationtypeschema",
-      "id": "api_schemas_notificationtypeschema"
-    },
-    {
-      "label": "NotificationSchema",
-      "file_type": "code",
-      "source_file": "lib/api/schemas.ts",
-      "source_location": "L351",
-      "community": 93,
-      "norm_label": "notificationschema",
-      "id": "api_schemas_notificationschema"
-    },
-    {
-      "label": "CursorPaginatedMetaSchema",
-      "file_type": "code",
-      "source_file": "lib/api/schemas.ts",
-      "source_location": "L361",
-      "community": 5,
-      "norm_label": "cursorpaginatedmetaschema",
-      "id": "api_schemas_cursorpaginatedmetaschema"
-    },
-    {
-      "label": "PaginatedNotificationsSchema",
-      "file_type": "code",
-      "source_file": "lib/api/schemas.ts",
-      "source_location": "L366",
-      "community": 93,
-      "norm_label": "paginatednotificationsschema",
-      "id": "api_schemas_paginatednotificationsschema"
-    },
-    {
-      "label": "UnreadCountSchema",
-      "file_type": "code",
-      "source_file": "lib/api/schemas.ts",
-      "source_location": "L371",
-      "community": 93,
-      "norm_label": "unreadcountschema",
-      "id": "api_schemas_unreadcountschema"
-    },
-    {
-      "label": "Notification",
-      "file_type": "code",
-      "source_file": "lib/api/schemas.ts",
-      "source_location": "L385",
-      "community": 93,
-      "norm_label": "notification",
-      "id": "api_schemas_notification"
-    },
-    {
-      "label": "NotificationType",
-      "file_type": "code",
-      "source_file": "lib/api/schemas.ts",
-      "source_location": "L386",
-      "community": 5,
-      "norm_label": "notificationtype",
-      "id": "api_schemas_notificationtype"
-    },
-    {
-      "label": "PaginatedNotifications",
-      "file_type": "code",
-      "source_file": "lib/api/schemas.ts",
-      "source_location": "L387",
-      "community": 93,
-      "norm_label": "paginatednotifications",
-      "id": "api_schemas_paginatednotifications"
-    },
-    {
-      "label": "UnreadCount",
-      "file_type": "code",
-      "source_file": "lib/api/schemas.ts",
-      "source_location": "L388",
-      "community": 93,
-      "norm_label": "unreadcount",
-      "id": "api_schemas_unreadcount"
-    },
-    {
-      "label": "checkNotifications()",
-      "file_type": "code",
-      "source_file": "lib/api/notifications.ts",
-      "source_location": "L81",
-      "community": 93,
-      "norm_label": "checknotifications()",
-      "id": "api_notifications_checknotifications"
-    },
-    {
-      "label": "useCheckNotifications()",
-      "file_type": "code",
-      "source_file": "lib/api/notifications.ts",
-      "source_location": "L127",
-      "community": 91,
-      "norm_label": "usechecknotifications()",
-      "id": "api_notifications_usechecknotifications"
-    },
-    {
-      "label": "CheckNotificationsResponseSchema",
-      "file_type": "code",
-      "source_file": "lib/api/schemas.ts",
-      "source_location": "L354",
-      "community": 93,
-      "norm_label": "checknotificationsresponseschema",
-      "id": "api_schemas_checknotificationsresponseschema"
-    },
-    {
-      "label": "CheckNotificationsResponse",
-      "file_type": "code",
-      "source_file": "lib/api/schemas.ts",
-      "source_location": "L395",
-      "community": 93,
-      "norm_label": "checknotificationsresponse",
-      "id": "api_schemas_checknotificationsresponse"
-    },
-    {
-      "label": "MENU_ITEMS",
-      "file_type": "code",
-      "source_file": "components/guild/guild-home.tsx",
-      "source_location": "L18",
-      "community": 95,
-      "norm_label": "menu_items",
-      "id": "guild_guild_home_menu_items"
     },
     {
       "label": "byCreatedAtDescending()",
       "file_type": "code",
       "source_file": "components/guild/message-list.tsx",
       "source_location": "L47",
-      "community": 90,
+      "community": 94,
       "norm_label": "bycreatedatdescending()",
       "id": "guild_message_list_bycreatedatdescending"
     },
@@ -12886,66 +12679,9 @@
       "file_type": "code",
       "source_file": "components/guild/message-bubble.tsx",
       "source_location": "L13",
-      "community": 98,
+      "community": 94,
       "norm_label": "formatrelativetime()",
       "id": "guild_message_bubble_formatrelativetime"
-    },
-    {
-      "label": "TabId",
-      "file_type": "code",
-      "source_file": "components/guild/guild-home.tsx",
-      "source_location": "L11",
-      "community": 95,
-      "norm_label": "tabid",
-      "id": "guild_guild_home_tabid"
-    },
-    {
-      "label": "TABS",
-      "file_type": "code",
-      "source_file": "components/guild/guild-home.tsx",
-      "source_location": "L19",
-      "community": 95,
-      "norm_label": "tabs",
-      "id": "guild_guild_home_tabs"
-    },
-    {
-      "label": "Elix Expo Config",
-      "file_type": "code",
-      "source_file": "app.json",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "community": 24,
-      "norm_label": "elix expo config",
-      "id": "app_config"
-    },
-    {
-      "label": "Root Layout",
-      "file_type": "code",
-      "source_file": "app/_layout.tsx",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "community": 32,
-      "norm_label": "root layout",
-      "id": "root_layout"
-    },
-    {
-      "label": "Root Navigator",
-      "file_type": "code",
-      "source_file": "app/_layout.tsx",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "community": 9,
-      "norm_label": "root navigator",
-      "id": "root_navigator"
     },
     {
       "label": "Guild Tab Screen",
@@ -12998,19 +12734,6 @@
       "community": 9,
       "norm_label": "button component",
       "id": "component_button"
-    },
-    {
-      "label": "API Fetch Client",
-      "file_type": "code",
-      "source_file": "lib/api/client.ts",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "community": 9,
-      "norm_label": "api fetch client",
-      "id": "api_fetch_client"
     },
     {
       "label": "Classes API Module",
@@ -19604,36 +19327,6 @@
       "target": "guild_guild_home_imagetarget"
     },
     {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "components/guild/guild-home.tsx",
-      "source_location": "L18",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "guild_guild_home",
-      "target": "guild_guild_home_menu_items"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "components/guild/guild-home.tsx",
-      "source_location": "L11",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "guild_guild_home",
-      "target": "guild_guild_home_tabid"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "components/guild/guild-home.tsx",
-      "source_location": "L19",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "guild_guild_home",
-      "target": "guild_guild_home_tabs"
-    },
-    {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -24064,61 +23757,6 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/api/notifications.ts",
-      "source_location": "L82",
-      "weight": 1.0,
-      "source": "api_notifications_checknotifications",
-      "target": "api_client_apifetch"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "lib/api/notifications.ts",
-      "source_location": "L28",
-      "weight": 1.0,
-      "source": "api_notifications_getnotifications",
-      "target": "api_client_apifetch"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "lib/api/notifications.ts",
-      "source_location": "L39",
-      "weight": 1.0,
-      "source": "api_notifications_getunreadcount",
-      "target": "api_client_apifetch"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "lib/api/notifications.ts",
-      "source_location": "L59",
-      "weight": 1.0,
-      "source": "api_notifications_markallnotificationsread",
-      "target": "api_client_apifetch"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "lib/api/notifications.ts",
-      "source_location": "L50",
-      "weight": 1.0,
-      "source": "api_notifications_marknotificationread",
-      "target": "api_client_apifetch"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "lib/api/notifications.ts",
       "source_location": "L71",
       "weight": 1.0,
       "source": "api_notifications_registerpushtoken",
@@ -25137,121 +24775,11 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/api/notifications.ts",
-      "source_location": "L81",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "api_notifications",
-      "target": "api_notifications_checknotifications"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/notifications.ts",
-      "source_location": "L24",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "api_notifications",
-      "target": "api_notifications_getnotifications"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/notifications.ts",
-      "source_location": "L38",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "api_notifications",
-      "target": "api_notifications_getunreadcount"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/notifications.ts",
-      "source_location": "L58",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "api_notifications",
-      "target": "api_notifications_markallnotificationsread"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/notifications.ts",
-      "source_location": "L47",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "api_notifications",
-      "target": "api_notifications_marknotificationread"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/notifications.ts",
       "source_location": "L67",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "api_notifications",
       "target": "api_notifications_registerpushtoken"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/notifications.ts",
-      "source_location": "L127",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "api_notifications",
-      "target": "api_notifications_usechecknotifications"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/notifications.ts",
-      "source_location": "L106",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "api_notifications",
-      "target": "api_notifications_usemarkallnotificationsread"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/notifications.ts",
-      "source_location": "L96",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "api_notifications",
-      "target": "api_notifications_usemarknotificationread"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/notifications.ts",
-      "source_location": "L81",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "api_notifications",
-      "target": "api_notifications_usenotifications"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/notifications.ts",
-      "source_location": "L116",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "api_notifications",
-      "target": "api_notifications_usenotificationsocketio"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/notifications.ts",
-      "source_location": "L88",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "api_notifications",
-      "target": "api_notifications_useunreadnotificationcount"
     },
     {
       "relation": "imports_from",
@@ -25269,77 +24797,11 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "lib/api/notifications.ts",
-      "source_location": "L16",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "api_notifications",
-      "target": "api_schemas_checknotificationsresponse"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/notifications.ts",
-      "source_location": "L8",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "api_notifications",
-      "target": "api_schemas_checknotificationsresponseschema"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/notifications.ts",
       "source_location": "L8",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "api_notifications",
       "target": "api_schemas_datawrapperschema"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/notifications.ts",
-      "source_location": "L15",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "api_notifications",
-      "target": "api_schemas_notification"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/notifications.ts",
-      "source_location": "L8",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "api_notifications",
-      "target": "api_schemas_notificationschema"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/notifications.ts",
-      "source_location": "L15",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "api_notifications",
-      "target": "api_schemas_paginatednotifications"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/notifications.ts",
-      "source_location": "L8",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "api_notifications",
-      "target": "api_schemas_paginatednotificationsschema"
     },
     {
       "relation": "imports",
@@ -25362,28 +24824,6 @@
       "confidence_score": 1.0,
       "source": "api_notifications",
       "target": "api_schemas_pushtokenschema"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/notifications.ts",
-      "source_location": "L15",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "api_notifications",
-      "target": "api_schemas_unreadcount"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/notifications.ts",
-      "source_location": "L8",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "api_notifications",
-      "target": "api_schemas_unreadcountschema"
     },
     {
       "relation": "imports_from",
@@ -25877,26 +25317,6 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/api/schemas.ts",
-      "source_location": "L395",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "api_schemas",
-      "target": "api_schemas_checknotificationsresponse"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/schemas.ts",
-      "source_location": "L354",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "api_schemas",
-      "target": "api_schemas_checknotificationsresponseschema"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/schemas.ts",
       "source_location": "L251",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -26032,16 +25452,6 @@
       "confidence_score": 1.0,
       "source": "api_schemas",
       "target": "api_schemas_createquestbodyschema"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/schemas.ts",
-      "source_location": "L365",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "api_schemas",
-      "target": "api_schemas_cursorpaginatedmetaschema"
     },
     {
       "relation": "contains",
@@ -26277,46 +25687,6 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/api/schemas.ts",
-      "source_location": "L389",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "api_schemas",
-      "target": "api_schemas_notification"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/schemas.ts",
-      "source_location": "L355",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "api_schemas",
-      "target": "api_schemas_notificationschema"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/schemas.ts",
-      "source_location": "L390",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "api_schemas",
-      "target": "api_schemas_notificationtype"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/schemas.ts",
-      "source_location": "L346",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "api_schemas",
-      "target": "api_schemas_notificationtypeschema"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/schemas.ts",
       "source_location": "L271",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -26352,26 +25722,6 @@
       "confidence_score": 1.0,
       "source": "api_schemas",
       "target": "api_schemas_paginatedmetaschema"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/schemas.ts",
-      "source_location": "L391",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "api_schemas",
-      "target": "api_schemas_paginatednotifications"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/schemas.ts",
-      "source_location": "L370",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "api_schemas",
-      "target": "api_schemas_paginatednotificationsschema"
     },
     {
       "relation": "contains",
@@ -26492,26 +25842,6 @@
       "confidence_score": 1.0,
       "source": "api_schemas",
       "target": "api_schemas_timelineschema"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/schemas.ts",
-      "source_location": "L392",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "api_schemas",
-      "target": "api_schemas_unreadcount"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/schemas.ts",
-      "source_location": "L375",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "api_schemas",
-      "target": "api_schemas_unreadcountschema"
     },
     {
       "relation": "contains",
@@ -26823,28 +26153,6 @@
       "confidence_score": 1.0,
       "source": "api_verification",
       "target": "api_schemas_verificationresultschema"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "lib/api/notifications.ts",
-      "source_location": "L85",
-      "weight": 1.0,
-      "source": "api_notifications_checknotifications",
-      "target": "api_schemas_datawrapperschema"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "lib/api/notifications.ts",
-      "source_location": "L62",
-      "weight": 1.0,
-      "source": "api_notifications_markallnotificationsread",
-      "target": "api_schemas_datawrapperschema"
     },
     {
       "relation": "imports",
@@ -27539,28 +26847,6 @@
       "target": "notifications_scheduler_cancelstreakreminder"
     },
     {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/notifications/use-notifications.ts",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "notifications_use_notifications",
-      "target": "api_notifications_usechecknotifications"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/notifications/use-notifications.ts",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "notifications_use_notifications",
-      "target": "api_notifications_usenotificationsocketio"
-    },
-    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/notifications/use-notifications.ts",
@@ -27569,28 +26855,6 @@
       "confidence_score": 1.0,
       "source": "notifications_use_notifications",
       "target": "notifications_use_notifications_usenotificationsetup"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "lib/notifications/use-notifications.ts",
-      "source_location": "L24",
-      "weight": 1.0,
-      "source": "notifications_use_notifications_usenotificationsetup",
-      "target": "api_notifications_usechecknotifications"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "lib/notifications/use-notifications.ts",
-      "source_location": "L22",
-      "weight": 1.0,
-      "source": "notifications_use_notifications_usenotificationsetup",
-      "target": "api_notifications_usenotificationsocketio"
     },
     {
       "relation": "contains",
@@ -35286,26 +34550,6 @@
     {
       "relation": "conceptually_related_to",
       "confidence": "INFERRED",
-      "confidence_score": 0.9,
-      "source_file": "app/_layout.tsx",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "root_navigator",
-      "target": "screen_login"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.9,
-      "source_file": "app/_layout.tsx",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "root_navigator",
-      "target": "screen_roles"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
       "confidence_score": 0.85,
       "source_file": "components/button.tsx",
       "source_location": null,
@@ -35332,16 +34576,6 @@
       "weight": 1.0,
       "source": "screen_roles",
       "target": "api_classes_module"
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "lib/api/classes.ts",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "api_classes_module",
-      "target": "api_fetch_client"
     },
     {
       "relation": "conceptually_related_to",
@@ -35504,5 +34738,5 @@
       "source_file": "assets/images"
     }
   ],
-  "built_at_commit": "d01c9c6dfa6de8cb89c7f4bbcd07422fbf4c7e21"
+  "built_at_commit": "02f7170655512b8b7dac0afe842bb615bed8deb9"
 }

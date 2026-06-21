@@ -48,7 +48,7 @@ export default function LeaderboardRow({ entry, rank }: LeaderboardRowProps) {
       {entry.image ? (
         <Image
           source={{ uri: entry.image }}
-          className="h-9 w-9 rounded-full"
+          style={{ height: 36, width: 36, borderRadius: 9999 }}
           contentFit="cover"
           transition={200}
           accessibilityLabel={`${entry.name}'s avatar`}
