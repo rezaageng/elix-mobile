@@ -75,373 +75,58 @@
   },
   "nodes": [
     {
-      "label": "inventory.test.ts",
+      "label": "button.test.tsx",
       "file_type": "code",
-      "source_file": "app/(tabs)/__tests__/inventory.test.ts",
+      "source_file": "components/__tests__/button.test.tsx",
       "source_location": "L1",
-      "id": "tests_inventory_test",
-      "community": 45,
-      "norm_label": "inventory.test.ts"
+      "id": "tests_button_test",
+      "community": 90,
+      "norm_label": "button.test.tsx"
     },
     {
-      "label": "defaultEntry",
+      "label": "leaderboard-row.test.tsx",
       "file_type": "code",
-      "source_file": "app/(tabs)/__tests__/inventory.test.ts",
-      "source_location": "L3",
-      "id": "tests_inventory_test_defaultentry",
-      "community": 45,
-      "norm_label": "defaultentry"
-    },
-    {
-      "label": "inventory.tsx",
-      "file_type": "code",
-      "source_file": "app/(tabs)/inventory.tsx",
+      "source_file": "components/guild/__tests__/leaderboard-row.test.tsx",
       "source_location": "L1",
-      "id": "tabs_inventory",
-      "community": 24,
-      "norm_label": "inventory.tsx"
-    },
-    {
-      "label": "getItemIcon()",
-      "file_type": "code",
-      "source_file": "app/(tabs)/inventory.tsx",
-      "source_location": "L24",
-      "id": "tabs_inventory_getitemicon",
-      "community": 24,
-      "norm_label": "getitemicon()"
-    },
-    {
-      "label": "getItemTypeLabel()",
-      "file_type": "code",
-      "source_file": "app/(tabs)/inventory.tsx",
-      "source_location": "L45",
-      "id": "tabs_inventory_getitemtypelabel",
-      "community": 24,
-      "norm_label": "getitemtypelabel()"
-    },
-    {
-      "label": "GoldChip()",
-      "file_type": "code",
-      "source_file": "app/(tabs)/inventory.tsx",
-      "source_location": "L61",
-      "id": "tabs_inventory_goldchip",
-      "community": 24,
-      "norm_label": "goldchip()"
-    },
-    {
-      "label": "InventoryCard()",
-      "file_type": "code",
-      "source_file": "app/(tabs)/inventory.tsx",
-      "source_location": "L72",
-      "id": "tabs_inventory_inventorycard",
-      "community": 24,
-      "norm_label": "inventorycard()"
-    },
-    {
-      "label": "InventoryScreen()",
-      "file_type": "code",
-      "source_file": "app/(tabs)/inventory.tsx",
-      "source_location": "L121",
-      "id": "tabs_inventory_inventoryscreen",
-      "community": 24,
-      "norm_label": "inventoryscreen()"
-    },
-    {
-      "label": "get-initial-route.test.ts",
-      "file_type": "code",
-      "source_file": "app/__tests__/get-initial-route.test.ts",
-      "source_location": "L1",
-      "id": "tests_get_initial_route_test",
-      "community": 45,
-      "norm_label": "get-initial-route.test.ts"
-    },
-    {
-      "label": "_layout.tsx",
-      "file_type": "code",
-      "source_file": "app/_layout.tsx",
-      "source_location": "L1",
-      "id": "app_layout",
-      "community": 26,
-      "norm_label": "_layout.tsx"
-    },
-    {
-      "label": "RootLayout()",
-      "file_type": "code",
-      "source_file": "app/_layout.tsx",
-      "source_location": "L29",
-      "id": "app_layout_rootlayout",
-      "community": 26,
-      "norm_label": "rootlayout()"
-    },
-    {
-      "label": "RootNavigator()",
-      "file_type": "code",
-      "source_file": "app/_layout.tsx",
-      "source_location": "L58",
-      "id": "app_layout_rootnavigator",
-      "community": 26,
-      "norm_label": "rootnavigator()"
-    },
-    {
-      "label": "edit-list.tsx",
-      "file_type": "code",
-      "source_file": "app/roles/quests/edit-list.tsx",
-      "source_location": "L1",
-      "id": "quests_edit_list",
-      "community": 44,
-      "norm_label": "edit-list.tsx"
-    },
-    {
-      "label": "typeFilters",
-      "file_type": "code",
-      "source_file": "app/roles/quests/edit-list.tsx",
-      "source_location": "L19",
-      "id": "quests_edit_list_typefilters",
-      "community": 44,
-      "norm_label": "typefilters"
-    },
-    {
-      "label": "typeTitles",
-      "file_type": "code",
-      "source_file": "app/roles/quests/edit-list.tsx",
-      "source_location": "L29",
-      "id": "quests_edit_list_typetitles",
-      "community": 44,
-      "norm_label": "typetitles"
-    },
-    {
-      "label": "typeLabels",
-      "file_type": "code",
-      "source_file": "app/roles/quests/edit-list.tsx",
-      "source_location": "L35",
-      "id": "quests_edit_list_typelabels",
-      "community": 44,
-      "norm_label": "typelabels"
-    },
-    {
-      "label": "EditQuestListScreen()",
-      "file_type": "code",
-      "source_file": "app/roles/quests/edit-list.tsx",
-      "source_location": "L41",
-      "id": "quests_edit_list_editquestlistscreen",
-      "community": 44,
-      "norm_label": "editquestlistscreen()"
-    },
-    {
-      "label": "chat-composer.test.tsx",
-      "file_type": "code",
-      "source_file": "components/guild/__tests__/chat-composer.test.tsx",
-      "source_location": "L1",
-      "id": "tests_chat_composer_test",
-      "community": 94,
-      "norm_label": "chat-composer.test.tsx"
-    },
-    {
-      "label": "members-tab.test.ts",
-      "file_type": "code",
-      "source_file": "components/guild/__tests__/members-tab.test.ts",
-      "source_location": "L1",
-      "id": "tests_members_tab_test",
-      "community": 45,
-      "norm_label": "members-tab.test.ts"
-    },
-    {
-      "label": "chat-composer.tsx",
-      "file_type": "code",
-      "source_file": "components/guild/chat-composer.tsx",
-      "source_location": "L1",
-      "id": "guild_chat_composer",
-      "community": 94,
-      "norm_label": "chat-composer.tsx"
-    },
-    {
-      "label": "ComposerAttachment",
-      "file_type": "code",
-      "source_file": "components/guild/chat-composer.tsx",
-      "source_location": "L18",
-      "id": "guild_chat_composer_composerattachment",
-      "community": 94,
-      "norm_label": "composerattachment"
-    },
-    {
-      "label": "ChatComposerProps",
-      "file_type": "code",
-      "source_file": "components/guild/chat-composer.tsx",
-      "source_location": "L26",
-      "id": "guild_chat_composer_chatcomposerprops",
-      "community": 94,
-      "norm_label": "chatcomposerprops"
-    },
-    {
-      "label": "makeAttachmentId()",
-      "file_type": "code",
-      "source_file": "components/guild/chat-composer.tsx",
-      "source_location": "L31",
-      "id": "guild_chat_composer_makeattachmentid",
-      "community": 94,
-      "norm_label": "makeattachmentid()"
-    },
-    {
-      "label": "ChatComposer()",
-      "file_type": "code",
-      "source_file": "components/guild/chat-composer.tsx",
-      "source_location": "L36",
-      "id": "guild_chat_composer_chatcomposer",
-      "community": 94,
-      "norm_label": "chatcomposer()"
-    },
-    {
-      "label": "members-tab.tsx",
-      "file_type": "code",
-      "source_file": "components/guild/members-tab.tsx",
-      "source_location": "L1",
-      "id": "guild_members_tab",
+      "id": "tests_leaderboard_row_test",
       "community": 42,
-      "norm_label": "members-tab.tsx"
+      "norm_label": "leaderboard-row.test.tsx"
     },
     {
-      "label": "MembersTabProps",
+      "label": "makeEntry()",
       "file_type": "code",
-      "source_file": "components/guild/members-tab.tsx",
-      "source_location": "L12",
-      "id": "guild_members_tab_memberstabprops",
-      "community": 42,
-      "norm_label": "memberstabprops"
-    },
-    {
-      "label": "MembersTab()",
-      "file_type": "code",
-      "source_file": "components/guild/members-tab.tsx",
-      "source_location": "L21",
-      "id": "guild_members_tab_memberstab",
-      "community": 42,
-      "norm_label": "memberstab()"
-    },
-    {
-      "label": "avatar-section.test.ts",
-      "file_type": "code",
-      "source_file": "components/profile/__tests__/avatar-section.test.ts",
-      "source_location": "L1",
-      "id": "tests_avatar_section_test",
-      "community": 45,
-      "norm_label": "avatar-section.test.ts"
-    },
-    {
-      "label": "profile-screen.test.ts",
-      "file_type": "code",
-      "source_file": "components/profile/__tests__/profile-screen.test.ts",
-      "source_location": "L1",
-      "id": "tests_profile_screen_test",
-      "community": 45,
-      "norm_label": "profile-screen.test.ts"
-    },
-    {
-      "label": "avatar-section.tsx",
-      "file_type": "code",
-      "source_file": "components/profile/avatar-section.tsx",
-      "source_location": "L1",
-      "id": "profile_avatar_section",
-      "community": 45,
-      "norm_label": "avatar-section.tsx"
-    },
-    {
-      "label": "AvatarSectionProps",
-      "file_type": "code",
-      "source_file": "components/profile/avatar-section.tsx",
+      "source_file": "components/guild/__tests__/leaderboard-row.test.tsx",
       "source_location": "L8",
-      "id": "profile_avatar_section_avatarsectionprops",
-      "community": 45,
-      "norm_label": "avatarsectionprops"
+      "id": "tests_leaderboard_row_test_makeentry",
+      "community": 42,
+      "norm_label": "makeentry()"
     },
     {
-      "label": "AvatarSection()",
+      "label": "member-row.test.tsx",
       "file_type": "code",
-      "source_file": "components/profile/avatar-section.tsx",
-      "source_location": "L13",
-      "id": "profile_avatar_section_avatarsection",
-      "community": 45,
-      "norm_label": "avatarsection()"
-    },
-    {
-      "label": "StatItem()",
-      "file_type": "code",
-      "source_file": "components/profile/avatar-section.tsx",
-      "source_location": "L71",
-      "id": "profile_avatar_section_statitem",
-      "community": 45,
-      "norm_label": "statitem()"
-    },
-    {
-      "label": "profile-screen.tsx",
-      "file_type": "code",
-      "source_file": "components/profile/profile-screen.tsx",
+      "source_file": "components/guild/__tests__/member-row.test.tsx",
       "source_location": "L1",
-      "id": "profile_profile_screen",
-      "community": 18,
-      "norm_label": "profile-screen.tsx"
+      "id": "tests_member_row_test",
+      "community": 42,
+      "norm_label": "member-row.test.tsx"
     },
     {
-      "label": "TabKey",
+      "label": "makeMember()",
       "file_type": "code",
-      "source_file": "components/profile/profile-screen.tsx",
-      "source_location": "L53",
-      "id": "profile_profile_screen_tabkey",
-      "community": 18,
-      "norm_label": "tabkey"
+      "source_file": "components/guild/__tests__/member-row.test.tsx",
+      "source_location": "L10",
+      "id": "tests_member_row_test_makemember",
+      "community": 42,
+      "norm_label": "makemember()"
     },
     {
-      "label": "ImageTarget",
+      "label": "app-logic.test.ts",
       "file_type": "code",
-      "source_file": "components/profile/profile-screen.tsx",
-      "source_location": "L54",
-      "id": "profile_profile_screen_imagetarget",
-      "community": 18,
-      "norm_label": "imagetarget"
-    },
-    {
-      "label": "useProfileUser()",
-      "file_type": "code",
-      "source_file": "components/profile/profile-screen.tsx",
-      "source_location": "L56",
-      "id": "profile_profile_screen_useprofileuser",
-      "community": 18,
-      "norm_label": "useprofileuser()"
-    },
-    {
-      "label": "ProfileScreenProps",
-      "file_type": "code",
-      "source_file": "components/profile/profile-screen.tsx",
-      "source_location": "L68",
-      "id": "profile_profile_screen_profilescreenprops",
-      "community": 18,
-      "norm_label": "profilescreenprops"
-    },
-    {
-      "label": "ProfileScreen()",
-      "file_type": "code",
-      "source_file": "components/profile/profile-screen.tsx",
-      "source_location": "L72",
-      "id": "profile_profile_screen_profilescreen",
-      "community": 18,
-      "norm_label": "profilescreen()"
-    },
-    {
-      "label": "TabContent()",
-      "file_type": "code",
-      "source_file": "components/profile/profile-screen.tsx",
-      "source_location": "L621",
-      "id": "profile_profile_screen_tabcontent",
-      "community": 18,
-      "norm_label": "tabcontent()"
-    },
-    {
-      "label": "TabButton()",
-      "file_type": "code",
-      "source_file": "components/profile/profile-screen.tsx",
-      "source_location": "L683",
-      "id": "profile_profile_screen_tabbutton",
-      "community": 18,
-      "norm_label": "tabbutton()"
+      "source_file": "lib/app-logic.test.ts",
+      "source_location": "L1",
+      "id": "lib_app_logic_test",
+      "community": 45,
+      "norm_label": "app-logic.test.ts"
     },
     {
       "label": "app-logic.ts",
@@ -525,6 +210,609 @@
       "norm_label": "getxppercent()"
     },
     {
+      "label": "getCurrentUserRoleInGuild()",
+      "file_type": "code",
+      "source_file": "lib/app-logic.ts",
+      "source_location": "L163",
+      "id": "lib_app_logic_getcurrentuserroleinguild",
+      "community": 45,
+      "norm_label": "getcurrentuserroleinguild()"
+    },
+    {
+      "label": "canManageGuild()",
+      "file_type": "code",
+      "source_file": "lib/app-logic.ts",
+      "source_location": "L170",
+      "id": "lib_app_logic_canmanageguild",
+      "community": 45,
+      "norm_label": "canmanageguild()"
+    },
+    {
+      "label": "canLeaveGuild()",
+      "file_type": "code",
+      "source_file": "lib/app-logic.ts",
+      "source_location": "L174",
+      "id": "lib_app_logic_canleaveguild",
+      "community": 45,
+      "norm_label": "canleaveguild()"
+    },
+    {
+      "label": "getShowQuestNamesInActivity()",
+      "file_type": "code",
+      "source_file": "lib/app-logic.ts",
+      "source_location": "L180",
+      "id": "lib_app_logic_getshowquestnamesinactivity",
+      "community": 45,
+      "norm_label": "getshowquestnamesinactivity()"
+    },
+    {
+      "label": "toggleShowQuestNamesInActivity()",
+      "file_type": "code",
+      "source_file": "lib/app-logic.ts",
+      "source_location": "L186",
+      "id": "lib_app_logic_toggleshowquestnamesinactivity",
+      "community": 45,
+      "norm_label": "toggleshowquestnamesinactivity()"
+    },
+    {
+      "label": "getQuestNamesToggleValue()",
+      "file_type": "code",
+      "source_file": "lib/app-logic.ts",
+      "source_location": "L190",
+      "id": "lib_app_logic_getquestnamestogglevalue",
+      "community": 45,
+      "norm_label": "getquestnamestogglevalue()"
+    },
+    {
+      "label": "createDebounce()",
+      "file_type": "code",
+      "source_file": "lib/app-logic.ts",
+      "source_location": "L198",
+      "id": "lib_app_logic_createdebounce",
+      "community": 45,
+      "norm_label": "createdebounce()"
+    },
+    {
+      "label": "date-utils.test.ts",
+      "file_type": "code",
+      "source_file": "lib/date-utils.test.ts",
+      "source_location": "L1",
+      "id": "lib_date_utils_test",
+      "community": 96,
+      "norm_label": "date-utils.test.ts"
+    },
+    {
+      "label": "makeDate()",
+      "file_type": "code",
+      "source_file": "lib/date-utils.test.ts",
+      "source_location": "L4",
+      "id": "lib_date_utils_test_makedate",
+      "community": 96,
+      "norm_label": "makedate()"
+    },
+    {
+      "label": "date-utils.ts",
+      "file_type": "code",
+      "source_file": "lib/date-utils.ts",
+      "source_location": "L1",
+      "id": "lib_date_utils",
+      "community": 96,
+      "norm_label": "date-utils.ts"
+    },
+    {
+      "label": "updateWeekday()",
+      "file_type": "code",
+      "source_file": "lib/date-utils.ts",
+      "source_location": "L6",
+      "id": "lib_date_utils_updateweekday",
+      "community": 96,
+      "norm_label": "updateweekday()"
+    },
+    {
+      "label": "quest-utils.test.ts",
+      "file_type": "code",
+      "source_file": "lib/quest-utils.test.ts",
+      "source_location": "L1",
+      "id": "lib_quest_utils_test",
+      "community": 39,
+      "norm_label": "quest-utils.test.ts"
+    },
+    {
+      "label": "makeQuest()",
+      "file_type": "code",
+      "source_file": "lib/quest-utils.test.ts",
+      "source_location": "L14",
+      "id": "lib_quest_utils_test_makequest",
+      "community": 39,
+      "norm_label": "makequest()"
+    },
+    {
+      "label": "quest-utils.ts",
+      "file_type": "code",
+      "source_file": "lib/quest-utils.ts",
+      "source_location": "L1",
+      "id": "lib_quest_utils",
+      "community": 39,
+      "norm_label": "quest-utils.ts"
+    },
+    {
+      "label": "getEffectiveQuestValues()",
+      "file_type": "code",
+      "source_file": "lib/quest-utils.ts",
+      "source_location": "L3",
+      "id": "lib_quest_utils_geteffectivequestvalues",
+      "community": 39,
+      "norm_label": "geteffectivequestvalues()"
+    },
+    {
+      "label": "getQuestStatus()",
+      "file_type": "code",
+      "source_file": "lib/quest-utils.ts",
+      "source_location": "L13",
+      "id": "lib_quest_utils_getqueststatus",
+      "community": 39,
+      "norm_label": "getqueststatus()"
+    },
+    {
+      "label": "getQuestStatusLabel()",
+      "file_type": "code",
+      "source_file": "lib/quest-utils.ts",
+      "source_location": "L17",
+      "id": "lib_quest_utils_getqueststatuslabel",
+      "community": 39,
+      "norm_label": "getqueststatuslabel()"
+    },
+    {
+      "label": "isActive()",
+      "file_type": "code",
+      "source_file": "lib/quest-utils.ts",
+      "source_location": "L33",
+      "id": "lib_quest_utils_isactive",
+      "community": 39,
+      "norm_label": "isactive()"
+    },
+    {
+      "label": "sortQuests()",
+      "file_type": "code",
+      "source_file": "lib/quest-utils.ts",
+      "source_location": "L37",
+      "id": "lib_quest_utils_sortquests",
+      "community": 39,
+      "norm_label": "sortquests()"
+    },
+    {
+      "label": "formatHours()",
+      "file_type": "code",
+      "source_file": "lib/quest-utils.ts",
+      "source_location": "L56",
+      "id": "lib_quest_utils_formathours",
+      "community": 39,
+      "norm_label": "formathours()"
+    },
+    {
+      "label": "getEffectiveStartedAt()",
+      "file_type": "code",
+      "source_file": "lib/quest-utils.ts",
+      "source_location": "L64",
+      "id": "lib_quest_utils_geteffectivestartedat",
+      "community": 39,
+      "norm_label": "geteffectivestartedat()"
+    },
+    {
+      "label": "getDurationInfo()",
+      "file_type": "code",
+      "source_file": "lib/quest-utils.ts",
+      "source_location": "L76",
+      "id": "lib_quest_utils_getdurationinfo",
+      "community": 39,
+      "norm_label": "getdurationinfo()"
+    },
+    {
+      "label": "QuestSubmitKind",
+      "file_type": "code",
+      "source_file": "lib/quest-utils.ts",
+      "source_location": "L105",
+      "id": "lib_quest_utils_questsubmitkind",
+      "community": 39,
+      "norm_label": "questsubmitkind"
+    },
+    {
+      "label": "QuestSubmitResult",
+      "file_type": "code",
+      "source_file": "lib/quest-utils.ts",
+      "source_location": "L107",
+      "id": "lib_quest_utils_questsubmitresult",
+      "community": 39,
+      "norm_label": "questsubmitresult"
+    },
+    {
+      "label": "getQuestSubmitBody()",
+      "file_type": "code",
+      "source_file": "lib/quest-utils.ts",
+      "source_location": "L121",
+      "id": "lib_quest_utils_getquestsubmitbody",
+      "community": 39,
+      "norm_label": "getquestsubmitbody()"
+    },
+    {
+      "label": "hasCompletedQuestToday()",
+      "file_type": "code",
+      "source_file": "lib/quest-utils.ts",
+      "source_location": "L181",
+      "id": "lib_quest_utils_hascompletedquesttoday",
+      "community": 39,
+      "norm_label": "hascompletedquesttoday()"
+    },
+    {
+      "label": "inventory.test.ts",
+      "file_type": "code",
+      "source_file": "app/(tabs)/__tests__/inventory.test.ts",
+      "source_location": "L1",
+      "community": 45,
+      "norm_label": "inventory.test.ts",
+      "id": "tests_inventory_test"
+    },
+    {
+      "label": "defaultEntry",
+      "file_type": "code",
+      "source_file": "app/(tabs)/__tests__/inventory.test.ts",
+      "source_location": "L3",
+      "community": 45,
+      "norm_label": "defaultentry",
+      "id": "tests_inventory_test_defaultentry"
+    },
+    {
+      "label": "inventory.tsx",
+      "file_type": "code",
+      "source_file": "app/(tabs)/inventory.tsx",
+      "source_location": "L1",
+      "community": 45,
+      "norm_label": "inventory.tsx",
+      "id": "tabs_inventory"
+    },
+    {
+      "label": "getItemIcon()",
+      "file_type": "code",
+      "source_file": "app/(tabs)/inventory.tsx",
+      "source_location": "L24",
+      "community": 45,
+      "norm_label": "getitemicon()",
+      "id": "tabs_inventory_getitemicon"
+    },
+    {
+      "label": "getItemTypeLabel()",
+      "file_type": "code",
+      "source_file": "app/(tabs)/inventory.tsx",
+      "source_location": "L45",
+      "community": 45,
+      "norm_label": "getitemtypelabel()",
+      "id": "tabs_inventory_getitemtypelabel"
+    },
+    {
+      "label": "GoldChip()",
+      "file_type": "code",
+      "source_file": "app/(tabs)/inventory.tsx",
+      "source_location": "L61",
+      "community": 45,
+      "norm_label": "goldchip()",
+      "id": "tabs_inventory_goldchip"
+    },
+    {
+      "label": "InventoryCard()",
+      "file_type": "code",
+      "source_file": "app/(tabs)/inventory.tsx",
+      "source_location": "L72",
+      "community": 45,
+      "norm_label": "inventorycard()",
+      "id": "tabs_inventory_inventorycard"
+    },
+    {
+      "label": "InventoryScreen()",
+      "file_type": "code",
+      "source_file": "app/(tabs)/inventory.tsx",
+      "source_location": "L121",
+      "community": 45,
+      "norm_label": "inventoryscreen()",
+      "id": "tabs_inventory_inventoryscreen"
+    },
+    {
+      "label": "get-initial-route.test.ts",
+      "file_type": "code",
+      "source_file": "app/__tests__/get-initial-route.test.ts",
+      "source_location": "L1",
+      "community": 45,
+      "norm_label": "get-initial-route.test.ts",
+      "id": "tests_get_initial_route_test"
+    },
+    {
+      "label": "_layout.tsx",
+      "file_type": "code",
+      "source_file": "app/_layout.tsx",
+      "source_location": "L1",
+      "community": 93,
+      "norm_label": "_layout.tsx",
+      "id": "app_layout"
+    },
+    {
+      "label": "RootLayout()",
+      "file_type": "code",
+      "source_file": "app/_layout.tsx",
+      "source_location": "L29",
+      "community": 93,
+      "norm_label": "rootlayout()",
+      "id": "app_layout_rootlayout"
+    },
+    {
+      "label": "RootNavigator()",
+      "file_type": "code",
+      "source_file": "app/_layout.tsx",
+      "source_location": "L58",
+      "community": 93,
+      "norm_label": "rootnavigator()",
+      "id": "app_layout_rootnavigator"
+    },
+    {
+      "label": "edit-list.tsx",
+      "file_type": "code",
+      "source_file": "app/roles/quests/edit-list.tsx",
+      "source_location": "L1",
+      "community": 44,
+      "norm_label": "edit-list.tsx",
+      "id": "quests_edit_list"
+    },
+    {
+      "label": "typeFilters",
+      "file_type": "code",
+      "source_file": "app/roles/quests/edit-list.tsx",
+      "source_location": "L19",
+      "community": 44,
+      "norm_label": "typefilters",
+      "id": "quests_edit_list_typefilters"
+    },
+    {
+      "label": "typeTitles",
+      "file_type": "code",
+      "source_file": "app/roles/quests/edit-list.tsx",
+      "source_location": "L29",
+      "community": 44,
+      "norm_label": "typetitles",
+      "id": "quests_edit_list_typetitles"
+    },
+    {
+      "label": "typeLabels",
+      "file_type": "code",
+      "source_file": "app/roles/quests/edit-list.tsx",
+      "source_location": "L35",
+      "community": 44,
+      "norm_label": "typelabels",
+      "id": "quests_edit_list_typelabels"
+    },
+    {
+      "label": "EditQuestListScreen()",
+      "file_type": "code",
+      "source_file": "app/roles/quests/edit-list.tsx",
+      "source_location": "L41",
+      "community": 44,
+      "norm_label": "editquestlistscreen()",
+      "id": "quests_edit_list_editquestlistscreen"
+    },
+    {
+      "label": "chat-composer.test.tsx",
+      "file_type": "code",
+      "source_file": "components/guild/__tests__/chat-composer.test.tsx",
+      "source_location": "L1",
+      "community": 94,
+      "norm_label": "chat-composer.test.tsx",
+      "id": "tests_chat_composer_test"
+    },
+    {
+      "label": "members-tab.test.ts",
+      "file_type": "code",
+      "source_file": "components/guild/__tests__/members-tab.test.ts",
+      "source_location": "L1",
+      "community": 45,
+      "norm_label": "members-tab.test.ts",
+      "id": "tests_members_tab_test"
+    },
+    {
+      "label": "chat-composer.tsx",
+      "file_type": "code",
+      "source_file": "components/guild/chat-composer.tsx",
+      "source_location": "L1",
+      "community": 94,
+      "norm_label": "chat-composer.tsx",
+      "id": "guild_chat_composer"
+    },
+    {
+      "label": "ComposerAttachment",
+      "file_type": "code",
+      "source_file": "components/guild/chat-composer.tsx",
+      "source_location": "L18",
+      "community": 94,
+      "norm_label": "composerattachment",
+      "id": "guild_chat_composer_composerattachment"
+    },
+    {
+      "label": "ChatComposerProps",
+      "file_type": "code",
+      "source_file": "components/guild/chat-composer.tsx",
+      "source_location": "L26",
+      "community": 94,
+      "norm_label": "chatcomposerprops",
+      "id": "guild_chat_composer_chatcomposerprops"
+    },
+    {
+      "label": "makeAttachmentId()",
+      "file_type": "code",
+      "source_file": "components/guild/chat-composer.tsx",
+      "source_location": "L31",
+      "community": 94,
+      "norm_label": "makeattachmentid()",
+      "id": "guild_chat_composer_makeattachmentid"
+    },
+    {
+      "label": "ChatComposer()",
+      "file_type": "code",
+      "source_file": "components/guild/chat-composer.tsx",
+      "source_location": "L36",
+      "community": 94,
+      "norm_label": "chatcomposer()",
+      "id": "guild_chat_composer_chatcomposer"
+    },
+    {
+      "label": "members-tab.tsx",
+      "file_type": "code",
+      "source_file": "components/guild/members-tab.tsx",
+      "source_location": "L1",
+      "community": 42,
+      "norm_label": "members-tab.tsx",
+      "id": "guild_members_tab"
+    },
+    {
+      "label": "MembersTabProps",
+      "file_type": "code",
+      "source_file": "components/guild/members-tab.tsx",
+      "source_location": "L12",
+      "community": 42,
+      "norm_label": "memberstabprops",
+      "id": "guild_members_tab_memberstabprops"
+    },
+    {
+      "label": "MembersTab()",
+      "file_type": "code",
+      "source_file": "components/guild/members-tab.tsx",
+      "source_location": "L21",
+      "community": 42,
+      "norm_label": "memberstab()",
+      "id": "guild_members_tab_memberstab"
+    },
+    {
+      "label": "avatar-section.test.ts",
+      "file_type": "code",
+      "source_file": "components/profile/__tests__/avatar-section.test.ts",
+      "source_location": "L1",
+      "community": 45,
+      "norm_label": "avatar-section.test.ts",
+      "id": "tests_avatar_section_test"
+    },
+    {
+      "label": "profile-screen.test.ts",
+      "file_type": "code",
+      "source_file": "components/profile/__tests__/profile-screen.test.ts",
+      "source_location": "L1",
+      "community": 45,
+      "norm_label": "profile-screen.test.ts",
+      "id": "tests_profile_screen_test"
+    },
+    {
+      "label": "avatar-section.tsx",
+      "file_type": "code",
+      "source_file": "components/profile/avatar-section.tsx",
+      "source_location": "L1",
+      "community": 18,
+      "norm_label": "avatar-section.tsx",
+      "id": "profile_avatar_section"
+    },
+    {
+      "label": "AvatarSectionProps",
+      "file_type": "code",
+      "source_file": "components/profile/avatar-section.tsx",
+      "source_location": "L8",
+      "community": 18,
+      "norm_label": "avatarsectionprops",
+      "id": "profile_avatar_section_avatarsectionprops"
+    },
+    {
+      "label": "AvatarSection()",
+      "file_type": "code",
+      "source_file": "components/profile/avatar-section.tsx",
+      "source_location": "L13",
+      "community": 18,
+      "norm_label": "avatarsection()",
+      "id": "profile_avatar_section_avatarsection"
+    },
+    {
+      "label": "StatItem()",
+      "file_type": "code",
+      "source_file": "components/profile/avatar-section.tsx",
+      "source_location": "L71",
+      "community": 18,
+      "norm_label": "statitem()",
+      "id": "profile_avatar_section_statitem"
+    },
+    {
+      "label": "profile-screen.tsx",
+      "file_type": "code",
+      "source_file": "components/profile/profile-screen.tsx",
+      "source_location": "L1",
+      "community": 18,
+      "norm_label": "profile-screen.tsx",
+      "id": "profile_profile_screen"
+    },
+    {
+      "label": "TabKey",
+      "file_type": "code",
+      "source_file": "components/profile/profile-screen.tsx",
+      "source_location": "L53",
+      "community": 18,
+      "norm_label": "tabkey",
+      "id": "profile_profile_screen_tabkey"
+    },
+    {
+      "label": "ImageTarget",
+      "file_type": "code",
+      "source_file": "components/profile/profile-screen.tsx",
+      "source_location": "L54",
+      "community": 18,
+      "norm_label": "imagetarget",
+      "id": "profile_profile_screen_imagetarget"
+    },
+    {
+      "label": "useProfileUser()",
+      "file_type": "code",
+      "source_file": "components/profile/profile-screen.tsx",
+      "source_location": "L56",
+      "community": 18,
+      "norm_label": "useprofileuser()",
+      "id": "profile_profile_screen_useprofileuser"
+    },
+    {
+      "label": "ProfileScreenProps",
+      "file_type": "code",
+      "source_file": "components/profile/profile-screen.tsx",
+      "source_location": "L68",
+      "community": 18,
+      "norm_label": "profilescreenprops",
+      "id": "profile_profile_screen_profilescreenprops"
+    },
+    {
+      "label": "ProfileScreen()",
+      "file_type": "code",
+      "source_file": "components/profile/profile-screen.tsx",
+      "source_location": "L72",
+      "community": 18,
+      "norm_label": "profilescreen()",
+      "id": "profile_profile_screen_profilescreen"
+    },
+    {
+      "label": "TabContent()",
+      "file_type": "code",
+      "source_file": "components/profile/profile-screen.tsx",
+      "source_location": "L621",
+      "community": 18,
+      "norm_label": "tabcontent()",
+      "id": "profile_profile_screen_tabcontent"
+    },
+    {
+      "label": "TabButton()",
+      "file_type": "code",
+      "source_file": "components/profile/profile-screen.tsx",
+      "source_location": "L683",
+      "community": 18,
+      "norm_label": "tabbutton()",
+      "id": "profile_profile_screen_tabbutton"
+    },
+    {
       "label": "index.tsx",
       "file_type": "code",
       "source_file": "app/(tabs)/index.tsx",
@@ -583,7 +871,7 @@
       "file_type": "code",
       "source_file": "app/(tabs)/index.tsx",
       "source_location": "L185",
-      "community": 105,
+      "community": 39,
       "norm_label": "streakbadge()",
       "id": "tabs_index_streakbadge"
     },
@@ -835,7 +1123,7 @@
       "file_type": "code",
       "source_file": "components/profile/edit-profile-sheet.tsx",
       "source_location": "L1",
-      "community": 96,
+      "community": 18,
       "norm_label": "edit-profile-sheet.tsx",
       "id": "profile_edit_profile_sheet"
     },
@@ -844,7 +1132,7 @@
       "file_type": "code",
       "source_file": "components/profile/edit-profile-sheet.tsx",
       "source_location": "L22",
-      "community": 96,
+      "community": 18,
       "norm_label": "editprofilesheetreference",
       "id": "profile_edit_profile_sheet_editprofilesheetreference"
     },
@@ -853,7 +1141,7 @@
       "file_type": "code",
       "source_file": "components/profile/edit-profile-sheet.tsx",
       "source_location": "L27",
-      "community": 96,
+      "community": 18,
       "norm_label": "editprofilesheetprops",
       "id": "profile_edit_profile_sheet_editprofilesheetprops"
     },
@@ -862,7 +1150,7 @@
       "file_type": "code",
       "source_file": "components/profile/edit-profile-sheet.tsx",
       "source_location": "L44",
-      "community": 96,
+      "community": 18,
       "norm_label": "profileschema",
       "id": "profile_edit_profile_sheet_profileschema"
     },
@@ -871,7 +1159,7 @@
       "file_type": "code",
       "source_file": "components/profile/edit-profile-sheet.tsx",
       "source_location": "L56",
-      "community": 96,
+      "community": 18,
       "norm_label": "nameschema",
       "id": "profile_edit_profile_sheet_nameschema"
     },
@@ -880,7 +1168,7 @@
       "file_type": "code",
       "source_file": "components/profile/edit-profile-sheet.tsx",
       "source_location": "L57",
-      "community": 96,
+      "community": 18,
       "norm_label": "usernameschema",
       "id": "profile_edit_profile_sheet_usernameschema"
     },
@@ -889,7 +1177,7 @@
       "file_type": "code",
       "source_file": "components/profile/edit-profile-sheet.tsx",
       "source_location": "L66",
-      "community": 96,
+      "community": 18,
       "norm_label": "editprofilesheet",
       "id": "profile_edit_profile_sheet_editprofilesheet"
     },
@@ -1114,7 +1402,7 @@
       "file_type": "code",
       "source_file": "lib/api/guilds.ts",
       "source_location": "L226",
-      "community": 93,
+      "community": 4,
       "norm_label": "getwebsockettoken()",
       "id": "api_guilds_getwebsockettoken"
     },
@@ -1123,7 +1411,7 @@
       "file_type": "code",
       "source_file": "lib/api/guilds.ts",
       "source_location": "L237",
-      "community": 42,
+      "community": 90,
       "norm_label": "useguilds()",
       "id": "api_guilds_useguilds"
     },
@@ -1141,7 +1429,7 @@
       "file_type": "code",
       "source_file": "lib/api/guilds.ts",
       "source_location": "L258",
-      "community": 42,
+      "community": 68,
       "norm_label": "useguild()",
       "id": "api_guilds_useguild"
     },
@@ -1177,7 +1465,7 @@
       "file_type": "code",
       "source_file": "lib/api/guilds.ts",
       "source_location": "L300",
-      "community": 42,
+      "community": 90,
       "norm_label": "usemyguilds()",
       "id": "api_guilds_usemyguilds"
     },
@@ -1396,114 +1684,6 @@
       "community": 94,
       "norm_label": "buildlistitems()",
       "id": "lib_message_utils_buildlistitems"
-    },
-    {
-      "label": "quest-utils.test.ts",
-      "file_type": "code",
-      "source_file": "lib/quest-utils.test.ts",
-      "source_location": "L1",
-      "community": 39,
-      "norm_label": "quest-utils.test.ts",
-      "id": "lib_quest_utils_test"
-    },
-    {
-      "label": "makeQuest()",
-      "file_type": "code",
-      "source_file": "lib/quest-utils.test.ts",
-      "source_location": "L13",
-      "community": 39,
-      "norm_label": "makequest()",
-      "id": "lib_quest_utils_test_makequest"
-    },
-    {
-      "label": "quest-utils.ts",
-      "file_type": "code",
-      "source_file": "lib/quest-utils.ts",
-      "source_location": "L1",
-      "community": 39,
-      "norm_label": "quest-utils.ts",
-      "id": "lib_quest_utils"
-    },
-    {
-      "label": "getEffectiveQuestValues()",
-      "file_type": "code",
-      "source_file": "lib/quest-utils.ts",
-      "source_location": "L3",
-      "community": 39,
-      "norm_label": "geteffectivequestvalues()",
-      "id": "lib_quest_utils_geteffectivequestvalues"
-    },
-    {
-      "label": "getQuestStatus()",
-      "file_type": "code",
-      "source_file": "lib/quest-utils.ts",
-      "source_location": "L13",
-      "community": 39,
-      "norm_label": "getqueststatus()",
-      "id": "lib_quest_utils_getqueststatus"
-    },
-    {
-      "label": "getQuestStatusLabel()",
-      "file_type": "code",
-      "source_file": "lib/quest-utils.ts",
-      "source_location": "L17",
-      "community": 39,
-      "norm_label": "getqueststatuslabel()",
-      "id": "lib_quest_utils_getqueststatuslabel"
-    },
-    {
-      "label": "isActive()",
-      "file_type": "code",
-      "source_file": "lib/quest-utils.ts",
-      "source_location": "L33",
-      "community": 39,
-      "norm_label": "isactive()",
-      "id": "lib_quest_utils_isactive"
-    },
-    {
-      "label": "sortQuests()",
-      "file_type": "code",
-      "source_file": "lib/quest-utils.ts",
-      "source_location": "L37",
-      "community": 39,
-      "norm_label": "sortquests()",
-      "id": "lib_quest_utils_sortquests"
-    },
-    {
-      "label": "formatHours()",
-      "file_type": "code",
-      "source_file": "lib/quest-utils.ts",
-      "source_location": "L56",
-      "community": 39,
-      "norm_label": "formathours()",
-      "id": "lib_quest_utils_formathours"
-    },
-    {
-      "label": "getEffectiveStartedAt()",
-      "file_type": "code",
-      "source_file": "lib/quest-utils.ts",
-      "source_location": "L64",
-      "community": 39,
-      "norm_label": "geteffectivestartedat()",
-      "id": "lib_quest_utils_geteffectivestartedat"
-    },
-    {
-      "label": "getDurationInfo()",
-      "file_type": "code",
-      "source_file": "lib/quest-utils.ts",
-      "source_location": "L76",
-      "community": 39,
-      "norm_label": "getdurationinfo()",
-      "id": "lib_quest_utils_getdurationinfo"
-    },
-    {
-      "label": "hasCompletedQuestToday()",
-      "file_type": "code",
-      "source_file": "lib/quest-utils.ts",
-      "source_location": "L103",
-      "community": 39,
-      "norm_label": "hascompletedquesttoday()",
-      "id": "lib_quest_utils_hascompletedquesttoday"
     },
     {
       "label": "package.json",
@@ -2455,7 +2635,7 @@
       "file_type": "code",
       "source_file": "lib/api/quests.ts",
       "source_location": "L1",
-      "community": 5,
+      "community": 71,
       "norm_label": "quests.ts",
       "id": "api_quests"
     },
@@ -2464,7 +2644,7 @@
       "file_type": "code",
       "source_file": "lib/api/quests.ts",
       "source_location": "L23",
-      "community": 5,
+      "community": 71,
       "norm_label": "getclassquests()",
       "id": "api_quests_getclassquests"
     },
@@ -2473,7 +2653,7 @@
       "file_type": "code",
       "source_file": "lib/api/quests.ts",
       "source_location": "L32",
-      "community": 5,
+      "community": 71,
       "norm_label": "getclassquestsforauthoring()",
       "id": "api_quests_getclassquestsforauthoring"
     },
@@ -2518,7 +2698,7 @@
       "file_type": "code",
       "source_file": "lib/api/quests.ts",
       "source_location": "L89",
-      "community": 5,
+      "community": 71,
       "norm_label": "startquestprogress()",
       "id": "api_quests_startquestprogress"
     },
@@ -2527,7 +2707,7 @@
       "file_type": "code",
       "source_file": "lib/api/quests.ts",
       "source_location": "L101",
-      "community": 5,
+      "community": 71,
       "norm_label": "updatequestprogress()",
       "id": "api_quests_updatequestprogress"
     },
@@ -2617,7 +2797,7 @@
       "file_type": "code",
       "source_file": "lib/api/quests.ts",
       "source_location": "L271",
-      "community": 5,
+      "community": 71,
       "norm_label": "usestartstarterquests()",
       "id": "api_quests_usestartstarterquests"
     },
@@ -3085,7 +3265,7 @@
       "file_type": "code",
       "source_file": "app/(tabs)/guild.tsx",
       "source_location": "L1",
-      "community": 42,
+      "community": 90,
       "norm_label": "guild.tsx",
       "id": "tabs_guild"
     },
@@ -3094,7 +3274,7 @@
       "file_type": "code",
       "source_file": "app/(tabs)/guild.tsx",
       "source_location": "L12",
-      "community": 42,
+      "community": 90,
       "norm_label": "guildscreen()",
       "id": "tabs_guild_guildscreen"
     },
@@ -3247,7 +3427,7 @@
       "file_type": "code",
       "source_file": "app/guild/leaderboard.tsx",
       "source_location": "L1",
-      "community": 0,
+      "community": 68,
       "norm_label": "leaderboard.tsx",
       "id": "guild_leaderboard"
     },
@@ -3256,7 +3436,7 @@
       "file_type": "code",
       "source_file": "app/guild/leaderboard.tsx",
       "source_location": "L7",
-      "community": 0,
+      "community": 68,
       "norm_label": "guildleaderboardscreen()",
       "id": "guild_leaderboard_guildleaderboardscreen"
     },
@@ -3265,7 +3445,7 @@
       "file_type": "code",
       "source_file": "app/guild/members.tsx",
       "source_location": "L1",
-      "community": 42,
+      "community": 68,
       "norm_label": "members.tsx",
       "id": "guild_members"
     },
@@ -3274,7 +3454,7 @@
       "file_type": "code",
       "source_file": "app/guild/members.tsx",
       "source_location": "L10",
-      "community": 42,
+      "community": 68,
       "norm_label": "guildmembersscreen()",
       "id": "guild_members_guildmembersscreen"
     },
@@ -3283,7 +3463,7 @@
       "file_type": "code",
       "source_file": "app/login/index.tsx",
       "source_location": "L1",
-      "community": 105,
+      "community": 68,
       "norm_label": "index.tsx",
       "id": "login_index"
     },
@@ -3292,7 +3472,7 @@
       "file_type": "code",
       "source_file": "app/login/index.tsx",
       "source_location": "L10",
-      "community": 105,
+      "community": 68,
       "norm_label": "loginscreen()",
       "id": "login_index_loginscreen"
     },
@@ -3301,7 +3481,7 @@
       "file_type": "code",
       "source_file": "app/roles/index.tsx",
       "source_location": "L1",
-      "community": 18,
+      "community": 68,
       "norm_label": "index.tsx",
       "id": "roles_index"
     },
@@ -3310,7 +3490,7 @@
       "file_type": "code",
       "source_file": "app/roles/index.tsx",
       "source_location": "L26",
-      "community": 18,
+      "community": 68,
       "norm_label": "rolesscreen()",
       "id": "roles_index_rolesscreen"
     },
@@ -3481,7 +3661,7 @@
       "file_type": "code",
       "source_file": "app/roles/quests/create-recurring.tsx",
       "source_location": "L101",
-      "community": 71,
+      "community": 84,
       "norm_label": "createrecurringquestsscreen()",
       "id": "quests_create_recurring_createrecurringquestsscreen"
     },
@@ -3571,7 +3751,7 @@
       "file_type": "code",
       "source_file": "app/user/[id].tsx",
       "source_location": "L1",
-      "community": 90,
+      "community": 18,
       "norm_label": "[id].tsx",
       "id": "user_id"
     },
@@ -3580,7 +3760,7 @@
       "file_type": "code",
       "source_file": "app/user/[id].tsx",
       "source_location": "L7",
-      "community": 90,
+      "community": 18,
       "norm_label": "userprofilescreen()",
       "id": "user_id_userprofilescreen"
     },
@@ -3598,7 +3778,7 @@
       "file_type": "code",
       "source_file": "components/button.tsx",
       "source_location": "L1",
-      "community": 105,
+      "community": 90,
       "norm_label": "button.tsx",
       "id": "components_button"
     },
@@ -3607,7 +3787,7 @@
       "file_type": "code",
       "source_file": "components/button.tsx",
       "source_location": "L7",
-      "community": 105,
+      "community": 90,
       "norm_label": "buttonprops",
       "id": "components_button_buttonprops"
     },
@@ -3616,7 +3796,7 @@
       "file_type": "code",
       "source_file": "components/button.tsx",
       "source_location": "L13",
-      "community": 105,
+      "community": 90,
       "norm_label": "button()",
       "id": "components_button_button"
     },
@@ -3661,7 +3841,7 @@
       "file_type": "code",
       "source_file": "components/guild/discovery-screen.tsx",
       "source_location": "L1",
-      "community": 42,
+      "community": 90,
       "norm_label": "discovery-screen.tsx",
       "id": "guild_discovery_screen"
     },
@@ -3670,7 +3850,7 @@
       "file_type": "code",
       "source_file": "components/guild/discovery-screen.tsx",
       "source_location": "L21",
-      "community": 42,
+      "community": 90,
       "norm_label": "discoveryscreenprops",
       "id": "guild_discovery_screen_discoveryscreenprops"
     },
@@ -3679,7 +3859,7 @@
       "file_type": "code",
       "source_file": "components/guild/discovery-screen.tsx",
       "source_location": "L25",
-      "community": 42,
+      "community": 90,
       "norm_label": "discoveryscreen()",
       "id": "guild_discovery_screen_discoveryscreen"
     },
@@ -3724,7 +3904,7 @@
       "file_type": "code",
       "source_file": "components/guild/guild-card.tsx",
       "source_location": "L1",
-      "community": 42,
+      "community": 105,
       "norm_label": "guild-card.tsx",
       "id": "guild_guild_card"
     },
@@ -3742,7 +3922,7 @@
       "file_type": "code",
       "source_file": "components/guild/guild-card.tsx",
       "source_location": "L13",
-      "community": 42,
+      "community": 105,
       "norm_label": "guildcard()",
       "id": "guild_guild_card_guildcard"
     },
@@ -4021,7 +4201,7 @@
       "file_type": "code",
       "source_file": "components/native-datetime-picker.tsx",
       "source_location": "L1",
-      "community": 71,
+      "community": 44,
       "norm_label": "native-datetime-picker.tsx",
       "id": "components_native_datetime_picker"
     },
@@ -4030,7 +4210,7 @@
       "file_type": "code",
       "source_file": "components/native-datetime-picker.tsx",
       "source_location": "L13",
-      "community": 71,
+      "community": 44,
       "norm_label": "pickermode",
       "id": "components_native_datetime_picker_pickermode"
     },
@@ -4039,7 +4219,7 @@
       "file_type": "code",
       "source_file": "components/native-datetime-picker.tsx",
       "source_location": "L15",
-      "community": 71,
+      "community": 44,
       "norm_label": "nativedatetimepickerprops",
       "id": "components_native_datetime_picker_nativedatetimepickerprops"
     },
@@ -4048,7 +4228,7 @@
       "file_type": "code",
       "source_file": "components/native-datetime-picker.tsx",
       "source_location": "L22",
-      "community": 71,
+      "community": 44,
       "norm_label": "weekdays",
       "id": "components_native_datetime_picker_weekdays"
     },
@@ -4057,7 +4237,7 @@
       "file_type": "code",
       "source_file": "components/native-datetime-picker.tsx",
       "source_location": "L32",
-      "community": 71,
+      "community": 44,
       "norm_label": "nativedatetimepicker()",
       "id": "components_native_datetime_picker_nativedatetimepicker"
     },
@@ -4066,7 +4246,7 @@
       "file_type": "code",
       "source_file": "components/profile/edit-role-sheet.tsx",
       "source_location": "L1",
-      "community": 90,
+      "community": 18,
       "norm_label": "edit-role-sheet.tsx",
       "id": "profile_edit_role_sheet"
     },
@@ -4075,7 +4255,7 @@
       "file_type": "code",
       "source_file": "components/profile/edit-role-sheet.tsx",
       "source_location": "L12",
-      "community": 90,
+      "community": 18,
       "norm_label": "editrolesheetreference",
       "id": "profile_edit_role_sheet_editrolesheetreference"
     },
@@ -4084,7 +4264,7 @@
       "file_type": "code",
       "source_file": "components/profile/edit-role-sheet.tsx",
       "source_location": "L14",
-      "community": 90,
+      "community": 18,
       "norm_label": "option",
       "id": "profile_edit_role_sheet_option"
     },
@@ -4093,7 +4273,7 @@
       "file_type": "code",
       "source_file": "components/profile/edit-role-sheet.tsx",
       "source_location": "L20",
-      "community": 90,
+      "community": 18,
       "norm_label": "options",
       "id": "profile_edit_role_sheet_options"
     },
@@ -4102,7 +4282,7 @@
       "file_type": "code",
       "source_file": "components/profile/edit-role-sheet.tsx",
       "source_location": "L43",
-      "community": 90,
+      "community": 18,
       "norm_label": "editrolesheetprops",
       "id": "profile_edit_role_sheet_editrolesheetprops"
     },
@@ -4111,7 +4291,7 @@
       "file_type": "code",
       "source_file": "components/profile/edit-role-sheet.tsx",
       "source_location": "L47",
-      "community": 90,
+      "community": 18,
       "norm_label": "editrolesheet",
       "id": "profile_edit_role_sheet_editrolesheet"
     },
@@ -4120,7 +4300,7 @@
       "file_type": "code",
       "source_file": "components/profile/image-picker-sheet.tsx",
       "source_location": "L1",
-      "community": 90,
+      "community": 18,
       "norm_label": "image-picker-sheet.tsx",
       "id": "profile_image_picker_sheet"
     },
@@ -4129,7 +4309,7 @@
       "file_type": "code",
       "source_file": "components/profile/image-picker-sheet.tsx",
       "source_location": "L10",
-      "community": 90,
+      "community": 18,
       "norm_label": "imagepickersheetreference",
       "id": "profile_image_picker_sheet_imagepickersheetreference"
     },
@@ -4138,7 +4318,7 @@
       "file_type": "code",
       "source_file": "components/profile/image-picker-sheet.tsx",
       "source_location": "L15",
-      "community": 90,
+      "community": 18,
       "norm_label": "imagepickersheetprops",
       "id": "profile_image_picker_sheet_imagepickersheetprops"
     },
@@ -4147,7 +4327,7 @@
       "file_type": "code",
       "source_file": "components/profile/image-picker-sheet.tsx",
       "source_location": "L20",
-      "community": 90,
+      "community": 18,
       "norm_label": "imagepickersheet",
       "id": "profile_image_picker_sheet_imagepickersheet"
     },
@@ -4183,7 +4363,7 @@
       "file_type": "code",
       "source_file": "components/profile/image-viewer-modal.tsx",
       "source_location": "L37",
-      "community": 90,
+      "community": 18,
       "norm_label": "imageviewermodal()",
       "id": "profile_image_viewer_modal_imageviewermodal"
     },
@@ -4201,7 +4381,7 @@
       "file_type": "code",
       "source_file": "components/profile/index.ts",
       "source_location": "L1",
-      "community": 90,
+      "community": 18,
       "norm_label": "index.ts",
       "id": "profile_index"
     },
@@ -4255,7 +4435,7 @@
       "file_type": "code",
       "source_file": "components/profile/profile-header.tsx",
       "source_location": "L1",
-      "community": 96,
+      "community": 18,
       "norm_label": "profile-header.tsx",
       "id": "profile_profile_header"
     },
@@ -4264,7 +4444,7 @@
       "file_type": "code",
       "source_file": "components/profile/profile-header.tsx",
       "source_location": "L8",
-      "community": 96,
+      "community": 18,
       "norm_label": "profileheaderprops",
       "id": "profile_profile_header_profileheaderprops"
     },
@@ -4273,7 +4453,7 @@
       "file_type": "code",
       "source_file": "components/profile/profile-header.tsx",
       "source_location": "L19",
-      "community": 96,
+      "community": 18,
       "norm_label": "profileheader()",
       "id": "profile_profile_header_profileheader"
     },
@@ -4282,7 +4462,7 @@
       "file_type": "code",
       "source_file": "components/profile/settings-sheet.tsx",
       "source_location": "L1",
-      "community": 68,
+      "community": 39,
       "norm_label": "settings-sheet.tsx",
       "id": "profile_settings_sheet"
     },
@@ -4291,7 +4471,7 @@
       "file_type": "code",
       "source_file": "components/profile/settings-sheet.tsx",
       "source_location": "L21",
-      "community": 68,
+      "community": 18,
       "norm_label": "settingssheetreference",
       "id": "profile_settings_sheet_settingssheetreference"
     },
@@ -4300,7 +4480,7 @@
       "file_type": "code",
       "source_file": "components/profile/settings-sheet.tsx",
       "source_location": "L26",
-      "community": 68,
+      "community": 18,
       "norm_label": "settingssheet",
       "id": "profile_settings_sheet_settingssheet"
     },
@@ -4309,7 +4489,7 @@
       "file_type": "code",
       "source_file": "components/profile/settings-sheet.tsx",
       "source_location": "L197",
-      "community": 68,
+      "community": 39,
       "norm_label": "settingrow()",
       "id": "profile_settings_sheet_settingrow"
     },
@@ -4318,7 +4498,7 @@
       "file_type": "code",
       "source_file": "components/profile/stats-section.tsx",
       "source_location": "L1",
-      "community": 98,
+      "community": 18,
       "norm_label": "stats-section.tsx",
       "id": "profile_stats_section"
     },
@@ -4327,7 +4507,7 @@
       "file_type": "code",
       "source_file": "components/profile/stats-section.tsx",
       "source_location": "L7",
-      "community": 98,
+      "community": 18,
       "norm_label": "periodfilter",
       "id": "profile_stats_section_periodfilter"
     },
@@ -4336,7 +4516,7 @@
       "file_type": "code",
       "source_file": "components/profile/stats-section.tsx",
       "source_location": "L9",
-      "community": 98,
+      "community": 18,
       "norm_label": "statssectionprops",
       "id": "profile_stats_section_statssectionprops"
     },
@@ -4345,7 +4525,7 @@
       "file_type": "code",
       "source_file": "components/profile/stats-section.tsx",
       "source_location": "L13",
-      "community": 98,
+      "community": 18,
       "norm_label": "filters",
       "id": "profile_stats_section_filters"
     },
@@ -4354,7 +4534,7 @@
       "file_type": "code",
       "source_file": "components/profile/stats-section.tsx",
       "source_location": "L19",
-      "community": 98,
+      "community": 18,
       "norm_label": "statssection()",
       "id": "profile_stats_section_statssection"
     },
@@ -5155,7 +5335,7 @@
       "file_type": "code",
       "source_file": "lib/api/notifications.ts",
       "source_location": "L1",
-      "community": 93,
+      "community": 38,
       "norm_label": "notifications.ts",
       "id": "api_notifications"
     },
@@ -5227,7 +5407,7 @@
       "file_type": "code",
       "source_file": "lib/api/schemas.ts",
       "source_location": "L51",
-      "community": 5,
+      "community": 71,
       "norm_label": "questprogressschema",
       "id": "api_schemas_questprogressschema"
     },
@@ -5245,7 +5425,7 @@
       "file_type": "code",
       "source_file": "lib/api/schemas.ts",
       "source_location": "L78",
-      "community": 5,
+      "community": 71,
       "norm_label": "classquestschema",
       "id": "api_schemas_classquestschema"
     },
@@ -5254,7 +5434,7 @@
       "file_type": "code",
       "source_file": "lib/api/schemas.ts",
       "source_location": "L85",
-      "community": 5,
+      "community": 71,
       "norm_label": "levelupinfoschema",
       "id": "api_schemas_levelupinfoschema"
     },
@@ -5272,7 +5452,7 @@
       "file_type": "code",
       "source_file": "lib/api/schemas.ts",
       "source_location": "L96",
-      "community": 4,
+      "community": 5,
       "norm_label": "guildschema",
       "id": "api_schemas_guildschema"
     },
@@ -5281,7 +5461,7 @@
       "file_type": "code",
       "source_file": "lib/api/schemas.ts",
       "source_location": "L106",
-      "community": 4,
+      "community": 5,
       "norm_label": "guildmemberschema",
       "id": "api_schemas_guildmemberschema"
     },
@@ -5290,7 +5470,7 @@
       "file_type": "code",
       "source_file": "lib/api/schemas.ts",
       "source_location": "L114",
-      "community": 4,
+      "community": 5,
       "norm_label": "guildmemberrecordschema",
       "id": "api_schemas_guildmemberrecordschema"
     },
@@ -5308,7 +5488,7 @@
       "file_type": "code",
       "source_file": "lib/api/schemas.ts",
       "source_location": "L129",
-      "community": 4,
+      "community": 5,
       "norm_label": "guildmessageschema",
       "id": "api_schemas_guildmessageschema"
     },
@@ -5317,7 +5497,7 @@
       "file_type": "code",
       "source_file": "lib/api/schemas.ts",
       "source_location": "L137",
-      "community": 4,
+      "community": 5,
       "norm_label": "guildleaderboardentryschema",
       "id": "api_schemas_guildleaderboardentryschema"
     },
@@ -5524,7 +5704,7 @@
       "file_type": "code",
       "source_file": "lib/api/schemas.ts",
       "source_location": "L315",
-      "community": 4,
+      "community": 5,
       "norm_label": "uploadmessageattachmentresponseschema",
       "id": "api_schemas_uploadmessageattachmentresponseschema"
     },
@@ -5533,7 +5713,7 @@
       "file_type": "code",
       "source_file": "lib/api/schemas.ts",
       "source_location": "L319",
-      "community": 4,
+      "community": 5,
       "norm_label": "guildimageuploadresponseschema",
       "id": "api_schemas_guildimageuploadresponseschema"
     },
@@ -5578,7 +5758,7 @@
       "file_type": "code",
       "source_file": "lib/api/schemas.ts",
       "source_location": "L346",
-      "community": 93,
+      "community": 38,
       "norm_label": "pushtokenschema",
       "id": "api_schemas_pushtokenschema"
     },
@@ -5587,7 +5767,7 @@
       "file_type": "code",
       "source_file": "lib/api/schemas.ts",
       "source_location": "L356",
-      "community": 93,
+      "community": 38,
       "norm_label": "pushtoken",
       "id": "api_schemas_pushtoken"
     },
@@ -5659,7 +5839,7 @@
       "file_type": "code",
       "source_file": "lib/api/schemas.ts",
       "source_location": "L367",
-      "community": 5,
+      "community": 39,
       "norm_label": "activebuff",
       "id": "api_schemas_activebuff"
     },
@@ -5668,7 +5848,7 @@
       "file_type": "code",
       "source_file": "lib/api/schemas.ts",
       "source_location": "L368",
-      "community": 5,
+      "community": 71,
       "norm_label": "questprogress",
       "id": "api_schemas_questprogress"
     },
@@ -5704,7 +5884,7 @@
       "file_type": "code",
       "source_file": "lib/api/schemas.ts",
       "source_location": "L372",
-      "community": 4,
+      "community": 5,
       "norm_label": "guildmemberrecord",
       "id": "api_schemas_guildmemberrecord"
     },
@@ -5731,7 +5911,7 @@
       "file_type": "code",
       "source_file": "lib/api/schemas.ts",
       "source_location": "L375",
-      "community": 89,
+      "community": 24,
       "norm_label": "item",
       "id": "api_schemas_item"
     },
@@ -5740,7 +5920,7 @@
       "file_type": "code",
       "source_file": "lib/api/schemas.ts",
       "source_location": "L376",
-      "community": 24,
+      "community": 45,
       "norm_label": "inventoryitem",
       "id": "api_schemas_inventoryitem"
     },
@@ -5749,7 +5929,7 @@
       "file_type": "code",
       "source_file": "lib/api/schemas.ts",
       "source_location": "L377",
-      "community": 96,
+      "community": 18,
       "norm_label": "publicuser",
       "id": "api_schemas_publicuser"
     },
@@ -5767,7 +5947,7 @@
       "file_type": "code",
       "source_file": "lib/api/schemas.ts",
       "source_location": "L379",
-      "community": 98,
+      "community": 18,
       "norm_label": "userstats",
       "id": "api_schemas_userstats"
     },
@@ -5812,7 +5992,7 @@
       "file_type": "code",
       "source_file": "lib/api/schemas.ts",
       "source_location": "L384",
-      "community": 5,
+      "community": 71,
       "norm_label": "updatequestbody",
       "id": "api_schemas_updatequestbody"
     },
@@ -5821,7 +6001,7 @@
       "file_type": "code",
       "source_file": "lib/api/schemas.ts",
       "source_location": "L385",
-      "community": 5,
+      "community": 71,
       "norm_label": "overridequestbody",
       "id": "api_schemas_overridequestbody"
     },
@@ -5830,7 +6010,7 @@
       "file_type": "code",
       "source_file": "lib/api/schemas.ts",
       "source_location": "L386",
-      "community": 5,
+      "community": 71,
       "norm_label": "updatequestprogressbody",
       "id": "api_schemas_updatequestprogressbody"
     },
@@ -5839,7 +6019,7 @@
       "file_type": "code",
       "source_file": "lib/api/schemas.ts",
       "source_location": "L389",
-      "community": 4,
+      "community": 5,
       "norm_label": "createguildbody",
       "id": "api_schemas_createguildbody"
     },
@@ -5848,7 +6028,7 @@
       "file_type": "code",
       "source_file": "lib/api/schemas.ts",
       "source_location": "L390",
-      "community": 4,
+      "community": 5,
       "norm_label": "updateguildbody",
       "id": "api_schemas_updateguildbody"
     },
@@ -5857,7 +6037,7 @@
       "file_type": "code",
       "source_file": "lib/api/schemas.ts",
       "source_location": "L391",
-      "community": 4,
+      "community": 5,
       "norm_label": "guildimageuploadresponse",
       "id": "api_schemas_guildimageuploadresponse"
     },
@@ -5866,7 +6046,7 @@
       "file_type": "code",
       "source_file": "lib/api/schemas.ts",
       "source_location": "L392",
-      "community": 4,
+      "community": 5,
       "norm_label": "approvememberbody",
       "id": "api_schemas_approvememberbody"
     },
@@ -5875,7 +6055,7 @@
       "file_type": "code",
       "source_file": "lib/api/schemas.ts",
       "source_location": "L393",
-      "community": 4,
+      "community": 5,
       "norm_label": "updatememberrolebody",
       "id": "api_schemas_updatememberrolebody"
     },
@@ -5884,7 +6064,7 @@
       "file_type": "code",
       "source_file": "lib/api/schemas.ts",
       "source_location": "L394",
-      "community": 4,
+      "community": 5,
       "norm_label": "createguildmessagebody",
       "id": "api_schemas_createguildmessagebody"
     },
@@ -5983,7 +6163,7 @@
       "file_type": "code",
       "source_file": "lib/api/shop.ts",
       "source_location": "L81",
-      "community": 24,
+      "community": 45,
       "norm_label": "useinventory()",
       "id": "api_shop_useinventory"
     },
@@ -5992,7 +6172,7 @@
       "file_type": "code",
       "source_file": "lib/api/shop.ts",
       "source_location": "L88",
-      "community": 24,
+      "community": 45,
       "norm_label": "useuseitem()",
       "id": "api_shop_useuseitem"
     },
@@ -6145,7 +6325,7 @@
       "file_type": "code",
       "source_file": "lib/api/users.ts",
       "source_location": "L143",
-      "community": 26,
+      "community": 93,
       "norm_label": "updatetimezone()",
       "id": "api_users_updatetimezone"
     },
@@ -6217,7 +6397,7 @@
       "file_type": "code",
       "source_file": "lib/auth-client.ts",
       "source_location": "L1",
-      "community": 18,
+      "community": 68,
       "norm_label": "auth-client.ts",
       "id": "lib_auth_client"
     },
@@ -6235,7 +6415,7 @@
       "file_type": "code",
       "source_file": "lib/colors.ts",
       "source_location": "L1",
-      "community": 0,
+      "community": 68,
       "norm_label": "colors.ts",
       "id": "lib_colors"
     },
@@ -6244,7 +6424,7 @@
       "file_type": "code",
       "source_file": "lib/colors.ts",
       "source_location": "L6",
-      "community": 0,
+      "community": 68,
       "norm_label": "colors",
       "id": "lib_colors_colors"
     },
@@ -6253,7 +6433,7 @@
       "file_type": "code",
       "source_file": "lib/colors.ts",
       "source_location": "L89",
-      "community": 0,
+      "community": 68,
       "norm_label": "themecolors",
       "id": "lib_colors_themecolors"
     },
@@ -6262,7 +6442,7 @@
       "file_type": "code",
       "source_file": "lib/colors.ts",
       "source_location": "L90",
-      "community": 0,
+      "community": 68,
       "norm_label": "themecolorkey",
       "id": "lib_colors_themecolorkey"
     },
@@ -6271,7 +6451,7 @@
       "file_type": "code",
       "source_file": "lib/header-options.tsx",
       "source_location": "L1",
-      "community": 0,
+      "community": 68,
       "norm_label": "header-options.tsx",
       "id": "lib_header_options"
     },
@@ -6280,7 +6460,7 @@
       "file_type": "code",
       "source_file": "lib/header-options.tsx",
       "source_location": "L8",
-      "community": 0,
+      "community": 68,
       "norm_label": "backbutton()",
       "id": "lib_header_options_backbutton"
     },
@@ -6289,7 +6469,7 @@
       "file_type": "code",
       "source_file": "lib/header-options.tsx",
       "source_location": "L17",
-      "community": 0,
+      "community": 68,
       "norm_label": "useheaderoptions()",
       "id": "lib_header_options_useheaderoptions"
     },
@@ -6334,7 +6514,7 @@
       "file_type": "code",
       "source_file": "lib/notifications/scheduler.ts",
       "source_location": "L1",
-      "community": 68,
+      "community": 39,
       "norm_label": "scheduler.ts",
       "id": "notifications_scheduler"
     },
@@ -6343,7 +6523,7 @@
       "file_type": "code",
       "source_file": "lib/notifications/scheduler.ts",
       "source_location": "L9",
-      "community": 68,
+      "community": 39,
       "norm_label": "questid()",
       "id": "notifications_scheduler_questid"
     },
@@ -6352,7 +6532,7 @@
       "file_type": "code",
       "source_file": "lib/notifications/scheduler.ts",
       "source_location": "L13",
-      "community": 68,
+      "community": 39,
       "norm_label": "isquestnotification()",
       "id": "notifications_scheduler_isquestnotification"
     },
@@ -6361,7 +6541,7 @@
       "file_type": "code",
       "source_file": "lib/notifications/scheduler.ts",
       "source_location": "L23",
-      "community": 68,
+      "community": 39,
       "norm_label": "schedulequestnotifications()",
       "id": "notifications_scheduler_schedulequestnotifications"
     },
@@ -6370,7 +6550,7 @@
       "file_type": "code",
       "source_file": "lib/notifications/scheduler.ts",
       "source_location": "L80",
-      "community": 68,
+      "community": 39,
       "norm_label": "cancelquestnotifications()",
       "id": "notifications_scheduler_cancelquestnotifications"
     },
@@ -6379,7 +6559,7 @@
       "file_type": "code",
       "source_file": "lib/notifications/scheduler.ts",
       "source_location": "L94",
-      "community": 68,
+      "community": 39,
       "norm_label": "schedulestreakreminder()",
       "id": "notifications_scheduler_schedulestreakreminder"
     },
@@ -6388,7 +6568,7 @@
       "file_type": "code",
       "source_file": "lib/notifications/scheduler.ts",
       "source_location": "L122",
-      "community": 68,
+      "community": 39,
       "norm_label": "cancelstreakreminder()",
       "id": "notifications_scheduler_cancelstreakreminder"
     },
@@ -6406,7 +6586,7 @@
       "file_type": "code",
       "source_file": "lib/notifications/use-notifications.ts",
       "source_location": "L16",
-      "community": 26,
+      "community": 93,
       "norm_label": "usenotificationsetup()",
       "id": "notifications_use_notifications_usenotificationsetup"
     },
@@ -6415,7 +6595,7 @@
       "file_type": "code",
       "source_file": "lib/query-client.ts",
       "source_location": "L1",
-      "community": 26,
+      "community": 93,
       "norm_label": "query-client.ts",
       "id": "lib_query_client"
     },
@@ -6424,7 +6604,7 @@
       "file_type": "code",
       "source_file": "lib/query-client.ts",
       "source_location": "L3",
-      "community": 26,
+      "community": 93,
       "norm_label": "queryclient",
       "id": "lib_query_client_queryclient"
     },
@@ -6433,7 +6613,7 @@
       "file_type": "code",
       "source_file": "lib/settings-store.ts",
       "source_location": "L1",
-      "community": 68,
+      "community": 39,
       "norm_label": "settings-store.ts",
       "id": "lib_settings_store"
     },
@@ -6442,7 +6622,7 @@
       "file_type": "code",
       "source_file": "lib/settings-store.ts",
       "source_location": "L5",
-      "community": 68,
+      "community": 39,
       "norm_label": "profilesettings",
       "id": "lib_settings_store_profilesettings"
     },
@@ -6451,7 +6631,7 @@
       "file_type": "code",
       "source_file": "lib/settings-store.ts",
       "source_location": "L14",
-      "community": 68,
+      "community": 39,
       "norm_label": "settingsschema",
       "id": "lib_settings_store_settingsschema"
     },
@@ -6460,7 +6640,7 @@
       "file_type": "code",
       "source_file": "lib/settings-store.ts",
       "source_location": "L23",
-      "community": 68,
+      "community": 39,
       "norm_label": "getprofilesettings()",
       "id": "lib_settings_store_getprofilesettings"
     },
@@ -6469,7 +6649,7 @@
       "file_type": "code",
       "source_file": "lib/settings-store.ts",
       "source_location": "L34",
-      "community": 68,
+      "community": 39,
       "norm_label": "updateprofilesettings()",
       "id": "lib_settings_store_updateprofilesettings"
     },
@@ -6487,7 +6667,7 @@
       "file_type": "code",
       "source_file": "lib/settings-store.ts",
       "source_location": "L54",
-      "community": 68,
+      "community": 39,
       "norm_label": "useupdateprofilesettings()",
       "id": "lib_settings_store_useupdateprofilesettings"
     },
@@ -6496,7 +6676,7 @@
       "file_type": "code",
       "source_file": "lib/use-theme-color.ts",
       "source_location": "L1",
-      "community": 0,
+      "community": 68,
       "norm_label": "use-theme-color.ts",
       "id": "lib_use_theme_color"
     },
@@ -12967,7 +13147,7 @@
       "file_type": "code",
       "source_file": "lib/auth-client.ts",
       "source_location": "L29",
-      "community": 18,
+      "community": 68,
       "norm_label": "{ usesession }",
       "id": "lib_auth_client_usesession"
     },
@@ -13282,15 +13462,438 @@
   ],
   "links": [
     {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/__tests__/button.test.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "tests_button_test",
+      "target": "components_button_button",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/guild/__tests__/leaderboard-row.test.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "tests_leaderboard_row_test",
+      "target": "api_schemas_guildleaderboardentry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/guild/__tests__/leaderboard-row.test.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "tests_leaderboard_row_test",
+      "target": "tests_leaderboard_row_test_makeentry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/guild/__tests__/member-row.test.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "tests_member_row_test",
+      "target": "api_schemas_guildmember",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/guild/__tests__/member-row.test.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "tests_member_row_test",
+      "target": "tests_member_row_test_makemember",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/app-logic.test.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "lib_app_logic_test",
+      "target": "lib_app_logic",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/app-logic.test.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "lib_app_logic_test",
+      "target": "lib_app_logic_canleaveguild",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/app-logic.test.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "lib_app_logic_test",
+      "target": "lib_app_logic_canmanageguild",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/app-logic.test.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "lib_app_logic_test",
+      "target": "lib_app_logic_createdebounce",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/app-logic.test.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "lib_app_logic_test",
+      "target": "lib_app_logic_getcurrentuserroleinguild",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/app-logic.test.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "lib_app_logic_test",
+      "target": "lib_app_logic_getquestnamestogglevalue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/app-logic.test.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "lib_app_logic_test",
+      "target": "lib_app_logic_getshowquestnamesinactivity",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/app-logic.test.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "lib_app_logic_test",
+      "target": "lib_app_logic_toggleshowquestnamesinactivity",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/_layout.tsx",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_layout",
+      "target": "lib_app_logic"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/guild/members-tab.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "guild_members_tab",
+      "target": "lib_app_logic"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/app-logic.ts",
+      "source_location": "L174",
+      "weight": 1.0,
+      "source": "lib_app_logic",
+      "target": "lib_app_logic_canleaveguild",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/app-logic.ts",
+      "source_location": "L170",
+      "weight": 1.0,
+      "source": "lib_app_logic",
+      "target": "lib_app_logic_canmanageguild",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/app-logic.ts",
+      "source_location": "L198",
+      "weight": 1.0,
+      "source": "lib_app_logic",
+      "target": "lib_app_logic_createdebounce",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/app-logic.ts",
+      "source_location": "L163",
+      "weight": 1.0,
+      "source": "lib_app_logic",
+      "target": "lib_app_logic_getcurrentuserroleinguild",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/app-logic.ts",
+      "source_location": "L145",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_app_logic",
+      "target": "lib_app_logic_getimageuploadinfo"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/app-logic.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_app_logic",
+      "target": "lib_app_logic_getinitialroute"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/app-logic.ts",
+      "source_location": "L49",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_app_logic",
+      "target": "lib_app_logic_getitemuseaction"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/app-logic.ts",
+      "source_location": "L101",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_app_logic",
+      "target": "lib_app_logic_getmemberactions"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/app-logic.ts",
+      "source_location": "L130",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_app_logic",
+      "target": "lib_app_logic_getprofilediff"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/app-logic.ts",
+      "source_location": "L190",
+      "weight": 1.0,
+      "source": "lib_app_logic",
+      "target": "lib_app_logic_getquestnamestogglevalue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/app-logic.ts",
+      "source_location": "L180",
+      "weight": 1.0,
+      "source": "lib_app_logic",
+      "target": "lib_app_logic_getshowquestnamesinactivity",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/app-logic.ts",
+      "source_location": "L157",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_app_logic",
+      "target": "lib_app_logic_getxppercent"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/app-logic.ts",
+      "source_location": "L34",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_app_logic",
+      "target": "lib_app_logic_itemuseaction"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/app-logic.ts",
+      "source_location": "L95",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_app_logic",
+      "target": "lib_app_logic_memberaction"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/app-logic.ts",
+      "source_location": "L186",
+      "weight": 1.0,
+      "source": "lib_app_logic",
+      "target": "lib_app_logic_toggleshowquestnamesinactivity",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/profile/avatar-section.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "profile_avatar_section",
+      "target": "lib_app_logic"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/profile/profile-screen.tsx",
+      "source_location": "L48",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "profile_profile_screen",
+      "target": "lib_app_logic"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(tabs)/inventory.tsx",
+      "source_location": "L20",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tabs_inventory",
+      "target": "lib_app_logic"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/profile/__tests__/avatar-section.test.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_avatar_section_test",
+      "target": "lib_app_logic"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/__tests__/get-initial-route.test.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_get_initial_route_test",
+      "target": "lib_app_logic"
+    },
+    {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/(tabs)/__tests__/inventory.test.ts",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_inventory_test",
-      "target": "lib_app_logic",
-      "confidence_score": 1.0
+      "target": "lib_app_logic"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/guild/__tests__/members-tab.test.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_members_tab_test",
+      "target": "lib_app_logic"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/profile/__tests__/profile-screen.test.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_profile_screen_test",
+      "target": "lib_app_logic"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/_layout.tsx",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_layout",
+      "target": "lib_app_logic_getinitialroute"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/__tests__/get-initial-route.test.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_get_initial_route_test",
+      "target": "lib_app_logic_getinitialroute"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(tabs)/inventory.tsx",
+      "source_location": "L20",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tabs_inventory",
+      "target": "lib_app_logic_getitemuseaction"
     },
     {
       "relation": "imports",
@@ -13299,9 +13902,720 @@
       "source_file": "app/(tabs)/__tests__/inventory.test.ts",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_inventory_test",
-      "target": "lib_app_logic_getitemuseaction",
+      "target": "lib_app_logic_getitemuseaction"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/guild/__tests__/members-tab.test.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_members_tab_test",
+      "target": "lib_app_logic_memberaction"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/guild/members-tab.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "guild_members_tab",
+      "target": "lib_app_logic_getmemberactions"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/guild/__tests__/members-tab.test.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_members_tab_test",
+      "target": "lib_app_logic_getmemberactions"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/profile/profile-screen.tsx",
+      "source_location": "L48",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "profile_profile_screen",
+      "target": "lib_app_logic_getprofilediff"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/profile/__tests__/profile-screen.test.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_profile_screen_test",
+      "target": "lib_app_logic_getprofilediff"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/profile/profile-screen.tsx",
+      "source_location": "L48",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "profile_profile_screen",
+      "target": "lib_app_logic_getimageuploadinfo"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/profile/__tests__/profile-screen.test.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_profile_screen_test",
+      "target": "lib_app_logic_getimageuploadinfo"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/profile/avatar-section.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "profile_avatar_section",
+      "target": "lib_app_logic_getxppercent"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/profile/avatar-section.tsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "profile_avatar_section_avatarsection",
+      "target": "lib_app_logic_getxppercent"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/profile/__tests__/avatar-section.test.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_avatar_section_test",
+      "target": "lib_app_logic_getxppercent"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/app-logic.ts",
+      "source_location": "L193",
+      "weight": 1.0,
+      "source": "lib_app_logic_getquestnamestogglevalue",
+      "target": "lib_app_logic_getshowquestnamesinactivity",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/date-utils.test.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "lib_date_utils_test",
+      "target": "lib_date_utils",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/date-utils.test.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "lib_date_utils_test",
+      "target": "lib_date_utils_test_makedate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/date-utils.test.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "lib_date_utils_test",
+      "target": "lib_date_utils_updateweekday",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/date-utils.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "lib_date_utils",
+      "target": "lib_date_utils_updateweekday",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/quest-utils.test.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_quest_utils_test",
+      "target": "api_schemas_classquest"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/quest-utils.test.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_quest_utils_test",
+      "target": "lib_quest_utils"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/quest-utils.test.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_quest_utils_test",
+      "target": "lib_quest_utils_getdurationinfo"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/quest-utils.test.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_quest_utils_test",
+      "target": "lib_quest_utils_geteffectivequestvalues"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/quest-utils.test.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_quest_utils_test",
+      "target": "lib_quest_utils_geteffectivestartedat"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/quest-utils.test.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_quest_utils_test",
+      "target": "lib_quest_utils_getqueststatus"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/quest-utils.test.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_quest_utils_test",
+      "target": "lib_quest_utils_getqueststatuslabel"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/quest-utils.test.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "lib_quest_utils_test",
+      "target": "lib_quest_utils_getquestsubmitbody",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/quest-utils.test.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_quest_utils_test",
+      "target": "lib_quest_utils_hascompletedquesttoday"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/quest-utils.test.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_quest_utils_test",
+      "target": "lib_quest_utils_isactive"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/quest-utils.test.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_quest_utils_test",
+      "target": "lib_quest_utils_sortquests"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/quest-utils.test.ts",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_quest_utils_test",
+      "target": "lib_quest_utils_test_makequest"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/quest-utils.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_quest_utils",
+      "target": "api_schemas_classquest"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/quest-utils.ts",
+      "source_location": "L56",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_quest_utils",
+      "target": "lib_quest_utils_formathours"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/quest-utils.ts",
+      "source_location": "L76",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_quest_utils",
+      "target": "lib_quest_utils_getdurationinfo"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/quest-utils.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_quest_utils",
+      "target": "lib_quest_utils_geteffectivequestvalues"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/quest-utils.ts",
+      "source_location": "L64",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_quest_utils",
+      "target": "lib_quest_utils_geteffectivestartedat"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/quest-utils.ts",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_quest_utils",
+      "target": "lib_quest_utils_getqueststatus"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/quest-utils.ts",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_quest_utils",
+      "target": "lib_quest_utils_getqueststatuslabel"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/quest-utils.ts",
+      "source_location": "L121",
+      "weight": 1.0,
+      "source": "lib_quest_utils",
+      "target": "lib_quest_utils_getquestsubmitbody",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/quest-utils.ts",
+      "source_location": "L103",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_quest_utils",
+      "target": "lib_quest_utils_hascompletedquesttoday"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/quest-utils.ts",
+      "source_location": "L33",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_quest_utils",
+      "target": "lib_quest_utils_isactive"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/quest-utils.ts",
+      "source_location": "L105",
+      "weight": 1.0,
+      "source": "lib_quest_utils",
+      "target": "lib_quest_utils_questsubmitkind",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/quest-utils.ts",
+      "source_location": "L107",
+      "weight": 1.0,
+      "source": "lib_quest_utils",
+      "target": "lib_quest_utils_questsubmitresult",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/quest-utils.ts",
+      "source_location": "L37",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_quest_utils",
+      "target": "lib_quest_utils_sortquests"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/quest/[id].tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "quest_id",
+      "target": "lib_quest_utils"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/quest/manage.tsx",
+      "source_location": "L34",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "quest_manage",
+      "target": "lib_quest_utils"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(tabs)/index.tsx",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tabs_index",
+      "target": "lib_quest_utils"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/quest-utils.ts",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_quest_utils_getqueststatuslabel",
+      "target": "lib_quest_utils_geteffectivequestvalues"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/quest/[id].tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "quest_id",
+      "target": "lib_quest_utils_geteffectivequestvalues"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/quest/[id].tsx",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "quest_id_questdetailscreen",
+      "target": "lib_quest_utils_geteffectivequestvalues"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/quest/manage.tsx",
+      "source_location": "L34",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "quest_manage",
+      "target": "lib_quest_utils_geteffectivequestvalues"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/quest/manage.tsx",
+      "source_location": "L76",
+      "weight": 1.0,
+      "source": "quest_manage_managequestscreen",
+      "target": "lib_quest_utils_geteffectivequestvalues"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(tabs)/index.tsx",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tabs_index",
+      "target": "lib_quest_utils_geteffectivequestvalues"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(tabs)/index.tsx",
+      "source_location": "L70",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tabs_index_questcard",
+      "target": "lib_quest_utils_geteffectivequestvalues"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/quest-utils.ts",
+      "source_location": "L79",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_quest_utils_getdurationinfo",
+      "target": "lib_quest_utils_getqueststatus"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/quest-utils.ts",
+      "source_location": "L18",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_quest_utils_getqueststatuslabel",
+      "target": "lib_quest_utils_getqueststatus"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/quest-utils.ts",
+      "source_location": "L34",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_quest_utils_isactive",
+      "target": "lib_quest_utils_getqueststatus"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(tabs)/index.tsx",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tabs_index",
+      "target": "lib_quest_utils_getqueststatus"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(tabs)/index.tsx",
+      "source_location": "L68",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tabs_index_questcard",
+      "target": "lib_quest_utils_getqueststatus"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(tabs)/index.tsx",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tabs_index",
+      "target": "lib_quest_utils_getqueststatuslabel"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/(tabs)/index.tsx",
+      "source_location": "L132",
+      "weight": 1.0,
+      "source": "tabs_index_questcard",
+      "target": "lib_quest_utils_getqueststatuslabel"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(tabs)/index.tsx",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tabs_index",
+      "target": "lib_quest_utils_isactive"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(tabs)/index.tsx",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tabs_index",
+      "target": "lib_quest_utils_sortquests"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/(tabs)/index.tsx",
+      "source_location": "L353",
+      "weight": 1.0,
+      "source": "tabs_index_questscreen",
+      "target": "lib_quest_utils_sortquests"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/quest-utils.ts",
+      "source_location": "L82",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_quest_utils_getdurationinfo",
+      "target": "lib_quest_utils_formathours"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/quest-utils.ts",
+      "source_location": "L85",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_quest_utils_getdurationinfo",
+      "target": "lib_quest_utils_geteffectivestartedat"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(tabs)/index.tsx",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tabs_index",
+      "target": "lib_quest_utils_getdurationinfo"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(tabs)/index.tsx",
+      "source_location": "L71",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tabs_index_questcard",
+      "target": "lib_quest_utils_getdurationinfo"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(tabs)/index.tsx",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tabs_index",
+      "target": "lib_quest_utils_hascompletedquesttoday"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/(tabs)/index.tsx",
+      "source_location": "L192",
+      "weight": 1.0,
+      "source": "tabs_index_streakbadge",
+      "target": "lib_quest_utils_hascompletedquesttoday"
     },
     {
       "relation": "contains",
@@ -13309,9 +14623,9 @@
       "source_file": "app/(tabs)/__tests__/inventory.test.ts",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_inventory_test",
-      "target": "tests_inventory_test_defaultentry",
-      "confidence_score": 1.0
+      "target": "tests_inventory_test_defaultentry"
     },
     {
       "relation": "imports_from",
@@ -13422,28 +14736,6 @@
       "confidence_score": 1.0,
       "source": "tabs_inventory",
       "target": "components_header"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(tabs)/inventory.tsx",
-      "source_location": "L20",
-      "weight": 1.0,
-      "source": "tabs_inventory",
-      "target": "lib_app_logic",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(tabs)/inventory.tsx",
-      "source_location": "L20",
-      "weight": 1.0,
-      "source": "tabs_inventory",
-      "target": "lib_app_logic_getitemuseaction",
-      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13565,28 +14857,6 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "app/__tests__/get-initial-route.test.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "tests_get_initial_route_test",
-      "target": "lib_app_logic",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/__tests__/get-initial-route.test.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "tests_get_initial_route_test",
-      "target": "lib_app_logic_getinitialroute",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
       "source_file": "app/_layout.tsx",
       "source_location": "L23",
       "weight": 1.0,
@@ -13624,28 +14894,6 @@
       "confidence_score": 1.0,
       "source": "app_layout",
       "target": "app_layout_rootnavigator"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/_layout.tsx",
-      "source_location": "L21",
-      "weight": 1.0,
-      "source": "app_layout",
-      "target": "lib_app_logic",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/_layout.tsx",
-      "source_location": "L21",
-      "weight": 1.0,
-      "source": "app_layout",
-      "target": "lib_app_logic_getinitialroute",
-      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -13914,9 +15162,9 @@
       "source_file": "components/guild/__tests__/chat-composer.test.tsx",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_chat_composer_test",
-      "target": "guild_chat_composer",
-      "confidence_score": 1.0
+      "target": "guild_chat_composer"
     },
     {
       "relation": "imports",
@@ -13925,42 +15173,9 @@
       "source_file": "components/guild/__tests__/chat-composer.test.tsx",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_chat_composer_test",
-      "target": "guild_chat_composer_makeattachmentid",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/guild/__tests__/members-tab.test.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "source": "tests_members_tab_test",
-      "target": "lib_app_logic",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/guild/__tests__/members-tab.test.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "tests_members_tab_test",
-      "target": "lib_app_logic_getmemberactions",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/guild/__tests__/members-tab.test.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "source": "tests_members_tab_test",
-      "target": "lib_app_logic_memberaction",
-      "confidence_score": 1.0
+      "target": "guild_chat_composer_makeattachmentid"
     },
     {
       "relation": "imports_from",
@@ -14298,28 +15513,6 @@
       "target": "guild_pending_requests"
     },
     {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/guild/members-tab.tsx",
-      "source_location": "L10",
-      "weight": 1.0,
-      "source": "guild_members_tab",
-      "target": "lib_app_logic",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/guild/members-tab.tsx",
-      "source_location": "L10",
-      "weight": 1.0,
-      "source": "guild_members_tab",
-      "target": "lib_app_logic_getmemberactions",
-      "confidence_score": 1.0
-    },
-    {
       "relation": "references",
       "context": "field",
       "confidence": "EXTRACTED",
@@ -14378,61 +15571,6 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "components/profile/__tests__/avatar-section.test.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "tests_avatar_section_test",
-      "target": "lib_app_logic",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/profile/__tests__/avatar-section.test.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "tests_avatar_section_test",
-      "target": "lib_app_logic_getxppercent",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/profile/__tests__/profile-screen.test.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "tests_profile_screen_test",
-      "target": "lib_app_logic",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/profile/__tests__/profile-screen.test.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "tests_profile_screen_test",
-      "target": "lib_app_logic_getimageuploadinfo",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/profile/__tests__/profile-screen.test.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "tests_profile_screen_test",
-      "target": "lib_app_logic_getprofilediff",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
       "source_file": "components/profile/avatar-section.tsx",
       "source_location": "L3",
       "weight": 1.0,
@@ -14450,28 +15588,6 @@
       "confidence_score": 1.0,
       "source": "profile_avatar_section",
       "target": "api_schemas_publicuser"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/profile/avatar-section.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "source": "profile_avatar_section",
-      "target": "lib_app_logic",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/profile/avatar-section.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "source": "profile_avatar_section",
-      "target": "lib_app_logic_getxppercent",
-      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14524,17 +15640,6 @@
       "confidence_score": 1.0,
       "source": "profile_avatar_section_avatarsectionprops",
       "target": "api_schemas_publicuser"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "components/profile/avatar-section.tsx",
-      "source_location": "L14",
-      "weight": 1.0,
-      "source": "profile_avatar_section_avatarsection",
-      "target": "lib_app_logic_getxppercent"
     },
     {
       "relation": "re_exports",
@@ -14722,39 +15827,6 @@
       "confidence_score": 1.0,
       "source": "profile_profile_screen",
       "target": "api_users_useuserstats"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/profile/profile-screen.tsx",
-      "source_location": "L48",
-      "weight": 1.0,
-      "source": "profile_profile_screen",
-      "target": "lib_app_logic",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/profile/profile-screen.tsx",
-      "source_location": "L48",
-      "weight": 1.0,
-      "source": "profile_profile_screen",
-      "target": "lib_app_logic_getimageuploadinfo",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/profile/profile-screen.tsx",
-      "source_location": "L48",
-      "weight": 1.0,
-      "source": "profile_profile_screen",
-      "target": "lib_app_logic_getprofilediff",
-      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -15168,86 +16240,6 @@
       "target": "profile_profile_screen_profilescreen"
     },
     {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/app-logic.ts",
-      "source_location": "L145",
-      "weight": 1.0,
-      "source": "lib_app_logic",
-      "target": "lib_app_logic_getimageuploadinfo",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/app-logic.ts",
-      "source_location": "L8",
-      "weight": 1.0,
-      "source": "lib_app_logic",
-      "target": "lib_app_logic_getinitialroute",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/app-logic.ts",
-      "source_location": "L49",
-      "weight": 1.0,
-      "source": "lib_app_logic",
-      "target": "lib_app_logic_getitemuseaction",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/app-logic.ts",
-      "source_location": "L101",
-      "weight": 1.0,
-      "source": "lib_app_logic",
-      "target": "lib_app_logic_getmemberactions",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/app-logic.ts",
-      "source_location": "L130",
-      "weight": 1.0,
-      "source": "lib_app_logic",
-      "target": "lib_app_logic_getprofilediff",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/app-logic.ts",
-      "source_location": "L157",
-      "weight": 1.0,
-      "source": "lib_app_logic",
-      "target": "lib_app_logic_getxppercent",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/app-logic.ts",
-      "source_location": "L34",
-      "weight": 1.0,
-      "source": "lib_app_logic",
-      "target": "lib_app_logic_itemuseaction",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/app-logic.ts",
-      "source_location": "L95",
-      "weight": 1.0,
-      "source": "lib_app_logic",
-      "target": "lib_app_logic_memberaction",
-      "confidence_score": 1.0
-    },
-    {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -15389,94 +16381,6 @@
       "confidence_score": 1.0,
       "source": "tabs_index",
       "target": "components_quest_actions_sheet_questactionssheetreference"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(tabs)/index.tsx",
-      "source_location": "L21",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "tabs_index",
-      "target": "lib_quest_utils"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(tabs)/index.tsx",
-      "source_location": "L21",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "tabs_index",
-      "target": "lib_quest_utils_getdurationinfo"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(tabs)/index.tsx",
-      "source_location": "L21",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "tabs_index",
-      "target": "lib_quest_utils_geteffectivequestvalues"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(tabs)/index.tsx",
-      "source_location": "L21",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "tabs_index",
-      "target": "lib_quest_utils_getqueststatus"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(tabs)/index.tsx",
-      "source_location": "L21",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "tabs_index",
-      "target": "lib_quest_utils_getqueststatuslabel"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(tabs)/index.tsx",
-      "source_location": "L21",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "tabs_index",
-      "target": "lib_quest_utils_hascompletedquesttoday"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(tabs)/index.tsx",
-      "source_location": "L21",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "tabs_index",
-      "target": "lib_quest_utils_isactive"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(tabs)/index.tsx",
-      "source_location": "L21",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "tabs_index",
-      "target": "lib_quest_utils_sortquests"
     },
     {
       "relation": "imports_from",
@@ -15661,67 +16565,12 @@
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
-      "source_file": "app/(tabs)/index.tsx",
-      "source_location": "L71",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "tabs_index_questcard",
-      "target": "lib_quest_utils_getdurationinfo"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(tabs)/index.tsx",
-      "source_location": "L70",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "tabs_index_questcard",
-      "target": "lib_quest_utils_geteffectivequestvalues"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(tabs)/index.tsx",
-      "source_location": "L68",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "tabs_index_questcard",
-      "target": "lib_quest_utils_getqueststatus"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/(tabs)/index.tsx",
-      "source_location": "L132",
-      "weight": 1.0,
-      "source": "tabs_index_questcard",
-      "target": "lib_quest_utils_getqueststatuslabel"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/(tabs)/index.tsx",
       "source_location": "L167",
       "weight": 1.0,
       "source": "tabs_index_questcard",
       "target": "lib_utils_cn"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/(tabs)/index.tsx",
-      "source_location": "L192",
-      "weight": 1.0,
-      "source": "tabs_index_streakbadge",
-      "target": "lib_quest_utils_hascompletedquesttoday"
     },
     {
       "relation": "calls",
@@ -15766,17 +16615,6 @@
       "weight": 1.0,
       "source": "tabs_index_questscreen",
       "target": "api_users_usecurrentuser"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/(tabs)/index.tsx",
-      "source_location": "L353",
-      "weight": 1.0,
-      "source": "tabs_index_questscreen",
-      "target": "lib_quest_utils_sortquests"
     },
     {
       "relation": "calls",
@@ -15904,28 +16742,6 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/quest/[id].tsx",
-      "source_location": "L8",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "quest_id",
-      "target": "lib_quest_utils"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/quest/[id].tsx",
-      "source_location": "L8",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "quest_id",
-      "target": "lib_quest_utils_geteffectivequestvalues"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/quest/[id].tsx",
       "source_location": "L9",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -15996,17 +16812,6 @@
       "weight": 1.0,
       "source": "quest_id_questdetailscreen",
       "target": "lib_header_options_useheaderoptions"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/quest/[id].tsx",
-      "source_location": "L20",
-      "weight": 1.0,
-      "source": "quest_id_questdetailscreen",
-      "target": "lib_quest_utils_geteffectivequestvalues"
     },
     {
       "relation": "calls",
@@ -16248,28 +17053,6 @@
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "quest_manage",
-      "target": "lib_quest_utils"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/quest/manage.tsx",
-      "source_location": "L34",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "quest_manage",
-      "target": "lib_quest_utils_geteffectivequestvalues"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/quest/manage.tsx",
-      "source_location": "L34",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "quest_manage",
       "target": "lib_use_theme_color"
     },
     {
@@ -16431,17 +17214,6 @@
       "weight": 1.0,
       "source": "quest_manage_managequestscreen",
       "target": "lib_header_options_useheaderoptions"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/quest/manage.tsx",
-      "source_location": "L76",
-      "weight": 1.0,
-      "source": "quest_manage_managequestscreen",
-      "target": "lib_quest_utils_geteffectivequestvalues"
     },
     {
       "relation": "calls",
@@ -19249,293 +20021,6 @@
       "confidence_score": 1.0,
       "source": "lib_message_utils",
       "target": "lib_message_utils_listitem"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/quest-utils.test.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_quest_utils_test",
-      "target": "api_schemas_classquest"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/quest-utils.test.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_quest_utils_test",
-      "target": "lib_quest_utils"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/quest-utils.test.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_quest_utils_test",
-      "target": "lib_quest_utils_getdurationinfo"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/quest-utils.test.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_quest_utils_test",
-      "target": "lib_quest_utils_geteffectivequestvalues"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/quest-utils.test.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_quest_utils_test",
-      "target": "lib_quest_utils_geteffectivestartedat"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/quest-utils.test.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_quest_utils_test",
-      "target": "lib_quest_utils_getqueststatus"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/quest-utils.test.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_quest_utils_test",
-      "target": "lib_quest_utils_getqueststatuslabel"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/quest-utils.test.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_quest_utils_test",
-      "target": "lib_quest_utils_hascompletedquesttoday"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/quest-utils.test.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_quest_utils_test",
-      "target": "lib_quest_utils_isactive"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/quest-utils.test.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_quest_utils_test",
-      "target": "lib_quest_utils_sortquests"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/quest-utils.test.ts",
-      "source_location": "L13",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_quest_utils_test",
-      "target": "lib_quest_utils_test_makequest"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/quest-utils.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_quest_utils",
-      "target": "api_schemas_classquest"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/quest-utils.ts",
-      "source_location": "L56",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_quest_utils",
-      "target": "lib_quest_utils_formathours"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/quest-utils.ts",
-      "source_location": "L76",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_quest_utils",
-      "target": "lib_quest_utils_getdurationinfo"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/quest-utils.ts",
-      "source_location": "L3",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_quest_utils",
-      "target": "lib_quest_utils_geteffectivequestvalues"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/quest-utils.ts",
-      "source_location": "L64",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_quest_utils",
-      "target": "lib_quest_utils_geteffectivestartedat"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/quest-utils.ts",
-      "source_location": "L13",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_quest_utils",
-      "target": "lib_quest_utils_getqueststatus"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/quest-utils.ts",
-      "source_location": "L17",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_quest_utils",
-      "target": "lib_quest_utils_getqueststatuslabel"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/quest-utils.ts",
-      "source_location": "L103",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_quest_utils",
-      "target": "lib_quest_utils_hascompletedquesttoday"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/quest-utils.ts",
-      "source_location": "L33",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_quest_utils",
-      "target": "lib_quest_utils_isactive"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/quest-utils.ts",
-      "source_location": "L37",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_quest_utils",
-      "target": "lib_quest_utils_sortquests"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/quest-utils.ts",
-      "source_location": "L21",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_quest_utils_getqueststatuslabel",
-      "target": "lib_quest_utils_geteffectivequestvalues"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/quest-utils.ts",
-      "source_location": "L79",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_quest_utils_getdurationinfo",
-      "target": "lib_quest_utils_getqueststatus"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/quest-utils.ts",
-      "source_location": "L18",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_quest_utils_getqueststatuslabel",
-      "target": "lib_quest_utils_getqueststatus"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/quest-utils.ts",
-      "source_location": "L34",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_quest_utils_isactive",
-      "target": "lib_quest_utils_getqueststatus"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/quest-utils.ts",
-      "source_location": "L82",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_quest_utils_getdurationinfo",
-      "target": "lib_quest_utils_formathours"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/quest-utils.ts",
-      "source_location": "L85",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_quest_utils_getdurationinfo",
-      "target": "lib_quest_utils_geteffectivestartedat"
     },
     {
       "relation": "contains",
@@ -36067,5 +36552,5 @@
       "source_file": "assets/images"
     }
   ],
-  "built_at_commit": "e36c4c9a9f26584bb443772dd43d0909b77d8a0c"
+  "built_at_commit": "1fd0fbee42865caa29fda837ef699806454957d1"
 }

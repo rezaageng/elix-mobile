@@ -2,7 +2,7 @@ import { getZodErrorMessage } from "@/lib/form-utils"
 
 describe("getZodErrorMessage", () => {
   it("returns undefined for falsy input", () => {
-    expect(getZodErrorMessage(undefined)).toBeUndefined()
+    expect(getZodErrorMessage()).toBeUndefined()
     expect(getZodErrorMessage(null)).toBeUndefined()
     expect(getZodErrorMessage("")).toBeUndefined()
   })

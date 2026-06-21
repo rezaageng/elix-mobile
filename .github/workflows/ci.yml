@@ -31,3 +31,72 @@ jobs:
           cache: pnpm
       - run: pnpm install
       - run: pnpm run test:ci
+
+  e2e-android:
+    needs: [lint-type, unit]
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - run: pnpm install
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Install Maestro CLI
+        run: |
+          curl -fsSL "https://get.maestro.mobile.dev" | bash
+          echo "$HOME/.maestro/bin" >> $GITHUB_PATH
+
+      - name: Build Android debug APK
+        run: |
+          npx expo prebuild --platform android --clean
+          cd android && ./gradlew assembleDebug
+        env:
+          EXPO_PUBLIC_API_URL: http://localhost:3000
+
+      - name: Run E2E tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: google_apis
+          arch: x86_64
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -cache-size 512
+          script: |
+            adb install android/app/build/outputs/apk/debug/app-debug.apk
+
+            # Start Metro bundler — needed by the debug APK to serve the JS bundle
+            EXPO_PUBLIC_API_URL=http://localhost:3000 npx expo start --android &
+            METRO_PID=$!
+
+            echo "Waiting for Metro bundler..."
+            for i in $(seq 1 30); do
+              if curl -s http://localhost:8081/status > /dev/null 2>&1; then
+                echo "Metro bundler ready"
+                break
+              fi
+              sleep 2
+            done
+
+            maestro test e2e/
+            E2E_EXIT=$?
+
+            kill $METRO_PID 2>/dev/null || true
+            exit $E2E_EXIT
+
+      - name: Upload test artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: maestro-reports
+          path: |
+            .maestro/
+            e2e/reports/

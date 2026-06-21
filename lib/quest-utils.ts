@@ -118,7 +118,7 @@ export interface QuestSubmitResult {
  *   - side quest requiredQuestId: null vs undefined
  * (Extracted from app/quest/manage.tsx onSubmit)
  */
-export function getQuestSubmitBody(params: {
+export function getQuestSubmitBody(parameters: {
   isEditMode: boolean
   isQuestAuthor: boolean
   type: string
@@ -139,7 +139,7 @@ export function getQuestSubmitBody(params: {
     submissionType,
     requiredQuestId,
     startsAt,
-  } = params
+  } = parameters
 
   const startsAtValue = startsAt ? startsAt.toISOString() : undefined
 
