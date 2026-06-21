@@ -100,6 +100,84 @@ export function getDurationInfo(
   return { text: `${formatHours(remainingHours)} left`, isOverdue: false }
 }
 
+// ── Quest submit body construction ──
+
+export type QuestSubmitKind = "create" | "update" | "override"
+
+export interface QuestSubmitResult {
+  kind: QuestSubmitKind
+  body: Record<string, unknown>
+}
+
+/**
+ * Pure function: decides the mutation body and action kind for the quest manage form.
+ * Covers the 4-way branch:
+ *   - create (main/side)
+ *   - update own quest
+ *   - override as non-author
+ *   - side quest requiredQuestId: null vs undefined
+ * (Extracted from app/quest/manage.tsx onSubmit)
+ */
+export function getQuestSubmitBody(params: {
+  isEditMode: boolean
+  isQuestAuthor: boolean
+  type: string
+  name: string
+  description: string
+  duration: number
+  submissionType?: "text" | "image"
+  requiredQuestId?: string
+  startsAt?: Date
+}): QuestSubmitResult {
+  const {
+    isEditMode,
+    isQuestAuthor,
+    type,
+    name,
+    description,
+    duration,
+    submissionType,
+    requiredQuestId,
+    startsAt,
+  } = params
+
+  const startsAtValue = startsAt ? startsAt.toISOString() : undefined
+
+  if (isEditMode) {
+    if (isQuestAuthor) {
+      return {
+        kind: "update",
+        body: {
+          name,
+          description,
+          duration,
+          requiredQuestId:
+            type === "side" ? (requiredQuestId ?? null) : undefined,
+          startsAt: startsAtValue,
+        },
+      }
+    }
+    return {
+      kind: "override",
+      body: { name, description, duration },
+    }
+  }
+
+  return {
+    kind: "create",
+    body: {
+      name,
+      description,
+      type,
+      submissionType,
+      duration,
+      requiredQuestId:
+        type === "side" ? (requiredQuestId ?? null) : undefined,
+      startsAt: startsAtValue,
+    },
+  }
+}
+
 export function hasCompletedQuestToday(quests: ClassQuest[]): boolean {
   const now = new Date()
   const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate())

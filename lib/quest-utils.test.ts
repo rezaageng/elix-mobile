@@ -5,6 +5,7 @@ import {
   getEffectiveStartedAt,
   getQuestStatus,
   getQuestStatusLabel,
+  getQuestSubmitBody,
   hasCompletedQuestToday,
   isActive,
   sortQuests,
@@ -382,5 +383,159 @@ describe("hasCompletedQuestToday", () => {
 
   it("returns false for empty quest list", () => {
     expect(hasCompletedQuestToday([])).toBe(false)
+  })
+})
+
+// ── getQuestSubmitBody ──
+
+describe("getQuestSubmitBody", () => {
+  const common = {
+    name: "My Quest",
+    description: "Do the thing",
+    duration: 24,
+  }
+
+  describe("create mode", () => {
+    it("creates a main quest body without requiredQuestId", () => {
+      const result = getQuestSubmitBody({
+        ...common,
+        isEditMode: false,
+        isQuestAuthor: false,
+        type: "main",
+        submissionType: "image",
+      })
+      expect(result.kind).toBe("create")
+      expect(result.body).toMatchObject({
+        name: "My Quest",
+        description: "Do the thing",
+        type: "main",
+        submissionType: "image",
+        duration: 24,
+      })
+      expect(result.body.requiredQuestId).toBeUndefined()
+    })
+
+    it("creates a side quest body with null requiredQuestId when empty", () => {
+      const result = getQuestSubmitBody({
+        ...common,
+        isEditMode: false,
+        isQuestAuthor: false,
+        type: "side",
+        submissionType: "text",
+        requiredQuestId: undefined,
+      })
+      expect(result.kind).toBe("create")
+      expect(result.body.requiredQuestId).toBeNull()
+    })
+
+    it("creates a side quest body with the prerequisite id when set", () => {
+      const result = getQuestSubmitBody({
+        ...common,
+        isEditMode: false,
+        isQuestAuthor: false,
+        type: "side",
+        submissionType: "text",
+        requiredQuestId: "prereq-1",
+      })
+      expect(result.body.requiredQuestId).toBe("prereq-1")
+    })
+
+    it("includes startsAt as ISO string when provided", () => {
+      const startsAt = new Date("2025-07-01T10:00:00.000Z")
+      const result = getQuestSubmitBody({
+        ...common,
+        isEditMode: false,
+        isQuestAuthor: false,
+        type: "daily",
+        submissionType: "image",
+        startsAt,
+      })
+      expect(result.body.startsAt).toBe("2025-07-01T10:00:00.000Z")
+    })
+
+    it("omits startsAt when not provided", () => {
+      const result = getQuestSubmitBody({
+        ...common,
+        isEditMode: false,
+        isQuestAuthor: false,
+        type: "main",
+        submissionType: "image",
+      })
+      expect(result.body.startsAt).toBeUndefined()
+    })
+  })
+
+  describe("edit own quest (update)", () => {
+    it("returns kind 'update' for own quest", () => {
+      const result = getQuestSubmitBody({
+        ...common,
+        isEditMode: true,
+        isQuestAuthor: true,
+        type: "main",
+      })
+      expect(result.kind).toBe("update")
+      expect(result.body).toMatchObject({
+        name: "My Quest",
+        description: "Do the thing",
+        duration: 24,
+      })
+    })
+
+    it("does not include submissionType in update body", () => {
+      const result = getQuestSubmitBody({
+        ...common,
+        isEditMode: true,
+        isQuestAuthor: true,
+        type: "main",
+        submissionType: "text",
+      })
+      expect(result.body.submissionType).toBeUndefined()
+    })
+
+    it("sets requiredQuestId null for side quest updates when empty", () => {
+      const result = getQuestSubmitBody({
+        ...common,
+        isEditMode: true,
+        isQuestAuthor: true,
+        type: "side",
+        requiredQuestId: undefined,
+      })
+      expect(result.body.requiredQuestId).toBeNull()
+    })
+
+    it("omits requiredQuestId for non-side quest updates", () => {
+      const result = getQuestSubmitBody({
+        ...common,
+        isEditMode: true,
+        isQuestAuthor: true,
+        type: "main",
+      })
+      expect(result.body.requiredQuestId).toBeUndefined()
+    })
+  })
+
+  describe("override as non-author", () => {
+    it("returns kind 'override' when not quest author", () => {
+      const result = getQuestSubmitBody({
+        ...common,
+        isEditMode: true,
+        isQuestAuthor: false,
+        type: "main",
+      })
+      expect(result.kind).toBe("override")
+    })
+
+    it("only includes name, description, duration in override body", () => {
+      const result = getQuestSubmitBody({
+        ...common,
+        isEditMode: true,
+        isQuestAuthor: false,
+        type: "side",
+        requiredQuestId: "prereq-1",
+        startsAt: new Date(),
+        submissionType: "image",
+      })
+      expect(Object.keys(result.body)).toEqual(["name", "description", "duration"])
+    })
   })
 })

@@ -157,3 +157,64 @@ export function getImageUploadInfo(uri: string): {
 export function getXpPercent(xp: number): number {
   return Math.min(100, Math.round((xp / 1000) * 100))
 }
+
+// ── Guild role helpers (extracted from components/guild/guild-home.tsx) ──
+
+export function getCurrentUserRoleInGuild(
+  currentUserMember: { role: string } | undefined,
+  guild: { role: string }
+): string {
+  return currentUserMember?.role ?? guild.role
+}
+
+export function canManageGuild(role: string): boolean {
+  return role === "admin" || role === "owner"
+}
+
+export function canLeaveGuild(role: string): boolean {
+  return role !== "owner"
+}
+
+// ── Quest names toggle (extracted from components/profile/settings-sheet.tsx) ──
+
+export function getShowQuestNamesInActivity(
+  settings?: { showQuestNamesInActivity?: boolean }
+): boolean {
+  return settings?.showQuestNamesInActivity ?? true
+}
+
+export function toggleShowQuestNamesInActivity(current: boolean): boolean {
+  return !current
+}
+
+export function getQuestNamesToggleValue(
+  settings?: { showQuestNamesInActivity?: boolean }
+): boolean {
+  return !getShowQuestNamesInActivity(settings)
+}
+
+// ── Debounce (extracted from components/guild/discovery-screen.tsx) ──
+
+export function createDebounce(
+  delayMs: number = 300
+): {
+  call: (text: string, callback: (text: string) => void) => void
+  cancel: () => void
+} {
+  let timer: ReturnType<typeof setTimeout> | null = null
+  return {
+    call: (text, callback) => {
+      if (timer) clearTimeout(timer)
+      timer = setTimeout(() => {
+        callback(text)
+        timer = null
+      }, delayMs)
+    },
+    cancel: () => {
+      if (timer) {
+        clearTimeout(timer)
+        timer = null
+      }
+    },
+  }
+}
