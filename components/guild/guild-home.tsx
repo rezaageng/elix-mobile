@@ -30,6 +30,7 @@ import {
   useUploadGuildImage,
 } from "@/lib/api/guilds"
 import type { Guild as GuildType } from "@/lib/api/schemas"
+import { getMimeTypeFromFilename } from "@/lib/file-utils"
 import { useThemeColor } from "@/lib/use-theme-color"
 import { Button } from "@/components/button"
 import {
@@ -125,8 +126,7 @@ export default function GuildHome({
   const handleUploadImage = useCallback(
     async (target: ImageTarget, uri: string) => {
       const filename = uri.split("/").pop() ?? "photo.jpg"
-      const match = /\.\w+$/.exec(filename)
-      const type = match ? `image/${match[0].slice(1)}` : "image/jpeg"
+      const type = getMimeTypeFromFilename(filename)
 
       const formData = new FormData()
       formData.append("file", {

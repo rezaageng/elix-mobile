@@ -28,6 +28,7 @@ import {
 import type { Class, UserActivityItem, UserStats } from "@/lib/api/schemas"
 import { authClient } from "@/lib/auth-client"
 import { useSession } from "@/lib/auth-client"
+import { getMimeTypeFromFilename } from "@/lib/file-utils"
 import {
   ActivityTab,
   AvatarSection,
@@ -237,8 +238,7 @@ export function ProfileScreen({ userId }: ProfileScreenProps) {
     async (target: ImageTarget, uri: string) => {
       if (!isOwnProfile) return
       const filename = uri.split("/").pop() ?? "photo.jpg"
-      const match = /\.\w+$/.exec(filename)
-      const type = match ? `image/${match[0].slice(1)}` : "image/jpeg"
+      const type = getMimeTypeFromFilename(filename)
 
       const formData = new FormData()
       formData.append("image", {

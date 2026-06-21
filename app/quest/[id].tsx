@@ -4,20 +4,10 @@ import { Alert, ScrollView, Text, TouchableOpacity, View } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
 
 import { useClassQuests, useCurrentUser, useDeleteQuest } from "@/lib/api"
-import type { ClassQuest } from "@/lib/api/schemas"
 import { useHeaderOptions } from "@/lib/header-options"
+import { getEffectiveQuestValues } from "@/lib/quest-utils"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/button"
-
-function getEffectiveQuestValues(quest: ClassQuest) {
-  const override = quest.overrides?.at(-1)
-  return {
-    name: override?.name ?? quest.name,
-    description: override?.description ?? quest.description,
-    duration: override?.duration ?? quest.duration,
-    startsAt: override?.startsAt ?? quest.startsAt,
-  }
-}
 
 export default function QuestDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>()

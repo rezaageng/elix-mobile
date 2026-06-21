@@ -17,6 +17,7 @@ import {
   useCreateClass,
   useUpdateClass,
 } from "@/lib/api"
+import { getZodErrorMessage } from "@/lib/form-utils"
 import { useHeaderOptions } from "@/lib/header-options"
 import { useThemeColor } from "@/lib/use-theme-color"
 import { Button } from "@/components/button"
@@ -28,17 +29,6 @@ const roleSchema = z.object({
 
 const nameSchema = z.string().min(1, "Name is required")
 const descriptionSchema = z.string().min(1, "Description is required")
-
-function getZodErrorMessage(error: unknown): string | undefined {
-  if (!error) return
-  if (Array.isArray(error)) {
-    return (error[0] as { message?: string })?.message
-  }
-  const zodError = error as {
-    issues?: { message: string }[]
-  }
-  return zodError.issues?.[0]?.message
-}
 
 export default function CreateRoleScreen() {
   const router = useRouter()

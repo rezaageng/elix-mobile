@@ -16,6 +16,7 @@ import {
 import { z } from "zod"
 
 import type { PublicUser } from "@/lib/api/schemas"
+import { getZodErrorMessage } from "@/lib/form-utils"
 import { ProfileHeader } from "@/components/profile/profile-header"
 
 export interface EditProfileSheetReference {
@@ -61,17 +62,6 @@ const usernameSchema = z
     /^[a-zA-Z0-9_]+$/,
     "Username can only contain letters, numbers, and underscores"
   )
-
-function getZodErrorMessage(error: unknown): string | undefined {
-  if (!error) return
-  if (Array.isArray(error)) {
-    return (error[0] as { message?: string })?.message
-  }
-  const zodError = error as {
-    issues?: { message: string }[]
-  }
-  return zodError.issues?.[0]?.message
-}
 
 export const EditProfileSheet = forwardRef<
   EditProfileSheetReference,

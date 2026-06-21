@@ -28,21 +28,13 @@ import {
   useOverrideQuest,
   useUpdateQuest,
 } from "@/lib/api"
-import type { ClassQuest, CreateQuestBody } from "@/lib/api/schemas"
+import type { CreateQuestBody } from "@/lib/api/schemas"
+import { getZodErrorMessage } from "@/lib/form-utils"
 import { useHeaderOptions } from "@/lib/header-options"
+import { getEffectiveQuestValues } from "@/lib/quest-utils"
 import { useThemeColor } from "@/lib/use-theme-color"
 import { Button } from "@/components/button"
 import { NativeDateTimePicker } from "@/components/native-datetime-picker"
-
-function getEffectiveQuestValues(quest: ClassQuest) {
-  const override = quest.overrides?.at(-1)
-  return {
-    name: override?.name ?? quest.name,
-    description: override?.description ?? quest.description,
-    duration: override?.duration ?? quest.duration,
-    startsAt: override?.startsAt ?? quest.startsAt,
-  }
-}
 
 const questSchema = z.object({
   name: z.string().min(1, "Quest name is required"),
@@ -68,17 +60,6 @@ const durationSchema = z.string().refine(
   },
   { message: "Duration must be a positive integer" }
 )
-
-function getZodErrorMessage(error: unknown): string | undefined {
-  if (!error) return
-  if (Array.isArray(error)) {
-    return (error[0] as { message?: string })?.message
-  }
-  const zodError = error as {
-    issues?: { message: string }[]
-  }
-  return zodError.issues?.[0]?.message
-}
 
 export default function ManageQuestScreen() {
   const { classId, type, questId } = useLocalSearchParams<{

@@ -218,7 +218,7 @@ export const getGuildWebSocketUrl = (
   guildId: string,
   token?: string
 ): string => {
-  const wsUrl = BASE_URL.replace(/^http/, "ws")
+  const wsUrl = BASE_URL.replace(/^http(s?):/, "ws$1:")
   const query = token ? `?token=${encodeURIComponent(token)}` : ""
   return `${wsUrl}/api/guilds/${guildId}/ws${query}`
 }

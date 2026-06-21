@@ -42,6 +42,8 @@ import {
   useUpdateQuestProgress,
 } from "@/lib/api"
 import type { LevelUpInfo, VerificationResult } from "@/lib/api/schemas"
+import { getZodErrorMessage } from "@/lib/form-utils"
+import { getMimeTypeFromFilename } from "@/lib/file-utils"
 import { useHeaderOptions } from "@/lib/header-options"
 import { useThemeColor } from "@/lib/use-theme-color"
 import { cn } from "@/lib/utils"
@@ -49,17 +51,6 @@ import { Button } from "@/components/button"
 
 const textSubmissionSchema = z.string().min(1, "Please enter your submission text.")
 const imageSubmissionSchema = z.string().min(1, "Please take or select a photo.")
-
-function getZodErrorMessage(error: unknown): string | undefined {
-  if (!error) return
-  if (Array.isArray(error)) {
-    return (error[0] as { message?: string })?.message
-  }
-  const zodError = error as {
-    issues?: { message: string }[]
-  }
-  return zodError.issues?.[0]?.message
-}
 
 export default function VerifySubmissionScreen() {
   const { questId, classId } = useLocalSearchParams<{
@@ -152,8 +143,7 @@ export default function VerifySubmissionScreen() {
       } else {
         const capturedImg = value.capturedImage!
         const filename = capturedImg.split("/").pop() ?? "photo.jpg"
-        const match = /\.\w+$/.exec(filename)
-        const type = match ? `image/${match[0].slice(1)}` : "image/jpeg"
+        const type = getMimeTypeFromFilename(filename)
         formData.append("image", {
           uri: capturedImg,
           name: filename,
