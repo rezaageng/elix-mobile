@@ -88,12 +88,5 @@
     "typescript": "~5.9.2"
   },
   "packageManager": "pnpm@11.8.0",
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "dtrace-provider",
-      "unrs-resolver"
-    ],
-    "strictDepBuilds": false
-  },
   "private": true
 }
