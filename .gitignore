@@ -48,3 +48,6 @@ app-example
 # Deepwork session state
 .slim/deepwork/
 
+# Test coverage output
+coverage/
+

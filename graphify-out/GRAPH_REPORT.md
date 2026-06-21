@@ -1,7 +1,7 @@
 # Graph Report - elix-mobile  (2026-06-21)
 
 ## Corpus Check
-- 126 files · ~147,922 words
+- 126 files · ~147,926 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `02f71706`
+- Built from commit: `0e7b73c0`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -129,16 +129,16 @@
 10. `App Store Metadata` - 16 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `QuestScreen()` --calls--> `useClassQuests()`  [INFERRED]
-  app/(tabs)/index.tsx → lib/api/quests.ts
-- `QuestScreen()` --calls--> `useDeleteQuest()`  [INFERRED]
-  app/(tabs)/index.tsx → lib/api/quests.ts
 - `ManageQuestScreen()` --calls--> `useClassQuests()`  [INFERRED]
   app/quest/manage.tsx → lib/api/quests.ts
+- `VerifySubmissionScreen()` --calls--> `useClassQuests()`  [INFERRED]
+  app/quest/verify.tsx → lib/api/quests.ts
+- `QuestScreen()` --calls--> `useClassQuests()`  [INFERRED]
+  app/(tabs)/index.tsx → lib/api/quests.ts
 - `ManageQuestScreen()` --calls--> `useDeleteQuest()`  [INFERRED]
   app/quest/manage.tsx → lib/api/quests.ts
-- `GuildCard()` --calls--> `useThemeColor()`  [EXTRACTED]
-  components/guild/guild-card.tsx → lib/use-theme-color.ts
+- `QuestScreen()` --calls--> `useDeleteQuest()`  [INFERRED]
+  app/(tabs)/index.tsx → lib/api/quests.ts
 
 ## Import Cycles
 - 1-file cycle: `metro.config.js -> metro.config.js`
@@ -278,8 +278,8 @@ Cohesion: 0.24
 Nodes (10): useCreateQuests(), useOverrideQuest(), useStartQuestProgress(), useUpdateQuest(), descriptionSchema, durationSchema, getEffectiveQuestValues(), ManageQuestScreen() (+2 more)
 
 ### Community 45 - "Community 45"
-Cohesion: 0.33
-Nodes (7): InventoryItem, useInventory(), useUseItem(), getItemIcon(), getItemTypeLabel(), InventoryCard(), InventoryScreen()
+Cohesion: 0.24
+Nodes (12): useClassQuests(), useDeleteQuest(), InventoryItem, useInventory(), useUseItem(), useCurrentUser(), getEffectiveQuestValues(), QuestDetailScreen() (+4 more)
 
 ### Community 46 - "Community 46"
 Cohesion: 0.06
@@ -454,8 +454,8 @@ Cohesion: 0.32
 Nodes (5): updateTimezone(), RootNavigator(), { useSession }, queryClient, useNotificationSetup()
 
 ### Community 92 - "Community 92"
-Cohesion: 0.27
-Nodes (10): useClassQuests(), useDeleteQuest(), useUpdateQuestProgress(), useCurrentUser(), useSubmitVerification(), getEffectiveQuestValues(), QuestDetailScreen(), imageSubmissionSchema (+2 more)
+Cohesion: 0.31
+Nodes (7): useClass(), useCreateClass(), useUpdateClass(), CreateRoleScreen(), descriptionSchema, nameSchema, roleSchema
 
 ### Community 93 - "Community 93"
 Cohesion: 0.31
@@ -494,8 +494,8 @@ Cohesion: 0.40
 Nodes (5): 8.A Token Strategy (pick one, stick to it), 8.B Do Not Prescribe Specific Colors Here, 8.C Default Mode, 8.D Test in Both Modes Before Finishing, 8. DARK MODE PROTOCOL
 
 ### Community 105 - "Community 105"
-Cohesion: 0.16
-Nodes (16): useClass(), useCreateClass(), useUpdateClass(), Button(), ButtonProps, Header(), HeaderProps, SearchBar() (+8 more)
+Cohesion: 0.19
+Nodes (14): useUpdateQuestProgress(), useSubmitVerification(), Button(), ButtonProps, Header(), HeaderProps, SearchBar(), SearchBarProps (+6 more)
 
 ### Community 106 - "Community 106"
 Cohesion: 0.17
@@ -506,20 +506,20 @@ Cohesion: 0.17
 Nodes (11): chooseClass(), createClass(), deleteClass(), getClass(), getClasses(), updateClass(), ClassChoice, ClassChoiceSchema (+3 more)
 
 ## Knowledge Gaps
-- **806 isolated node(s):** `$schema`, `plugin`, `@opencode-ai/plugin`, `recommendations`, `source.fixAll` (+801 more)
+- **806 isolated node(s):** `PendingAttachment`, `PendingMessageBubbleProps`, `$schema`, `plugin`, `@opencode-ai/plugin` (+801 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **12 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `apiFetch()` connect `Community 4` to `Community 0`, `Community 68`, `Community 5`, `Community 37`, `Community 71`, `Community 90`, `Community 108`, `Community 18`, `Community 24`, `Community 26`, `Community 91`, `Community 93`?**
-  _High betweenness centrality (0.012) - this node is a cross-community bridge._
 - **Why does `useThemeColor()` connect `Community 105` to `Community 0`, `Community 98`, `Community 68`, `Community 39`, `Community 71`, `Community 42`, `Community 44`, `Community 18`, `Community 92`, `Community 94`?**
-  _High betweenness centrality (0.007) - this node is a cross-community bridge._
+  _High betweenness centrality (0.010) - this node is a cross-community bridge._
+- **Why does `apiFetch()` connect `Community 4` to `Community 0`, `Community 68`, `Community 5`, `Community 37`, `Community 71`, `Community 90`, `Community 108`, `Community 18`, `Community 24`, `Community 26`, `Community 91`, `Community 93`?**
+  _High betweenness centrality (0.010) - this node is a cross-community bridge._
 - **Why does `Classes API Module` connect `Community 9` to `Community 5`?**
   _High betweenness centrality (0.004) - this node is a cross-community bridge._
-- **What connects `$schema`, `plugin`, `@opencode-ai/plugin` to the rest of the system?**
+- **What connects `PendingAttachment`, `PendingMessageBubbleProps`, `$schema` to the rest of the system?**
   _806 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 1` be split into smaller, more focused modules?**
   _Cohesion score 0.05128205128205128 - nodes in this community are weakly interconnected._
