@@ -59,8 +59,24 @@ jobs:
         run: |
           npx expo prebuild --platform android --clean
           cd android && ./gradlew assembleDebug
+          cd ..
+          mkdir -p ./artifacts
+          cp android/app/build/outputs/apk/debug/app-debug.apk ./artifacts/
+          rm -rf android/app/build
         env:
           EXPO_PUBLIC_API_URL: http://localhost:3000
+
+      - name: Free disk space
+        run: |
+          echo "Disk space before cleanup:"
+          df -h
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /usr/local/share/boost
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+          docker image prune --all --force || true
+          echo "Disk space after cleanup:"
+          df -h
 
       - name: Enable KVM
         run: |
@@ -70,18 +86,17 @@ jobs:
 
       - name: Run E2E tests
         uses: reactivecircus/android-emulator-runner@v2
+        env:
+          ANDROID_USER_HOME: /home/runner/.android
+          ANDROID_EMULATOR_HOME: /home/runner/.android
+          ANDROID_AVD_HOME: /home/runner/.android/avd
         with:
-          api-level: 30
-          target: default
-          arch: x86_64
-          force-avd-creation: true
+          api-level: 29
           emulator-boot-timeout: 900
-          disable-animations: true
-          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -no-snapshot-save -cache-size 512
           script: |
             adb wait-for-device
             adb shell input keyevent 82
-            adb install android/app/build/outputs/apk/debug/app-debug.apk
+            adb install ./artifacts/app-debug.apk
 
             # Start Metro bundler — needed by the debug APK to serve the JS bundle
             EXPO_PUBLIC_API_URL=http://localhost:3000 npx expo start --android &
