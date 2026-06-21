@@ -17,6 +17,7 @@ import {
   useUseItem,
 } from "@/lib/api"
 import type { InventoryItem } from "@/lib/api/schemas"
+import { getItemUseAction } from "@/lib/app-logic"
 import { Button } from "@/components/button"
 import Header from "@/components/header"
 
@@ -139,90 +140,82 @@ export default function InventoryScreen() {
 
   const handleUseItem = useCallback(
     async (entry: InventoryItem) => {
-      if (entry.quantity < 1) return
+      const action = getItemUseAction(entry, user, quests)
 
-      if (entry.item.type === "restore_streak") {
-        if (!user?.restorableStreak) {
+      switch (action.flow) {
+        case "block": {
+          Alert.alert("Cannot use item", action.reason)
+          return
+        }
+
+        case "confirm_restore_streak": {
           Alert.alert(
-            "No Streak to Restore",
-            "You don't have a broken streak available to restore."
+            "Restore Streak",
+            `Restore your ${action.restorableStreak}-day streak? Your current streak of ${action.currentStreak} will be replaced.`,
+            [
+              { text: "Cancel", style: "cancel" },
+              {
+                text: "Restore",
+                onPress: async () => {
+                  try {
+                    const result = await useItemMutation.mutateAsync({
+                      itemId: action.itemId,
+                      body: { quantity: 1 },
+                    })
+                    Alert.alert("Streak restored", result.message)
+                  } catch (error) {
+                    const message =
+                      error instanceof Error ? error.message : "Something went wrong."
+                    Alert.alert("Could not restore streak", message)
+                  }
+                },
+              },
+            ]
           )
           return
         }
 
-        Alert.alert(
-          "Restore Streak",
-          `Restore your ${user.restorableStreak}-day streak? Your current streak of ${user.streak} will be replaced.`,
-          [
-            { text: "Cancel", style: "cancel" },
-            {
-              text: "Restore",
-              onPress: async () => {
-                try {
-                  const result = await useItemMutation.mutateAsync({
-                    itemId: entry.itemId,
-                    body: { quantity: 1 },
-                  })
-                  Alert.alert("Streak restored", result.message)
-                } catch (error) {
-                  const message =
-                    error instanceof Error ? error.message : "Something went wrong."
-                  Alert.alert("Could not restore streak", message)
-                }
-              },
-            },
-          ]
-        )
-        return
-      }
-
-      if (entry.item.type === "deadline_extension") {
-        const inProgressQuests =
-          quests?.filter((q) => q.progress?.[0]?.status === "in_progress") ?? []
-
-        if (inProgressQuests.length === 0) {
+        case "confirm_deadline_extension": {
           Alert.alert(
-            "No active quests",
-            "You don't have any quests in progress to extend the deadline for."
+            "Extend Deadline",
+            "Choose a quest to extend its deadline:",
+            [
+              { text: "Cancel", style: "cancel" },
+              ...action.quests.map((quest) => ({
+                text: quest.name,
+                onPress: async () => {
+                  try {
+                    const result = await useItemMutation.mutateAsync({
+                      itemId: action.itemId,
+                      body: { quantity: 1, targetQuestId: quest.id },
+                    })
+                    Alert.alert("Item used", result.message)
+                  } catch (error) {
+                    const message =
+                      error instanceof Error ? error.message : "Something went wrong."
+                    Alert.alert("Could not use item", message)
+                  }
+                },
+              })),
+            ]
           )
           return
         }
 
-        Alert.alert(
-          "Extend Deadline",
-          "Choose a quest to extend its deadline:",
-          [
-            { text: "Cancel", style: "cancel" },
-            ...inProgressQuests.map((quest) => ({
-              text: quest.name,
-              onPress: async () => {
-                try {
-                  const result = await useItemMutation.mutateAsync({
-                    itemId: entry.itemId,
-                    body: { quantity: 1, targetQuestId: quest.id },
-                  })
-                  Alert.alert("Item used", result.message)
-                } catch (error) {
-                  const message =
-                    error instanceof Error ? error.message : "Something went wrong."
-                  Alert.alert("Could not use item", message)
-                }
-              },
-            })),
-          ]
-        )
-        return
-      }
-
-      try {
-        const result = await useItemMutation.mutateAsync({
-          itemId: entry.itemId,
-          body: { quantity: 1 },
-        })
-        Alert.alert("Item used", result.message)
-      } catch (error) {
-        const message = error instanceof Error ? error.message : "Something went wrong."
-        Alert.alert("Could not use item", message)
+        case "use_directly": {
+          try {
+            const result = await useItemMutation.mutateAsync({
+              itemId: action.itemId,
+              body: action.body,
+            })
+            Alert.alert("Item used", result.message)
+          } catch (error) {
+            const message =
+              error instanceof Error ? error.message : "Something went wrong."
+            Alert.alert("Could not use item", message)
+          }
+          return
+        }
       }
     },
     [useItemMutation, quests, user]

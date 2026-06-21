@@ -18,6 +18,7 @@ import { Stack, useRouter, useSegments } from "expo-router"
 import * as SplashScreen from "expo-splash-screen"
 import { GestureHandlerRootView } from "react-native-gesture-handler"
 
+import { getInitialRoute } from "@/lib/app-logic"
 import { useSession } from "@/lib/auth-client"
 import { queryClient } from "@/lib/query-client"
 import { updateTimezone } from "@/lib/api/users"
@@ -60,25 +61,9 @@ function RootNavigator() {
   const router = useRouter()
 
   useEffect(() => {
-    if (isPending) return
-
-    const inAuthGroup = segments[0] === "login"
-    const inRolesGroup = segments[0] === "roles"
-
-    if (!session && !inAuthGroup) {
-      router.replace("/login")
-      return
-    }
-
-    if (!session) return
-
-    const user = session.user
-    const needsClass = !user.activeClassId
-
-    if (inAuthGroup) {
-      router.replace(needsClass ? "/roles" : "/(tabs)")
-    } else if (needsClass && !inRolesGroup) {
-      router.replace("/roles")
+    const route = getInitialRoute(session, isPending, segments)
+    if (route) {
+      router.replace(route as "/login" | "/roles" | "/(tabs)")
     }
   }, [session, isPending, segments, router])
 

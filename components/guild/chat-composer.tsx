@@ -27,8 +27,10 @@ interface ChatComposerProps {
   onSend: (content: string, attachments: ComposerAttachment[]) => void
 }
 
-function makeAttachmentId(): string {
-  return `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`
+let attachmentIdSequence = 0
+export function makeAttachmentId(): string {
+  attachmentIdSequence += 1
+  return `${Date.now().toString(36)}-${attachmentIdSequence.toString(36)}`
 }
 
 export default function ChatComposer({ onSend }: ChatComposerProps) {

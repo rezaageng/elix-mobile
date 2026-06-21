@@ -1,6 +1,9 @@
 import { Text, View } from "react-native"
 
 import type { PublicUser } from "@/lib/api/schemas"
+import { getXpPercent } from "@/lib/app-logic"
+
+const XP_TO_NEXT = 1000
 
 interface AvatarSectionProps {
   user: PublicUser
@@ -8,8 +11,7 @@ interface AvatarSectionProps {
 }
 
 export function AvatarSection({ user, totalQuests }: AvatarSectionProps) {
-  const xpToNext = 1000
-  const xpPercent = Math.min(100, Math.round((user.xp / xpToNext) * 100))
+  const xpPercent = getXpPercent(user.xp)
 
   return (
     <View className="gap-4 px-4 pb-4">
@@ -45,7 +47,7 @@ export function AvatarSection({ user, totalQuests }: AvatarSectionProps) {
             XP
           </Text>
           <Text className="font-body-medium text-caption text-muted">
-            {user.xp} / {xpToNext} XP
+            {user.xp} / {XP_TO_NEXT} XP
           </Text>
         </View>
         <View className="h-2 w-full overflow-hidden rounded-full bg-surface-card dark:bg-surface-dark">

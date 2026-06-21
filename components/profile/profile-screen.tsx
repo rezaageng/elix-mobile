@@ -28,7 +28,6 @@ import {
 import type { Class, UserActivityItem, UserStats } from "@/lib/api/schemas"
 import { authClient } from "@/lib/auth-client"
 import { useSession } from "@/lib/auth-client"
-import { getMimeTypeFromFilename } from "@/lib/file-utils"
 import {
   ActivityTab,
   AvatarSection,
@@ -45,6 +44,8 @@ import {
   type ImagePickerSheetReference,
   type SettingsSheetReference,
 } from "@/components/profile"
+
+import { getImageUploadInfo, getProfileDiff } from "@/lib/app-logic"
 
 const BANNER_HEIGHT = 150
 const HEADER_THRESHOLD = 100
@@ -237,14 +238,13 @@ export function ProfileScreen({ userId }: ProfileScreenProps) {
   const handleUploadImage = useCallback(
     async (target: ImageTarget, uri: string) => {
       if (!isOwnProfile) return
-      const filename = uri.split("/").pop() ?? "photo.jpg"
-      const type = getMimeTypeFromFilename(filename)
+      const { filename, mimeType } = getImageUploadInfo(uri)
 
       const formData = new FormData()
       formData.append("image", {
         uri,
         name: filename,
-        type,
+        type: mimeType,
       } as unknown as Blob)
 
       try {
@@ -345,10 +345,10 @@ export function ProfileScreen({ userId }: ProfileScreenProps) {
       if (!isOwnProfile || !user) return
       setIsUpdatingProfile(true)
       try {
-        const body: { name?: string; username?: string } = {}
-        if (data.name !== user.name) body.name = data.name
-        if (data.username !== (user.username ?? ""))
-          body.username = data.username || undefined
+        const body = getProfileDiff(
+          { name: user.name, username: user.username ?? "" },
+          { name: data.name, username: data.username }
+        )
 
         if (Object.keys(body).length > 0) {
           const result = await authClient.updateUser(body)

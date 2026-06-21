@@ -29,13 +29,13 @@ const typeFilters: Record<
 const typeTitles: Record<"main" | "side" | "recurring", string> = {
   main: "Main Quests",
   side: "Side Quests",
-  recurring: "Daily & Weekly Quests",
+  recurring: "Recurring Quests",
 }
 
 const typeLabels: Record<"main" | "side" | "recurring", string> = {
   main: "main quest",
   side: "side quest",
-  recurring: "daily/weekly quest",
+  recurring: "recurring quest",
 }
 
 export default function EditQuestListScreen() {
@@ -65,17 +65,29 @@ export default function EditQuestListScreen() {
     })
   }
 
-  const handleAdd = () => {
-    let createType = "main"
-    if (type === "recurring") {
-      createType = "daily"
-    } else if (type === "side") {
-      createType = "side"
-    }
+  const navigateToManage = (createType: string) => {
     router.push({
       pathname: "/quest/manage",
       params: { classId, type: createType },
     })
+  }
+
+  const handleAdd = () => {
+    if (type === "recurring") {
+      Alert.alert(
+        "Create Recurring Quest",
+        "Choose the type of recurring quest to create",
+        [
+          { text: "Daily", onPress: () => navigateToManage("daily") },
+          { text: "Weekly", onPress: () => navigateToManage("weekly") },
+          { text: "Event", onPress: () => navigateToManage("event") },
+          { text: "Cancel", style: "cancel" },
+        ]
+      )
+      return
+    }
+
+    navigateToManage(type === "side" ? "side" : "main")
   }
 
   const handleDelete = (quest: ClassQuest) => {

@@ -7,6 +7,7 @@ import MemberRow from "@/components/guild/member-row"
 import PendingRequests from "@/components/guild/pending-requests"
 import { useKickMember, useLeaveGuild, useUpdateMemberRole } from "@/lib/api/guilds"
 import type { Guild, GuildMember } from "@/lib/api/schemas"
+import { getMemberActions } from "@/lib/app-logic"
 
 interface MembersTabProps {
   guild: Guild & { members: GuildMember[] }
@@ -30,7 +31,6 @@ export default function MembersTab({
   const updateRole = useUpdateMemberRole()
   const kickMember = useKickMember()
 
-  const isOwner = currentUserRole === "owner"
   const isAdmin = currentUserRole === "admin" || currentUserRole === "owner"
   const canLeave =
     currentUserRole !== undefined && currentUserRole !== "owner"
@@ -64,33 +64,29 @@ export default function MembersTab({
   }
 
   const handleAction = (member: GuildMember) => {
-    const isTargetAdmin = member.role === "admin"
-    const isTargetOwner = member.role === "owner"
-    const isSelf = member.id === currentUserId
+    const actions = getMemberActions(member, currentUserRole, currentUserId)
 
-    const options: {
-      text: string
-      style?: "destructive" | "cancel"
-      onPress?: () => void
-    }[] = []
+    const options = actions.map((action) => ({
+      text: action.label,
+      style: action.style,
+      onPress: (() => {
+        switch (action.kind) {
+          case "promote": {
+            return () => promoteMember(member)
+          }
+          case "demote": {
+            return () => demoteMember(member)
+          }
+          case "kick": {
+            return () => confirmKick(member)
+          }
+          default: {
+            return
+          }
+        }
+      })(),
+    }))
 
-    if (isOwner && !isTargetOwner) {
-      options.push(
-        isTargetAdmin
-          ? { text: "Demote to Member", onPress: () => demoteMember(member) }
-          : { text: "Promote to Admin", onPress: () => promoteMember(member) }
-      )
-    }
-
-    if (isAdmin && !isSelf && !isTargetOwner) {
-      options.push({
-        text: "Kick",
-        style: "destructive",
-        onPress: () => confirmKick(member),
-      })
-    }
-
-    options.push({ text: "Cancel", style: "cancel" })
     Alert.alert(member.name, "", options)
   }
 
