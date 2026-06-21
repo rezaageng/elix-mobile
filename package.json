@@ -92,7 +92,8 @@
     "onlyBuiltDependencies": [
       "dtrace-provider",
       "unrs-resolver"
-    ]
+    ],
+    "strictDepBuilds": false
   },
   "private": true
 }
