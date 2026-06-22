@@ -84,6 +84,17 @@ jobs:
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
 
+      - name: Verify virtualization and disk space
+        run: |
+          echo "KVM device:"
+          ls -la /dev/kvm || true
+          echo "CPU virtualization flags (count):"
+          egrep -c '(vmx|svm)' /proc/cpuinfo || true
+          echo "Disk space:"
+          df -h
+          echo "Memory:"
+          free -h
+
       - name: Run E2E tests
         uses: reactivecircus/android-emulator-runner@v2
         env:
@@ -93,6 +104,7 @@ jobs:
         with:
           api-level: 29
           emulator-boot-timeout: 900
+          emulator-options: -verbose -no-window -no-audio -no-boot-anim -gpu swiftshader_indirect
           script: |
             adb wait-for-device
             adb shell input keyevent 82
