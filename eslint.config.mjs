@@ -22,6 +22,7 @@ const eslintConfig = [
       "tailwind.config.js",
       "*.d.ts",
       "dist/*",
+      "coverage/*",
     ],
   },
   {

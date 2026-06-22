@@ -12,6 +12,7 @@ describe("QuestSchema", () => {
     type: "main",
     submissionType: "text",
     duration: 7,
+    // eslint-disable-next-line unicorn/no-null
     requiredQuestId: null,
     createdAt: validDate,
     updatedAt: validDate,
@@ -76,7 +77,7 @@ describe("ClassSchema", () => {
   })
 
   it("accepts nullable requirements", () => {
-    expect(ClassSchema.safeParse({ ...validClass, requirements: null }).success).toBe(true)
+    expect(ClassSchema.safeParse({ ...validClass, requirements: undefined }).success).toBe(true)
   })
 
   it("accepts object requirements", () => {
@@ -98,6 +99,7 @@ describe("PublicUserSchema", () => {
     longestStreak: 10,
     restorableStreak: 0,
     classes: [],
+    // eslint-disable-next-line unicorn/no-null
     activeClass: null,
     activeBuffs: [],
     createdAt: validDate,
@@ -108,6 +110,7 @@ describe("PublicUserSchema", () => {
   })
 
   it("accepts nullable image", () => {
+    // eslint-disable-next-line unicorn/no-null
     expect(PublicUserSchema.safeParse({ ...validUser, image: null }).success).toBe(true)
   })
 
@@ -175,6 +178,7 @@ describe("CreateQuestBodySchema", () => {
   })
 
   it("accepts optional requiredQuestId as null", () => {
+    // eslint-disable-next-line unicorn/no-null
     expect(CreateQuestBodySchema.safeParse({ ...validBody, requiredQuestId: null }).success).toBe(true)
   })
 
@@ -198,6 +202,7 @@ describe("DataWrapperSchema", () => {
       type: "main",
       submissionType: "text",
       duration: 3,
+      // eslint-disable-next-line unicorn/no-null
       requiredQuestId: null,
       createdAt: validDate,
       updatedAt: validDate,

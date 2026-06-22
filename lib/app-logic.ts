@@ -201,19 +201,19 @@ export function createDebounce(
   call: (text: string, callback: (text: string) => void) => void
   cancel: () => void
 } {
-  let timer: ReturnType<typeof setTimeout> | null = null
+  let timer: ReturnType<typeof setTimeout> | undefined = undefined
   return {
     call: (text, callback) => {
       if (timer) clearTimeout(timer)
       timer = setTimeout(() => {
         callback(text)
-        timer = null
+        timer = undefined
       }, delayMs)
     },
     cancel: () => {
       if (timer) {
         clearTimeout(timer)
-        timer = null
+        timer = undefined
       }
     },
   }

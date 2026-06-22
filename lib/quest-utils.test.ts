@@ -20,9 +20,10 @@ function makeQuest(overrides: Partial<ClassQuest> = {}): ClassQuest {
     type: "main",
     submissionType: "text",
     duration: 24,
+    // eslint-disable-next-line unicorn/no-null
     requiredQuestId: null,
     authorId: "u-1",
-    startsAt: null,
+    startsAt: undefined,
     createdAt: "2025-01-01T00:00:00.000Z",
     updatedAt: "2025-01-01T00:00:00.000Z",
     xpReward: 100,
@@ -42,7 +43,7 @@ describe("getEffectiveQuestValues", () => {
       name: "Test Quest",
       description: "A test quest",
       duration: 24,
-      startsAt: null,
+      startsAt: undefined,
     })
   })
 
@@ -103,10 +104,10 @@ describe("getEffectiveQuestValues", () => {
           id: "o-1",
           userId: "u-1",
           questId: "q-1",
-          name: null,
-          description: null,
-          duration: null,
-          startsAt: null,
+          name: undefined,
+          description: undefined,
+          duration: undefined,
+          startsAt: undefined,
           createdAt: "2025-01-02T00:00:00.000Z",
           updatedAt: "2025-01-02T00:00:00.000Z",
         },
@@ -116,7 +117,7 @@ describe("getEffectiveQuestValues", () => {
       name: "Test Quest",
       description: "A test quest",
       duration: 24,
-      startsAt: null,
+      startsAt: undefined,
     })
   })
 })
@@ -165,7 +166,7 @@ describe("getQuestStatusLabel", () => {
   })
 
   it("returns Not Started for not_started without startsAt", () => {
-    const quest = makeQuest({ startsAt: null })
+    const quest = makeQuest({ startsAt: undefined })
     expect(getQuestStatusLabel(quest)).toBe("Not Started")
   })
 
@@ -257,7 +258,7 @@ describe("getEffectiveStartedAt", () => {
   })
 
   it("returns createdAt when no progress and no required quest", () => {
-    const quest = makeQuest({ requiredQuestId: null })
+    const quest = makeQuest({ requiredQuestId: undefined })
     const result = getEffectiveStartedAt(quest)
     expect(result).toBeInstanceOf(Date)
     expect(result!.toISOString()).toBe("2025-01-01T00:00:00.000Z")
@@ -415,7 +416,7 @@ describe("getQuestSubmitBody", () => {
       expect(result.body.requiredQuestId).toBeUndefined()
     })
 
-    it("creates a side quest body with null requiredQuestId when empty", () => {
+    it("creates a side quest body with undefined requiredQuestId when empty", () => {
       const result = getQuestSubmitBody({
         ...common,
         isEditMode: false,
@@ -425,7 +426,7 @@ describe("getQuestSubmitBody", () => {
         requiredQuestId: undefined,
       })
       expect(result.kind).toBe("create")
-      expect(result.body.requiredQuestId).toBeNull()
+      expect(result.body.requiredQuestId).toBeUndefined()
     })
 
     it("creates a side quest body with the prerequisite id when set", () => {
@@ -492,7 +493,7 @@ describe("getQuestSubmitBody", () => {
       expect(result.body.submissionType).toBeUndefined()
     })
 
-    it("sets requiredQuestId null for side quest updates when empty", () => {
+    it("sets requiredQuestId undefined for side quest updates when empty", () => {
       const result = getQuestSubmitBody({
         ...common,
         isEditMode: true,
@@ -500,7 +501,7 @@ describe("getQuestSubmitBody", () => {
         type: "side",
         requiredQuestId: undefined,
       })
-      expect(result.body.requiredQuestId).toBeNull()
+      expect(result.body.requiredQuestId).toBeUndefined()
     })
 
     it("omits requiredQuestId for non-side quest updates", () => {

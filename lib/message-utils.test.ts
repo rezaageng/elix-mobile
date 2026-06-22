@@ -30,8 +30,10 @@ describe("buildListItems", () => {
   ) => ({
     id,
     content: "hello",
+    // eslint-disable-next-line unicorn/no-null
     attachmentUrl: null,
     createdAt,
+    // eslint-disable-next-line unicorn/no-null
     user: { id: "u1", name: "User", username: "user", image: null },
     ...overrides,
   })

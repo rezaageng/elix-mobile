@@ -152,7 +152,7 @@ export function getQuestSubmitBody(parameters: {
           description,
           duration,
           requiredQuestId:
-            type === "side" ? (requiredQuestId ?? null) : undefined,
+            type === "side" ? (requiredQuestId ?? undefined) : undefined,
           startsAt: startsAtValue,
         },
       }
@@ -172,7 +172,7 @@ export function getQuestSubmitBody(parameters: {
       submissionType,
       duration,
       requiredQuestId:
-        type === "side" ? (requiredQuestId ?? null) : undefined,
+        type === "side" ? (requiredQuestId ?? undefined) : undefined,
       startsAt: startsAtValue,
     },
   }
