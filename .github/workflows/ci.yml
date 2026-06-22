@@ -96,15 +96,14 @@ jobs:
           free -h
 
       - name: Run E2E tests
-        uses: reactivecircus/android-emulator-runner@v2
-        env:
-          ANDROID_USER_HOME: /home/runner/.android
-          ANDROID_EMULATOR_HOME: /home/runner/.android
-          ANDROID_AVD_HOME: /home/runner/.android/avd
+        uses: reactivecircus/android-emulator-runner@v2.34.0
         with:
           api-level: 29
+          target: google_apis
+          arch: x86_64
+          profile: pixel_5
           emulator-boot-timeout: 900
-          emulator-options: -verbose -no-window -no-audio -no-boot-anim -gpu swiftshader_indirect
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -no-snapshot -camera-back none
           script: |
             adb wait-for-device
             adb shell input keyevent 82
