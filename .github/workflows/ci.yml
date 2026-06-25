@@ -34,7 +34,7 @@ jobs:
 
   e2e-android:
     needs: [lint-type, unit]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
