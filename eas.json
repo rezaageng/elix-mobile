@@ -5,12 +5,21 @@
   },
   "build": {
     "production": {
-      "autoIncrement": true
+      "autoIncrement": true,
+      "node": "24.18.0",
+      "android": {}
+    },
+    "preview": {
+      "node": "24.18.0",
+      "android": {
+        "buildType": "apk"
+      }
     },
     "development": {
       "autoIncrement": true,
       "developmentClient": true,
       "distribution": "internal",
+      "node": "24.18.0",
       "ios": {
         "simulator": true
       }
