@@ -11,6 +11,9 @@
     },
     "preview": {
       "node": "24.18.0",
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://elix-dev.rezaa.me"
+      },
       "android": {
         "buildType": "apk"
       }
