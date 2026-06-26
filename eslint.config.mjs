@@ -23,6 +23,7 @@ const eslintConfig = [
       "*.d.ts",
       "dist/*",
       "coverage/*",
+      "e2e/scripts/*",
     ],
   },
   {

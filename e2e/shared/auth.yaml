@@ -3,20 +3,12 @@ appId: com.elix.mobile
 # Dev-only email/password sign-in. The email/password provider is enabled on
 # the backend only in development. Social OAuth is not automatable in Maestro,
 # so E2E tests use this form to establish a real Better Auth session.
-- runScript: |
-    const userId = USER_ID || "";
-    let email = EMAIL || "";
-    if (!email) {
-      if (userId.startsWith("e2e-user-")) {
-        email = userId.replace("e2e-user-", "e2e-") + "@elix.app";
-      } else if (userId) {
-        email = userId + "@elix.app";
-      } else {
-        email = "e2e-with-class@elix.app";
-      }
-    }
-    output.email = email;
-    output.password = PASSWORD || "password123";
+- runScript:
+    file: ../scripts/sign-in.js
+    env:
+      USER_ID: "${USER_ID}"
+      EMAIL: "${EMAIL}"
+      PASSWORD: "${PASSWORD}"
 - launchApp:
     clearState: ${CLEAR_STATE:-false}
 - extendedWaitUntil:
