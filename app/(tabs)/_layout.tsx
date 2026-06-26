@@ -1,4 +1,11 @@
-import { Icon, Label, NativeTabs } from "expo-router/unstable-native-tabs"
+import Feather from "@expo/vector-icons/Feather"
+import Ionicons from "@expo/vector-icons/Ionicons"
+import {
+  Icon,
+  Label,
+  NativeTabs,
+  VectorIcon,
+} from "expo-router/unstable-native-tabs"
 import { useColorScheme } from "react-native"
 
 export default function TabLayout() {
@@ -11,22 +18,37 @@ export default function TabLayout() {
     >
       <NativeTabs.Trigger name="index">
         <Label>Quest</Label>
-        <Icon sf="target" drawable="custom_quest_drawable" />
+        <Icon
+          sf="target"
+          androidSrc={<VectorIcon family={Feather} name="target" />}
+        />
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="shop">
         <Label>Shop</Label>
-        <Icon sf="bag.fill" drawable="custom_shop_drawable" />
+        <Icon
+          sf="bag.fill"
+          androidSrc={<VectorIcon family={Ionicons} name="bag" />}
+        />
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="inventory">
         <Label>Inventory</Label>
-        <Icon sf="archivebox.fill" drawable="custom_inventory_drawable" />
+        <Icon
+          sf="archivebox.fill"
+          androidSrc={<VectorIcon family={Ionicons} name="archive" />}
+        />
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="guild">
         <Label>Guild</Label>
-        <Icon sf="person.3.fill" drawable="custom_guild_drawable" />
+        <Icon
+          sf="person.3.fill"
+          androidSrc={<VectorIcon family={Ionicons} name="people" />}
+        />
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="profile">
-        <Icon sf="person.fill" drawable="custom_profile_drawable" />
+        <Icon
+          sf="person.fill"
+          androidSrc={<VectorIcon family={Ionicons} name="person" />}
+        />
         <Label>Profile</Label>
       </NativeTabs.Trigger>
     </NativeTabs>
