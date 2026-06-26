@@ -1,7 +1,7 @@
 # Graph Report - elix-mobile  (2026-06-26)
 
 ## Corpus Check
-- 154 files · ~156,732 words
+- 154 files · ~156,756 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `d7147cdf`
+- Built from commit: `abe13042`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -530,7 +530,7 @@ Nodes (10): 1. Ensure `EXPO_PUBLIC_API_URL` is set, 2. Start an emulator (or con
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `apiFetch()` connect `Community 4` to `Community 32`, `Community 0`, `Community 5`, `Community 71`, `Community 42`, `Community 18`, `Community 84`, `Community 24`, `Community 26`, `Community 92`, `Community 93`?**
-  _High betweenness centrality (0.013) - this node is a cross-community bridge._
+  _High betweenness centrality (0.014) - this node is a cross-community bridge._
 - **Why does `useThemeColor()` connect `Community 38` to `Community 0`, `Community 98`, `Community 99`, `Community 39`, `Community 71`, `Community 44`, `Community 18`, `Community 92`, `Community 94`?**
   _High betweenness centrality (0.007) - this node is a cross-community bridge._
 - **Why does `tasteskill: Anti-Slop Frontend Skill` connect `Community 78` to `Community 97`, `Community 67`, `Community 100`, `Community 101`, `Community 102`, `Community 103`, `Community 8`, `Community 40`, `Community 74`, `Community 104`, `Community 79`, `Community 85`?**

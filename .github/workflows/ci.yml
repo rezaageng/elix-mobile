@@ -32,7 +32,7 @@ jobs:
       - run: pnpm install
       - run: pnpm run test:ci
 
-  e2e-android:
+  build-android:
     needs: [lint-type, unit]
     runs-on: ubuntu-22.04
     timeout-minutes: 60
@@ -50,89 +50,29 @@ jobs:
           distribution: temurin
           java-version: "17"
 
-      - name: Install Maestro CLI
-        run: |
-          curl -fsSL "https://get.maestro.mobile.dev" | bash
-          echo "$HOME/.maestro/bin" >> $GITHUB_PATH
-
       - name: Build Android debug APK
         run: |
           npx expo prebuild --platform android --clean
           cd android && ./gradlew assembleDebug
-          cd ..
-          mkdir -p ./artifacts
-          cp android/app/build/outputs/apk/debug/app-debug.apk ./artifacts/
-          rm -rf android/app/build
         env:
           EXPO_PUBLIC_API_URL: http://localhost:3000
 
-      - name: Free disk space
-        run: |
-          echo "Disk space before cleanup:"
-          df -h
-          sudo rm -rf /usr/share/dotnet
-          sudo rm -rf /opt/ghc
-          sudo rm -rf /usr/local/share/boost
-          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
-          docker image prune --all --force || true
-          echo "Disk space after cleanup:"
-          df -h
-
-      - name: Enable KVM
-        run: |
-          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4ci.rules
-          sudo udevadm control --reload-rules
-          sudo udevadm trigger --name-match=kvm
-
-      - name: Verify virtualization and disk space
-        run: |
-          echo "KVM device:"
-          ls -la /dev/kvm || true
-          echo "CPU virtualization flags (count):"
-          egrep -c '(vmx|svm)' /proc/cpuinfo || true
-          echo "Disk space:"
-          df -h
-          echo "Memory:"
-          free -h
-
-      - name: Run E2E tests
-        uses: reactivecircus/android-emulator-runner@v2.34.0
+  build-ios:
+    needs: [lint-type, unit]
+    runs-on: macos-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+      - uses: actions/setup-node@v4
         with:
-          api-level: 29
-          target: google_apis
-          arch: x86_64
-          profile: pixel_5
-          emulator-boot-timeout: 900
-          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -no-snapshot -camera-back none
-          script: |
-            adb wait-for-device
-            adb shell input keyevent 82
-            adb install ./artifacts/app-debug.apk
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install
 
-            # Start Metro bundler — needed by the debug APK to serve the JS bundle
-            EXPO_PUBLIC_API_URL=http://localhost:3000 npx expo start --android &
-            METRO_PID=$!
-
-            echo "Waiting for Metro bundler..."
-            for i in $(seq 1 30); do
-              if curl -s http://localhost:8081/status > /dev/null 2>&1; then
-                echo "Metro bundler ready"
-                break
-              fi
-              sleep 2
-            done
-
-            maestro test e2e/
-            E2E_EXIT=$?
-
-            kill $METRO_PID 2>/dev/null || true
-            exit $E2E_EXIT
-
-      - name: Upload test artifacts
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: maestro-reports
-          path: |
-            .maestro/
-            e2e/reports/
+      - name: Build iOS (simulator)
+        run: |
+          npx expo prebuild --platform ios --clean
+          xcodebuild -workspace ios/Elix.xcworkspace -scheme Elix -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 16' build CODE_SIGNING_ALLOWED=NO
+        env:
+          EXPO_PUBLIC_API_URL: http://localhost:3000

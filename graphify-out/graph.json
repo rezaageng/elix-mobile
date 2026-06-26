@@ -75,814 +75,832 @@
   },
   "nodes": [
     {
+      "label": "_layout.tsx",
+      "file_type": "code",
+      "source_file": "app/(tabs)/_layout.tsx",
+      "source_location": "L1",
+      "id": "tabs_layout",
+      "community": 19,
+      "norm_label": "_layout.tsx"
+    },
+    {
+      "label": "TabLayout()",
+      "file_type": "code",
+      "source_file": "app/(tabs)/_layout.tsx",
+      "source_location": "L11",
+      "id": "tabs_layout_tablayout",
+      "community": 19,
+      "norm_label": "tablayout()"
+    },
+    {
       "label": "package.json",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L1",
-      "id": "package",
       "community": 91,
-      "norm_label": "package.json"
+      "norm_label": "package.json",
+      "id": "package"
     },
     {
       "label": "name",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L2",
-      "id": "package_name",
       "community": 91,
-      "norm_label": "name"
+      "norm_label": "name",
+      "id": "package_name"
     },
     {
       "label": "main",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L3",
-      "id": "package_main",
       "community": 91,
-      "norm_label": "main"
+      "norm_label": "main",
+      "id": "package_main"
     },
     {
       "label": "version",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L4",
-      "id": "package_version",
       "community": 91,
-      "norm_label": "version"
+      "norm_label": "version",
+      "id": "package_version"
     },
     {
       "label": "scripts",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L5",
-      "id": "package_scripts",
       "community": 106,
-      "norm_label": "scripts"
+      "norm_label": "scripts",
+      "id": "package_scripts"
     },
     {
       "label": "start",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L6",
-      "id": "package_scripts_start",
       "community": 106,
-      "norm_label": "start"
+      "norm_label": "start",
+      "id": "package_scripts_start"
     },
     {
       "label": "reset-project",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L7",
-      "id": "package_scripts_reset_project",
       "community": 106,
-      "norm_label": "reset-project"
+      "norm_label": "reset-project",
+      "id": "package_scripts_reset_project"
     },
     {
       "label": "android",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L8",
-      "id": "package_scripts_android",
       "community": 106,
-      "norm_label": "android"
+      "norm_label": "android",
+      "id": "package_scripts_android"
     },
     {
       "label": "ios",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L9",
-      "id": "package_scripts_ios",
       "community": 106,
-      "norm_label": "ios"
+      "norm_label": "ios",
+      "id": "package_scripts_ios"
     },
     {
       "label": "web",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L10",
-      "id": "package_scripts_web",
       "community": 106,
-      "norm_label": "web"
+      "norm_label": "web",
+      "id": "package_scripts_web"
     },
     {
       "label": "lint",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L11",
-      "id": "package_scripts_lint",
       "community": 106,
-      "norm_label": "lint"
+      "norm_label": "lint",
+      "id": "package_scripts_lint"
     },
     {
       "label": "test",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L12",
-      "id": "package_scripts_test",
       "community": 106,
-      "norm_label": "test"
+      "norm_label": "test",
+      "id": "package_scripts_test"
     },
     {
       "label": "test:ci",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L13",
-      "id": "package_scripts_test_ci",
       "community": 106,
-      "norm_label": "test:ci"
+      "norm_label": "test:ci",
+      "id": "package_scripts_test_ci"
     },
     {
       "label": "test:e2e",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L14",
-      "id": "package_scripts_test_e2e",
       "community": 106,
-      "norm_label": "test:e2e"
+      "norm_label": "test:e2e",
+      "id": "package_scripts_test_e2e"
     },
     {
       "label": "build:android:local",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L15",
-      "id": "package_scripts_build_android_local",
       "community": 106,
-      "norm_label": "build:android:local"
+      "norm_label": "build:android:local",
+      "id": "package_scripts_build_android_local"
     },
     {
       "label": "dependencies",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L17",
-      "id": "package_dependencies",
       "community": 2,
-      "norm_label": "dependencies"
+      "norm_label": "dependencies",
+      "id": "package_dependencies"
     },
     {
       "label": "@better-auth/expo",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L18",
-      "id": "package_dependencies_better_auth_expo",
       "community": 2,
-      "norm_label": "@better-auth/expo"
+      "norm_label": "@better-auth/expo",
+      "id": "package_dependencies_better_auth_expo"
     },
     {
       "label": "@expo-google-fonts/crimson-pro",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L19",
-      "id": "package_dependencies_expo_google_fonts_crimson_pro",
       "community": 2,
-      "norm_label": "@expo-google-fonts/crimson-pro"
+      "norm_label": "@expo-google-fonts/crimson-pro",
+      "id": "package_dependencies_expo_google_fonts_crimson_pro"
     },
     {
       "label": "@expo-google-fonts/geist",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L20",
-      "id": "package_dependencies_expo_google_fonts_geist",
       "community": 2,
-      "norm_label": "@expo-google-fonts/geist"
+      "norm_label": "@expo-google-fonts/geist",
+      "id": "package_dependencies_expo_google_fonts_geist"
     },
     {
       "label": "@expo-google-fonts/inter",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L21",
-      "id": "package_dependencies_expo_google_fonts_inter",
       "community": 2,
-      "norm_label": "@expo-google-fonts/inter"
+      "norm_label": "@expo-google-fonts/inter",
+      "id": "package_dependencies_expo_google_fonts_inter"
     },
     {
       "label": "@expo-google-fonts/playfair-display",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L22",
-      "id": "package_dependencies_expo_google_fonts_playfair_display",
       "community": 2,
-      "norm_label": "@expo-google-fonts/playfair-display"
+      "norm_label": "@expo-google-fonts/playfair-display",
+      "id": "package_dependencies_expo_google_fonts_playfair_display"
     },
     {
       "label": "@expo/vector-icons",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L23",
-      "id": "package_dependencies_expo_vector_icons",
       "community": 2,
-      "norm_label": "@expo/vector-icons"
+      "norm_label": "@expo/vector-icons",
+      "id": "package_dependencies_expo_vector_icons"
     },
     {
       "label": "@gorhom/bottom-sheet",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L24",
-      "id": "package_dependencies_gorhom_bottom_sheet",
       "community": 2,
-      "norm_label": "@gorhom/bottom-sheet"
+      "norm_label": "@gorhom/bottom-sheet",
+      "id": "package_dependencies_gorhom_bottom_sheet"
     },
     {
       "label": "@react-native-community/datetimepicker",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L25",
-      "id": "package_dependencies_react_native_community_datetimepicker",
       "community": 2,
-      "norm_label": "@react-native-community/datetimepicker"
+      "norm_label": "@react-native-community/datetimepicker",
+      "id": "package_dependencies_react_native_community_datetimepicker"
     },
     {
       "label": "@react-navigation/bottom-tabs",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L26",
-      "id": "package_dependencies_react_navigation_bottom_tabs",
       "community": 2,
-      "norm_label": "@react-navigation/bottom-tabs"
+      "norm_label": "@react-navigation/bottom-tabs",
+      "id": "package_dependencies_react_navigation_bottom_tabs"
     },
     {
       "label": "@react-navigation/elements",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L27",
-      "id": "package_dependencies_react_navigation_elements",
       "community": 2,
-      "norm_label": "@react-navigation/elements"
+      "norm_label": "@react-navigation/elements",
+      "id": "package_dependencies_react_navigation_elements"
     },
     {
       "label": "@react-navigation/native",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L28",
-      "id": "package_dependencies_react_navigation_native",
       "community": 2,
-      "norm_label": "@react-navigation/native"
+      "norm_label": "@react-navigation/native",
+      "id": "package_dependencies_react_navigation_native"
     },
     {
       "label": "@tanstack/react-form",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L29",
-      "id": "package_dependencies_tanstack_react_form",
       "community": 2,
-      "norm_label": "@tanstack/react-form"
+      "norm_label": "@tanstack/react-form",
+      "id": "package_dependencies_tanstack_react_form"
     },
     {
       "label": "@tanstack/react-query",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L30",
-      "id": "package_dependencies_tanstack_react_query",
       "community": 2,
-      "norm_label": "@tanstack/react-query"
+      "norm_label": "@tanstack/react-query",
+      "id": "package_dependencies_tanstack_react_query"
     },
     {
       "label": "better-auth",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L31",
-      "id": "package_dependencies_better_auth",
       "community": 2,
-      "norm_label": "better-auth"
+      "norm_label": "better-auth",
+      "id": "package_dependencies_better_auth"
     },
     {
       "label": "clsx",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L32",
-      "id": "package_dependencies_clsx",
       "community": 2,
-      "norm_label": "clsx"
+      "norm_label": "clsx",
+      "id": "package_dependencies_clsx"
     },
     {
       "label": "expo",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L33",
-      "id": "package_dependencies_expo",
       "community": 2,
-      "norm_label": "expo"
+      "norm_label": "expo",
+      "id": "package_dependencies_expo"
     },
     {
       "label": "expo-clipboard",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L34",
-      "id": "package_dependencies_expo_clipboard",
       "community": 2,
-      "norm_label": "expo-clipboard"
+      "norm_label": "expo-clipboard",
+      "id": "package_dependencies_expo_clipboard"
     },
     {
       "label": "expo-constants",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L35",
-      "id": "package_dependencies_expo_constants",
       "community": 2,
-      "norm_label": "expo-constants"
+      "norm_label": "expo-constants",
+      "id": "package_dependencies_expo_constants"
     },
     {
       "label": "expo-dev-client",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L36",
-      "id": "package_dependencies_expo_dev_client",
       "community": 2,
-      "norm_label": "expo-dev-client"
+      "norm_label": "expo-dev-client",
+      "id": "package_dependencies_expo_dev_client"
     },
     {
       "label": "expo-device",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L37",
-      "id": "package_dependencies_expo_device",
       "community": 2,
-      "norm_label": "expo-device"
+      "norm_label": "expo-device",
+      "id": "package_dependencies_expo_device"
     },
     {
       "label": "expo-document-picker",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L38",
-      "id": "package_dependencies_expo_document_picker",
       "community": 2,
-      "norm_label": "expo-document-picker"
+      "norm_label": "expo-document-picker",
+      "id": "package_dependencies_expo_document_picker"
     },
     {
       "label": "expo-file-system",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L39",
-      "id": "package_dependencies_expo_file_system",
       "community": 2,
-      "norm_label": "expo-file-system"
+      "norm_label": "expo-file-system",
+      "id": "package_dependencies_expo_file_system"
     },
     {
       "label": "expo-font",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L40",
-      "id": "package_dependencies_expo_font",
       "community": 2,
-      "norm_label": "expo-font"
+      "norm_label": "expo-font",
+      "id": "package_dependencies_expo_font"
     },
     {
       "label": "expo-haptics",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L41",
-      "id": "package_dependencies_expo_haptics",
       "community": 2,
-      "norm_label": "expo-haptics"
+      "norm_label": "expo-haptics",
+      "id": "package_dependencies_expo_haptics"
     },
     {
       "label": "expo-image",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L42",
-      "id": "package_dependencies_expo_image",
       "community": 2,
-      "norm_label": "expo-image"
+      "norm_label": "expo-image",
+      "id": "package_dependencies_expo_image"
     },
     {
       "label": "expo-image-manipulator",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L43",
-      "id": "package_dependencies_expo_image_manipulator",
       "community": 2,
-      "norm_label": "expo-image-manipulator"
+      "norm_label": "expo-image-manipulator",
+      "id": "package_dependencies_expo_image_manipulator"
     },
     {
       "label": "expo-image-picker",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L44",
-      "id": "package_dependencies_expo_image_picker",
       "community": 2,
-      "norm_label": "expo-image-picker"
+      "norm_label": "expo-image-picker",
+      "id": "package_dependencies_expo_image_picker"
     },
     {
       "label": "expo-linear-gradient",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L45",
-      "id": "package_dependencies_expo_linear_gradient",
       "community": 2,
-      "norm_label": "expo-linear-gradient"
+      "norm_label": "expo-linear-gradient",
+      "id": "package_dependencies_expo_linear_gradient"
     },
     {
       "label": "expo-linking",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L46",
-      "id": "package_dependencies_expo_linking",
       "community": 2,
-      "norm_label": "expo-linking"
+      "norm_label": "expo-linking",
+      "id": "package_dependencies_expo_linking"
     },
     {
       "label": "expo-network",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L47",
-      "id": "package_dependencies_expo_network",
       "community": 2,
-      "norm_label": "expo-network"
+      "norm_label": "expo-network",
+      "id": "package_dependencies_expo_network"
     },
     {
       "label": "expo-notifications",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L48",
-      "id": "package_dependencies_expo_notifications",
       "community": 2,
-      "norm_label": "expo-notifications"
+      "norm_label": "expo-notifications",
+      "id": "package_dependencies_expo_notifications"
     },
     {
       "label": "expo-router",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L49",
-      "id": "package_dependencies_expo_router",
       "community": 2,
-      "norm_label": "expo-router"
+      "norm_label": "expo-router",
+      "id": "package_dependencies_expo_router"
     },
     {
       "label": "expo-secure-store",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L50",
-      "id": "package_dependencies_expo_secure_store",
       "community": 2,
-      "norm_label": "expo-secure-store"
+      "norm_label": "expo-secure-store",
+      "id": "package_dependencies_expo_secure_store"
     },
     {
       "label": "expo-splash-screen",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L51",
-      "id": "package_dependencies_expo_splash_screen",
       "community": 2,
-      "norm_label": "expo-splash-screen"
+      "norm_label": "expo-splash-screen",
+      "id": "package_dependencies_expo_splash_screen"
     },
     {
       "label": "expo-status-bar",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L52",
-      "id": "package_dependencies_expo_status_bar",
       "community": 2,
-      "norm_label": "expo-status-bar"
+      "norm_label": "expo-status-bar",
+      "id": "package_dependencies_expo_status_bar"
     },
     {
       "label": "expo-symbols",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L53",
-      "id": "package_dependencies_expo_symbols",
       "community": 2,
-      "norm_label": "expo-symbols"
+      "norm_label": "expo-symbols",
+      "id": "package_dependencies_expo_symbols"
     },
     {
       "label": "expo-system-ui",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L54",
-      "id": "package_dependencies_expo_system_ui",
       "community": 2,
-      "norm_label": "expo-system-ui"
+      "norm_label": "expo-system-ui",
+      "id": "package_dependencies_expo_system_ui"
     },
     {
       "label": "expo-web-browser",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L55",
-      "id": "package_dependencies_expo_web_browser",
       "community": 2,
-      "norm_label": "expo-web-browser"
+      "norm_label": "expo-web-browser",
+      "id": "package_dependencies_expo_web_browser"
     },
     {
       "label": "lucide-react-native",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L56",
-      "id": "package_dependencies_lucide_react_native",
       "community": 2,
-      "norm_label": "lucide-react-native"
+      "norm_label": "lucide-react-native",
+      "id": "package_dependencies_lucide_react_native"
     },
     {
       "label": "nativewind",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L57",
-      "id": "package_dependencies_nativewind",
       "community": 2,
-      "norm_label": "nativewind"
+      "norm_label": "nativewind",
+      "id": "package_dependencies_nativewind"
     },
     {
       "label": "react",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L58",
-      "id": "package_dependencies_react",
       "community": 2,
-      "norm_label": "react"
+      "norm_label": "react",
+      "id": "package_dependencies_react"
     },
     {
       "label": "react-dom",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L59",
-      "id": "package_dependencies_react_dom",
       "community": 2,
-      "norm_label": "react-dom"
+      "norm_label": "react-dom",
+      "id": "package_dependencies_react_dom"
     },
     {
       "label": "react-native",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L60",
-      "id": "package_dependencies_react_native",
       "community": 2,
-      "norm_label": "react-native"
+      "norm_label": "react-native",
+      "id": "package_dependencies_react_native"
     },
     {
       "label": "react-native-css-interop",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L61",
-      "id": "package_dependencies_react_native_css_interop",
       "community": 2,
-      "norm_label": "react-native-css-interop"
+      "norm_label": "react-native-css-interop",
+      "id": "package_dependencies_react_native_css_interop"
     },
     {
       "label": "react-native-gesture-handler",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L62",
-      "id": "package_dependencies_react_native_gesture_handler",
       "community": 2,
-      "norm_label": "react-native-gesture-handler"
+      "norm_label": "react-native-gesture-handler",
+      "id": "package_dependencies_react_native_gesture_handler"
     },
     {
       "label": "react-native-gifted-charts",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L63",
-      "id": "package_dependencies_react_native_gifted_charts",
       "community": 2,
-      "norm_label": "react-native-gifted-charts"
+      "norm_label": "react-native-gifted-charts",
+      "id": "package_dependencies_react_native_gifted_charts"
     },
     {
       "label": "react-native-reanimated",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L64",
-      "id": "package_dependencies_react_native_reanimated",
       "community": 2,
-      "norm_label": "react-native-reanimated"
+      "norm_label": "react-native-reanimated",
+      "id": "package_dependencies_react_native_reanimated"
     },
     {
       "label": "react-native-safe-area-context",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L65",
-      "id": "package_dependencies_react_native_safe_area_context",
       "community": 2,
-      "norm_label": "react-native-safe-area-context"
+      "norm_label": "react-native-safe-area-context",
+      "id": "package_dependencies_react_native_safe_area_context"
     },
     {
       "label": "react-native-screens",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L66",
-      "id": "package_dependencies_react_native_screens",
       "community": 2,
-      "norm_label": "react-native-screens"
+      "norm_label": "react-native-screens",
+      "id": "package_dependencies_react_native_screens"
     },
     {
       "label": "react-native-svg",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L67",
-      "id": "package_dependencies_react_native_svg",
       "community": 2,
-      "norm_label": "react-native-svg"
+      "norm_label": "react-native-svg",
+      "id": "package_dependencies_react_native_svg"
     },
     {
       "label": "react-native-web",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L68",
-      "id": "package_dependencies_react_native_web",
       "community": 2,
-      "norm_label": "react-native-web"
+      "norm_label": "react-native-web",
+      "id": "package_dependencies_react_native_web"
     },
     {
       "label": "react-native-worklets",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L69",
-      "id": "package_dependencies_react_native_worklets",
       "community": 2,
-      "norm_label": "react-native-worklets"
+      "norm_label": "react-native-worklets",
+      "id": "package_dependencies_react_native_worklets"
     },
     {
       "label": "socket.io-client",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L70",
-      "id": "package_dependencies_socket_io_client",
       "community": 2,
-      "norm_label": "socket.io-client"
+      "norm_label": "socket.io-client",
+      "id": "package_dependencies_socket_io_client"
     },
     {
       "label": "tailwind-merge",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L71",
-      "id": "package_dependencies_tailwind_merge",
       "community": 2,
-      "norm_label": "tailwind-merge"
+      "norm_label": "tailwind-merge",
+      "id": "package_dependencies_tailwind_merge"
     },
     {
       "label": "zod",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L72",
-      "id": "package_dependencies_zod",
       "community": 2,
-      "norm_label": "zod"
+      "norm_label": "zod",
+      "id": "package_dependencies_zod"
     },
     {
       "label": "devDependencies",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L74",
-      "id": "package_devdependencies",
       "community": 90,
-      "norm_label": "devdependencies"
+      "norm_label": "devdependencies",
+      "id": "package_devdependencies"
     },
     {
       "label": "@eslint/eslintrc",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L75",
-      "id": "package_devdependencies_eslint_eslintrc",
       "community": 90,
-      "norm_label": "@eslint/eslintrc"
+      "norm_label": "@eslint/eslintrc",
+      "id": "package_devdependencies_eslint_eslintrc"
     },
     {
       "label": "@ianvs/prettier-plugin-sort-imports",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L76",
-      "id": "package_devdependencies_ianvs_prettier_plugin_sort_imports",
       "community": 90,
-      "norm_label": "@ianvs/prettier-plugin-sort-imports"
+      "norm_label": "@ianvs/prettier-plugin-sort-imports",
+      "id": "package_devdependencies_ianvs_prettier_plugin_sort_imports"
     },
     {
       "label": "@testing-library/react-native",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L77",
-      "id": "package_devdependencies_testing_library_react_native",
       "community": 90,
-      "norm_label": "@testing-library/react-native"
+      "norm_label": "@testing-library/react-native",
+      "id": "package_devdependencies_testing_library_react_native"
     },
     {
       "label": "@types/jest",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L78",
-      "id": "package_devdependencies_types_jest",
       "community": 90,
-      "norm_label": "@types/jest"
+      "norm_label": "@types/jest",
+      "id": "package_devdependencies_types_jest"
     },
     {
       "label": "@types/react",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L79",
-      "id": "package_devdependencies_types_react",
       "community": 90,
-      "norm_label": "@types/react"
+      "norm_label": "@types/react",
+      "id": "package_devdependencies_types_react"
     },
     {
       "label": "@typescript-eslint/eslint-plugin",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L80",
-      "id": "package_devdependencies_typescript_eslint_eslint_plugin",
       "community": 90,
-      "norm_label": "@typescript-eslint/eslint-plugin"
+      "norm_label": "@typescript-eslint/eslint-plugin",
+      "id": "package_devdependencies_typescript_eslint_eslint_plugin"
     },
     {
       "label": "eslint",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L81",
-      "id": "package_devdependencies_eslint",
       "community": 90,
-      "norm_label": "eslint"
+      "norm_label": "eslint",
+      "id": "package_devdependencies_eslint"
     },
     {
       "label": "eslint-config-expo",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L82",
-      "id": "package_devdependencies_eslint_config_expo",
       "community": 90,
-      "norm_label": "eslint-config-expo"
+      "norm_label": "eslint-config-expo",
+      "id": "package_devdependencies_eslint_config_expo"
     },
     {
       "label": "eslint-plugin-import",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L83",
-      "id": "package_devdependencies_eslint_plugin_import",
       "community": 90,
-      "norm_label": "eslint-plugin-import"
+      "norm_label": "eslint-plugin-import",
+      "id": "package_devdependencies_eslint_plugin_import"
     },
     {
       "label": "eslint-plugin-unicorn",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L84",
-      "id": "package_devdependencies_eslint_plugin_unicorn",
       "community": 90,
-      "norm_label": "eslint-plugin-unicorn"
+      "norm_label": "eslint-plugin-unicorn",
+      "id": "package_devdependencies_eslint_plugin_unicorn"
     },
     {
       "label": "jest",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L85",
-      "id": "package_devdependencies_jest",
       "community": 90,
-      "norm_label": "jest"
+      "norm_label": "jest",
+      "id": "package_devdependencies_jest"
     },
     {
       "label": "jest-expo",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L86",
-      "id": "package_devdependencies_jest_expo",
       "community": 90,
-      "norm_label": "jest-expo"
+      "norm_label": "jest-expo",
+      "id": "package_devdependencies_jest_expo"
     },
     {
       "label": "prettier",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L87",
-      "id": "package_devdependencies_prettier",
       "community": 90,
-      "norm_label": "prettier"
+      "norm_label": "prettier",
+      "id": "package_devdependencies_prettier"
     },
     {
       "label": "prettier-plugin-tailwindcss",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L88",
-      "id": "package_devdependencies_prettier_plugin_tailwindcss",
       "community": 90,
-      "norm_label": "prettier-plugin-tailwindcss"
+      "norm_label": "prettier-plugin-tailwindcss",
+      "id": "package_devdependencies_prettier_plugin_tailwindcss"
     },
     {
       "label": "tailwindcss",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L89",
-      "id": "package_devdependencies_tailwindcss",
       "community": 90,
-      "norm_label": "tailwindcss"
+      "norm_label": "tailwindcss",
+      "id": "package_devdependencies_tailwindcss"
     },
     {
       "label": "typescript",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L90",
-      "id": "package_devdependencies_typescript",
       "community": 90,
-      "norm_label": "typescript"
+      "norm_label": "typescript",
+      "id": "package_devdependencies_typescript"
     },
     {
       "label": "packageManager",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L92",
-      "id": "package_packagemanager",
       "community": 91,
-      "norm_label": "packagemanager"
+      "norm_label": "packagemanager",
+      "id": "package_packagemanager"
     },
     {
       "label": "private",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L93",
-      "id": "package_private",
       "community": 91,
-      "norm_label": "private"
+      "norm_label": "private",
+      "id": "package_private"
     },
     {
       "label": "eas.json",
@@ -3718,24 +3736,6 @@
       "community": 14,
       "norm_label": "source.sortmembers",
       "id": "vscode_settings_editor_codeactionsonsave_source_sortmembers"
-    },
-    {
-      "label": "_layout.tsx",
-      "file_type": "code",
-      "source_file": "app/(tabs)/_layout.tsx",
-      "source_location": "L1",
-      "community": 19,
-      "norm_label": "_layout.tsx",
-      "id": "tabs_layout"
-    },
-    {
-      "label": "TabLayout()",
-      "file_type": "code",
-      "source_file": "app/(tabs)/_layout.tsx",
-      "source_location": "L4",
-      "community": 19,
-      "norm_label": "tablayout()",
-      "id": "tabs_layout_tablayout"
     },
     {
       "label": "guild.tsx",
@@ -13707,6 +13707,16 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "app/(tabs)/_layout.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tabs_layout",
+      "target": "tabs_layout_tablayout"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "package.json",
       "source_location": "L13",
       "weight": 1.0,
@@ -22970,16 +22980,6 @@
       "confidence_score": 1.0,
       "source": "vscode_settings_editor_codeactionsonsave",
       "target": "vscode_settings_editor_codeactionsonsave_source_sortmembers"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(tabs)/_layout.tsx",
-      "source_location": "L3",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "tabs_layout",
-      "target": "tabs_layout_tablayout"
     },
     {
       "relation": "imports_from",
@@ -37044,5 +37044,5 @@
       "source_file": "assets/images"
     }
   ],
-  "built_at_commit": "d7147cdfaf9d43665c0a3e850d2d4297b1b2ec48"
+  "built_at_commit": "abe1304241ea3acd61df756c4e4627a9abd1d44a"
 }
