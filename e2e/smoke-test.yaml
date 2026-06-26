@@ -3,4 +3,4 @@ appId: com.elix.mobile
 # Smoke test: launch app, verify login screen appears
 - launchApp:
     clearState: true
-- waitForVisible: "Welcome to Elix"
+- assertVisible: "Welcome to Elix"

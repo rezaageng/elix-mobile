@@ -1,0 +1,9 @@
+appId: com.elix.mobile
+---
+# Verify an unauthenticated user still lands on login after a warm restart
+- launchApp:
+    clearState: true
+- assertVisible: "Welcome to Elix"
+- stopApp
+- launchApp
+- assertVisible: "Welcome to Elix"

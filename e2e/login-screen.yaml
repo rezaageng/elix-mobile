@@ -1,0 +1,10 @@
+appId: com.elix.mobile
+---
+# Verify the login screen renders every entry point
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible: "Welcome to Elix"
+    timeout: 10000
+- assertVisible: "Login with Google"
+- assertVisible: "Login with Twitter"

@@ -79,6 +79,8 @@ maestro test e2e/
 | Test file | Description |
 |-----------|-------------|
 | `smoke-test.yaml` | Launches app, verifies login screen renders |
+| `login-screen.yaml` | Verifies all login entry points are visible |
+| `app-restart.yaml` | Verifies the login screen persists across a warm restart |
 
 ## Notes
 
