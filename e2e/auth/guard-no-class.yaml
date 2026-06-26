@@ -1,0 +1,12 @@
+appId: com.elix.mobile
+---
+- runFlow:
+    file: ../shared/seed.yaml
+    env:
+      SEED_KEY: user-no-class
+- runFlow:
+    file: ../shared/auth.yaml
+    env:
+      USER_ID: e2e-user-no-class
+      CLEAR_STATE: "true"
+- assertVisible: "Choose Your Role"

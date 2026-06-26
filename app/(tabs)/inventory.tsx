@@ -79,7 +79,7 @@ function InventoryCard({
   isUsing: boolean
 }) {
   return (
-    <View className="rounded-xl bg-surface-card p-4 dark:bg-surface-dark-elevated">
+    <View testID={`InventoryItem:${entry.item.id}`} className="rounded-xl bg-surface-card p-4 dark:bg-surface-dark-elevated">
       <View className="flex-row items-start gap-3">
         <View className="items-center justify-center rounded-full bg-canvas p-3 dark:bg-surface-dark">
           {getItemIcon(entry.item.type, 20)}
@@ -110,6 +110,7 @@ function InventoryCard({
               className="px-4 py-2"
               disabled={isUsing || entry.quantity < 1}
               onPress={() => onUse(entry)}
+              testID={`UseButton:${entry.item.id}`}
             />
           </View>
         </View>
@@ -241,7 +242,7 @@ export default function InventoryScreen() {
     )
   } else if (!inventory || inventory.length === 0) {
     content = (
-      <View className="flex-1 items-center justify-center gap-4">
+      <View testID="InventoryEmptyState" className="flex-1 items-center justify-center gap-4">
         <Text className="font-body text-body-md text-muted dark:text-on-dark-soft">
           Your inventory is empty.
         </Text>

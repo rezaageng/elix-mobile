@@ -227,6 +227,7 @@ export default function ChatComposer({ onSend }: ChatComposerProps) {
           numberOfLines={expanded ? 1 : 5}
           textAlignVertical="center"
           accessibilityLabel="Message input"
+          testID="ChatInput"
         />
         <TouchableOpacity
           onPress={handleSend}
@@ -234,6 +235,7 @@ export default function ChatComposer({ onSend }: ChatComposerProps) {
           activeOpacity={0.7}
           className="rounded-full bg-primary p-sm active:bg-primary-active"
           accessibilityLabel="Send message"
+          testID="ChatSendButton"
         >
           <Send size={18} color="#ffffff" />
         </TouchableOpacity>

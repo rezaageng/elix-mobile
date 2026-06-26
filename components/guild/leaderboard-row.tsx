@@ -6,6 +6,7 @@ import type { GuildLeaderboardEntry } from "@/lib/api/schemas"
 interface LeaderboardRowProps {
   entry: GuildLeaderboardEntry
   rank: number
+  testID?: string
 }
 
 function getInitial(name: string): string {
@@ -41,9 +42,9 @@ function RankBadge({ rank }: { rank: number }) {
   )
 }
 
-export default function LeaderboardRow({ entry, rank }: LeaderboardRowProps) {
+export default function LeaderboardRow({ entry, rank, testID }: LeaderboardRowProps) {
   return (
-    <View className="flex-row items-center gap-sm rounded-lg bg-surface-card p-md dark:bg-surface-dark-elevated">
+    <View className="flex-row items-center gap-sm rounded-lg bg-surface-card p-md dark:bg-surface-dark-elevated" testID={testID}>
       <RankBadge rank={rank} />
       {entry.image ? (
         <Image

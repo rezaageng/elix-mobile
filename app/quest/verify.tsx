@@ -426,6 +426,7 @@ export default function VerifySubmissionScreen() {
                           Markdown formatting is supported.
                         </Text>
                         <TextInput
+                          testID="VerificationTextInput"
                           className="mt-3 rounded-md border border-hairline bg-canvas px-sm py-2 font-body text-md text-ink dark:border-hairline dark:bg-surface-dark dark:text-on-dark"
                           multiline
                           textAlignVertical="top"
@@ -496,6 +497,7 @@ export default function VerifySubmissionScreen() {
 
                 {/* Submit Button */}
                 <Button
+                  testID="VerificationSubmitButton"
                   onPress={form.handleSubmit}
                   disabled={isSubmitting}
                   className="mt-2"

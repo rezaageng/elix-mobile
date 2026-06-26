@@ -78,6 +78,7 @@ function QuestCard({
 
   return (
     <TouchableOpacity
+      testID={`QuestCard:${quest.id}`}
       activeOpacity={0.7}
       onPress={() =>
         router.push({ pathname: "/quest/[id]", params: { id: quest.id } })
@@ -434,6 +435,7 @@ export default function QuestScreen() {
             {TABS.map((tab) => (
               <TouchableOpacity
                 key={tab.key}
+                testID={`Filter${tab.label}`}
                 onPress={() => setActiveTab(tab.key)}
                 className={cn(
                   "rounded-full px-4 py-2",
@@ -463,6 +465,7 @@ export default function QuestScreen() {
         contentContainerStyle={{ flexGrow: 1, paddingHorizontal: 16, paddingBottom: insets.bottom + 64 }}
         refreshControl={
           <RefreshControl
+            testID="QuestLoadingIndicator"
             refreshing={isLoading || refreshing}
             onRefresh={onRefresh}
           />
@@ -470,6 +473,7 @@ export default function QuestScreen() {
       >
         {showAddButton && classId && (
           <TouchableOpacity
+            testID="CreateQuestButton"
             onPress={() =>
               router.push({
                 pathname: "/quest/manage" as any,

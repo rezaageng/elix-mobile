@@ -1,0 +1,32 @@
+appId: com.elix.mobile
+---
+# Guild Search: seed a guild and a user without one, search by partial name
+- runFlow:
+    file: ../shared/seed.yaml
+    env:
+      SEED_KEY: guild-full
+- runFlow:
+    file: ../shared/seed.yaml
+    env:
+      SEED_KEY: user-no-guild
+- runFlow:
+    file: ../shared/auth.yaml
+    env:
+      USER_ID: e2e-user-no-guild
+      CLEAR_STATE: "true"
+- runFlow:
+    file: ../shared/navigate.yaml
+    env:
+      TAB: "Guild"
+- tapOn:
+    id: "GuildSearchInput"
+- inputText: "E2E"
+- waitForAnimationToEnd:
+    timeout: 1000
+- assertVisible:
+    id: "GuildCard"
+- tapOn:
+    id: "GuildSearchInput"
+- eraseText: 10
+- assertVisible:
+    id: "GuildCard:"

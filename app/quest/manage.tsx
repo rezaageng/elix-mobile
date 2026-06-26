@@ -324,6 +324,7 @@ export default function ManageQuestScreen() {
                   Name
                 </Text>
                 <TextInput
+                  testID="QuestTitleInput"
                   className="rounded-md border border-hairline bg-canvas px-sm py-1.5 font-body text-md text-ink dark:border-hairline dark:bg-surface-dark dark:text-on-dark"
                   value={field.state.value}
                   onChangeText={field.handleChange}
@@ -450,7 +451,7 @@ export default function ManageQuestScreen() {
                   <Text className="font-body-medium text-body-md text-ink dark:text-on-dark">
                     Submission Type
                   </Text>
-                  <View className="flex-row gap-xs">
+                  <View testID="QuestTypeSelector" className="flex-row gap-xs">
                     <TouchableOpacity
                       onPress={() => field.handleChange("text")}
                       className={`flex-1 items-center rounded-md border px-sm py-1.5 ${field.state.value === "text" ? "border-primary bg-primary/10" : "border-hairline bg-canvas dark:bg-surface-dark"}`}
@@ -523,6 +524,7 @@ export default function ManageQuestScreen() {
             <form.Subscribe selector={(state) => state.isSubmitting}>
               {(isSubmitting) => (
                 <Button
+                  testID="SaveQuestButton"
                   onPress={form.handleSubmit}
                   disabled={isPending || isSubmitting}
                 >

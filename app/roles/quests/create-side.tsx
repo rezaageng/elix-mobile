@@ -321,6 +321,7 @@ export default function CreateSideQuestScreen() {
                         placeholderTextColor="#8e8b82"
                         autoCapitalize="words"
                         textAlignVertical="center"
+                        testID="QuestTitleInput"
                       />
                       {field.state.meta.errors.length > 0 && (
                         <Text className="mt-1 font-body text-body-sm text-error">
@@ -355,6 +356,7 @@ export default function CreateSideQuestScreen() {
                         placeholderTextColor="#8e8b82"
                         multiline
                         textAlignVertical="top"
+                        testID="QuestDescriptionInput"
                       />
                       {field.state.meta.errors.length > 0 && (
                         <Text className="mt-1 font-body text-body-sm text-error">
@@ -445,7 +447,7 @@ export default function CreateSideQuestScreen() {
 
           <form.Subscribe selector={(state) => state.isSubmitting}>
             {() => (
-              <Button onPress={form.handleSubmit} disabled={isPending}>
+              <Button onPress={form.handleSubmit} disabled={isPending} testID="CreateQuest">
                 {isPending ? (
                   <ActivityIndicator size="small" color="#ffffff" />
                 ) : (

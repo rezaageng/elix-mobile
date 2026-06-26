@@ -331,6 +331,7 @@ export default function GuildHome({
               className="absolute right-4 z-50 rounded-full bg-black/20 p-2"
               style={{ top: insets.top + 16 }}
               activeOpacity={0.7}
+              testID="EditGuildButton"
             >
               <Pencil size={20} color="#ffffff" />
             </TouchableOpacity>
@@ -396,6 +397,7 @@ export default function GuildHome({
                   activeOpacity={0.8}
                   onPress={() => navigateTo(item.route)}
                   className="flex-row items-center gap-sm rounded-lg bg-surface-card p-md dark:bg-surface-dark-elevated"
+                  testID={`Guild${item.label}Button`}
                 >
                   <Icon size={20} color={mutedColor} />
                   <Text className="flex-1 font-body-medium text-body-md text-ink dark:text-on-dark">
@@ -429,6 +431,7 @@ export default function GuildHome({
                   )
                 }
                 disabled={deleteGuild.isPending}
+                testID="DeleteGuildButton"
               >
                 <Trash2 size={18} color="#c64545" />
                 <Text className="font-body-medium text-button text-error">
@@ -447,6 +450,7 @@ export default function GuildHome({
                 className="border-error"
                 onPress={handleLeave}
                 disabled={leaveGuild.isPending}
+                testID="LeaveGuildButton"
               >
                 <LogOut size={18} color="#c64545" />
                 <Text className="font-body-medium text-button text-error">

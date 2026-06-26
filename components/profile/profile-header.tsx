@@ -80,6 +80,7 @@ export function ProfileHeader({
           <TouchableOpacity
             activeOpacity={0.9}
             onPress={onAvatarPress}
+            testID="ProfileAvatar"
             className="relative overflow-hidden rounded-full border-4 border-canvas dark:border-surface-dark"
             style={{ width: avatarSize, height: avatarSize }}
           >

@@ -1,0 +1,24 @@
+appId: com.elix.mobile
+---
+# Guild Leave: seed a guild member, leave guild and land on discovery
+- runFlow:
+    file: ../shared/seed.yaml
+    env:
+      SEED_KEY: user-guild-member
+- runFlow:
+    file: ../shared/auth.yaml
+    env:
+      USER_ID: e2e-guild-member
+      CLEAR_STATE: "true"
+- runFlow:
+    file: ../shared/navigate.yaml
+    env:
+      TAB: "Guild"
+- tapOn:
+    id: "LeaveGuildButton"
+- runFlow:
+    file: ../shared/alert.yaml
+    env:
+      BUTTON: "Leave"
+- assertVisible:
+    id: "GuildSearchInput"

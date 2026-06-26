@@ -101,6 +101,7 @@ function CategoryFilter({
             <TouchableOpacity
               key={cat.key}
               onPress={() => onChange(cat.key)}
+              testID={`ShopFilter${cat.label}`}
               className={cn("rounded-full px-4 py-2", {
                 "bg-primary": active === cat.key,
                 "bg-surface-card dark:bg-surface-dark-elevated": active !== cat.key,
@@ -136,7 +137,7 @@ function ShopItemCard({
   const canAfford = userGold >= item.price
 
   return (
-    <View className="rounded-xl bg-surface-card p-4 dark:bg-surface-dark-elevated">
+    <View testID={`ShopItem:${item.id}`} className="rounded-xl bg-surface-card p-4 dark:bg-surface-dark-elevated">
       <View className="flex-row items-start gap-3">
         <View className="items-center justify-center rounded-full bg-canvas p-3 dark:bg-surface-dark">
           {getItemIcon(item.type, 20)}
@@ -168,6 +169,7 @@ function ShopItemCard({
               className="px-4 py-2"
               disabled={!canAfford || isBuying}
               onPress={() => onBuy(item)}
+              testID={`BuyButton:${item.id}`}
             />
           </View>
         </View>

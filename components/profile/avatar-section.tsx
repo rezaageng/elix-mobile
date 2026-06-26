@@ -17,7 +17,10 @@ export function AvatarSection({ user, totalQuests }: AvatarSectionProps) {
     <View className="gap-4 px-4 pb-4">
       {/* Name */}
       <View className="gap-1">
-        <Text className="font-display text-display-sm text-ink dark:text-on-dark">
+        <Text
+          testID="UserProfileName"
+          className="font-display text-display-sm text-ink dark:text-on-dark"
+        >
           {user.name}
         </Text>
         {user.displayUsername ? (

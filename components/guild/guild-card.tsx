@@ -8,9 +8,10 @@ import { useThemeColor } from "@/lib/use-theme-color"
 interface GuildCardProps {
   guild: Guild
   onPress: (guild: Guild) => void
+  testID?: string
 }
 
-export default function GuildCard({ guild, onPress }: GuildCardProps) {
+export default function GuildCard({ guild, onPress, testID }: GuildCardProps) {
   const mutedSoftColor = useThemeColor("muted-soft")
 
   return (
@@ -18,6 +19,7 @@ export default function GuildCard({ guild, onPress }: GuildCardProps) {
       activeOpacity={0.8}
       className="flex-row items-start gap-sm rounded-lg bg-surface-card p-md dark:bg-surface-dark-elevated"
       onPress={() => onPress(guild)}
+      testID={testID}
     >
       {guild.imageUrl ? (
         <Image

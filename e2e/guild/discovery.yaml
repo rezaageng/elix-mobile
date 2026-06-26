@@ -1,0 +1,20 @@
+appId: com.elix.mobile
+---
+# Guild Discovery: seed a user without a guild and verify the discovery screen
+- runFlow:
+    file: ../shared/seed.yaml
+    env:
+      SEED_KEY: user-no-guild
+- runFlow:
+    file: ../shared/auth.yaml
+    env:
+      USER_ID: e2e-user-no-guild
+      CLEAR_STATE: "true"
+- runFlow:
+    file: ../shared/navigate.yaml
+    env:
+      TAB: "Guild"
+- assertVisible:
+    id: "GuildSearchInput"
+- assertVisible:
+    id: "CreateGuildButton"

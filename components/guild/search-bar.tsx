@@ -9,12 +9,14 @@ interface SearchBarProps {
   value: string
   onChangeText: (text: string) => void
   placeholder?: string
+  testID?: string
 }
 
 export default function SearchBar({
   value,
   onChangeText,
   placeholder = "Search guilds...",
+  testID,
 }: SearchBarProps) {
   const [focused, setFocused] = useState(false)
   const inputReference = useRef<TextInput>(null)
@@ -39,6 +41,7 @@ export default function SearchBar({
         onBlur={() => setFocused(false)}
         returnKeyType="search"
         accessibilityLabel="Search guilds"
+        testID={testID}
       />
       {value.length > 0 && (
         <TouchableOpacity

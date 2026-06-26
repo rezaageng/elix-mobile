@@ -1,0 +1,5 @@
+appId: com.elix.mobile
+---
+# Tap a native tab by its visible label (NativeTabs.Trigger does not expose testID).
+- tapOn:
+    text: "${TAB}"

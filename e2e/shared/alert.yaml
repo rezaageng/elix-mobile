@@ -1,0 +1,4 @@
+appId: com.elix.mobile
+---
+- tapOn:
+    text: "${BUTTON}"

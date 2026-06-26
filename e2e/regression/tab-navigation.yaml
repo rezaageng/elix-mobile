@@ -1,0 +1,44 @@
+appId: com.elix.mobile
+---
+# Tier 7: Regression — tab navigation round-trip
+- runFlow:
+    file: ../shared/seed.yaml
+    env:
+      SEED_KEY: user-with-class
+- runFlow:
+    file: ../shared/seed.yaml
+    env:
+      SEED_KEY: guild-full
+- runFlow:
+    file: ../shared/seed.yaml
+    env:
+      SEED_KEY: items
+- runFlow:
+    file: ../shared/auth.yaml
+    env:
+      USER_ID: e2e-user-with-class
+      CLEAR_STATE: "true"
+- assertVisible: "Quest"
+- runFlow:
+    file: ../shared/navigate.yaml
+    env:
+      TAB: "Shop"
+- assertVisible:
+    id: "ShopFilterAll"
+- runFlow:
+    file: ../shared/navigate.yaml
+    env:
+      TAB: "Inventory"
+- assertVisible:
+    id: "InventoryEmptyState"
+- runFlow:
+    file: ../shared/navigate.yaml
+    env:
+      TAB: "Guild"
+- assertVisible: "Guild"
+- runFlow:
+    file: ../shared/navigate.yaml
+    env:
+      TAB: "Profile"
+- assertVisible:
+    id: "ProfileAvatar"

@@ -1,0 +1,20 @@
+appId: com.elix.mobile
+---
+# Guild Leaderboard: seed a guild member, navigate to leaderboard
+- runFlow:
+    file: ../shared/seed.yaml
+    env:
+      SEED_KEY: user-guild-member
+- runFlow:
+    file: ../shared/auth.yaml
+    env:
+      USER_ID: e2e-guild-member
+      CLEAR_STATE: "true"
+- runFlow:
+    file: ../shared/navigate.yaml
+    env:
+      TAB: "Guild"
+- tapOn:
+    id: "GuildLeaderboardButton"
+- assertVisible:
+    id: "LeaderboardRow:"

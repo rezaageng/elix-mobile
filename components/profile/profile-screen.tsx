@@ -458,6 +458,7 @@ export function ProfileScreen({ userId }: ProfileScreenProps) {
                 label={tab.label}
                 isActive={activeTab === tab.key}
                 onPress={() => setActiveTab(tab.key)}
+                testID={`ProfileTab${tab.key.charAt(0).toUpperCase() + tab.key.slice(1)}`}
               />
             ))}
           </View>
@@ -535,6 +536,7 @@ export function ProfileScreen({ userId }: ProfileScreenProps) {
           <View className="flex-row items-center gap-2 px-4 py-3">
             <TouchableOpacity
               onPress={handleEditProfile}
+              testID="EditProfileButton"
               className="rounded-full bg-black/20 p-2"
               activeOpacity={0.7}
             >
@@ -543,6 +545,7 @@ export function ProfileScreen({ userId }: ProfileScreenProps) {
 
             <TouchableOpacity
               onPress={() => settingsSheetReference.current?.present()}
+              testID="SettingsButton"
               className="rounded-full bg-black/20 p-2"
               activeOpacity={0.7}
             >
@@ -684,14 +687,17 @@ function TabButton({
   label,
   isActive,
   onPress,
+  testID,
 }: {
   label: string
   isActive: boolean
   onPress: () => void
+  testID?: string
 }) {
   return (
     <TouchableOpacity
       onPress={onPress}
+      testID={testID}
       className={`flex-1 items-center rounded-full px-4 py-2 ${
         isActive
           ? "bg-primary"

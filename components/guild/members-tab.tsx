@@ -169,6 +169,7 @@ export default function MembersTab({
                       })
               }
               onActionSheet={handleAction}
+              testID={`MemberRow:${member.id}`}
             />
           ))}
         </View>

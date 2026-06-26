@@ -1,0 +1,32 @@
+appId: com.elix.mobile
+---
+# Guild Create: seed a user without a guild, fill the create form and submit
+- runFlow:
+    file: ../shared/seed.yaml
+    env:
+      SEED_KEY: user-no-guild
+- runFlow:
+    file: ../shared/auth.yaml
+    env:
+      USER_ID: e2e-user-no-guild
+      CLEAR_STATE: "true"
+- runFlow:
+    file: ../shared/navigate.yaml
+    env:
+      TAB: "Guild"
+- tapOn:
+    id: "CreateGuildButton"
+- runFlow:
+    file: ../shared/form.yaml
+    env:
+      FIELD_ID: "GuildNameInput"
+      VALUE: "E2E Guild"
+- runFlow:
+    file: ../shared/form.yaml
+    env:
+      FIELD_ID: "GuildDescriptionInput"
+      VALUE: "Desc"
+- tapOn:
+    id: "CreateGuildSubmit"
+- assertVisible:
+    id: "GuildChatButton"

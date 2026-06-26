@@ -80,6 +80,7 @@ export default function RolesScreen() {
       onPress={() => openRoleSheet(role)}
       activeOpacity={0.8}
       className="mb-md w-[48%] rounded-lg bg-surface-card p-md dark:bg-surface-dark-elevated"
+      testID={`ClassCard:${role.name}`}
     >
       <View className="items-center justify-center">
         <Text
@@ -97,6 +98,7 @@ export default function RolesScreen() {
       onPress={() => router.push("/roles/create")}
       activeOpacity={0.8}
       className="mb-md w-[48%] justify-center rounded-lg border border-dashed border-hairline bg-canvas p-md dark:border-hairline dark:bg-surface-dark"
+      testID="CreateCustomRole"
     >
       <View className="flex-row items-center justify-center gap-2">
         <Plus size={20} color={mutedColor} strokeWidth={1.5} />
@@ -194,6 +196,7 @@ export default function RolesScreen() {
             className="mt-lg"
             onPress={() => selectedRole && handleSelect(selectedRole.id)}
             disabled={chooseClassMutation.isPending}
+            testID="SelectClass"
           >
             {selectedRole &&
             selectingId === selectedRole.id &&

@@ -1,0 +1,24 @@
+appId: com.elix.mobile
+---
+# Tier 6: Profile — edit display name
+- runFlow:
+    file: ../shared/seed.yaml
+    env:
+      SEED_KEY: user-with-class
+- runFlow:
+    file: ../shared/auth.yaml
+    env:
+      USER_ID: e2e-user-with-class
+      CLEAR_STATE: "true"
+- runFlow:
+    file: ../shared/navigate.yaml
+    env:
+      TAB: "Profile"
+- tapOn:
+    id: "EditProfileButton"
+- tapOn:
+    id: "ProfileNameInput"
+- inputText: "E2E New Name"
+- tapOn:
+    id: "SaveProfileButton"
+- assertVisible: "E2E New Name"

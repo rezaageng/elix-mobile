@@ -441,6 +441,7 @@ export default function CreateRecurringQuestsScreen() {
                 placeholderTextColor="#8e8b82"
                 autoCapitalize="words"
                 textAlignVertical="center"
+                testID="QuestTitleInput"
               />
               {field.state.meta.errors.length > 0 && (
                 <Text className="font-body text-body-sm text-error">
@@ -475,6 +476,7 @@ export default function CreateRecurringQuestsScreen() {
                 placeholderTextColor="#8e8b82"
                 multiline
                 textAlignVertical="top"
+                testID="QuestDescriptionInput"
               />
               {field.state.meta.errors.length > 0 && (
                 <Text className="font-body text-body-sm text-error">
@@ -732,7 +734,7 @@ export default function CreateRecurringQuestsScreen() {
 
           <form.Subscribe selector={(state) => state.isSubmitting}>
             {() => (
-              <Button onPress={handleSubmit} disabled={isPending}>
+              <Button onPress={handleSubmit} disabled={isPending} testID="CreateQuest">
                 {isPending ? (
                   <ActivityIndicator size="small" color="#ffffff" />
                 ) : (

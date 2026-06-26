@@ -18,6 +18,16 @@
         "buildType": "apk"
       }
     },
+    "e2e": {
+      "node": "24.18.0",
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://elix-dev.rezaa.me",
+        "EXPO_PUBLIC_E2E_ENABLED": "true"
+      },
+      "android": {
+        "buildType": "apk"
+      }
+    },
     "development": {
       "autoIncrement": true,
       "developmentClient": true,

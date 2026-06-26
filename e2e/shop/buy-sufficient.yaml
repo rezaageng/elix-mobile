@@ -1,0 +1,36 @@
+appId: com.elix.mobile
+---
+# Purchase an item with sufficient gold, verify it appears in inventory
+- runFlow:
+    file: ../shared/seed.yaml
+    env:
+      SEED_KEY: shop-items
+- runFlow:
+    file: ../shared/seed.yaml
+    env:
+      SEED_KEY: user-with-class
+- runFlow:
+    file: ../shared/auth.yaml
+    env:
+      USER_ID: e2e-user-with-class
+      CLEAR_STATE: "true"
+- runFlow:
+    file: ../shared/navigate.yaml
+    env:
+      TAB: Shop
+- assertVisible:
+    id: "ShopItem:"
+# Tap first buy button
+- tapOn:
+    id: "BuyButton:"
+# Dismiss purchase success alert (native Alert.alert with "OK" button)
+- tapOn:
+    text: "OK"
+# Navigate to Inventory tab
+- runFlow:
+    file: ../shared/navigate.yaml
+    env:
+      TAB: Inventory
+# Assert the purchased item appears in inventory
+- assertVisible:
+    id: "InventoryItem:"

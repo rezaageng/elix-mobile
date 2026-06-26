@@ -1,0 +1,10 @@
+appId: com.elix.mobile
+---
+- runScript: |
+    await http.post({
+      endpoint: `${EXPO_PUBLIC_API_URL}/api/test/seed`,
+      body: {
+        key: SEED_KEY,
+        params: SEED_PARAMS ? JSON.parse(SEED_PARAMS) : {},
+      },
+    });

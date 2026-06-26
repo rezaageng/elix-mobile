@@ -47,7 +47,11 @@ export default function LeaderboardTab({ guildId }: LeaderboardTabProps) {
         keyExtractor={(item) => item.id}
         renderItem={({ item, index }) => (
           <View className="pb-sm">
-            <LeaderboardRow entry={item} rank={index + 1} />
+            <LeaderboardRow
+              entry={item}
+              rank={index + 1}
+              testID={`LeaderboardRow:${index + 1}`}
+            />
           </View>
         )}
         showsVerticalScrollIndicator={false}

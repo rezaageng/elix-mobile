@@ -119,6 +119,7 @@ export const CreateGuildSheet = forwardRef<
             placeholderTextColor="#8e8b82"
             autoCapitalize="words"
             accessibilityLabel="Guild name"
+            testID="GuildNameInput"
           />
         </View>
 
@@ -137,6 +138,7 @@ export const CreateGuildSheet = forwardRef<
             textAlignVertical="top"
             style={{ minHeight: 80 }}
             accessibilityLabel="Guild description"
+            testID="GuildDescriptionInput"
           />
         </View>
 
@@ -144,6 +146,7 @@ export const CreateGuildSheet = forwardRef<
           onPress={handleSubmit}
           disabled={!isValid || createGuild.isPending}
           className="mt-lg items-center rounded-full bg-primary py-3 active:bg-primary-active"
+          testID="CreateGuildSubmit"
         >
           {createGuild.isPending ? (
             <ActivityIndicator size="small" color="#ffffff" />

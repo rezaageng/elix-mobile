@@ -1,0 +1,20 @@
+appId: com.elix.mobile
+---
+# Guild Home (Owner): seed a guild owner, verify owner-only controls
+- runFlow:
+    file: ../shared/seed.yaml
+    env:
+      SEED_KEY: user-guild-owner
+- runFlow:
+    file: ../shared/auth.yaml
+    env:
+      USER_ID: e2e-guild-owner
+      CLEAR_STATE: "true"
+- runFlow:
+    file: ../shared/navigate.yaml
+    env:
+      TAB: "Guild"
+- assertVisible:
+    id: "EditGuildButton"
+- assertVisible:
+    id: "DeleteGuildButton"

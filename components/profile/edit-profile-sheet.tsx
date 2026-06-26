@@ -206,6 +206,7 @@ export const EditProfileSheet = forwardRef<
                   Name
                 </Text>
                 <BottomSheetTextInput
+                  testID="ProfileNameInput"
                   className="text-md mt-2 rounded-md border border-hairline bg-canvas px-3 py-2 font-body text-ink dark:border-hairline dark:bg-surface-dark dark:text-on-dark"
                   value={field.state.value}
                   onChangeText={field.handleChange}
@@ -267,6 +268,7 @@ export const EditProfileSheet = forwardRef<
             {(isSubmitting) => (
               <TouchableOpacity
                 onPress={form.handleSubmit}
+                testID="SaveProfileButton"
                 disabled={isLoading || isSubmitting}
                 className="mt-2 items-center rounded-full bg-primary py-3"
               >

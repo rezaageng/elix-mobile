@@ -75,7 +75,7 @@ export default function QuestDetailScreen() {
     >
       <Stack.Screen options={headerOptions} />
 
-      <ScrollView className="flex-1" contentContainerStyle={{ flexGrow: 1 }}>
+      <ScrollView testID="QuestDetailScreen" className="flex-1" contentContainerStyle={{ flexGrow: 1 }}>
         <View className="mt-4 gap-4 pb-6">
           <View className="rounded-xl bg-surface-card p-4 dark:bg-surface-dark-elevated">
             {effective?.description && (
@@ -163,6 +163,7 @@ export default function QuestDetailScreen() {
           {canManage && (
             <View className="flex-row gap-3">
               <Button
+                testID="QuestEditButton"
                 variant="secondary"
                 className="flex-1"
                 onPress={() =>
@@ -182,6 +183,7 @@ export default function QuestDetailScreen() {
                 </Text>
               </Button>
               <Button
+                testID="QuestDeleteButton"
                 variant="destructive"
                 className="flex-1"
                 onPress={handleDelete}
@@ -197,6 +199,7 @@ export default function QuestDetailScreen() {
 
           {!completed && (
             <Button
+              testID="QuestSubmitButton"
               disabled={status === "not_started"}
               onPress={() => {
                 router.push({

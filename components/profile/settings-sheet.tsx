@@ -181,6 +181,7 @@ export interface SettingsSheetReference {
 
             <TouchableOpacity
               onPress={handleLogout}
+              testID="LogoutButton"
               className="flex-row items-center rounded-lg bg-surface-card p-4 dark:bg-surface-dark"
             >
               <Text className="flex-1 font-body-medium text-body-sm text-error">

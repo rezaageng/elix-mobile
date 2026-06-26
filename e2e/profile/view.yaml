@@ -1,0 +1,22 @@
+appId: com.elix.mobile
+---
+# Tier 6: Profile — view own profile
+- runFlow:
+    file: ../shared/seed.yaml
+    env:
+      SEED_KEY: user-with-class
+- runFlow:
+    file: ../shared/auth.yaml
+    env:
+      USER_ID: e2e-user-with-class
+      CLEAR_STATE: "true"
+- runFlow:
+    file: ../shared/navigate.yaml
+    env:
+      TAB: "Profile"
+- assertVisible:
+    id: "ProfileAvatar"
+- assertVisible:
+    id: "EditProfileButton"
+- assertVisible:
+    id: "SettingsButton"

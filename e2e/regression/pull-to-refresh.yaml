@@ -1,0 +1,17 @@
+appId: com.elix.mobile
+---
+# Tier 7: Regression — pull-to-refresh on quest list
+- runFlow:
+    file: ../shared/seed.yaml
+    env:
+      SEED_KEY: quests-full
+- runFlow:
+    file: ../shared/auth.yaml
+    env:
+      USER_ID: e2e-user-with-class
+      CLEAR_STATE: "true"
+- assertVisible: "Quest"
+- swipe:
+    direction: DOWN
+- assertVisible:
+    id: "QuestLoadingIndicator"

@@ -1,0 +1,23 @@
+appId: com.elix.mobile
+---
+# Tier 2: Choose a class from onboarding templates
+# Prerequisites: backend /api/test/seed with key "onboarding-templates" creates
+# template classes (e.g. "Warrior", "Mage") and a user e2e-user-no-class.
+# If template class names differ, replace "Warrior" in ClassCard:Warrior below.
+
+- runFlow:
+    file: ../shared/seed.yaml
+    env:
+      SEED_KEY: onboarding-templates
+- runFlow:
+    file: ../shared/auth.yaml
+    env:
+      USER_ID: e2e-user-no-class
+      CLEAR_STATE: "true"
+- assertVisible: "Choose Your Role"
+- tapOn:
+    id: "ClassCard:Warrior"
+- assertVisible: "Warrior"
+- tapOn:
+    id: "SelectClass"
+- assertVisible: "Daily & Weekly Quests"

@@ -1,0 +1,21 @@
+appId: com.elix.mobile
+---
+- runFlow:
+    file: ../shared/seed.yaml
+    env:
+      SEED_KEY: quests-full
+- runFlow:
+    file: ../shared/auth.yaml
+    env:
+      USER_ID: e2e-user-with-class
+      CLEAR_STATE: "true"
+- longPressOn:
+    id: "QuestCard:"
+- tapOn:
+    text: "Delete Quest"
+- runFlow:
+    file: ../shared/alert.yaml
+    env:
+      BUTTON: "Delete"
+- assertNotVisible:
+    id: "QuestCard:"

@@ -158,6 +158,7 @@ export default function CreateRoleScreen() {
                   placeholderTextColor="#8e8b82"
                   autoCapitalize="words"
                   textAlignVertical="center"
+                  testID="RoleNameInput"
                 />
                 {field.state.meta.errors.length > 0 && (
                   <Text className="font-body text-body-sm text-error">
@@ -196,6 +197,7 @@ export default function CreateRoleScreen() {
                   placeholderClassName="text-md"
                   multiline
                   textAlignVertical="top"
+                  testID="RoleDescriptionInput"
                 />
                 {field.state.meta.errors.length > 0 && (
                   <Text className="font-body text-body-sm text-error">
@@ -218,6 +220,7 @@ export default function CreateRoleScreen() {
                 onPress={form.handleSubmit}
                 disabled={isPending}
                 className="mt-lg"
+                testID="CreateRole"
               >
                 {isPending ? (
                   <ActivityIndicator size="small" color="#ffffff" />

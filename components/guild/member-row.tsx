@@ -12,6 +12,7 @@ interface MemberRowProps {
   isCurrentUser: boolean
   onPress?: () => void
   onActionSheet: (member: GuildMember) => void
+  testID?: string
 }
 
 function RoleBadge({ role }: { role: string }) {
@@ -53,6 +54,7 @@ export default function MemberRow({
   isCurrentUser,
   onPress,
   onActionSheet,
+  testID,
 }: MemberRowProps) {
   const mutedColor = useThemeColor("muted")
 
@@ -61,6 +63,7 @@ export default function MemberRow({
       onPress={onPress}
       activeOpacity={0.7}
       className="flex-row items-center gap-sm rounded-lg bg-surface-card p-md dark:bg-surface-dark-elevated"
+      testID={testID}
     >
       {member.image ? (
         <Image
@@ -90,6 +93,7 @@ export default function MemberRow({
           className="rounded-full p-1.5 active:bg-surface-soft"
           accessibilityLabel="Member actions"
           hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+          testID="MemberActionsButton"
         >
           <MoreVertical size={18} color={mutedColor} />
         </TouchableOpacity>

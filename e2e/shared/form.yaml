@@ -1,0 +1,5 @@
+appId: com.elix.mobile
+---
+- tapOn:
+    id: "${FIELD_ID}"
+- inputText: "${VALUE}"

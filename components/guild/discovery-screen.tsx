@@ -80,7 +80,7 @@ export default function DiscoveryScreen({ onGuildJoined }: DiscoveryScreenProps)
         }
         keyboardShouldPersistTaps="handled"
       >
-        <SearchBar value={searchQuery} onChangeText={handleSearchChange} />
+        <SearchBar value={searchQuery} onChangeText={handleSearchChange} testID="GuildSearchInput" />
 
         {searching && (
           <View className="items-center justify-center py-12">
@@ -115,7 +115,12 @@ export default function DiscoveryScreen({ onGuildJoined }: DiscoveryScreenProps)
         {!searching && guilds && guilds.length > 0 && (
           <View className="gap-sm">
             {guilds.map((guild) => (
-              <GuildCard key={guild.id} guild={guild} onPress={handleGuildPress} />
+              <GuildCard
+                key={guild.id}
+                guild={guild}
+                onPress={handleGuildPress}
+                testID={`GuildCard:${guild.id}`}
+              />
             ))}
           </View>
         )}
@@ -125,6 +130,7 @@ export default function DiscoveryScreen({ onGuildJoined }: DiscoveryScreenProps)
             variant="primary"
             title="Create a Guild"
             onPress={handleCreateGuild}
+            testID="CreateGuildButton"
           >
             <Plus size={18} color="#ffffff" />
             <Text className="font-body-medium text-button text-primary-foreground">
