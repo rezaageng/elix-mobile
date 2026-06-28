@@ -1,22 +1,18 @@
 appId: com.elix.mobile
 ---
-# Manual auth + seed + restart helper.
-# 1. Launches the app fresh and waits for you to sign in via Google/Twitter.
-# 2. Calls the backend seed endpoint to mutate your signed-in user.
-# 3. Restarts the app (without clearing state) so the new state is picked up.
-# The calling test must then wait for its expected screen (Quest tab or Roles).
-- launchApp:
-    clearState: true
-- extendedWaitUntil:
-    visible: "Welcome to Elix"
-    timeout: 10000
-- extendedWaitUntil:
-    notVisible: "Welcome to Elix"
-    timeout: 600000
+# Manual auth helper.
+# 1. Seeds the configured E2E OAuth account on the backend before sign-in.
+# 2. Launches the app fresh and waits for the login screen.
+# 3. The test user then has 10 minutes to sign in via Google/Twitter.
+# The calling test must wait for its expected post-auth screen (Quest tab or Roles).
 - runScript:
     file: ../scripts/seed.js
     env:
       SEED_KEY: "${SEED_KEY}"
       API_URL: "${EXPO_PUBLIC_API_URL}"
-- stopApp
-- launchApp
+      E2E_TEST_EMAIL: "${E2E_TEST_EMAIL}"
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible: "Welcome to Elix"
+    timeout: 10000

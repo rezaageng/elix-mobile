@@ -87,22 +87,31 @@ maestro test e2e/guild/
 
 Authenticated tests require a test backend with the test seed endpoint enabled.
 
-- `POST /api/test/seed` — accepts `{ key: string, params?: object }` and idempotently creates/resets the test data described below.
+- `POST /api/test/seed` — accepts `{ key: string, email: string }` and idempotently seeds the user with that email into the scenario described below. If the user does not exist, it is created first.
 
 ## Authentication
 
-All authenticated tests use **manual OAuth sign-in**.
+All authenticated tests use **manual OAuth sign-in** with a single dedicated test account.
 
 `shared/auth.yaml` does the following:
 
-1. Launches the app with `clearState: true` (so any previous session is wiped).
-2. Waits for the login screen.
-3. Waits up to 10 minutes for you to sign in via Google or Twitter.
-4. Calls `/api/test/seed` to mutate your signed-in user to the scenario.
-5. Restarts the app (`stopApp` + `launchApp`) so the new state is picked up.
-6. The calling test then waits for the expected screen (Quest tab or Roles screen).
+1. Calls `/api/test/seed` with the configured test email and scenario key to seed the backend user **before** sign-in.
+2. Launches the app with `clearState: true` (so any previous session is wiped).
+3. Waits for the login screen.
+4. Waits up to 10 minutes for you to sign in via Google or Twitter with the configured test email.
+5. The calling test then waits for the expected screen (Quest tab or Roles screen).
 
 > **Already signed in?** `clearState: true` clears the session, so you'll still land on the login screen and sign in again. This keeps each test isolated.
+
+### Configuring the test account
+
+Set the test account email in your environment or `.env`:
+
+```bash
+export E2E_TEST_EMAIL=akitanime@gmail.com
+```
+
+If unset, it defaults to `akitanime@gmail.com`.
 
 ### EAS build profiles
 
