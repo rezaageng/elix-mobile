@@ -1,27 +1,22 @@
 appId: com.elix.mobile
 ---
-# Dev-only email/password sign-in. The email/password provider is enabled on
-# the backend only in development. Social OAuth is not automatable in Maestro,
-# so E2E tests use this form to establish a real Better Auth session.
-- runScript:
-    file: ../scripts/sign-in.js
-    env:
-      USER_ID: "${USER_ID}"
-      EMAIL: "${EMAIL}"
-      PASSWORD: "${PASSWORD}"
+# Manual auth + seed + restart helper.
+# 1. Launches the app fresh and waits for you to sign in via Google/Twitter.
+# 2. Calls the backend seed endpoint to mutate your signed-in user.
+# 3. Restarts the app (without clearing state) so the new state is picked up.
+# The calling test must then wait for its expected screen (Quest tab or Roles).
 - launchApp:
     clearState: true
 - extendedWaitUntil:
     visible: "Welcome to Elix"
     timeout: 10000
-- tapOn:
-    id: "DevEmailInput"
-- inputText: "${output.email}"
-- tapOn:
-    id: "DevPasswordInput"
-- inputText: "${output.password}"
-- tapOn:
-    id: "DevSignInButton"
 - extendedWaitUntil:
     notVisible: "Welcome to Elix"
-    timeout: 15000
+    timeout: 600000
+- runScript:
+    file: ../scripts/seed.js
+    env:
+      SEED_KEY: "${SEED_KEY}"
+      API_URL: "${EXPO_PUBLIC_API_URL}"
+- stopApp
+- launchApp

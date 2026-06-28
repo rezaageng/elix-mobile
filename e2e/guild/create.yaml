@@ -2,13 +2,12 @@ appId: com.elix.mobile
 ---
 # Guild Create: seed a user without a guild, fill the create form and submit
 - runFlow:
-    file: ../shared/seed.yaml
-    env:
-      SEED_KEY: user-no-guild
-- runFlow:
     file: ../shared/auth.yaml
     env:
-      USER_ID: e2e-user-no-guild
+      SEED_KEY: no-guild
+- extendedWaitUntil:
+    visible: "Quest"
+    timeout: 15000
 - runFlow:
     file: ../shared/navigate.yaml
     env:

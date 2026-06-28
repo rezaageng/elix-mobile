@@ -2,17 +2,12 @@ appId: com.elix.mobile
 ---
 # Attempt purchase with insufficient gold — button disabled, gold unchanged
 - runFlow:
-    file: ../shared/seed.yaml
-    env:
-      SEED_KEY: shop-items
-- runFlow:
-    file: ../shared/seed.yaml
-    env:
-      SEED_KEY: user-low-gold
-- runFlow:
     file: ../shared/auth.yaml
     env:
-      USER_ID: e2e-user-low-gold
+      SEED_KEY: low-gold
+- extendedWaitUntil:
+    visible: "Quest"
+    timeout: 15000
 - runFlow:
     file: ../shared/navigate.yaml
     env:

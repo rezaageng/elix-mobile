@@ -2,14 +2,12 @@ appId: com.elix.mobile
 ---
 # Inventory shows items and use buttons when user has items
 - runFlow:
-    file: ../shared/seed.yaml
-    env:
-      SEED_KEY: user-with-class
-      SEED_PARAMS: '{"inventory": ["restore_streak", "deadline_extension"]}'
-- runFlow:
     file: ../shared/auth.yaml
     env:
-      USER_ID: e2e-user-with-class
+      SEED_KEY: with-class
+- extendedWaitUntil:
+    visible: "Quest"
+    timeout: 15000
 - runFlow:
     file: ../shared/navigate.yaml
     env:

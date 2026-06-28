@@ -85,20 +85,32 @@ maestro test e2e/guild/
 
 ## Backend Prerequisites
 
-Authenticated tests require a test backend running in development mode with email/password authentication enabled.
+Authenticated tests require a test backend with the test seed endpoint enabled.
 
-- `POST /api/auth/sign-in/email` — Better Auth's built-in email/password sign-in. Used by `shared/auth.yaml` to establish a real session.
 - `POST /api/test/seed` — accepts `{ key: string, params?: object }` and idempotently creates/resets the test data described below.
 
-The login screen shows an email/password form (enabled by `__DEV__` or `EXPO_PUBLIC_E2E_ENABLED=true`) with testIDs `DevEmailInput`, `DevPasswordInput`, and `DevSignInButton`. Maestro fills these in via `shared/auth.yaml`.
+## Authentication
+
+All authenticated tests use **manual OAuth sign-in**.
+
+`shared/auth.yaml` does the following:
+
+1. Launches the app with `clearState: true` (so any previous session is wiped).
+2. Waits for the login screen.
+3. Waits up to 10 minutes for you to sign in via Google or Twitter.
+4. Calls `/api/test/seed` to mutate your signed-in user to the scenario.
+5. Restarts the app (`stopApp` + `launchApp`) so the new state is picked up.
+6. The calling test then waits for the expected screen (Quest tab or Roles screen).
+
+> **Already signed in?** `clearState: true` clears the session, so you'll still land on the login screen and sign in again. This keeps each test isolated.
 
 ### EAS build profiles
 
-| Profile | Use | Dev form visible? |
-|---|---|---|
-| `development` | Local dev with Expo dev client | Yes (`__DEV__`) |
-| `preview` | User preview / internal QA | No |
-| `e2e` | Maestro E2E test builds | Yes (`EXPO_PUBLIC_E2E_ENABLED=true`) |
+| Profile | Use |
+|---|---|
+| `development` | Local dev with Expo dev client |
+| `preview` | User preview / internal QA |
+| `e2e` | Maestro E2E test builds |
 
 Build the E2E APK with:
 
@@ -106,35 +118,20 @@ Build the E2E APK with:
 eas build --platform android --profile e2e
 ```
 
-### Test users
-
-`shared/auth.yaml` maps `USER_ID` to a test email and signs in with the default password `password123`:
-
-| `USER_ID` | Email |
-|---|---|
-| `e2e-user-no-class` | `e2e-no-class@elix.app` |
-| `e2e-user-with-class` | `e2e-with-class@elix.app` |
-| `e2e-user-low-gold` | `e2e-low-gold@elix.app` |
-| `e2e-user-no-guild` | `e2e-no-guild@elix.app` |
-| `e2e-guild-member` | `e2e-guild-member@elix.app` |
-| `e2e-guild-owner` | `e2e-guild-owner@elix.app` |
-
-You can also pass `EMAIL` and `PASSWORD` directly to `auth.yaml`.
-
 ### Required seed keys
 
-| Key | Data |
+The seed endpoint mutates the currently signed-in user to match the scenario. Supporting users (guild member, profile target) are created automatically.
+
+| Key | Caller state |
 |---|---|
-| `onboarding-templates` | 3+ class templates |
-| `user-no-class` | User with session, no active class |
-| `user-with-class` | User with session, active class, quests (3 types), gold (1000), 2 inventory items |
-| `user-low-gold` | User with session, active class, gold (10) |
-| `user-no-guild` | User with session, class, no guild |
-| `user-guild-member` | User in a guild as regular member |
-| `user-guild-owner` | User who owns a guild |
-| `guild-full` | Guild with owner, 3 members, 2 officers, 5 chat messages |
-| `quests-full` | Quests of each type (main, side, daily, weekly, event) for the user |
-| `shop-items` | 4+ items: 2 consumable (incl. restore streak, deadline extension), 2 boosts |
+| `no-class` | No active class |
+| `with-class` | Active class, 1000 gold, quest progress, inventory items |
+| `low-gold` | Active class, 10 gold |
+| `no-guild` | Active class, not in E2E Guild |
+| `guild-member` | Active class, member of E2E Guild |
+| `guild-owner` | Active class, owner of E2E Guild |
+| `guild-full` | Active class, owner of E2E Guild, full quest progress |
+| `quests-full` | Active class, quest progress for all available quests |
 
 ## Shared Helpers
 
@@ -142,7 +139,7 @@ Common flows live in `e2e/shared/` and are invoked via Maestro's `runFlow`:
 
 | File | Purpose |
 |---|---|
-| `shared/auth.yaml` | Dev-login + launch authenticated app |
+| `shared/auth.yaml` | Launch app and wait for manual OAuth login (10 min timeout) |
 | `shared/navigate.yaml` | Tap a native tab by visible label |
 | `shared/seed.yaml` | Call backend seed endpoint |
 | `shared/form.yaml` | Fill a field by testID |

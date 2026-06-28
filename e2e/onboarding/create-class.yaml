@@ -3,13 +3,12 @@ appId: com.elix.mobile
 # Tier 2: Create a custom class with full quest setup (main → side → recurring)
 
 - runFlow:
-    file: ../shared/seed.yaml
-    env:
-      SEED_KEY: user-no-class
-- runFlow:
     file: ../shared/auth.yaml
     env:
-      USER_ID: e2e-user-no-class
+      SEED_KEY: no-class
+- extendedWaitUntil:
+    visible: "Choose Your Role"
+    timeout: 15000
 - tapOn:
     id: "CreateCustomRole"
 - runFlow:

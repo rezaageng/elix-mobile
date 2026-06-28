@@ -6,13 +6,12 @@ appId: com.elix.mobile
 # If template class names differ, replace "Warrior" in ClassCard:Warrior below.
 
 - runFlow:
-    file: ../shared/seed.yaml
-    env:
-      SEED_KEY: onboarding-templates
-- runFlow:
     file: ../shared/auth.yaml
     env:
-      USER_ID: e2e-user-no-class
+      SEED_KEY: no-class
+- extendedWaitUntil:
+    visible: "Choose Your Role"
+    timeout: 15000
 - assertVisible: "Choose Your Role"
 - tapOn:
     id: "ClassCard:Warrior"

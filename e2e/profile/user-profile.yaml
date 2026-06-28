@@ -2,17 +2,12 @@ appId: com.elix.mobile
 ---
 # Tier 6: Profile — view another user's profile from guild
 - runFlow:
-    file: ../shared/seed.yaml
-    env:
-      SEED_KEY: guild-full
-- runFlow:
-    file: ../shared/seed.yaml
-    env:
-      SEED_KEY: user-guild-member
-- runFlow:
     file: ../shared/auth.yaml
     env:
-      USER_ID: e2e-guild-member
+      SEED_KEY: guild-member
+- extendedWaitUntil:
+    visible: "Quest"
+    timeout: 15000
 - runFlow:
     file: ../shared/navigate.yaml
     env:

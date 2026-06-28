@@ -2,14 +2,12 @@ appId: com.elix.mobile
 ---
 # Use a Deadline Extension item on a quest in progress
 - runFlow:
-    file: ../shared/seed.yaml
-    env:
-      SEED_KEY: user-with-class
-      SEED_PARAMS: '{"inventory": ["deadline_extension"], "quests": [{"name": "Quest 1", "status": "in_progress"}]}'
-- runFlow:
     file: ../shared/auth.yaml
     env:
-      USER_ID: e2e-user-with-class
+      SEED_KEY: with-class
+- extendedWaitUntil:
+    visible: "Quest"
+    timeout: 15000
 - runFlow:
     file: ../shared/navigate.yaml
     env:

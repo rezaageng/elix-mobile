@@ -1,13 +1,12 @@
 appId: com.elix.mobile
 ---
 - runFlow:
-    file: ../shared/seed.yaml
-    env:
-      SEED_KEY: quests-full
-- runFlow:
     file: ../shared/auth.yaml
     env:
-      USER_ID: e2e-user-with-class
+      SEED_KEY: quests-full
+- extendedWaitUntil:
+    visible: "Quest"
+    timeout: 15000
 - tapOn:
     id: "FilterMain"
 - assertVisible:
