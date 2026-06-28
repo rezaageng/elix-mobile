@@ -10,7 +10,7 @@ appId: com.elix.mobile
       EMAIL: "${EMAIL}"
       PASSWORD: "${PASSWORD}"
 - launchApp:
-    clearState: ${CLEAR_STATE:-false}
+    clearState: true
 - extendedWaitUntil:
     visible: "Welcome to Elix"
     timeout: 10000

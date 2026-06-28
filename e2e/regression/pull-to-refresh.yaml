@@ -9,7 +9,6 @@ appId: com.elix.mobile
     file: ../shared/auth.yaml
     env:
       USER_ID: e2e-user-with-class
-      CLEAR_STATE: "true"
 - assertVisible: "Quest"
 - swipe:
     direction: DOWN

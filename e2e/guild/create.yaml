@@ -9,7 +9,6 @@ appId: com.elix.mobile
     file: ../shared/auth.yaml
     env:
       USER_ID: e2e-user-no-guild
-      CLEAR_STATE: "true"
 - runFlow:
     file: ../shared/navigate.yaml
     env:
