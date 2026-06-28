@@ -103,15 +103,16 @@ All authenticated tests use **manual OAuth sign-in** with a single dedicated tes
 
 > **Already signed in?** `clearState: true` clears the session, so you'll still land on the login screen and sign in again. This keeps each test isolated.
 
-### Configuring the test account
+### Configuring the test account and backend URL
 
-Set the test account email in your environment or `.env`:
+Set the test account email and backend URL in your environment or `.env`:
 
 ```bash
 export E2E_TEST_EMAIL=akitanime@gmail.com
+export E2E_API_URL=http://localhost:3000
 ```
 
-If unset, it defaults to `akitanime@gmail.com`.
+If unset, `E2E_TEST_EMAIL` defaults to `akitanime@gmail.com` and `E2E_API_URL` falls back to `EXPO_PUBLIC_API_URL` then `http://localhost:3000`.
 
 ### EAS build profiles
 

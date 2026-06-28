@@ -9,6 +9,7 @@ appId: com.elix.mobile
     file: ../scripts/seed.js
     env:
       SEED_KEY: "${SEED_KEY}"
+      E2E_API_URL: "${E2E_API_URL}"
       API_URL: "${EXPO_PUBLIC_API_URL}"
       E2E_TEST_EMAIL: "${E2E_TEST_EMAIL}"
 - launchApp:
