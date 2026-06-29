@@ -17,6 +17,7 @@ import { useFonts } from "expo-font"
 import { Stack, useRouter, useSegments } from "expo-router"
 import * as SplashScreen from "expo-splash-screen"
 import { GestureHandlerRootView } from "react-native-gesture-handler"
+import { KeyboardProvider } from "react-native-keyboard-controller"
 
 import { getInitialRoute } from "@/lib/app-logic"
 import { useSession } from "@/lib/auth-client"
@@ -46,11 +47,16 @@ export default function RootLayout() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <QueryClientProvider client={queryClient}>
-        <BottomSheetModalProvider>
-          <RootNavigator />
-        </BottomSheetModalProvider>
-      </QueryClientProvider>
+      <KeyboardProvider
+        statusBarTranslucent
+        navigationBarTranslucent
+      >
+        <QueryClientProvider client={queryClient}>
+          <BottomSheetModalProvider>
+            <RootNavigator />
+          </BottomSheetModalProvider>
+        </QueryClientProvider>
+      </KeyboardProvider>
     </GestureHandlerRootView>
   )
 }

@@ -10,8 +10,8 @@
     "semantic_hash": "6b9302c1f72c315e90233c7539c48c9f"
   },
   "/Users/rezaa/developments/codes/elix-mobile/app.json": {
-    "mtime": 1782655958.3025277,
-    "ast_hash": "2fa0d3dfd0df2235f8bf9ab9a275cf6a",
+    "mtime": 1782670777.3160043,
+    "ast_hash": "0cf4c90f36fbc4e55ddbdaaf9f397602",
     "semantic_hash": ""
   },
   "/Users/rezaa/developments/codes/elix-mobile/app/(tabs)/_layout.tsx": {
@@ -35,8 +35,8 @@
     "semantic_hash": ""
   },
   "/Users/rezaa/developments/codes/elix-mobile/app/_layout.tsx": {
-    "mtime": 1782040550.39411,
-    "ast_hash": "e73c385b6e0efd16458c32cd5b652a61",
+    "mtime": 1782674069.4020338,
+    "ast_hash": "ec91b64ca3c7d35a8dd237e41be6f815",
     "semantic_hash": ""
   },
   "/Users/rezaa/developments/codes/elix-mobile/app/login/index.tsx": {
@@ -175,8 +175,8 @@
     "semantic_hash": "cddc0642ef0537e73ebd55b26d7f5ace"
   },
   "/Users/rezaa/developments/codes/elix-mobile/package.json": {
-    "mtime": 1782459575.3457534,
-    "ast_hash": "734516d9eb569eb09f970a0483536c62",
+    "mtime": 1782674104.4513903,
+    "ast_hash": "78f2cb26475dd7f65603900e6f307363",
     "semantic_hash": ""
   },
   "/Users/rezaa/developments/codes/elix-mobile/skills-lock.json": {
@@ -630,8 +630,8 @@
     "semantic_hash": ""
   },
   "/Users/rezaa/developments/codes/elix-mobile/app/guild/chat.tsx": {
-    "mtime": 1782659251.677885,
-    "ast_hash": "a387afd74799d660da9fa371a939138e",
+    "mtime": 1782675883.9768517,
+    "ast_hash": "9b6f04b030981fa337d035ecdac7a9a8",
     "semantic_hash": ""
   },
   "/Users/rezaa/developments/codes/elix-mobile/app/guild/leaderboard.tsx": {

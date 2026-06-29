@@ -1,8 +1,8 @@
-import { useHeaderHeight } from "@react-navigation/elements"
 import { useQueryClient } from "@tanstack/react-query"
 import { Stack, useLocalSearchParams } from "expo-router"
 import { useCallback, useState } from "react"
-import { KeyboardAvoidingView, Platform, View } from "react-native"
+import { View } from "react-native"
+import { KeyboardAvoidingView } from "react-native-keyboard-controller"
 import { SafeAreaView } from "react-native-safe-area-context"
 
 import ChatComposer, {
@@ -29,7 +29,6 @@ export default function GuildChatScreen() {
   const { guildId } = useLocalSearchParams<{ guildId: string }>()
   const { data: session } = useSession()
   const headerOptions = useHeaderOptions("Chat")
-  const headerHeight = useHeaderHeight()
   const queryClient = useQueryClient()
   const [pendingMessages, setPendingMessages] = useState<PendingMessage[]>([])
 
@@ -169,9 +168,9 @@ export default function GuildChatScreen() {
     >
       <Stack.Screen options={headerOptions} />
       <KeyboardAvoidingView
-        behavior={Platform.OS === "ios" ? "padding" : undefined}
+        behavior="padding"
         className="flex-1"
-        keyboardVerticalOffset={headerHeight}
+        automaticOffset
       >
         <View className="flex-1">
           <MessageList
