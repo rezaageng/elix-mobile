@@ -1,16 +1,16 @@
-# Graph Report - elix-mobile  (2026-06-29)
+# Graph Report - elix-mobile  (2026-06-30)
 
 ## Corpus Check
-- 155 files · ~159,723 words
+- 155 files · ~160,196 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1525 nodes · 2272 edges · 114 communities (99 shown, 15 thin omitted)
+- 1522 nodes · 2269 edges · 112 communities (98 shown, 14 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 24 edges (avg confidence: 0.82)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `1cc899de`
+- Built from commit: `644aa22b`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -117,11 +117,9 @@
 - [[_COMMUNITY_Community 106|Community 106]]
 - [[_COMMUNITY_Community 107|Community 107]]
 - [[_COMMUNITY_Community 108|Community 108]]
-- [[_COMMUNITY_Community 109|Community 109]]
 - [[_COMMUNITY_Community 110|Community 110]]
 - [[_COMMUNITY_Community 111|Community 111]]
 - [[_COMMUNITY_Community 112|Community 112]]
-- [[_COMMUNITY_Community 113|Community 113]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `apiFetch()` - 61 edges
@@ -140,12 +138,12 @@
   app/(tabs)/index.tsx → lib/api/quests.ts
 - `QuestScreen()` --calls--> `useDeleteQuest()`  [INFERRED]
   app/(tabs)/index.tsx → lib/api/quests.ts
+- `GuildLeaderboardScreen()` --calls--> `useHeaderOptions()`  [EXTRACTED]
+  app/guild/leaderboard.tsx → lib/header-options.tsx
 - `LoginScreen()` --calls--> `useThemeColor()`  [EXTRACTED]
   app/login/index.tsx → lib/use-theme-color.ts
-- `ManageQuestScreen()` --calls--> `useClassQuests()`  [INFERRED]
-  app/quest/manage.tsx → lib/api/quests.ts
-- `ManageQuestScreen()` --calls--> `useDeleteQuest()`  [INFERRED]
-  app/quest/manage.tsx → lib/api/quests.ts
+- `VerifySubmissionScreen()` --calls--> `useClassQuests()`  [INFERRED]
+  app/quest/verify.tsx → lib/api/quests.ts
 
 ## Import Cycles
 - 1-file cycle: `metro.config.js -> metro.config.js`
@@ -158,7 +156,7 @@
 - **User State Cache Invalidation Group** — api_quests_QuestsModule, api_shop_ShopModule, api_users_UsersModule [INFERRED 0.80]
 - **Android Adaptive Icon Set** — android_icon_foreground, android_icon_background, android_icon_monochrome [EXTRACTED 1.00]
 
-## Communities (114 total, 15 thin omitted)
+## Communities (112 total, 14 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.27
@@ -177,12 +175,12 @@ Cohesion: 0.05
 Nodes (37): computedHash, skillPath, source, sourceType, computedHash, skillPath, source, sourceType (+29 more)
 
 ### Community 4 - "Community 4"
-Cohesion: 0.11
-Nodes (17): getGuildWebSocketUrl(), useGuild(), ApproveMemberBody, CreateGuildBody, CreateGuildMessageBody, GuildImageUploadResponse, GuildImageUploadResponseSchema, GuildLeaderboardEntrySchema (+9 more)
+Cohesion: 0.09
+Nodes (32): apiFetch(), approveMember(), createGuild(), deleteGuild(), getGuild(), getGuildLeaderboard(), getGuildMessages(), getGuildWebSocketUrl() (+24 more)
 
 ### Community 5 - "Community 5"
-Cohesion: 0.06
-Nodes (38): Classes API Module, ActiveBuffSchema, ApiErrorData, ApiErrorEnvelope, ApproveMemberBodySchema, BaseStatsSchema, BuyItemBodySchema, ClassQuestSchema (+30 more)
+Cohesion: 0.07
+Nodes (33): Classes API Module, ActiveBuffSchema, ApiErrorData, ApiErrorEnvelope, ApproveMemberBodySchema, BaseStatsSchema, BuyItemBodySchema, ClassSchema (+25 more)
 
 ### Community 6 - "Community 6"
 Cohesion: 0.06
@@ -201,8 +199,8 @@ Cohesion: 0.67
 Nodes (3): Shop API Module, Verification API Module, Query Client
 
 ### Community 11 - "Community 11"
-Cohesion: 0.29
-Nodes (6): enabled, type, url, mcp, better-auth, $schema
+Cohesion: 0.18
+Nodes (10): enabled, type, url, command, enabled, type, mcp, better-auth (+2 more)
 
 ### Community 12 - "Community 12"
 Cohesion: 0.29
@@ -229,12 +227,12 @@ Cohesion: 0.67
 Nodes (3): Color Design Tokens, Tailwind Theme Configuration, useThemeColor Hook
 
 ### Community 18 - "Community 18"
-Cohesion: 0.05
-Nodes (57): useChooseClass(), useClasses(), useDeleteClass(), ApiError, FetchOptions, Class, PublicUser, UserActivityItem (+49 more)
+Cohesion: 0.16
+Nodes (12): PublicUser, getXpPercent(), AvatarSection(), AvatarSectionProps, EditProfileSheet, EditProfileSheetProps, EditProfileSheetReference, nameSchema (+4 more)
 
 ### Community 24 - "Community 24"
-Cohesion: 0.20
-Nodes (13): useDeleteGuild(), useUpdateGuild(), useUploadGuildImage(), Guild, EditGuildSheet, EditGuildSheetProps, EditGuildSheetReference, GuildCard() (+5 more)
+Cohesion: 0.15
+Nodes (10): ClassQuest, UserActivityItem, getUser(), useUserActivity(), ImageTarget, ProfileScreenProps, TabKey, useProfileUser() (+2 more)
 
 ### Community 26 - "Community 26"
 Cohesion: 0.11
@@ -246,7 +244,7 @@ Nodes (38): agent, council, designer, explorer, fixer, librarian, observer, orac
 
 ### Community 32 - "Community 32"
 Cohesion: 0.11
-Nodes (16): createQuests(), CreateQuestBody, Button(), ButtonProps, descriptionSchema, durationSchema, entriesSchema, entrySchema (+8 more)
+Nodes (16): createQuests(), CreateQuestBody, Quest, CreateMainQuestScreen(), descriptionSchema, durationSchema, entriesSchema, entrySchema (+8 more)
 
 ### Community 38 - "Community 38"
 Cohesion: 0.16
@@ -273,12 +271,12 @@ Cohesion: 0.40
 Nodes (4): BaseStats, PeriodKey, periodLabels, StatsLineChartProps
 
 ### Community 44 - "Community 44"
-Cohesion: 0.18
-Nodes (13): useCreateGuild(), useGuilds(), useJoinGuild(), useMyGuilds(), CreateGuildSheet, CreateGuildSheetProps, CreateGuildSheetReference, DiscoveryScreen() (+5 more)
+Cohesion: 0.11
+Nodes (27): useCreateGuild(), useDeleteGuild(), useGuilds(), useJoinGuild(), useMyGuilds(), useUpdateGuild(), useUploadGuildImage(), Guild (+19 more)
 
 ### Community 45 - "Community 45"
-Cohesion: 0.15
-Nodes (16): canLeaveGuild(), canManageGuild(), createDebounce(), getCurrentUserRoleInGuild(), getImageUploadInfo(), getInitialRoute(), getItemUseAction(), getMemberActions() (+8 more)
+Cohesion: 0.08
+Nodes (30): registerPushToken(), InventoryItem, useInventory(), useUseItem(), updateTimezone(), RootNavigator(), canLeaveGuild(), canManageGuild() (+22 more)
 
 ### Community 46 - "Community 46"
 Cohesion: 0.06
@@ -369,8 +367,8 @@ Cohesion: 0.50
 Nodes (4): 7. DIAL DEFINITIONS (Technical Reference), DESIGN_VARIANCE (Level 1-10), MOTION_INTENSITY (Level 1-10), VISUAL_DENSITY (Level 1-10)
 
 ### Community 68 - "Community 68"
-Cohesion: 0.17
-Nodes (12): BASE_URL, getWebSocketToken(), registerPushToken(), PushToken, PushTokenSchema, updateTimezone(), RootNavigator(), queryClient (+4 more)
+Cohesion: 0.40
+Nodes (4): BASE_URL, getWebSocketToken(), PushToken, PushTokenSchema
 
 ### Community 69 - "Community 69"
 Cohesion: 0.20
@@ -381,8 +379,8 @@ Cohesion: 0.20
 Nodes (9): Button Gradient, Common Patterns, CSS Gradients, Frosted Glass Effect, Important Notes, Linear Gradients, Multiple Gradients, Overlay on Image (+1 more)
 
 ### Community 71 - "Community 71"
-Cohesion: 0.16
-Nodes (9): deleteQuest(), overrideQuest(), startStarterQuests(), updateQuest(), Quest, descriptionSchema, durationSchema, nameSchema (+1 more)
+Cohesion: 0.07
+Nodes (24): deleteQuest(), getClassQuests(), getClassQuestsForAuthoring(), overrideQuest(), startQuestProgress(), startStarterQuests(), updateQuest(), updateQuestProgress() (+16 more)
 
 ### Community 72 - "Community 72"
 Cohesion: 0.22
@@ -433,8 +431,8 @@ Cohesion: 0.33
 Nodes (5): Autolinking, expo-module.config.json, Fields, Module Configuration Reference, Resolution Order
 
 ### Community 84 - "Community 84"
-Cohesion: 0.19
-Nodes (15): useClassQuests(), useClassQuestsForAuthoring(), useDeleteQuest(), ClassQuest, GuildLeaderboardScreen(), useHeaderOptions(), QuestDetailScreen(), CreateMainQuestScreen() (+7 more)
+Cohesion: 0.18
+Nodes (21): useClassQuests(), useClassQuestsForAuthoring(), useCreateQuests(), useDeleteQuest(), useOverrideQuest(), useStartQuestProgress(), useUpdateQuest(), useCurrentUser() (+13 more)
 
 ### Community 85 - "Community 85"
 Cohesion: 0.29
@@ -445,36 +443,36 @@ Cohesion: 0.19
 Nodes (11): Item, useBuyItem(), useShopItems(), BOOST_TYPES, CATEGORIES, Category, CONSUMABLE_TYPES, getItemIcon() (+3 more)
 
 ### Community 90 - "Community 90"
-Cohesion: 0.12
-Nodes (17): devDependencies, eslint, eslint-config-expo, @eslint/eslintrc, eslint-plugin-import, eslint-plugin-unicorn, @ianvs/prettier-plugin-sort-imports, jest (+9 more)
+Cohesion: 0.06
+Nodes (34): devDependencies, eslint, eslint-config-expo, @eslint/eslintrc, eslint-plugin-import, eslint-plugin-unicorn, @ianvs/prettier-plugin-sort-imports, jest (+26 more)
 
 ### Community 91 - "Community 91"
-Cohesion: 0.38
-Nodes (6): Header(), HeaderProps, SearchBar(), SearchBarProps, useThemeColor(), cn()
+Cohesion: 0.33
+Nodes (7): Header(), HeaderProps, GuildCard(), SearchBar(), SearchBarProps, useThemeColor(), cn()
 
 ### Community 92 - "Community 92"
-Cohesion: 0.17
-Nodes (12): scripts, android, build:android:local, ios, lint, reset-project, start, test (+4 more)
+Cohesion: 0.19
+Nodes (9): EditRoleSheet, EditRoleSheetProps, EditRoleSheetReference, Option, options, ImagePickerSheet, ImagePickerSheetProps, ImagePickerSheetReference (+1 more)
 
 ### Community 93 - "Community 93"
-Cohesion: 0.07
-Nodes (31): chooseClass(), createClass(), deleteClass(), getClass(), getClasses(), updateClass(), apiFetch(), approveMember() (+23 more)
+Cohesion: 0.18
+Nodes (10): chooseClass(), createClass(), deleteClass(), getClass(), getClasses(), updateClass(), ClassChoice, ClassChoiceSchema (+2 more)
 
 ### Community 94 - "Community 94"
-Cohesion: 0.18
-Nodes (13): useCreateQuests(), useOverrideQuest(), useStartQuestProgress(), useUpdateQuest(), NativeDateTimePicker(), NativeDateTimePickerProps, PickerMode, WEEKDAYS (+5 more)
+Cohesion: 0.32
+Nodes (9): useChooseClass(), useClasses(), useDeleteClass(), Class, useUploadAvatar(), useUploadBanner(), useUserStats(), ProfileScreen() (+1 more)
 
 ### Community 97 - "Community 97"
 Cohesion: 0.29
 Nodes (7): 3.A Stack, 3.B State, 3.C Icons, 3.D Emoji Policy, 3. DEFAULT ARCHITECTURE & CONVENTIONS, 3.E Responsiveness & Layout Mechanics, 3.F Dependency Verification (mandatory)
 
 ### Community 98 - "Community 98"
-Cohesion: 0.33
-Nodes (7): InventoryItem, useInventory(), useUseItem(), getItemIcon(), getItemTypeLabel(), InventoryCard(), InventoryScreen()
+Cohesion: 0.24
+Nodes (8): getProfileSettings(), ProfileSettings, SettingsSchema, updateProfileSettings(), useProfileSettings(), useUpdateProfileSettings(), SettingsSheet, SettingsSheetReference
 
 ### Community 99 - "Community 99"
-Cohesion: 0.43
-Nodes (6): useUpdateQuestProgress(), useCurrentUser(), useSubmitVerification(), imageSubmissionSchema, textSubmissionSchema, VerifySubmissionScreen()
+Cohesion: 0.29
+Nodes (7): useUpdateQuestProgress(), LevelUpInfo, useSubmitVerification(), getMimeTypeFromFilename(), imageSubmissionSchema, textSubmissionSchema, VerifySubmissionScreen()
 
 ### Community 100 - "Community 100"
 Cohesion: 0.29
@@ -497,53 +495,49 @@ Cohesion: 0.40
 Nodes (5): 8.A Token Strategy (pick one, stick to it), 8.B Do Not Prescribe Specific Colors Here, 8.C Default Mode, 8.D Test in Both Modes Before Finishing, 8. DARK MODE PROTOCOL
 
 ### Community 105 - "Community 105"
-Cohesion: 0.30
-Nodes (8): useGuildSocketIO(), useSendGuildMessage(), useUploadMessageAttachment(), ChatComposer(), ChatComposerProps, ComposerAttachment, makeAttachmentId(), GuildChatScreen()
+Cohesion: 0.40
+Nodes (5): UserStats, filters, PeriodFilter, StatsSection(), StatsSectionProps
 
 ### Community 106 - "Community 106"
-Cohesion: 0.13
-Nodes (20): useGuildMessages(), GuildMessage, formatMessageTime(), formatRelativeTime(), getInitial(), MessageBubble(), MessageBubbleProps, MessageList() (+12 more)
+Cohesion: 0.09
+Nodes (28): useGuildMessages(), useGuildSocketIO(), useSendGuildMessage(), useUploadMessageAttachment(), GuildMessage, ChatComposer(), ChatComposerProps, ComposerAttachment (+20 more)
 
 ### Community 107 - "Community 107"
-Cohesion: 0.43
-Nodes (3): colors, ThemeColorKey, ThemeColors
+Cohesion: 0.17
+Nodes (9): useGuild(), useGuildLeaderboard(), GuildLeaderboardScreen(), LeaderboardTab(), LeaderboardTabProps, GuildMembersScreen(), colors, ThemeColorKey (+1 more)
 
 ### Community 108 - "Community 108"
-Cohesion: 0.23
-Nodes (7): useGuildLeaderboard(), GuildLeaderboardEntry, getInitial(), LeaderboardRow(), LeaderboardRowProps, LeaderboardTab(), LeaderboardTabProps
-
-### Community 109 - "Community 109"
-Cohesion: 0.33
-Nodes (5): main, name, packageManager, private, version
+Cohesion: 0.36
+Nodes (4): GuildLeaderboardEntry, getInitial(), LeaderboardRow(), LeaderboardRowProps
 
 ### Community 110 - "Community 110"
-Cohesion: 0.09
-Nodes (24): 1. Ensure `EXPO_PUBLIC_API_URL` is set, 2. Start an emulator (or connect a device), 3. Build the Android debug APK, 4. Start Metro and run tests, Authentication, Backend Prerequisites, Configuring the test account and backend URL, Critical Path Subset (+16 more)
+Cohesion: 0.13
+Nodes (16): 1. Ensure `EXPO_PUBLIC_API_URL` is set, 2. Start an emulator (or connect a device), 3. Build the Android debug APK, 4. Start Metro and run tests, Authentication, Backend Prerequisites, Configuring the test account and backend URL, Critical Path Subset (+8 more)
 
 ### Community 111 - "Community 111"
-Cohesion: 0.50
-Nodes (3): mockGetCookie, TestSchema, validData
+Cohesion: 0.18
+Nodes (8): ApiError, FetchOptions, mockGetCookie, TestSchema, validData, authClient, { useSession }, LoginScreen()
 
-### Community 113 - "Community 113"
+### Community 112 - "Community 112"
 Cohesion: 0.50
-Nodes (3): VerificationResult, VerificationResultSchema, submitVerification()
+Nodes (3): body, data, response
 
 ## Knowledge Gaps
-- **850 isolated node(s):** `$schema`, `plugin`, `@opencode-ai/plugin`, `recommendations`, `source.fixAll` (+845 more)
+- **847 isolated node(s):** `name`, `slug`, `version`, `orientation`, `icon` (+842 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **15 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **14 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `apiFetch()` connect `Community 93` to `Community 32`, `Community 4`, `Community 68`, `Community 71`, `Community 42`, `Community 111`, `Community 113`, `Community 18`, `Community 84`, `Community 26`?**
-  _High betweenness centrality (0.014) - this node is a cross-community bridge._
-- **Why does `useThemeColor()` connect `Community 91` to `Community 32`, `Community 0`, `Community 99`, `Community 38`, `Community 39`, `Community 71`, `Community 105`, `Community 106`, `Community 107`, `Community 44`, `Community 108`, `Community 18`, `Community 84`, `Community 24`, `Community 94`?**
-  _High betweenness centrality (0.007) - this node is a cross-community bridge._
-- **Why does `dependencies` connect `Community 2` to `Community 109`?**
+- **Why does `apiFetch()` connect `Community 4` to `Community 32`, `Community 98`, `Community 68`, `Community 5`, `Community 71`, `Community 42`, `Community 45`, `Community 111`, `Community 24`, `Community 26`, `Community 93`?**
+  _High betweenness centrality (0.012) - this node is a cross-community bridge._
+- **Why does `useThemeColor()` connect `Community 91` to `Community 32`, `Community 0`, `Community 99`, `Community 38`, `Community 39`, `Community 71`, `Community 106`, `Community 107`, `Community 44`, `Community 111`, `Community 84`, `Community 24`, `Community 92`, `Community 94`?**
+  _High betweenness centrality (0.005) - this node is a cross-community bridge._
+- **Why does `tasteskill: Anti-Slop Frontend Skill` connect `Community 78` to `Community 97`, `Community 67`, `Community 100`, `Community 101`, `Community 102`, `Community 103`, `Community 8`, `Community 40`, `Community 74`, `Community 104`, `Community 79`, `Community 85`?**
   _High betweenness centrality (0.004) - this node is a cross-community bridge._
-- **What connects `$schema`, `plugin`, `@opencode-ai/plugin` to the rest of the system?**
-  _850 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `name`, `slug`, `version` to the rest of the system?**
+  _847 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 1` be split into smaller, more focused modules?**
   _Cohesion score 0.05128205128205128 - nodes in this community are weakly interconnected._
 - **Should `Community 2` be split into smaller, more focused modules?**
