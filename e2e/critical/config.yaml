@@ -1,0 +1,16 @@
+flows:
+  - "**/*.yaml"
+executionOrder:
+  continueOnFailure: false
+  flowsOrder:
+    - guard-no-class
+    - guard-has-class
+    - choose-class
+    - list
+    - text-submit-approved
+    - buy-sufficient
+    - use-restore-streak
+    - discovery
+    - home-owner
+    - view
+    - tab-navigation

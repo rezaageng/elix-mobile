@@ -1,22 +1,23 @@
-appId: com.elix.mobile
+appId: "${APP_ID}"
 ---
 # Use a Restore Streak item on a user with a broken streak
 - runFlow:
-    file: ../shared/auth.yaml
+    file: ../../shared/auth.yaml
     env:
       SEED_KEY: with-class
 - extendedWaitUntil:
     visible: "Quest"
     timeout: 15000
 - runFlow:
-    file: ../shared/navigate.yaml
+    file: ../../shared/navigate.yaml
     env:
       TAB: Inventory
+# ponytail: use text match since id: requires exact match (UseButton: is prefix)
 - assertVisible:
-    id: "UseButton:"
+    text: "Use"
 # Tap the first Use button
 - tapOn:
-    id: "UseButton:"
+    text: "Use"
 # Native alert: "Restore Streak" with ["Cancel", "Restore"] buttons
 - tapOn:
     text: "Restore"

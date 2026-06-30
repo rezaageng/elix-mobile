@@ -1,0 +1,23 @@
+appId: "${APP_ID}"
+---
+# One-time manual OAuth sign-in for the E2E simulator/device.
+# Run this flow once after installing the app or clearing its keychain.
+# It launches the app, taps "Login with Google", confirms the iOS system
+# dialog, and then waits for you to complete the Google sign-in in the
+# web view. After this flow passes, the critical suite can run without
+# further manual OAuth because the session persists in the iOS keychain.
+
+- stopApp
+- launchApp
+- runFlow: ../shared/dev-client.yaml
+- extendedWaitUntil:
+    visible: "Welcome to Elix"
+    timeout: 15000
+- tapOn:
+    id: "LoginGoogle"
+- tapOn: "Continue"
+# Wait for the user to complete the Google sign-in in the web view.
+# After signing in, the no-class seed redirects to the class picker.
+- extendedWaitUntil:
+    visible: "Choose Your Role"
+    timeout: 300000

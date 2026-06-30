@@ -1,7 +1,7 @@
-appId: com.elix.mobile
+appId: "${APP_ID}"
 ---
 - runFlow:
-    file: ../shared/auth.yaml
+    file: ../../shared/auth.yaml
     env:
       SEED_KEY: with-class
 - extendedWaitUntil:

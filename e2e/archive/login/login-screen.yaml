@@ -1,8 +1,9 @@
-appId: com.elix.mobile
+appId: "${APP_ID}"
 ---
 # Verify the login screen renders every entry point
 - launchApp:
     clearState: true
+- runFlow: ../../shared/dev-client.yaml
 - extendedWaitUntil:
     visible: "Welcome to Elix"
     timeout: 10000

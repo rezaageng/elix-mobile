@@ -175,8 +175,8 @@
     "semantic_hash": "cddc0642ef0537e73ebd55b26d7f5ace"
   },
   "/Users/rezaa/developments/codes/elix-mobile/package.json": {
-    "mtime": 1782674104.4513903,
-    "ast_hash": "78f2cb26475dd7f65603900e6f307363",
+    "mtime": 1782734739.0487688,
+    "ast_hash": "835de61a9939602857cee69daac660d1",
     "semantic_hash": ""
   },
   "/Users/rezaa/developments/codes/elix-mobile/skills-lock.json": {
@@ -830,193 +830,13 @@
     "semantic_hash": ""
   },
   "/Users/rezaa/developments/codes/elix-mobile/e2e/README.md": {
-    "mtime": 1782649658.0132515,
-    "ast_hash": "00ff0e9bdca9e9e5cffd5b83cfe94996",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/smoke-test.yaml": {
-    "mtime": 1782502239.8081868,
-    "ast_hash": "f3a84571e3c4bfeeb9c9752992b39500",
+    "mtime": 1782735053.7986665,
+    "ast_hash": "45197aca7efd94910cf44a5d9e81fab0",
     "semantic_hash": ""
   },
   "/Users/rezaa/developments/codes/elix-mobile/jest.config.mjs": {
     "mtime": 1782116689.4066207,
     "ast_hash": "5fa09cadd9aa5a58c10ee3142da49260",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/app-restart.yaml": {
-    "mtime": 1782502239.80549,
-    "ast_hash": "7c53410e56646d6411d5f2466c85f1ed",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/login-screen.yaml": {
-    "mtime": 1782502239.8068337,
-    "ast_hash": "3466e868de0e9c6c73cfc16a0173d00f",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/auth/guard-has-class.yaml": {
-    "mtime": 1782639444.0570009,
-    "ast_hash": "bd5acadd705b36dde12c3ec84852813c",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/auth/guard-no-class.yaml": {
-    "mtime": 1782639444.056897,
-    "ast_hash": "2d2d71894417a59ea8e1f044ad93d9d3",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/auth/guard-no-session.yaml": {
-    "mtime": 1782502239.8193488,
-    "ast_hash": "7518eeb2724965d5da4b6ce0ebdc4eec",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/auth/logout-redirect.yaml": {
-    "mtime": 1782639444.0567982,
-    "ast_hash": "659fd9ea57cc8922ad10a6ec61d2b641",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/guild/chat-send.yaml": {
-    "mtime": 1782639444.0624485,
-    "ast_hash": "8ef07dedee2c9db6e40059b8a7cbb4f3",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/guild/create.yaml": {
-    "mtime": 1782639444.0630627,
-    "ast_hash": "861104725c06eafced4853e75d5b969d",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/guild/discovery.yaml": {
-    "mtime": 1782639444.0617576,
-    "ast_hash": "6da82723a4881f6f5115ba81472d5dd3",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/guild/home-member.yaml": {
-    "mtime": 1782639444.0626836,
-    "ast_hash": "7ef3de549c48f7f4a8e1fb1412e84495",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/guild/home-owner.yaml": {
-    "mtime": 1782639444.0625672,
-    "ast_hash": "1e560676017423d498ebb873c084f1bd",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/guild/leaderboard.yaml": {
-    "mtime": 1782639444.062901,
-    "ast_hash": "68feb66c9e1cafb2be3866ac2235029d",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/guild/leave.yaml": {
-    "mtime": 1782639444.063225,
-    "ast_hash": "154e63d53c7548831d95063ef5ba9410",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/guild/members.yaml": {
-    "mtime": 1782639444.0619173,
-    "ast_hash": "c3d0a10f3d2d5a715a20931375733b6b",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/guild/promote-demote.yaml": {
-    "mtime": 1782639444.0627916,
-    "ast_hash": "69d0e2cca35dd3fa44f564910cfb2ddd",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/guild/search.yaml": {
-    "mtime": 1782639471.1713154,
-    "ast_hash": "07eaceaf16dd6d1e9555ced54f022b61",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/inventory/empty.yaml": {
-    "mtime": 1782639444.0595508,
-    "ast_hash": "209db452adea6561f2e1216b933b322a",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/inventory/use-deadline-extension.yaml": {
-    "mtime": 1782639523.3277493,
-    "ast_hash": "89baeff951df25697302d5e2dcdce64f",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/inventory/use-restore-streak.yaml": {
-    "mtime": 1782639513.8384118,
-    "ast_hash": "4390998195d1ebe6612b98358934e788",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/inventory/with-items.yaml": {
-    "mtime": 1782639524.7504954,
-    "ast_hash": "05371f92bafa6726e52ba61a16247de5",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/onboarding/choose-class.yaml": {
-    "mtime": 1782639444.0606554,
-    "ast_hash": "78042b54774a38075e71de2129f84d1b",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/onboarding/create-class.yaml": {
-    "mtime": 1782639444.0607855,
-    "ast_hash": "97a42ec9c5e434132451104f1b51c9fb",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/profile/edit.yaml": {
-    "mtime": 1782639444.059085,
-    "ast_hash": "c9ef75c3e1049b70cddbbdb2737763f5",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/profile/settings.yaml": {
-    "mtime": 1782639444.058978,
-    "ast_hash": "11810db875837df9f5c627f0db83ae5c",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/profile/user-profile.yaml": {
-    "mtime": 1782639471.1691523,
-    "ast_hash": "d9cc6bb5a394fa133464704e2e3872a7",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/profile/view.yaml": {
-    "mtime": 1782639444.0593238,
-    "ast_hash": "f758666b5dfd8576c8f11c96443fd387",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/quests/create-daily.yaml": {
-    "mtime": 1782639444.0552597,
-    "ast_hash": "21b90a1a414b00baf03689ecf99c3db9",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/quests/delete.yaml": {
-    "mtime": 1782639444.0562673,
-    "ast_hash": "4dd9601e122f1fe81776ab25ddcd2779",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/quests/detail.yaml": {
-    "mtime": 1782639444.055451,
-    "ast_hash": "79a299b92b8a10b204245812d0b8a61a",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/quests/filter.yaml": {
-    "mtime": 1782639444.055636,
-    "ast_hash": "67481106ba76d4494cbc6a053fb6a935",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/quests/list.yaml": {
-    "mtime": 1782639444.0566072,
-    "ast_hash": "a72530d69ecff7941d62b63f1dab6650",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/quests/text-submit-approved.yaml": {
-    "mtime": 1782639444.0565073,
-    "ast_hash": "4721d2acf9220ab00d19d352ef9e10c8",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/quests/text-submit-rejected.yaml": {
-    "mtime": 1782639444.0563972,
-    "ast_hash": "8f39edd2367c32d9ca0bdda6dcfa93a3",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/regression/pull-to-refresh.yaml": {
-    "mtime": 1782639444.0604973,
-    "ast_hash": "a658bb1d3693ab54576213c2319a0822",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/regression/tab-navigation.yaml": {
-    "mtime": 1782639471.1703384,
-    "ast_hash": "0f51c76c5339c3b927c75710ae23a5ed",
     "semantic_hash": ""
   },
   "/Users/rezaa/developments/codes/elix-mobile/e2e/shared/alert.yaml": {
@@ -1039,26 +859,6 @@
     "ast_hash": "e3add80787329ddcbe4979c8278e6136",
     "semantic_hash": ""
   },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/shop/buy-insufficient.yaml": {
-    "mtime": 1782639471.1679332,
-    "ast_hash": "a6ce11c6258d9ecedff374b02177a771",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/shop/buy-sufficient.yaml": {
-    "mtime": 1782639471.1681232,
-    "ast_hash": "8473accda77453c3ac3b065330a7b1cd",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/shop/category-filter.yaml": {
-    "mtime": 1782639471.167771,
-    "ast_hash": "9fb118e55b3b9dfa76e346dabdf6bf09",
-    "semantic_hash": ""
-  },
-  "/Users/rezaa/developments/codes/elix-mobile/e2e/shop/load.yaml": {
-    "mtime": 1782639471.168284,
-    "ast_hash": "faf1969514a5f66d93abd6ead54ce456",
-    "semantic_hash": ""
-  },
   "/Users/rezaa/developments/codes/elix-mobile/e2e/scripts/seed.js": {
     "mtime": 1782649636.9456248,
     "ast_hash": "2eaa7038297490767d02b131ca7b955c",
@@ -1067,6 +867,206 @@
   "/Users/rezaa/developments/codes/elix-mobile/e2e/shared/seed.yaml": {
     "mtime": 1782645774.0606742,
     "ast_hash": "59526a2702724f50047541a6baf1096b",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/critical/auth/guard-has-class.yaml": {
+    "mtime": 1782734727.767178,
+    "ast_hash": "bd5acadd705b36dde12c3ec84852813c",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/critical/auth/guard-no-class.yaml": {
+    "mtime": 1782734727.7647605,
+    "ast_hash": "2d2d71894417a59ea8e1f044ad93d9d3",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/critical/guild/discovery.yaml": {
+    "mtime": 1782734727.7805338,
+    "ast_hash": "6da82723a4881f6f5115ba81472d5dd3",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/critical/guild/home-owner.yaml": {
+    "mtime": 1782734727.7826483,
+    "ast_hash": "1e560676017423d498ebb873c084f1bd",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/critical/inventory/use-restore-streak.yaml": {
+    "mtime": 1782734727.778512,
+    "ast_hash": "4390998195d1ebe6612b98358934e788",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/critical/login-screen.yaml": {
+    "mtime": 1782734727.7625213,
+    "ast_hash": "3466e868de0e9c6c73cfc16a0173d00f",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/critical/onboarding/choose-class.yaml": {
+    "mtime": 1782734727.7695227,
+    "ast_hash": "78042b54774a38075e71de2129f84d1b",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/critical/profile/view.yaml": {
+    "mtime": 1782734727.7846787,
+    "ast_hash": "f758666b5dfd8576c8f11c96443fd387",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/critical/quests/list.yaml": {
+    "mtime": 1782734727.7718089,
+    "ast_hash": "a72530d69ecff7941d62b63f1dab6650",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/critical/quests/text-submit-approved.yaml": {
+    "mtime": 1782734727.7740352,
+    "ast_hash": "4721d2acf9220ab00d19d352ef9e10c8",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/critical/regression/tab-navigation.yaml": {
+    "mtime": 1782734727.7868648,
+    "ast_hash": "0f51c76c5339c3b927c75710ae23a5ed",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/critical/shop/buy-sufficient.yaml": {
+    "mtime": 1782734727.7764556,
+    "ast_hash": "8473accda77453c3ac3b065330a7b1cd",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/critical/smoke-test.yaml": {
+    "mtime": 1782734727.7600625,
+    "ast_hash": "f3a84571e3c4bfeeb9c9752992b39500",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/archive/app-restart.yaml": {
+    "mtime": 1782502239.80549,
+    "ast_hash": "7c53410e56646d6411d5f2466c85f1ed",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/archive/auth/guard-no-session.yaml": {
+    "mtime": 1782502239.8193488,
+    "ast_hash": "7518eeb2724965d5da4b6ce0ebdc4eec",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/archive/auth/logout-redirect.yaml": {
+    "mtime": 1782639444.0567982,
+    "ast_hash": "659fd9ea57cc8922ad10a6ec61d2b641",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/archive/guild/chat-send.yaml": {
+    "mtime": 1782639444.0624485,
+    "ast_hash": "8ef07dedee2c9db6e40059b8a7cbb4f3",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/archive/guild/create.yaml": {
+    "mtime": 1782639444.0630627,
+    "ast_hash": "861104725c06eafced4853e75d5b969d",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/archive/guild/home-member.yaml": {
+    "mtime": 1782639444.0626836,
+    "ast_hash": "7ef3de549c48f7f4a8e1fb1412e84495",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/archive/guild/leaderboard.yaml": {
+    "mtime": 1782639444.062901,
+    "ast_hash": "68feb66c9e1cafb2be3866ac2235029d",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/archive/guild/leave.yaml": {
+    "mtime": 1782639444.063225,
+    "ast_hash": "154e63d53c7548831d95063ef5ba9410",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/archive/guild/members.yaml": {
+    "mtime": 1782639444.0619173,
+    "ast_hash": "c3d0a10f3d2d5a715a20931375733b6b",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/archive/guild/promote-demote.yaml": {
+    "mtime": 1782639444.0627916,
+    "ast_hash": "69d0e2cca35dd3fa44f564910cfb2ddd",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/archive/guild/search.yaml": {
+    "mtime": 1782639471.1713154,
+    "ast_hash": "07eaceaf16dd6d1e9555ced54f022b61",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/archive/inventory/empty.yaml": {
+    "mtime": 1782639444.0595508,
+    "ast_hash": "209db452adea6561f2e1216b933b322a",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/archive/inventory/use-deadline-extension.yaml": {
+    "mtime": 1782639523.3277493,
+    "ast_hash": "89baeff951df25697302d5e2dcdce64f",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/archive/inventory/with-items.yaml": {
+    "mtime": 1782639524.7504954,
+    "ast_hash": "05371f92bafa6726e52ba61a16247de5",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/archive/onboarding/create-class.yaml": {
+    "mtime": 1782639444.0607855,
+    "ast_hash": "97a42ec9c5e434132451104f1b51c9fb",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/archive/profile/edit.yaml": {
+    "mtime": 1782639444.059085,
+    "ast_hash": "c9ef75c3e1049b70cddbbdb2737763f5",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/archive/profile/settings.yaml": {
+    "mtime": 1782639444.058978,
+    "ast_hash": "11810db875837df9f5c627f0db83ae5c",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/archive/profile/user-profile.yaml": {
+    "mtime": 1782639471.1691523,
+    "ast_hash": "d9cc6bb5a394fa133464704e2e3872a7",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/archive/quests/create-daily.yaml": {
+    "mtime": 1782639444.0552597,
+    "ast_hash": "21b90a1a414b00baf03689ecf99c3db9",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/archive/quests/delete.yaml": {
+    "mtime": 1782639444.0562673,
+    "ast_hash": "4dd9601e122f1fe81776ab25ddcd2779",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/archive/quests/detail.yaml": {
+    "mtime": 1782639444.055451,
+    "ast_hash": "79a299b92b8a10b204245812d0b8a61a",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/archive/quests/filter.yaml": {
+    "mtime": 1782639444.055636,
+    "ast_hash": "67481106ba76d4494cbc6a053fb6a935",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/archive/quests/text-submit-rejected.yaml": {
+    "mtime": 1782639444.0563972,
+    "ast_hash": "8f39edd2367c32d9ca0bdda6dcfa93a3",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/archive/regression/pull-to-refresh.yaml": {
+    "mtime": 1782639444.0604973,
+    "ast_hash": "a658bb1d3693ab54576213c2319a0822",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/archive/shop/buy-insufficient.yaml": {
+    "mtime": 1782639471.1679332,
+    "ast_hash": "a6ce11c6258d9ecedff374b02177a771",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/archive/shop/category-filter.yaml": {
+    "mtime": 1782639471.167771,
+    "ast_hash": "9fb118e55b3b9dfa76e346dabdf6bf09",
+    "semantic_hash": ""
+  },
+  "/Users/rezaa/developments/codes/elix-mobile/e2e/archive/shop/load.yaml": {
+    "mtime": 1782639471.168284,
+    "ast_hash": "faf1969514a5f66d93abd6ead54ce456",
     "semantic_hash": ""
   }
 }

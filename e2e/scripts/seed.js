@@ -13,13 +13,19 @@ const email =
     ? E2E_TEST_EMAIL
     : "akitanime@gmail.com";
 
+const body = JSON.stringify({ key: key, email: email });
+
 console.log("Seeding URL:", url);
 console.log("Seeding key:", key);
 console.log("Seeding email:", email);
+console.log("Seeding body:", body);
 
 const response = http.post(url, {
-  body: JSON.stringify({ key: key, email: email }),
-  headers: { "Content-Type": "application/json" },
+  body: body,
+  headers: {
+    "Content-Type": "application/json",
+    "Content-Length": String(body.length),
+  },
 });
 
 console.log("Seed response status:", response.status);

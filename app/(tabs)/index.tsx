@@ -80,6 +80,7 @@ function QuestCard({
     <TouchableOpacity
       testID={`QuestCard:${quest.id}`}
       activeOpacity={0.7}
+      accessibilityLabel={quest.name}
       onPress={() =>
         router.push({ pathname: "/quest/[id]", params: { id: quest.id } })
       }

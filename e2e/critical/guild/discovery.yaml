@@ -1,15 +1,15 @@
-appId: com.elix.mobile
+appId: "${APP_ID}"
 ---
 # Guild Discovery: seed a user without a guild and verify the discovery screen
 - runFlow:
-    file: ../shared/auth.yaml
+    file: ../../shared/auth.yaml
     env:
       SEED_KEY: no-guild
 - extendedWaitUntil:
     visible: "Quest"
     timeout: 15000
 - runFlow:
-    file: ../shared/navigate.yaml
+    file: ../../shared/navigate.yaml
     env:
       TAB: "Guild"
 - assertVisible:

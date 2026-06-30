@@ -16,7 +16,7 @@
       }
     },
     "android": {
-      "package": "com.elix.mobile",
+      "package": "com.rezaageng.elix",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/images/android-icon-foreground.png",

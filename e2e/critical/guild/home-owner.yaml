@@ -1,15 +1,15 @@
-appId: com.elix.mobile
+appId: "${APP_ID}"
 ---
 # Guild Home (Owner): seed a guild owner, verify owner-only controls
 - runFlow:
-    file: ../shared/auth.yaml
+    file: ../../shared/auth.yaml
     env:
       SEED_KEY: guild-owner
 - extendedWaitUntil:
     visible: "Quest"
     timeout: 15000
 - runFlow:
-    file: ../shared/navigate.yaml
+    file: ../../shared/navigate.yaml
     env:
       TAB: "Guild"
 - assertVisible:

@@ -2,6 +2,10 @@
 
 This directory contains Maestro end-to-end tests for the Elix React Native app.
 
+- `e2e/critical/` — active **critical path** subset (13 tests). `pnpm run test:e2e` runs this folder.
+- `e2e/archive/` — inactive tests from the original 40-test suite, kept for reference.
+- `e2e/shared/` — reusable Maestro helpers.
+
 ## Prerequisites
 
 - [Maestro CLI](https://maestro.mobile.dev/getting-started/installing-maestro) installed
@@ -62,25 +66,27 @@ pnpm start
 
 Wait until you see "Metro ready" / the QR code.
 
-**Terminal 2 — install the APK and run E2E tests:**
+**Terminal 2 — install the APK and run the critical E2E tests:**
 
 ```bash
 adb install android/app/build/outputs/apk/debug/app-debug.apk
 pnpm run test:e2e
 ```
 
-Or directly:
+This runs only the 13 tests under `e2e/critical/`. To run the full 40-test suite:
 
 ```bash
+pnpm run test:e2e:full
+# or directly
 maestro test e2e/
 ```
 
-Run a specific tier:
+Run a specific tier or critical subfolder:
 
 ```bash
-maestro test e2e/quests/
-maestro test e2e/shop/
-maestro test e2e/guild/
+maestro test e2e/critical/
+maestro test e2e/critical/quests/
+maestro test e2e/critical/guild/
 ```
 
 ## Backend Prerequisites
@@ -155,82 +161,27 @@ Common flows live in `e2e/shared/` and are invoked via Maestro's `runFlow`:
 | `shared/form.yaml` | Fill a field by testID |
 | `shared/alert.yaml` | Tap an alert button by text |
 
-## Tests
+## Critical Path Subset
 
-### Tier 1 — Smoke (P0)
-
-| Test file | Description |
-|-----------|-------------|
-| `smoke-test.yaml` | Launches app, verifies login screen renders |
-| `login-screen.yaml` | Verifies all login entry points are visible |
-| `app-restart.yaml` | Verifies the login screen persists across a warm restart |
-
-### Tier 2 — Auth & Onboarding (P0)
+The `e2e/critical/` folder contains the active 13-test suite that covers the most important user journeys. `pnpm run test:e2e` runs this subset by default.
 
 | Test file | Description |
 |-----------|-------------|
-| `auth/guard-no-session.yaml` | No session → routes redirect to `/login` |
-| `auth/guard-no-class.yaml` | Session without class → lands on `/roles` |
-| `auth/guard-has-class.yaml` | Session with class → lands on `/(tabs)` |
-| `auth/logout-redirect.yaml` | Logout clears session and redirects to `/login` |
+| `smoke-test.yaml` | App launches and login screen renders |
+| `login-screen.yaml` | Login entry points are visible |
+| `auth/guard-no-class.yaml` | No active class → lands on `/roles` |
+| `auth/guard-has-class.yaml` | Has active class → lands on `/(tabs)` |
 | `onboarding/choose-class.yaml` | Select a pre-made class template |
-| `onboarding/create-class.yaml` | Create custom role + main/side/recurring quests |
-
-### Tier 3 — Quests (P1)
-
-| Test file | Description |
-|-----------|-------------|
-| `quests/list.yaml` | Quest list renders with filter tabs |
-| `quests/filter.yaml` | Filter by quest type |
-| `quests/detail.yaml` | Tap quest card → detail screen |
-| `quests/create-daily.yaml` | Create a daily quest |
-| `quests/text-submit-approved.yaml` | Text verification → approved |
-| `quests/text-submit-rejected.yaml` | Text verification → rejected |
-| `quests/delete.yaml` | Long-press quest → delete |
-
-### Tier 4 — Shop & Inventory (P1)
-
-| Test file | Description |
-|-----------|-------------|
-| `shop/load.yaml` | Shop items render |
-| `shop/category-filter.yaml` | Filter by category |
-| `shop/buy-sufficient.yaml` | Buy item with sufficient gold |
-| `shop/buy-insufficient.yaml` | Insufficient gold blocks purchase |
-| `inventory/empty.yaml` | Empty inventory state |
-| `inventory/with-items.yaml` | Inventory renders with items |
-| `inventory/use-restore-streak.yaml` | Use restore streak item |
-| `inventory/use-deadline-extension.yaml` | Use deadline extension item |
-
-### Tier 5 — Guild (P1)
-
-| Test file | Description |
-|-----------|-------------|
+| `quests/list.yaml` | Quest list renders |
+| `quests/text-submit-approved.yaml` | Submit text verification and get approved |
+| `shop/buy-sufficient.yaml` | Buy an item with sufficient gold |
+| `inventory/use-restore-streak.yaml` | Use a restore-streak item |
 | `guild/discovery.yaml` | No guild → discovery screen |
-| `guild/search.yaml` | Search guilds |
-| `guild/create.yaml` | Create guild |
-| `guild/home-member.yaml` | Guild home for regular member |
-| `guild/home-owner.yaml` | Guild home for owner |
-| `guild/members.yaml` | Members list |
-| `guild/promote-demote.yaml` | Promote/demote member |
-| `guild/leaderboard.yaml` | Leaderboard renders |
-| `guild/leave.yaml` | Member leaves guild |
-| `guild/chat-send.yaml` | Send chat message |
-
-### Tier 6 — Profile (P2)
-
-| Test file | Description |
-|-----------|-------------|
+| `guild/home-owner.yaml` | Guild home for an owner |
 | `profile/view.yaml` | Own profile renders |
-| `profile/edit.yaml` | Edit profile name |
-| `profile/settings.yaml` | Settings sheet + logout |
-| `profile/user-profile.yaml` | View another user's profile |
-
-### Tier 7 — Regression (P2)
-
-| Test file | Description |
-|-----------|-------------|
 | `regression/tab-navigation.yaml` | Switch all 5 tabs |
-| `regression/pull-to-refresh.yaml` | Pull-to-refresh on quest screen |
+
+The remaining 27 tests from the original suite are archived in `e2e/archive/` for reference.
 
 ## Notes
 
