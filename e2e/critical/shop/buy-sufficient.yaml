@@ -1,0 +1,31 @@
+appId: "${APP_ID}"
+---
+# Purchase an item with sufficient gold, verify it appears in inventory
+- runFlow:
+    file: ../../shared/auth.yaml
+    env:
+      SEED_KEY: with-class
+- extendedWaitUntil:
+    visible: "Quest"
+    timeout: 15000
+- runFlow:
+    file: ../../shared/navigate.yaml
+    env:
+      TAB: Shop
+# ponytail: use text match since id: requires exact match (ShopItem: is prefix)
+- assertVisible:
+    text: "Streak Restore"
+# Tap first buy button (Buy text within first shop item card)
+- tapOn:
+    text: "Buy"
+# Dismiss purchase success alert (native Alert.alert with "OK" button)
+- tapOn:
+    text: "OK"
+# Navigate to Inventory tab
+- runFlow:
+    file: ../../shared/navigate.yaml
+    env:
+      TAB: Inventory
+# Assert the purchased item appears in inventory
+- assertVisible:
+    text: "Streak Restore"

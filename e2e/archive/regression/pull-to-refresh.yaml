@@ -1,0 +1,15 @@
+appId: com.elix.mobile
+---
+# Tier 7: Regression — pull-to-refresh on quest list
+- runFlow:
+    file: ../shared/auth.yaml
+    env:
+      SEED_KEY: quests-full
+- extendedWaitUntil:
+    visible: "Quest"
+    timeout: 15000
+- assertVisible: "Quest"
+- swipe:
+    direction: DOWN
+- assertVisible:
+    id: "QuestLoadingIndicator"

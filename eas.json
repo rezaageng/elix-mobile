@@ -1,0 +1,43 @@
+{
+  "cli": {
+    "version": ">= 16.0.1",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "production": {
+      "autoIncrement": true,
+      "node": "24.18.0",
+      "android": {}
+    },
+    "preview": {
+      "node": "24.18.0",
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://elix-dev.rezaa.me"
+      },
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "e2e": {
+      "node": "24.18.0",
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://elix-dev.rezaa.me"
+      },
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "development": {
+      "autoIncrement": true,
+      "developmentClient": true,
+      "distribution": "internal",
+      "node": "24.18.0",
+      "ios": {
+        "simulator": true
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}

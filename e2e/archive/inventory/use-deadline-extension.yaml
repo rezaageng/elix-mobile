@@ -1,0 +1,25 @@
+appId: com.elix.mobile
+---
+# Use a Deadline Extension item on a quest in progress
+- runFlow:
+    file: ../shared/auth.yaml
+    env:
+      SEED_KEY: with-class
+- extendedWaitUntil:
+    visible: "Quest"
+    timeout: 15000
+- runFlow:
+    file: ../shared/navigate.yaml
+    env:
+      TAB: Inventory
+- assertVisible:
+    id: "UseButton:"
+# Tap the first Use button
+- tapOn:
+    id: "UseButton:"
+# Native alert: "Extend Deadline" with quest buttons; tap the quest name
+- tapOn:
+    text: "Quest 1"
+# Success alert: "Item used" with "OK" button
+- tapOn:
+    text: "OK"

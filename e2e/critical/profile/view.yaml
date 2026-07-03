@@ -1,0 +1,20 @@
+appId: "${APP_ID}"
+---
+# Tier 6: Profile — view own profile
+- runFlow:
+    file: ../../shared/auth.yaml
+    env:
+      SEED_KEY: with-class
+- extendedWaitUntil:
+    visible: "Quest"
+    timeout: 15000
+- runFlow:
+    file: ../../shared/navigate.yaml
+    env:
+      TAB: "Profile"
+- assertVisible:
+    id: "ProfileAvatar"
+- assertVisible:
+    id: "EditProfileButton"
+- assertVisible:
+    id: "SettingsButton"

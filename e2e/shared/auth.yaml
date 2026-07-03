@@ -1,0 +1,25 @@
+appId: "${APP_ID}"
+---
+# Manual auth helper.
+# 1. Seeds the configured E2E OAuth account on the backend before sign-in.
+# 2. Launches the app and dismisses the Expo dev client launcher if present.
+# 3. If the login screen is shown, taps "Login with Google" (OAuth is expected
+#    to complete automatically). If already signed in, continues.
+# The calling test must wait for its expected post-auth screen.
+- runScript:
+    file: ../scripts/seed.js
+    env:
+      SEED_KEY: "${SEED_KEY}"
+      E2E_API_URL: "${E2E_API_URL}"
+      API_URL: "${EXPO_PUBLIC_API_URL}"
+      E2E_TEST_EMAIL: "${E2E_TEST_EMAIL}"
+- stopApp
+- launchApp
+- runFlow: dev-client.yaml
+- extendedWaitUntil:
+    visible: "Welcome to Elix"
+    timeout: 10000
+    optional: true
+- tapOn:
+    id: "LoginGoogle"
+    optional: true

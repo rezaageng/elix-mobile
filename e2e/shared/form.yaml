@@ -1,0 +1,5 @@
+appId: "${APP_ID}"
+---
+- tapOn:
+    id: "${FIELD_ID}"
+- inputText: "${VALUE}"

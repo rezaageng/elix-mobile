@@ -1,0 +1,10 @@
+appId: "${APP_ID}"
+---
+- runFlow:
+    file: ../../shared/auth.yaml
+    env:
+      SEED_KEY: no-class
+- extendedWaitUntil:
+    visible: "Choose Your Role"
+    timeout: 15000
+- assertVisible: "Choose Your Role"

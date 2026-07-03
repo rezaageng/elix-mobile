@@ -1,0 +1,21 @@
+appId: com.elix.mobile
+---
+- runFlow:
+    file: ../shared/auth.yaml
+    env:
+      SEED_KEY: quests-full
+- extendedWaitUntil:
+    visible: "Quest"
+    timeout: 15000
+- tapOn:
+    id: "FilterMain"
+- assertVisible:
+    id: "QuestCard:"
+- tapOn:
+    id: "FilterDaily"
+- assertVisible:
+    id: "QuestCard:"
+- tapOn:
+    id: "FilterAll"
+- assertVisible:
+    id: "QuestCard:"

@@ -1,0 +1,37 @@
+appId: com.elix.mobile
+---
+# Category filter: each filter shows items for that category
+- runFlow:
+    file: ../shared/auth.yaml
+    env:
+      SEED_KEY: with-class
+- extendedWaitUntil:
+    visible: "Quest"
+    timeout: 15000
+- runFlow:
+    file: ../shared/navigate.yaml
+    env:
+      TAB: Shop
+- assertVisible:
+    id: "ShopFilterAll"
+# Filter to Consumables
+- tapOn:
+    id: "ShopFilterConsumables"
+- assertVisible:
+    id: "ShopFilterConsumables"
+- assertVisible:
+    id: "ShopItem:"
+# Filter to Boosts
+- tapOn:
+    id: "ShopFilterBoosts"
+- assertVisible:
+    id: "ShopFilterBoosts"
+- assertVisible:
+    id: "ShopItem:"
+# Filter back to All
+- tapOn:
+    id: "ShopFilterAll"
+- assertVisible:
+    id: "ShopFilterAll"
+- assertVisible:
+    id: "ShopItem:"

@@ -1,0 +1,18 @@
+appId: com.elix.mobile
+---
+# Guild Leaderboard: seed a guild member, navigate to leaderboard
+- runFlow:
+    file: ../shared/auth.yaml
+    env:
+      SEED_KEY: guild-member
+- extendedWaitUntil:
+    visible: "Quest"
+    timeout: 15000
+- runFlow:
+    file: ../shared/navigate.yaml
+    env:
+      TAB: "Guild"
+- tapOn:
+    id: "GuildLeaderboardButton"
+- assertVisible:
+    id: "LeaderboardRow:"

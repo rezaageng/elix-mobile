@@ -35,6 +35,28 @@ npm run reset-project
 
 This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
 
+## E2E Tests
+
+This project uses [Maestro](https://maestro.mobile.dev) for end-to-end testing on Android.
+
+The debug APK is a development build (`expo-dev-client`) and **needs the Metro bundler running** to serve the JS bundle.
+
+```bash
+# Install Maestro CLI
+curl -fsSL "https://get.maestro.mobile.dev" | bash
+
+# Terminal 1: ensure EXPO_PUBLIC_API_URL is set, then start Metro
+export EXPO_PUBLIC_API_URL=http://localhost:3000
+pnpm start
+
+# Terminal 2: build, install, and run tests
+pnpm run build:android:local
+adb install android/app/build/outputs/apk/debug/app-debug.apk
+pnpm run test:e2e
+```
+
+See [e2e/README.md](./e2e/README.md) for detailed setup and CI workflow reference.
+
 ## Learn more
 
 To learn more about developing your project with Expo, look at the following resources:

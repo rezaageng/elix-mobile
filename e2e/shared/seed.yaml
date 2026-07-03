@@ -1,0 +1,8 @@
+appId: "${APP_ID}"
+---
+- runScript:
+    file: ../scripts/seed.js
+    env:
+      SEED_KEY: "${SEED_KEY}"
+      SEED_PARAMS: "${SEED_PARAMS}"
+      API_URL: "${EXPO_PUBLIC_API_URL}"

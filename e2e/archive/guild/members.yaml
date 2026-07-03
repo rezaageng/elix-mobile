@@ -1,0 +1,18 @@
+appId: com.elix.mobile
+---
+# Guild Members: seed a guild member, navigate to members list
+- runFlow:
+    file: ../shared/auth.yaml
+    env:
+      SEED_KEY: guild-member
+- extendedWaitUntil:
+    visible: "Quest"
+    timeout: 15000
+- runFlow:
+    file: ../shared/navigate.yaml
+    env:
+      TAB: "Guild"
+- tapOn:
+    id: "GuildMembersButton"
+- assertVisible:
+    id: "MemberRow:"

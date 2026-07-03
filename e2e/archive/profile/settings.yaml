@@ -1,0 +1,22 @@
+appId: com.elix.mobile
+---
+# Tier 6: Profile — settings and logout
+- runFlow:
+    file: ../shared/auth.yaml
+    env:
+      SEED_KEY: with-class
+- extendedWaitUntil:
+    visible: "Quest"
+    timeout: 15000
+- runFlow:
+    file: ../shared/navigate.yaml
+    env:
+      TAB: "Profile"
+- tapOn:
+    id: "SettingsButton"
+- assertVisible: "Settings"
+- tapOn:
+    id: "LogoutButton"
+- tapOn:
+    text: "Log Out"
+- assertVisible: "Welcome to Elix"

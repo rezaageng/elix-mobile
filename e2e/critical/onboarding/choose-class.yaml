@@ -1,0 +1,27 @@
+appId: "${APP_ID}"
+---
+# Tier 2: Choose a class from onboarding templates
+# Prerequisites: backend /api/test/seed with key "no-class" creates
+# template classes (e.g. "Frontend Developer", "Backend Developer") and
+# a user without an active class.
+
+- runFlow:
+    file: ../../shared/auth.yaml
+    env:
+      SEED_KEY: no-class
+- extendedWaitUntil:
+    visible: "Choose Your Role"
+    timeout: 15000
+- assertVisible: "Choose Your Role"
+# ponytail: first seeded class is "Frontend Developer" (see db/seed.ts ROLES array)
+- tapOn:
+    id: "ClassCard:Frontend Developer"
+# Wait for the bottom sheet to open; "Select" only exists in the sheet.
+- extendedWaitUntil:
+    visible: "Select"
+    timeout: 10000
+- tapOn:
+    id: "SelectClass"
+- extendedWaitUntil:
+    visible: "Daily & Weekly Quests"
+    timeout: 15000

@@ -1,0 +1,27 @@
+appId: com.elix.mobile
+---
+- runFlow:
+    file: ../shared/auth.yaml
+    env:
+      SEED_KEY: with-class
+- extendedWaitUntil:
+    visible: "Quest"
+    timeout: 15000
+- tapOn:
+    id: "FilterDaily"
+- tapOn:
+    id: "CreateQuestButton"
+- runFlow:
+    file: ../shared/form.yaml
+    env:
+      FIELD_ID: QuestTitleInput
+      VALUE: "E2E Daily"
+- runFlow:
+    file: ../shared/form.yaml
+    env:
+      FIELD_ID: QuestDescriptionInput
+      VALUE: "Daily desc"
+- tapOn:
+    id: "CreateQuest"
+- assertVisible:
+    id: "QuestCard:E2E Daily"

@@ -1,0 +1,32 @@
+appId: com.elix.mobile
+---
+# Guild Promote/Demote: seed a guild owner, promote a member then demote back
+- runFlow:
+    file: ../shared/auth.yaml
+    env:
+      SEED_KEY: guild-owner
+- extendedWaitUntil:
+    visible: "Quest"
+    timeout: 15000
+- runFlow:
+    file: ../shared/navigate.yaml
+    env:
+      TAB: "Guild"
+- tapOn:
+    id: "GuildMembersButton"
+- tapOn:
+    id: "MemberActionsButton"
+- runFlow:
+    file: ../shared/alert.yaml
+    env:
+      BUTTON: "Promote to Admin"
+- assertVisible:
+    text: "Officer"
+- tapOn:
+    id: "MemberActionsButton"
+- runFlow:
+    file: ../shared/alert.yaml
+    env:
+      BUTTON: "Demote to Member"
+- assertVisible:
+    text: "Member"

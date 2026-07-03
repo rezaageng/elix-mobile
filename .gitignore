@@ -41,3 +41,18 @@ app-example
 # generated native folders
 /ios
 /android
+
+
+.env
+
+# Deepwork session state
+.slim/deepwork/
+
+# Test coverage output
+coverage/
+
+# Maestro
+.maestro/
+e2e/reports/
+*.apk
+

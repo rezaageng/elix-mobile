@@ -1,0 +1,22 @@
+appId: com.elix.mobile
+---
+# Guild Home (Member): seed a guild member, verify member-visible controls
+- runFlow:
+    file: ../shared/auth.yaml
+    env:
+      SEED_KEY: guild-member
+- extendedWaitUntil:
+    visible: "Quest"
+    timeout: 15000
+- runFlow:
+    file: ../shared/navigate.yaml
+    env:
+      TAB: "Guild"
+- assertVisible:
+    id: "GuildChatButton"
+- assertVisible:
+    id: "GuildMembersButton"
+- assertVisible:
+    id: "GuildLeaderboardButton"
+- assertNotVisible:
+    id: "DeleteGuildButton"

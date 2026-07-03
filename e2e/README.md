@@ -1,0 +1,191 @@
+# E2E Tests (Maestro)
+
+This directory contains Maestro end-to-end tests for the Elix React Native app.
+
+- `e2e/critical/` — active **critical path** subset (13 tests). `pnpm run test:e2e` runs this folder.
+- `e2e/archive/` — inactive tests from the original 40-test suite, kept for reference.
+- `e2e/shared/` — reusable Maestro helpers.
+
+## Prerequisites
+
+- [Maestro CLI](https://maestro.mobile.dev/getting-started/installing-maestro) installed
+- Android emulator running (or physical device connected)
+- Debug APK built
+- Test backend running with the required dev-login and seed endpoints (see below)
+
+## Installing Maestro CLI
+
+```bash
+curl -fsSL "https://get.maestro.mobile.dev" | bash
+```
+
+## Setup
+
+This project uses a development build (`expo-dev-client`) for local development, or an E2E build profile for CI. The debug APK loads its JS bundle from a Metro bundler running on your machine. Both Metro and an emulator/device must be available when you run the tests locally.
+
+### 1. Ensure `EXPO_PUBLIC_API_URL` is set
+
+```bash
+# In the terminal where Metro will run
+export EXPO_PUBLIC_API_URL=http://localhost:3000
+```
+
+Or add it to your `.env` file:
+
+```
+EXPO_PUBLIC_API_URL=http://localhost:3000
+```
+
+### 2. Start an emulator (or connect a device)
+
+Via Android Studio AVD Manager, or from command line:
+
+```bash
+avdmanager create avd -n maestro -k "system-images;android-34;google_apis;x86_64" --device "pixel_6"
+emulator -avd maestro -no-window -noaudio -gpu swiftshader_indirect
+```
+
+### 3. Build the Android debug APK
+
+**Terminal 1 — build the APK:**
+
+```bash
+pnpm run build:android:local
+```
+
+This runs `expo prebuild --clean` then `./gradlew assembleDebug`.
+The APK is output at `android/app/build/outputs/apk/debug/app-debug.apk`.
+
+### 4. Start Metro and run tests
+
+**Terminal 1 — start the Metro bundler:**
+
+```bash
+pnpm start
+```
+
+Wait until you see "Metro ready" / the QR code.
+
+**Terminal 2 — install the APK and run the critical E2E tests:**
+
+```bash
+adb install android/app/build/outputs/apk/debug/app-debug.apk
+pnpm run test:e2e
+```
+
+This runs only the 13 tests under `e2e/critical/`. To run the full 40-test suite:
+
+```bash
+pnpm run test:e2e:full
+# or directly
+maestro test e2e/
+```
+
+Run a specific tier or critical subfolder:
+
+```bash
+maestro test e2e/critical/
+maestro test e2e/critical/quests/
+maestro test e2e/critical/guild/
+```
+
+## Backend Prerequisites
+
+Authenticated tests require a test backend with the test seed endpoint enabled.
+
+- `POST /api/test/seed` — accepts `{ key: string, email: string }` and idempotently seeds the user with that email into the scenario described below. If the user does not exist, it is created first.
+
+## Authentication
+
+All authenticated tests use **manual OAuth sign-in** with a single dedicated test account.
+
+`shared/auth.yaml` does the following:
+
+1. Calls `/api/test/seed` with the configured test email and scenario key to seed the backend user **before** sign-in.
+2. Launches the app with `clearState: true` (so any previous session is wiped).
+3. Waits for the login screen.
+4. Waits up to 10 minutes for you to sign in via Google or Twitter with the configured test email.
+5. The calling test then waits for the expected screen (Quest tab or Roles screen).
+
+> **Already signed in?** `clearState: true` clears the session, so you'll still land on the login screen and sign in again. This keeps each test isolated.
+
+### Configuring the test account and backend URL
+
+Set the test account email and backend URL in your environment or `.env`:
+
+```bash
+export E2E_TEST_EMAIL=akitanime@gmail.com
+export E2E_API_URL=http://localhost:3000
+```
+
+If unset, `E2E_TEST_EMAIL` defaults to `akitanime@gmail.com` and `E2E_API_URL` falls back to `EXPO_PUBLIC_API_URL` then `http://localhost:3000`.
+
+### EAS build profiles
+
+| Profile | Use |
+|---|---|
+| `development` | Local dev with Expo dev client |
+| `preview` | User preview / internal QA |
+| `e2e` | Maestro E2E test builds |
+
+Build the E2E APK with:
+
+```bash
+eas build --platform android --profile e2e
+```
+
+### Required seed keys
+
+The seed endpoint mutates the currently signed-in user to match the scenario. Supporting users (guild member, profile target) are created automatically.
+
+| Key | Caller state |
+|---|---|
+| `no-class` | No active class |
+| `with-class` | Active class, 1000 gold, quest progress, inventory items |
+| `low-gold` | Active class, 10 gold |
+| `no-guild` | Active class, not in E2E Guild |
+| `guild-member` | Active class, member of E2E Guild |
+| `guild-owner` | Active class, owner of E2E Guild |
+| `guild-full` | Active class, owner of E2E Guild, full quest progress |
+| `quests-full` | Active class, quest progress for all available quests |
+
+## Shared Helpers
+
+Common flows live in `e2e/shared/` and are invoked via Maestro's `runFlow`:
+
+| File | Purpose |
+|---|---|
+| `shared/auth.yaml` | Launch app and wait for manual OAuth login (10 min timeout) |
+| `shared/navigate.yaml` | Tap a native tab by visible label |
+| `shared/seed.yaml` | Call backend seed endpoint |
+| `shared/form.yaml` | Fill a field by testID |
+| `shared/alert.yaml` | Tap an alert button by text |
+
+## Critical Path Subset
+
+The `e2e/critical/` folder contains the active 13-test suite that covers the most important user journeys. `pnpm run test:e2e` runs this subset by default.
+
+| Test file | Description |
+|-----------|-------------|
+| `smoke-test.yaml` | App launches and login screen renders |
+| `login-screen.yaml` | Login entry points are visible |
+| `auth/guard-no-class.yaml` | No active class → lands on `/roles` |
+| `auth/guard-has-class.yaml` | Has active class → lands on `/(tabs)` |
+| `onboarding/choose-class.yaml` | Select a pre-made class template |
+| `quests/list.yaml` | Quest list renders |
+| `quests/text-submit-approved.yaml` | Submit text verification and get approved |
+| `shop/buy-sufficient.yaml` | Buy an item with sufficient gold |
+| `inventory/use-restore-streak.yaml` | Use a restore-streak item |
+| `guild/discovery.yaml` | No guild → discovery screen |
+| `guild/home-owner.yaml` | Guild home for an owner |
+| `profile/view.yaml` | Own profile renders |
+| `regression/tab-navigation.yaml` | Switch all 5 tabs |
+
+The remaining 27 tests from the original suite are archived in `e2e/archive/` for reference.
+
+## Notes
+
+- Tests use `com.elix.mobile` as the app package ID (set in `app.json` under `android.package`).
+- Passing `clearState: true` in `launchApp` ensures a fresh start (clears auth tokens, etc.).
+- No backend is required for the Tier 1 smoke tests; they only assert the login UI renders.
+- OAuth popups, image pickers, push notifications, and WebSocket real-time behavior are not covered by these tests.

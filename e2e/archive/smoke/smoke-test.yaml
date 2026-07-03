@@ -1,0 +1,9 @@
+appId: "${APP_ID}"
+---
+# Smoke test: launch app, verify it renders without crashing.
+# Note: on iOS the session persists in the keychain across reinstalls, so
+# the app may show a post-auth screen instead of the login screen.
+- launchApp:
+    clearState: true
+- runFlow: ../../shared/dev-client.yaml
+- assertVisible: "Elix"

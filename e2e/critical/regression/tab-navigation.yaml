@@ -1,0 +1,35 @@
+appId: "${APP_ID}"
+---
+# Tier 7: Regression — tab navigation round-trip
+- runFlow:
+    file: ../../shared/auth.yaml
+    env:
+      SEED_KEY: with-class
+- extendedWaitUntil:
+    visible: "Quest"
+    timeout: 15000
+- assertVisible: "Quest"
+- runFlow:
+    file: ../../shared/navigate.yaml
+    env:
+      TAB: "Shop"
+- assertVisible:
+    id: "ShopFilterAll"
+- runFlow:
+    file: ../../shared/navigate.yaml
+    env:
+      TAB: "Inventory"
+# ponytail: seed populates inventory so empty state is hidden; check item text instead
+- assertVisible:
+    text: "Streak Restore"
+- runFlow:
+    file: ../../shared/navigate.yaml
+    env:
+      TAB: "Guild"
+- assertVisible: "Guild"
+- runFlow:
+    file: ../../shared/navigate.yaml
+    env:
+      TAB: "Profile"
+- assertVisible:
+    id: "ProfileAvatar"

@@ -1,0 +1,33 @@
+appId: "${APP_ID}"
+---
+- runFlow:
+    file: ../../shared/auth.yaml
+    env:
+      SEED_KEY: with-class
+- extendedWaitUntil:
+    visible: "Quest"
+    timeout: 15000
+# ponytail: switch to Main tab so the main text quest is easier to find
+- tapOn:
+    id: "FilterMain"
+- assertVisible: "In Progress"
+- extendedWaitUntil:
+    visible: "How the Internet Works"
+    timeout: 10000
+- tapOn:
+    text: "How the Internet Works"
+- extendedWaitUntil:
+    visible: "Submit Quest"
+    timeout: 10000
+- tapOn:
+    id: "QuestSubmitButton"
+- assertVisible:
+    id: "VerificationTextInput"
+- tapOn:
+    id: "VerificationTextInput"
+- inputText: "The internet sends packets between devices using IP addresses, and routers direct that traffic across networks."
+- tapOn:
+    id: "VerificationSubmitButton"
+- extendedWaitUntil:
+    visible: "Submission Approved"
+    timeout: 15000

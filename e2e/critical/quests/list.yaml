@@ -1,0 +1,21 @@
+appId: "${APP_ID}"
+---
+- runFlow:
+    file: ../../shared/auth.yaml
+    env:
+      SEED_KEY: with-class
+- extendedWaitUntil:
+    visible: "Quest"
+    timeout: 15000
+- assertVisible: "Quest"
+- assertVisible:
+    id: "FilterAll"
+- assertVisible:
+    id: "FilterMain"
+# ponytail: tap Main filter to switch to single-type tab where quest content is visible
+- tapOn:
+    id: "FilterMain"
+- assertVisible: "In Progress"
+- extendedWaitUntil:
+    visible: "How the Internet Works"
+    timeout: 10000

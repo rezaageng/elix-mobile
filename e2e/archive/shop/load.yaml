@@ -1,0 +1,20 @@
+appId: com.elix.mobile
+---
+# Smoke test: Shop tab loads with items displayed
+- runFlow:
+    file: ../shared/auth.yaml
+    env:
+      SEED_KEY: with-class
+- extendedWaitUntil:
+    visible: "Quest"
+    timeout: 15000
+- runFlow:
+    file: ../shared/navigate.yaml
+    env:
+      TAB: Shop
+- assertVisible:
+    id: "ShopFilterAll"
+- assertVisible:
+    id: "ShopItem:"
+- assertVisible:
+    text: "Shop"
