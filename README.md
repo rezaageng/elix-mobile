@@ -1,72 +1,107 @@
-# Welcome to your Expo app 👋
+# Elix Mobile
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Mobile app for **Elix** — a gamified social platform built with React Native / Expo. Users pick a role, complete quests, earn rewards, and participate in guild chat and leaderboards.
 
-## Get started
+## Stack
+
+- **Framework:** [Expo](https://expo.dev) with `expo-router` file-based routing
+- **UI:** React Native, NativeWind (Tailwind CSS for RN), `@gorhom/bottom-sheet`
+- **State & Data:** TanStack Query, Zustand-like settings store, Zod v4 schemas
+- **Auth:** Better Auth with `@better-auth/expo`, `expo-secure-store`, Google & Twitter OAuth
+- **Networking:** Custom fetch wrapper with cookie auth, Zod-validated API calls
+- **Real-time:** Socket.IO client for guild chat
+- **Push:** `expo-notifications` with scheduled local reminders
+- **Tests:** Jest + React Native Testing Library, Maestro for E2E on Android
+
+## Prerequisites
+
+- Node.js LTS
+- pnpm 11.8.0 (enforced via `packageManager`)
+- [Expo CLI](https://docs.expo.dev/get-started/installation/) and a local Metro-compatible environment
+- A running Elix backend (`../elix-server`) with API URL
+- OAuth credentials (Google / Twitter) configured in the backend
+
+## Setup
 
 1. Install dependencies
 
    ```bash
-   npm install
+   pnpm install
    ```
 
-2. Start the app
+2. Create `.env` at the project root:
+
+   ```env
+   EXPO_PUBLIC_API_URL=http://localhost:3000
+   ```
+
+3. Start the development server
 
    ```bash
-   npx expo start
+   pnpm start
    ```
 
-In the output, you'll find options to open the app in a
+   Then press `a` for Android, `i` for iOS, or `w` for web.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Development
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+| Command                        | Description                                 |
+| ------------------------------ | ------------------------------------------- |
+| `pnpm start`                   | Start the Expo dev server                   |
+| `pnpm run android`             | Run on Android (dev build)                  |
+| `pnpm run ios`                 | Run on iOS (dev build)                      |
+| `pnpm run web`                 | Run web build                               |
+| `pnpm run lint`                | Run ESLint                                  |
+| `pnpm test`                    | Run Jest unit tests                         |
+| `pnpm test:ci`                 | Run tests with coverage                     |
+| `pnpm test:e2e`                | Run Maestro E2E critical flows              |
+| `pnpm test:e2e:full`           | Run all Maestro E2E flows                   |
+| `pnpm run build:android:local` | Build a local debug APK                     |
+| `pnpm run reset-project`       | Reset `app/` to a blank Expo Router starter |
 
-## Get a fresh project
+## Architecture
 
-When you're ready, run:
+- **Entry:** `expo-router/entry` (set in `package.json`)
+- **Routes:** `app/` directory with file-based routing
+  - `app/(tabs)/` — main tab screens: home, guild, inventory, shop, profile
+  - `app/login/` — authentication screen
+  - `app/roles/` — role selection and creation
+  - `app/quest/` — quest detail, management, verification
+  - `app/guild/` — guild chat, members, leaderboard
+  - `app/user/[id]` — public user profile
+- **API layer:** `lib/api/`
+  - `client.ts` — fetch wrapper with cookie auth, Zod validation, and `ApiError`
+  - `schemas.ts` — Zod v4 request/response schemas
+  - `guilds.ts`, `quests.ts`, `users.ts`, `classes.ts`, `shop.ts`, `verification.ts`, `notifications.ts` — domain clients
+- **Auth:** `lib/auth-client.ts` with Better Auth session hook and cookie-backed storage
+- **Notifications:** `lib/notifications/` for push registration, scheduling, and tap handling
+- **Query:** `lib/query-client.ts` with 5-minute stale time and 2 retries
+
+## Conventions
+
+- All imports use the `@/*` alias. ESLint forbids relative imports (`../`, `./`).
+- Use NativeWind/Tailwind classes for styling; classes are sorted by Prettier.
+- Import order is enforced by `@ianvs/prettier-plugin-sort-imports`.
+- Prettier: no semicolons, double quotes, 2-space indent, trailing commas.
+- The `newArchEnabled`, `typedRoutes`, and `reactCompiler` experiments are enabled in `app.json`.
+
+## E2E Testing
+
+Maestro runs against a development build. The debug APK needs the Metro bundler running.
 
 ```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## E2E Tests
-
-This project uses [Maestro](https://maestro.mobile.dev) for end-to-end testing on Android.
-
-The debug APK is a development build (`expo-dev-client`) and **needs the Metro bundler running** to serve the JS bundle.
-
-```bash
-# Install Maestro CLI
-curl -fsSL "https://get.maestro.mobile.dev" | bash
-
-# Terminal 1: ensure EXPO_PUBLIC_API_URL is set, then start Metro
+# Terminal 1: start Metro
 export EXPO_PUBLIC_API_URL=http://localhost:3000
 pnpm start
 
-# Terminal 2: build, install, and run tests
+# Terminal 2: build, install, and run critical tests
 pnpm run build:android:local
 adb install android/app/build/outputs/apk/debug/app-debug.apk
 pnpm run test:e2e
 ```
 
-See [e2e/README.md](./e2e/README.md) for detailed setup and CI workflow reference.
+See [`e2e/README.md`](./e2e/README.md) for detailed setup and CI workflow.
 
-## Learn more
+## Backend
 
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+This app is paired with the backend project at [here](https://github.com/rezaageng/elix-server/). The OpenAPI spec at `https://localhost:3001/referece` is the source of truth for API shape and is used for client generation reference.
