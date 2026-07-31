@@ -56,3 +56,5 @@ coverage/
 e2e/reports/
 *.apk
 
+graphify-out/cost.json        
+graphify-out/cache/         

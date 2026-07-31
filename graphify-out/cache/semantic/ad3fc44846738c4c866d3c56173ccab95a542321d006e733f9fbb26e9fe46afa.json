@@ -1,1 +1,0 @@
-{"nodes": [], "edges": [], "hyperedges": [{"id": "api_data_fetching_layer", "label": "API Data Fetching Layer", "nodes": ["api_guilds_GuildsModule", "api_quests_QuestsModule", "api_shop_ShopModule", "api_users_UsersModule", "api_verification_VerificationModule"], "relation": "implement", "confidence": "INFERRED", "confidence_score": 0.85, "source_file": "lib/api/index.ts"}]}
